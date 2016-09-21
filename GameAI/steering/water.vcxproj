@@ -29,6 +29,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="Steering.h" />
+    <ClInclude Include="UnitManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DynamicArriveSteering.cpp" />
@@ -49,6 +50,7 @@
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
     <ClCompile Include="Steering.cpp" />
+    <ClCompile Include="UnitManager.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{07ED8114-0659-4424-9468-50DBBEA5882A}</ProjectGuid>
