@@ -1,22 +1,5 @@
-﻿  Steering.cpp
-  SpriteManager.cpp
-  Sprite.cpp
-  PlayerMoveToMessage.cpp
-  main.cpp
-  KinematicWanderSteering.cpp
-  KinematicUnit.cpp
-  KinematicSeekSteering.cpp
-  KinematicArriveSteering.cpp
-  Kinematic.cpp
-  GraphicsSystem.cpp
-  GraphicsBufferManager.cpp
-  GraphicsBuffer.cpp
-  GameMessageManager.cpp
-  GameMessage.cpp
-  Game.cpp
-  DynamicSeekSteering.cpp
-  DynamicArriveSteering.cpp
-  Generating Code...
+﻿  UnitManager.cpp
+c:\users\brian\desktop\egp-410\gameai\steering\unitmanager.cpp(18): warning C4101: 'newUnit': unreferenced local variable
 DynamicArriveSteering.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
   water.vcxproj -> C:\Users\Brian\Desktop\EGP-410\GameAI\steering\Debug\steering.exe
   water.vcxproj -> C:\Users\Brian\Desktop\EGP-410\GameAI\steering\Debug\steering.pdb (Full PDB)

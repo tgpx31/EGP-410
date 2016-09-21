@@ -1,7 +1,11 @@
 #pragma once
 
 #include "Trackable.h"
+#include <string>
+#include <map>
 
+class Vector2D;
+class KinematicUnit;
 
 /* Unit Manager:
  * Container w/ pointers to all units
@@ -9,14 +13,19 @@
  * Update
  */
 
+typedef std::string UnitKey;
+
 class UnitManager : public Trackable
 {
 private:
+	std::map<UnitKey, KinematicUnit*> mUnits;
+	void cleanUp();
 
 public:
 	UnitManager();
 	~UnitManager();
 
-	void AddUnit();
-	void DeleteUnit();
+	void addUnit(Vector2D position);
+	void deleteUnit();
+	void update(double frameTime);
 };
