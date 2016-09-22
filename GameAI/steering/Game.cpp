@@ -186,7 +186,7 @@ bool Game::init()
 	mpUnit = new KinematicUnit( pArrowSprite, pos, 1, vel, 0.0f, 200.0f, 10.0f );
 
 	mpUnitManager = new UnitManager(pEnemyArrow);
-	mpUnitManager->addUnit(Vector2D(100, 100));
+	mpUnitManager->addUnit(Vector2D(0, 0));
 	
 	/*Vector2D pos2( 1000.0f, 500.0f );
 	Vector2D vel2( 0.0f, 0.0f );
@@ -207,6 +207,10 @@ void Game::cleanup()
 	//delete units
 	delete mpUnit;
 	mpUnit = NULL;
+
+	delete mpUnitManager;
+	mpUnitManager = NULL;
+
 	/*delete mpAIUnit;
 	mpAIUnit = NULL;
 	delete mpAIUnit2;
@@ -254,6 +258,7 @@ void Game::processLoop()
 {
 	//update units
 	mpUnit->update( LOOP_TARGET_TIME/1000.0f );
+	
 	/*mpAIUnit->update( LOOP_TARGET_TIME/1000.0f );
 	mpAIUnit2->update( LOOP_TARGET_TIME/1000.0f );*/
 	
@@ -263,6 +268,8 @@ void Game::processLoop()
 
 	//draw units
 	mpUnit->draw( GRAPHICS_SYSTEM->getBackBuffer() );
+	mpUnitManager->draw(GRAPHICS_SYSTEM);
+
 	/*mpAIUnit->draw( GRAPHICS_SYSTEM->getBackBuffer() );
 	mpAIUnit2->draw( GRAPHICS_SYSTEM->getBackBuffer() );*/
 

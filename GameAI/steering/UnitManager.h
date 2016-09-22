@@ -4,6 +4,8 @@
 #include <string>
 #include <map>
 
+#include "GraphicsSystem.h"
+
 class Sprite;
 class Vector2D;
 class KinematicUnit;
@@ -35,5 +37,7 @@ public:
 
 	void addUnit(Vector2D position, Sprite* spr = NULL);
 	void deleteUnit(const UnitKey& key);
+
+	void draw(GraphicsSystem* gSystem);
 	void update(double frameTime);
 };

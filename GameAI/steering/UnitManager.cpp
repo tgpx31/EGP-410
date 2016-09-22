@@ -3,6 +3,7 @@
 
 #include "Vector2D.h"
 
+
 UnitManager::UnitManager(Sprite *enemySprite)
 {
 	mEnemySpr = enemySprite;
@@ -62,6 +63,18 @@ void UnitManager::deleteUnit(const UnitKey& key)
 		iter->second = NULL;
 	}
 
+}
+
+void UnitManager::draw(GraphicsSystem* gSystem)
+{
+	// Traverse map w/ iterator
+	std::map<UnitKey, KinematicUnit*>::iterator iter;
+
+	for (iter = mUnits.begin(); iter != mUnits.end(); ++iter)
+	{
+		iter->second->draw(gSystem->getBackBuffer());
+	}
+	//->draw( GRAPHICS_SYSTEM->getBackBuffer() );
 }
 
 void UnitManager::update(double frameTime)
