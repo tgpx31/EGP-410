@@ -1,4 +1,5 @@
 ﻿  UnitManager.cpp
-cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
+  Game.cpp
+  Generating Code...
   water.vcxproj -> C:\Users\Student\Desktop\EGP-410\GameAI\steering\Debug\steering.exe
   water.vcxproj -> C:\Users\Student\Desktop\EGP-410\GameAI\steering\Debug\steering.pdb (Full PDB)

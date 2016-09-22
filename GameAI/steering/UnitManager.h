@@ -35,7 +35,7 @@ public:
 	UnitManager(Sprite* enemySprite);
 	~UnitManager();
 
-	void addUnit(Vector2D position, KinematicUnit* target = NULL, Sprite* spr = NULL);
+	void addUnit(Vector2D position, bool seek = true, KinematicUnit* target = NULL, Sprite* spr = NULL);
 	void deleteUnit(const UnitKey& key);
 
 	void draw(GraphicsSystem* gSystem);

@@ -104,6 +104,8 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <AdditionalIncludeDirectories>..\..\DeanLib;..\..\External Libs\Allegro5\include;</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>
+      </MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <AdditionalDependencies>%(AdditionalDependencies);allegro-5.0.10-monolith-md-debug.lib;DeanLib.lib;</AdditionalDependencies>

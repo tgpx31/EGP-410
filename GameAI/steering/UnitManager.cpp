@@ -28,7 +28,7 @@ void UnitManager::cleanUp()
 	mUnits.clear();
 }
 
-void UnitManager::addUnit(Vector2D position, KinematicUnit* target, Sprite* spr)
+void UnitManager::addUnit(Vector2D position, bool seek, KinematicUnit* target, Sprite* spr)
 {
 	KinematicUnit* newUnit;
 	// Create a new unit w/ sprite*, vector2d position, float orientation, vec2d velocity,
@@ -49,7 +49,11 @@ void UnitManager::addUnit(Vector2D position, KinematicUnit* target, Sprite* spr)
 	// Set the steering
 	if (target != NULL)
 	{
-		newUnit->dynamicSeek(NULL);
+		if (seek)
+			newUnit->dynamicSeek(NULL);
+
+		else
+			newUnit->dynamicArrive(NULL);
 	}
 
 	// Add the unit to mUnits
