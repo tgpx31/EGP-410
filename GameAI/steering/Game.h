@@ -47,8 +47,8 @@ public:
 	inline ALLEGRO_FONT* getFont() const { return mpFont; };
 
 	inline KinematicUnit* getPlayerUnit() { return mpUnit; };//should be someplace else
-	inline KinematicUnit* getAIUnit() { return mpAIUnit; };//should be someplace else
-	inline KinematicUnit* getAIUnit2() { return mpAIUnit2; };//should be someplace else
+	//inline KinematicUnit* getAIUnit() { return mpAIUnit; };//should be someplace else
+	//inline KinematicUnit* getAIUnit2() { return mpAIUnit2; };//should be someplace else
 
 private:
 	GraphicsSystem* mpGraphicsSystem;

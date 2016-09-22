@@ -1,8 +1,8 @@
 ﻿  UnitManager.cpp
-c:\users\brian\desktop\egp-410\gameai\steering\unitmanager.cpp(16): warning C4150: deletion of pointer to incomplete type 'Sprite'; no destructor called
-  c:\users\brian\desktop\egp-410\gameai\steering\kinematicunit.h(14): note: see declaration of 'Sprite'
-c:\users\brian\desktop\egp-410\gameai\steering\unitmanager.cpp(18): warning C4150: deletion of pointer to incomplete type 'Sprite'; no destructor called
-  c:\users\brian\desktop\egp-410\gameai\steering\kinematicunit.h(14): note: see declaration of 'Sprite'
-c:\users\brian\desktop\egp-410\gameai\steering\unitmanager.cpp(38): warning C4101: 'newUnit': unreferenced local variable
-  water.vcxproj -> C:\Users\Brian\Desktop\EGP-410\GameAI\steering\Debug\steering.exe
-  water.vcxproj -> C:\Users\Brian\Desktop\EGP-410\GameAI\steering\Debug\steering.pdb (Full PDB)
+  Generating Code...
+  Compiling...
+  Game.cpp
+  Generating Code...
+DynamicArriveSteering.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  water.vcxproj -> C:\Users\Student\Desktop\EGP-410\GameAI\steering\Debug\steering.exe
+  water.vcxproj -> C:\Users\Student\Desktop\EGP-410\GameAI\steering\Debug\steering.pdb (Full PDB)

@@ -11,9 +11,6 @@ UnitManager::UnitManager(Sprite *enemySprite)
 UnitManager::~UnitManager()
 {
 	cleanUp();
-
-	delete mEnemySpr;
-	mEnemySpr = NULL;
 }
 
 void UnitManager::cleanUp()
@@ -30,7 +27,7 @@ void UnitManager::cleanUp()
 	mUnits.clear();
 }
 
-void UnitManager::addUnit(Vector2D position, Sprite* spr = NULL)
+void UnitManager::addUnit(Vector2D position, Sprite* spr)
 {
 	KinematicUnit* newUnit;
 	// Create a new unit w/ sprite*, vector2d position, float orientation, vec2d velocity,
@@ -40,12 +37,12 @@ void UnitManager::addUnit(Vector2D position, Sprite* spr = NULL)
 	if (spr != NULL)
 	{
 		// use given sprite
-		newUnit = new KinematicUnit(spr, position, 1, INITIAL_VEL, 0.0f, ENEMY_MAX_VEL, ENEMY_MAX_ACCEL);
+		newUnit = new KinematicUnit(spr, position, 1, Vector2D(0, 0), 0.0f, ENEMY_MAX_VEL, ENEMY_MAX_ACCEL);
 	}
 	else
 	{
 		// use the enemy sprite
-		newUnit = new KinematicUnit(mEnemySpr, position, 1, INITIAL_VEL, 0.0f, ENEMY_MAX_VEL, ENEMY_MAX_ACCEL);
+		newUnit = new KinematicUnit(mEnemySpr, position, 1, Vector2D(0, 0), 0.0f, ENEMY_MAX_VEL, ENEMY_MAX_ACCEL);
 	}
 
 	// Add the unit to mUnits
