@@ -58,6 +58,9 @@
     <ClCompile Include="UnitManager.cpp">
       <Filter>Source Files\Units</Filter>
     </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -117,6 +120,9 @@
     <ClInclude Include="UnitManager.h">
       <Filter>Header Files\Units</Filter>
     </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -154,6 +160,12 @@
     </Filter>
     <Filter Include="Source Files\Units">
       <UniqueIdentifier>{820b8d07-ae99-4b13-b15d-e6e6c1e3fbbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Input">
+      <UniqueIdentifier>{2f27f274-fc1b-4495-b7f3-f52b7fcb48d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{3f7f156b-01fb-4d91-8460-9eada0b97d3f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
