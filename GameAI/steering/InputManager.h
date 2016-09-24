@@ -2,6 +2,15 @@
 
 #include "Trackable.h"
 
+#include "Defines.h"
+#include "Vector2D.h"
+#include "GameMessage.h"
+#include "PlayerMoveToMessage.h"
+#include "Game.h"
+#include "GameMessageManager.h"
+
+#include <sstream>
+
 /* Input Manager:
  * Handle Keyboard and mouse inputs
  * Convert to messages/events that affect game state
@@ -11,9 +20,13 @@ class InputManager : public Trackable
 {
 private:
 	void cleanUp();
+	void getMouseInput();
+	void getKeyboardInput();
+
+	ALLEGRO_FONT* mpFont;
 
 public:
-	InputManager();
+	InputManager(ALLEGRO_FONT* font = NULL);
 	~InputManager();
 
 	bool init();

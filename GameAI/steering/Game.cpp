@@ -118,12 +118,7 @@ bool Game::init()
 	//	printf( "Mouse not installed!\n" ); 
 	//	return false;
 	//}
-	mpInputManager = new InputManager();
-	if (!mpInputManager->init())
-	{
-		printf("InputManager failed to init!\n");
-		return false;
-	}
+	
 
 	//should be somewhere else!
 	al_init_font_addon();
@@ -138,6 +133,13 @@ bool Game::init()
 	if( mpFont == NULL )
 	{
 		printf( "ttf font file not loaded properly!\n" ); 
+		return false;
+	}
+
+	mpInputManager = new InputManager(mpFont);
+	if (!mpInputManager->init())
+	{
+		printf("InputManager failed to init!\n");
 		return false;
 	}
 
@@ -266,31 +268,33 @@ void Game::processLoop()
 
 	mpMessageManager->processMessagesForThisframe();
 
-	//get input - should be moved someplace better
-	ALLEGRO_MOUSE_STATE mouseState;
-	al_get_mouse_state( &mouseState );
+	////get input - should be moved someplace better
+	//ALLEGRO_MOUSE_STATE mouseState;
+	//al_get_mouse_state( &mouseState );
 
-	if( al_mouse_button_down( &mouseState, 1 ) )//left mouse click
-	{
-		Vector2D pos( mouseState.x, mouseState.y );
-		GameMessage* pMessage = new PlayerMoveToMessage( pos );
-		MESSAGE_MANAGER->addMessage( pMessage, 0 );
-	}
+	//if( al_mouse_button_down( &mouseState, 1 ) )//left mouse click
+	//{
+	//	Vector2D pos( mouseState.x, mouseState.y );
+	//	GameMessage* pMessage = new PlayerMoveToMessage( pos );
+	//	MESSAGE_MANAGER->addMessage( pMessage, 0 );
+	//}
 
 
 
 	//all this should be moved to InputManager!!!
 	{
-		//get mouse state
-		ALLEGRO_MOUSE_STATE mouseState;
-		al_get_mouse_state( &mouseState );
+		////get mouse state
+		//ALLEGRO_MOUSE_STATE mouseState;
+		//al_get_mouse_state( &mouseState );
 
-		//create mouse text
-		stringstream mousePos;
-		mousePos << mouseState.x << ":" << mouseState.y;
+		////create mouse text
+		//stringstream mousePos;
+		//mousePos << mouseState.x << ":" << mouseState.y;
 
-		//write text at mouse position
-		al_draw_text( mpFont, al_map_rgb( 255, 255, 255 ), mouseState.x, mouseState.y, ALLEGRO_ALIGN_CENTRE, mousePos.str().c_str() );
+		////write text at mouse position
+		//al_draw_text( mpFont, al_map_rgb( 255, 255, 255 ), mouseState.x, mouseState.y, ALLEGRO_ALIGN_CENTRE, mousePos.str().c_str() );
+
+		mpInputManager->update(LOOP_TARGET_TIME / 1000.0f);
 
 		mpGraphicsSystem->swap();
 
