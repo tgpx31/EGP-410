@@ -70,7 +70,7 @@ void UnitManager::deleteUnit(const UnitKey& key)
 	if (iter != mUnits.end())
 	{
 		delete iter->second;
-		iter->second = NULL;
+		mUnits.erase(iter);
 	}
 
 }

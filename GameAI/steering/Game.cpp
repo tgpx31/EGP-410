@@ -186,8 +186,9 @@ bool Game::init()
 	mpUnit = new KinematicUnit( pArrowSprite, pos, 1, vel, 0.0f, 200.0f, 10.0f );
 
 	mpUnitManager = new UnitManager(pEnemyArrow);
-	mpUnitManager->addUnit(Vector2D(0, 0), false, mpUnit);
-	mpUnitManager->addUnit(Vector2D(0, 0), true, mpUnit);
+	//mpUnitManager->addUnit(Vector2D(0, 0), false, mpUnit);
+	//mpUnitManager->addUnit(Vector2D(0, 0), true, mpUnit);
+	//mpUnitManager->deleteUnit("Unit 1");
 
 	/*Vector2D pos2( 1000.0f, 500.0f );
 	Vector2D vel2( 0.0f, 0.0f );
