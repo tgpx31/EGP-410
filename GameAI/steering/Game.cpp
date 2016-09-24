@@ -22,6 +22,7 @@
 #include "PlayerMoveToMessage.h"
 
 #include "UnitManager.h"
+#include "InputManager.h"
 
 Game* gpGame = NULL;
 
@@ -39,6 +40,7 @@ Game::Game()
 	, mpSample(NULL)
 	, mBackgroundBufferID(INVALID_ID)
 	, mpUnitManager(NULL)
+	, mpInputManager(NULL)
 	//,mSmurfBufferID(INVALID_ID)
 {
 }
@@ -104,16 +106,22 @@ bool Game::init()
 	}
 
 	//should probably be done in the InputSystem!
-	if( !al_install_keyboard() )
-	{
-		printf( "Keyboard not installed!\n" ); 
-		return false;
-	}
+	//if( !al_install_keyboard() )
+	//{
+	//	printf( "Keyboard not installed!\n" ); 
+	//	return false;
+	//}
 
-	//should probably be done in the InputSystem!
-	if( !al_install_mouse() )
+	////should probably be done in the InputSystem!
+	//if( !al_install_mouse() )
+	//{
+	//	printf( "Mouse not installed!\n" ); 
+	//	return false;
+	//}
+	mpInputManager = new InputManager();
+	if (!mpInputManager->init())
 	{
-		printf( "Mouse not installed!\n" ); 
+		printf("InputManager failed to init!\n");
 		return false;
 	}
 
@@ -190,17 +198,6 @@ bool Game::init()
 	//mpUnitManager->addUnit(Vector2D(0, 0), true, mpUnit);
 	//mpUnitManager->deleteUnit("Unit 1");
 
-	/*Vector2D pos2( 1000.0f, 500.0f );
-	Vector2D vel2( 0.0f, 0.0f );
-	mpAIUnit = new KinematicUnit( pEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f );
-	//give steering behavior
-	mpAIUnit->dynamicArrive( mpUnit ); 
-
-	Vector2D pos3( 500.0f, 500.0f );
-	mpAIUnit2 = new KinematicUnit( pEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f );
-	//give steering behavior
-	mpAIUnit2->dynamicSeek( mpUnit );  */
-
 	return true;
 }
 
@@ -212,11 +209,6 @@ void Game::cleanup()
 
 	delete mpUnitManager;
 	mpUnitManager = NULL;
-
-	/*delete mpAIUnit;
-	mpAIUnit = NULL;
-	delete mpAIUnit2;
-	mpAIUnit2 = NULL;*/
 
 	//delete the timers
 	delete mpLoopTimer;
@@ -245,10 +237,12 @@ void Game::cleanup()
 	al_shutdown_image_addon();
 	al_shutdown_font_addon();
 	al_shutdown_ttf_addon();
-	al_uninstall_keyboard();
-	al_uninstall_mouse();
+	//al_uninstall_keyboard();
+	//al_uninstall_mouse();
 	al_shutdown_primitives_addon();
 
+	delete mpInputManager;
+	mpInputManager = NULL;
 }
 
 void Game::beginLoop()
@@ -262,9 +256,6 @@ void Game::processLoop()
 	mpUnit->update( LOOP_TARGET_TIME/1000.0f );
 	mpUnitManager->update(LOOP_TARGET_TIME / 1000.0f);
 	
-	/*mpAIUnit->update( LOOP_TARGET_TIME/1000.0f );
-	mpAIUnit2->update( LOOP_TARGET_TIME/1000.0f );*/
-	
 	//draw background
 	Sprite* pBackgroundSprite = mpSpriteManager->getSprite( BACKGROUND_SPRITE_ID );
 	pBackgroundSprite->draw( *(mpGraphicsSystem->getBackBuffer()), 0, 0 );
@@ -272,9 +263,6 @@ void Game::processLoop()
 	//draw units
 	mpUnit->draw( GRAPHICS_SYSTEM->getBackBuffer() );
 	mpUnitManager->draw(GRAPHICS_SYSTEM);
-
-	/*mpAIUnit->draw( GRAPHICS_SYSTEM->getBackBuffer() );
-	mpAIUnit2->draw( GRAPHICS_SYSTEM->getBackBuffer() );*/
 
 	mpMessageManager->processMessagesForThisframe();
 

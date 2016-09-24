@@ -17,6 +17,7 @@ class GameMessageManager;
 class Timer;
 
 class UnitManager;
+class InputManager;
 
 const IDType BACKGROUND_SPRITE_ID = 0;
 const IDType PLAYER_ICON_SPRITE_ID = 1;
@@ -67,10 +68,9 @@ private:
 	IDType mEnemyIconBufferID;
 
 	KinematicUnit* mpUnit;
-	/*KinematicUnit* mpAIUnit;
-	KinematicUnit* mpAIUnit2;*/
 
 	UnitManager* mpUnitManager;
+	InputManager* mpInputManager;
 };
 
 float genRandomBinomial();//range -1:1 from "Artificial Intelligence for Games", Millington and Funge

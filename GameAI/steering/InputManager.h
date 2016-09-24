@@ -10,8 +10,6 @@
 class InputManager : public Trackable
 {
 private:
-
-
 	void cleanUp();
 
 public:

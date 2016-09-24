@@ -25,6 +25,8 @@ bool InputManager::init()
 		printf("Mouse not installed!\n");
 		return false;
 	}
+
+	return true;
 }
 
 void InputManager::cleanUp()
