@@ -11,9 +11,15 @@ class InputManager : public Trackable
 {
 private:
 
+
+	void cleanUp();
+
 public:
 	InputManager();
 	~InputManager();
+
+	bool init();
+	
 
 	void update(double frameTime);
 };
