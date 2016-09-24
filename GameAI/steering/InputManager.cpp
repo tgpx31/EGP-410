@@ -7,6 +7,7 @@ InputManager::InputManager()
 
 InputManager::~InputManager()
 {
+	cleanUp();
 }
 
 bool InputManager::init()
