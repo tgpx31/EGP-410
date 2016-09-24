@@ -105,21 +105,6 @@ bool Game::init()
 		return false;
 	}
 
-	//should probably be done in the InputSystem!
-	//if( !al_install_keyboard() )
-	//{
-	//	printf( "Keyboard not installed!\n" ); 
-	//	return false;
-	//}
-
-	////should probably be done in the InputSystem!
-	//if( !al_install_mouse() )
-	//{
-	//	printf( "Mouse not installed!\n" ); 
-	//	return false;
-	//}
-	
-
 	//should be somewhere else!
 	al_init_font_addon();
 	if( !al_init_ttf_addon() )
@@ -239,8 +224,6 @@ void Game::cleanup()
 	al_shutdown_image_addon();
 	al_shutdown_font_addon();
 	al_shutdown_ttf_addon();
-	//al_uninstall_keyboard();
-	//al_uninstall_mouse();
 	al_shutdown_primitives_addon();
 
 	delete mpInputManager;
@@ -267,55 +250,13 @@ void Game::processLoop()
 	mpUnitManager->draw(GRAPHICS_SYSTEM);
 
 	mpMessageManager->processMessagesForThisframe();
+	mShouldExit = mpInputManager->update(LOOP_TARGET_TIME / 1000.0f);
 
-	////get input - should be moved someplace better
-	//ALLEGRO_MOUSE_STATE mouseState;
-	//al_get_mouse_state( &mouseState );
-
-	//if( al_mouse_button_down( &mouseState, 1 ) )//left mouse click
-	//{
-	//	Vector2D pos( mouseState.x, mouseState.y );
-	//	GameMessage* pMessage = new PlayerMoveToMessage( pos );
-	//	MESSAGE_MANAGER->addMessage( pMessage, 0 );
-	//}
-
-
-
-	//all this should be moved to InputManager!!!
-	{
-		////get mouse state
-		//ALLEGRO_MOUSE_STATE mouseState;
-		//al_get_mouse_state( &mouseState );
-
-		////create mouse text
-		//stringstream mousePos;
-		//mousePos << mouseState.x << ":" << mouseState.y;
-
-		////write text at mouse position
-		//al_draw_text( mpFont, al_map_rgb( 255, 255, 255 ), mouseState.x, mouseState.y, ALLEGRO_ALIGN_CENTRE, mousePos.str().c_str() );
-
-		mpInputManager->update(LOOP_TARGET_TIME / 1000.0f);
-
-		mpGraphicsSystem->swap();
-
-		//get current keyboard state
-		ALLEGRO_KEYBOARD_STATE keyState;
-		al_get_keyboard_state( &keyState );
-
-		//if escape key was down then exit the loop
-		if( al_key_down( &keyState, ALLEGRO_KEY_ESCAPE ) )
-		{
-			mShouldExit = true;
-		}
-
-		/*if (al_key_down(&keyState, ALLEGRO_KEY_SPACE))
-			mpUnitManager->addUnit(mpUnit->getPosition(), true, mpUnit);*/
-	}
+	mpGraphicsSystem->swap();
 }
 
 bool Game::endLoop()
 {
-	//mpMasterTimer->start();
 	mpLoopTimer->sleepUntilElapsed( LOOP_TARGET_TIME );
 	return mShouldExit;
 }

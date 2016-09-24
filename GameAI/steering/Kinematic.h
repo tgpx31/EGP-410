@@ -38,7 +38,7 @@ public:
 	al_fixed getRotation() const;
 	static float getOrientationFromVelocity( float currentOrientation, const Vector2D& velocity );
 	virtual void setNewOrientation(){ mOrientation = getOrientationFromVelocity( mOrientation, mVelocity ); };
-	Vector2D getOrientationAsVector();   
+	Vector2D getOrientationAsVector();
 	float getOrientation() const { return mOrientation; };
 	void setOrientation( float orientation ) { mOrientation = orientation; };
 	void setRotationalVelocity( float rotVel ) { mRotationVel = rotVel; };

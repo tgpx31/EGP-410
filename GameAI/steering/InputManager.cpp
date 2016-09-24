@@ -1,6 +1,8 @@
 #include <allegro5/allegro.h>
 #include "InputManager.h"
-
+#include "Game.h"
+#include "KinematicUnit.h"
+#include "Kinematic.h"
 
 InputManager::InputManager(ALLEGRO_FONT* font)
 {
@@ -57,13 +59,38 @@ void InputManager::getMouseInput()
 	al_draw_text(mpFont, al_map_rgb(255, 255, 255), mouseState.x, mouseState.y, ALLEGRO_ALIGN_CENTRE, mousePos.str().c_str());
 }
 
-void InputManager::getKeyboardInput()
+bool InputManager::getKeyboardInput()
 {
+	//get current keyboard state
+	ALLEGRO_KEYBOARD_STATE keyState;
+	al_get_keyboard_state(&keyState);
 
+	// put keyboard inputs here
+
+	// When you read an input...
+	// send a message:
+
+	
+	if(al_key_down( &keyState, ALLEGRO_KEY_A ) )
+	{
+	GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), false);
+	MESSAGE_MANAGER->addMessage( pMessage, 0 );
+	}
+	
+
+	//if escape key was down then exit the loop
+	if (al_key_down(&keyState, ALLEGRO_KEY_ESCAPE))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
-void InputManager::update(double frameTime)
+bool InputManager::update(double frameTime)
 {
 	getMouseInput();
-	getKeyboardInput();
+	return (getKeyboardInput());
 }

@@ -9,6 +9,8 @@
 #include "Game.h"
 #include "GameMessageManager.h"
 
+#include "AddUnitMessage.h"
+
 #include <sstream>
 
 /* Input Manager:
@@ -21,7 +23,7 @@ class InputManager : public Trackable
 private:
 	void cleanUp();
 	void getMouseInput();
-	void getKeyboardInput();
+	bool getKeyboardInput();
 
 	ALLEGRO_FONT* mpFont;
 
@@ -32,7 +34,7 @@ public:
 	bool init();
 	
 
-	void update(double frameTime);
+	bool update(double frameTime);
 };
 
 // When you read an input...
