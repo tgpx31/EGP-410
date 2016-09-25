@@ -90,7 +90,6 @@ bool InputManager::getKeyboardInput()
 	}
 
 	//if escape key was down then exit the loop
-	// Make this have it's own message event
 	if (al_key_down(&keyState, ALLEGRO_KEY_ESCAPE))
 	{
 		return true;

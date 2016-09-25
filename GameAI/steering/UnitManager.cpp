@@ -2,7 +2,7 @@
 #include "KinematicUnit.h"
 
 #include "Vector2D.h"
-
+#include "Game.h"
 
 UnitManager::UnitManager(Sprite *enemySprite)
 {
@@ -74,6 +74,9 @@ void UnitManager::deleteUnit(const UnitKey& key)
 		mUnits.erase(iter);
 	}
 
+	if (mUnits.empty())
+		gpGame->exit();
+
 }
 
 void UnitManager::draw(GraphicsSystem* gSystem)
@@ -85,7 +88,6 @@ void UnitManager::draw(GraphicsSystem* gSystem)
 	{
 		iter->second->draw(gSystem->getBackBuffer());
 	}
-	//->draw( GRAPHICS_SYSTEM->getBackBuffer() );
 }
 
 void UnitManager::update(double frameTime)

@@ -49,6 +49,7 @@ public:
 
 	inline KinematicUnit* getPlayerUnit() { return mpUnit; };//should be someplace else
 	inline UnitManager* getUnitManager() { return mpUnitManager; }
+	inline void exit() { mShouldExit = true; };
 
 private:
 	GraphicsSystem* mpGraphicsSystem;
