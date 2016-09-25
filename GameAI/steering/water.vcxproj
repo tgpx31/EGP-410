@@ -36,6 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddUnitMessage.cpp" />
+    <ClCompile Include="DeleteUnitMessage.cpp" />
     <ClCompile Include="DynamicArriveSteering.cpp" />
     <ClCompile Include="DynamicSeekSteering.cpp" />
     <ClCompile Include="Game.cpp" />

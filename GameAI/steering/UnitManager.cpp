@@ -69,6 +69,7 @@ void UnitManager::deleteUnit(const UnitKey& key)
 	// If it exists..
 	if (iter != mUnits.end())
 	{
+		std::cout << "\nDELETED UNIT " << key <<  "\n";
 		delete iter->second;
 		mUnits.erase(iter);
 	}

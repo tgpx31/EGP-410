@@ -40,4 +40,6 @@ public:
 
 	void draw(GraphicsSystem* gSystem);
 	void update(double frameTime);
+
+	inline int getRandUnit() { return 0 + (rand() % static_cast<int>(mUnits.size() - 0 + 1)); };
 };

@@ -10,6 +10,7 @@
 #include "GameMessageManager.h"
 
 #include "AddUnitMessage.h"
+#include "DeleteUnitMessage.h"
 
 #include <sstream>
 

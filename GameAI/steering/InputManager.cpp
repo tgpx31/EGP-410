@@ -76,9 +76,21 @@ bool InputManager::getKeyboardInput()
 	GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), false);
 	MESSAGE_MANAGER->addMessage( pMessage, 0 );
 	}
+
+	if (al_key_down(&keyState, ALLEGRO_KEY_S))
+	{
+		GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), true);
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+	}
 	
+	if (al_key_down(&keyState, ALLEGRO_KEY_D))
+	{
+		GameMessage* pMessage = new DeleteUnitMessage();
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+	}
 
 	//if escape key was down then exit the loop
+	// Make this have it's own message event
 	if (al_key_down(&keyState, ALLEGRO_KEY_ESCAPE))
 	{
 		return true;
