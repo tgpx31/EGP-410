@@ -73,10 +73,6 @@ void UnitManager::deleteUnit(const UnitKey& key)
 		delete iter->second;
 		mUnits.erase(iter);
 	}
-
-	if (mUnits.empty())
-		gpGame->exit();
-
 }
 
 void UnitManager::draw(GraphicsSystem* gSystem)

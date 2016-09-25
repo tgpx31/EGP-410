@@ -3,6 +3,8 @@
 #include "Game.h"
 #include "KinematicUnit.h"
 #include "Kinematic.h"
+#include "UnitManager.h"
+#include <map>
 
 InputManager::InputManager(ALLEGRO_FONT* font)
 {
@@ -87,6 +89,8 @@ bool InputManager::getKeyboardInput()
 	{
 		GameMessage* pMessage = new DeleteUnitMessage();
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
+		if (gpGame->getUnitManager()->getMap().empty())
+			return true;
 	}
 
 	//if escape key was down then exit the loop
