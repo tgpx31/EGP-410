@@ -1,9 +1,12 @@
 #include <allegro5/allegro.h>
 #include "InputManager.h"
+
 #include "Game.h"
+
 #include "KinematicUnit.h"
 #include "Kinematic.h"
 #include "UnitManager.h"
+
 #include <map>
 
 InputManager::InputManager(ALLEGRO_FONT* font)

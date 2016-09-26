@@ -2,12 +2,14 @@
 
 #include "Trackable.h"
 
+#include "Game.h"
+
 #include "Defines.h"
 #include "Vector2D.h"
+
 #include "GameMessage.h"
-#include "PlayerMoveToMessage.h"
-#include "Game.h"
 #include "GameMessageManager.h"
+#include "PlayerMoveToMessage.h"
 
 #include "AddUnitMessage.h"
 #include "DeleteUnitMessage.h"
@@ -39,14 +41,3 @@ public:
 	void update(double frameTime);
 };
 
-// When you read an input...
-// send a message:
-
-/*
-if( al_mouse_button_down( &mouseState, 1 ) )//left mouse click
-	{
-		Vector2D pos( mouseState.x, mouseState.y );
-		GameMessage* pMessage = new PlayerMoveToMessage( pos );
-		MESSAGE_MANAGER->addMessage( pMessage, 0 );
-	}
-*/

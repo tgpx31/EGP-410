@@ -24,9 +24,6 @@ private:
 	const float ENEMY_MAX_VEL = 180.0F;
 	const float ENEMY_MAX_ACCEL = 100.0f;
 
-	/*const float PLAYER_MAX_VEL = 200.0F;
-	const float PLAYER_MAX_ACCEL = 10.0F;*/
-
 	std::map<UnitKey, KinematicUnit*> mUnits;
 	void cleanUp();
 	Sprite* mEnemySpr;
