@@ -250,7 +250,7 @@ void Game::processLoop()
 	mpUnitManager->draw(GRAPHICS_SYSTEM);
 
 	mpMessageManager->processMessagesForThisframe();
-	mShouldExit = mpInputManager->update(LOOP_TARGET_TIME / 1000.0f);
+	mpInputManager->update(LOOP_TARGET_TIME / 1000.0f);
 
 	mpGraphicsSystem->swap();
 }

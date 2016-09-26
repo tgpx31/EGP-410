@@ -11,6 +11,7 @@
 
 #include "AddUnitMessage.h"
 #include "DeleteUnitMessage.h"
+#include "ExitGameMessage.h"
 
 #include <sstream>
 
@@ -24,7 +25,7 @@ class InputManager : public Trackable
 private:
 	void cleanUp();
 	void getMouseInput();
-	bool getKeyboardInput();
+	void getKeyboardInput();
 
 	ALLEGRO_FONT* mpFont;
 
@@ -35,7 +36,7 @@ public:
 	bool init();
 	
 
-	bool update(double frameTime);
+	void update(double frameTime);
 };
 
 // When you read an input...

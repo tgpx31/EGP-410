@@ -61,7 +61,7 @@ void InputManager::getMouseInput()
 	al_draw_text(mpFont, al_map_rgb(255, 255, 255), mouseState.x, mouseState.y, ALLEGRO_ALIGN_CENTRE, mousePos.str().c_str());
 }
 
-bool InputManager::getKeyboardInput()
+void InputManager::getKeyboardInput()
 {
 	//get current keyboard state
 	ALLEGRO_KEYBOARD_STATE keyState;
@@ -89,23 +89,31 @@ bool InputManager::getKeyboardInput()
 	{
 		GameMessage* pMessage = new DeleteUnitMessage();
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
+
 		if (gpGame->getUnitManager()->getMap().empty())
-			return true;
+		{
+			//return true;
+			GameMessage* aMessage = new ExitGameMessage();
+			MESSAGE_MANAGER->addMessage(aMessage, 0);
+		}
+			
 	}
 
 	//if escape key was down then exit the loop
 	if (al_key_down(&keyState, ALLEGRO_KEY_ESCAPE))
 	{
-		return true;
+		//return true;
+		GameMessage* aMessage = new ExitGameMessage();
+		MESSAGE_MANAGER->addMessage(aMessage, 0);
 	}
 	else
 	{
-		return false;
+		//return false;
 	}
 }
 
-bool InputManager::update(double frameTime)
+void InputManager::update(double frameTime)
 {
 	getMouseInput();
-	return (getKeyboardInput());
+	getKeyboardInput();
 }
