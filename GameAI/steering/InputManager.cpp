@@ -78,13 +78,13 @@ void InputManager::getKeyboardInput()
 	
 	if(al_key_down( &keyState, ALLEGRO_KEY_A ) )
 	{
-	GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), false);
+	GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), DYNAMIC_ARRIVE);
 	MESSAGE_MANAGER->addMessage( pMessage, 0 );
 	}
 
 	if (al_key_down(&keyState, ALLEGRO_KEY_S))
 	{
-		GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), true);
+		GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), DYNAMIC_SEEK);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
 	

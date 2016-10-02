@@ -5,6 +5,7 @@
 #include <map>
 
 #include "GraphicsSystem.h"
+#include "Game.h"
 
 class Sprite;
 class Vector2D;
@@ -32,7 +33,7 @@ public:
 	UnitManager(Sprite* enemySprite);
 	~UnitManager();
 
-	void addUnit(Vector2D position, bool seek = true, KinematicUnit* target = NULL, Sprite* spr = NULL);
+	void addUnit(Vector2D position, Behavior behavior = DYNAMIC_SEEK, KinematicUnit* target = NULL, Sprite* spr = NULL);
 	void deleteUnit(const UnitKey& key);
 
 	void draw(GraphicsSystem* gSystem);

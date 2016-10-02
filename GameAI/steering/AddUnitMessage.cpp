@@ -1,12 +1,11 @@
 #include "AddUnitMessage.h"
 
-#include "Game.h"
 #include "UnitManager.h"
 
-AddUnitMessage::AddUnitMessage(const Vector2D& pos, const bool& seek)
+AddUnitMessage::AddUnitMessage(const Vector2D& pos, const Behavior& behavior)
 :GameMessage(ADD_UNIT_MESSAGE)
 ,mPos(pos)
-,mSeek(seek)
+,mBehavior(behavior)
 {
 }
 
@@ -16,10 +15,10 @@ AddUnitMessage::~AddUnitMessage()
 
 void AddUnitMessage::process()
 {
-	if (mSeek)
+	if (mBehavior == DYNAMIC_SEEK)
 		mPos.setX(mPos.getX() + 100);
-	else
+	else if (mBehavior == DYNAMIC_ARRIVE)
 		mPos.setX(mPos.getX() + 200);
 
-	gpGame->getUnitManager()->addUnit(mPos, mSeek, gpGame->getPlayerUnit());
+	gpGame->getUnitManager()->addUnit(mPos, mBehavior, gpGame->getPlayerUnit());
 }

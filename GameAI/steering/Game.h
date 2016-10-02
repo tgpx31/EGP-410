@@ -25,6 +25,15 @@ const IDType AI_ICON_SPRITE_ID = 2;
 
 const float LOOP_TARGET_TIME = 33.3f;//how long should each frame of execution take? 30fps = 33.3ms/frame
 
+enum Behavior
+{
+	INVALID_BEHAVIOR = -1,
+	DYNAMIC_SEEK = 0,
+	DYNAMIC_ARRIVE = 1,
+	WANDER_AND_SEEK = 2,
+	WANDER_AND_FLEE = 3
+};
+
 class Game:public Trackable
 {
 public:

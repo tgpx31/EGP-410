@@ -2,7 +2,7 @@
 #include "KinematicUnit.h"
 
 #include "Vector2D.h"
-#include "Game.h"
+//#include "Game.h"
 
 UnitManager::UnitManager(Sprite *enemySprite)
 {
@@ -28,7 +28,7 @@ void UnitManager::cleanUp()
 	mUnits.clear();
 }
 
-void UnitManager::addUnit(Vector2D position, bool seek, KinematicUnit* target, Sprite* spr)
+void UnitManager::addUnit(Vector2D position, Behavior behavior, KinematicUnit* target, Sprite* spr)
 {
 	KinematicUnit* newUnit;
 	// Create a new unit w/ sprite*, vector2d position, float orientation, vec2d velocity,
@@ -49,11 +49,24 @@ void UnitManager::addUnit(Vector2D position, bool seek, KinematicUnit* target, S
 	// Set the steering
 	if (target != NULL)
 	{
-		if (seek)
+		switch (behavior)
+		{
+		case 0: newUnit->dynamicSeek(NULL);
+			break;
+		case 1: newUnit->dynamicArrive(NULL);
+			break;
+		case 2: std::cout << "\nYOU NEED TO IMPLEMENT WANDER_AND_SEEK\n";
+			break;
+		case 3: std::cout << "\nYOU NEED TO IMPLEMENT WANDER_AND_FLEE\n";
+			break;
+		default: std::cout << "INVALID STEERING BEHAIVOR";
+		}
+
+		/*if (seek)
 			newUnit->dynamicSeek(NULL);
 
 		else
-			newUnit->dynamicArrive(NULL);
+			newUnit->dynamicArrive(NULL);*/
 	}
 
 	// Add the unit to mUnits
