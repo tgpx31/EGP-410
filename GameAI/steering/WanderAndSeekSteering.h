@@ -1,10 +1,11 @@
 #pragma once
 
 #include "Steering.h"
+#include "Game.h"
 
 class KinematicUnit;
 
-const float DEFAULT_RADIUS = 200.0f;
+//const float DEFAULT_RADIUS = 200.0f;
 
 class WanderAndSeekSteering : public Steering
 {

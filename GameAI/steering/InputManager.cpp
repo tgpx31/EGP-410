@@ -76,9 +76,9 @@ void InputManager::getKeyboardInput()
 	// send a message:
 
 	
-	if(al_key_down( &keyState, ALLEGRO_KEY_A ) )
+	if(al_key_down( &keyState, ALLEGRO_KEY_F ) )
 	{
-	GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), DYNAMIC_ARRIVE);
+	GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), WANDER_AND_FLEE);
 	MESSAGE_MANAGER->addMessage( pMessage, 0 );
 	}
 

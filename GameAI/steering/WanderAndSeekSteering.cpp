@@ -1,6 +1,5 @@
 #include "WanderAndSeekSteering.h"
 #include "KinematicUnit.h"
-#include "Game.h"
 
 WanderAndSeekSteering::WanderAndSeekSteering(KinematicUnit* pMover, KinematicUnit* pTarget, bool shouldFlee, int radius)
 :mpMover(pMover)
