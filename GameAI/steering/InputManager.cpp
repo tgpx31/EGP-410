@@ -84,7 +84,7 @@ void InputManager::getKeyboardInput()
 
 	if (al_key_down(&keyState, ALLEGRO_KEY_S))
 	{
-		GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), DYNAMIC_SEEK);
+		GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), WANDER_AND_SEEK);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
 	
@@ -108,10 +108,6 @@ void InputManager::getKeyboardInput()
 		//return true;
 		GameMessage* aMessage = new ExitGameMessage();
 		MESSAGE_MANAGER->addMessage(aMessage, 0);
-	}
-	else
-	{
-		//return false;
 	}
 }
 

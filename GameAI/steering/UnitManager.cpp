@@ -55,7 +55,7 @@ void UnitManager::addUnit(Vector2D position, Behavior behavior, KinematicUnit* t
 			break;
 		case 1: newUnit->dynamicArrive(NULL);
 			break;
-		case 2: std::cout << "\nYOU NEED TO IMPLEMENT WANDER_AND_SEEK\n";
+		case 2: newUnit->wanderAndSeek(NULL);	//std::cout << "\nYOU NEED TO IMPLEMENT WANDER_AND_SEEK\n";
 			break;
 		case 3: std::cout << "\nYOU NEED TO IMPLEMENT WANDER_AND_FLEE\n";
 			break;

@@ -17,7 +17,7 @@ void AddUnitMessage::process()
 {
 	if (mBehavior == DYNAMIC_SEEK)
 		mPos.setX(mPos.getX() + 100);
-	else if (mBehavior == DYNAMIC_ARRIVE)
+	else //if (mBehavior == DYNAMIC_ARRIVE)
 		mPos.setX(mPos.getX() + 200);
 
 	gpGame->getUnitManager()->addUnit(mPos, mBehavior, gpGame->getPlayerUnit());
