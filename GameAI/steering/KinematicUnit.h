@@ -49,6 +49,8 @@ public:
 	void dynamicFlee( KinematicUnit* pTarget );
 	void dynamicArrive( KinematicUnit* pTarget );
 
+	void wanderAndSeek(KinematicUnit* pTarget);
+
 private:
 	Sprite* mpSprite;
 	Steering* mpCurrentSteering;

@@ -10,6 +10,8 @@
 #include "DynamicSeekSteering.h"
 #include "DynamicArriveSteering.h"
 
+#include "WanderAndSeekSteering.h"
+
 using namespace std;
 
 Steering gNullSteering( gZeroVector2D, 0.0f );
@@ -118,3 +120,8 @@ void KinematicUnit::dynamicArrive( KinematicUnit* pTarget )
 	setSteering( pDynamicArriveSteering );
 }
 
+void KinematicUnit::wanderAndSeek(KinematicUnit * pTarget)
+{
+	WanderAndSeekSteering* pWanderAndSeekSteering = new WanderAndSeekSteering(this, gpGame->getPlayerUnit());
+	setSteering(pWanderAndSeekSteering);
+}
