@@ -185,6 +185,8 @@ bool Game::init()
 	//mpUnitManager->addUnit(Vector2D(0, 0), true, mpUnit);
 	//mpUnitManager->deleteUnit("Unit 1");
 
+	//Wall* wallLeft = new Wall(Vector2D(1, HEIGHT), Vector2D(0, 0));
+
 	return true;
 }
 
