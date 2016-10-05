@@ -30,10 +30,12 @@
     <ClInclude Include="KinematicUnit.h" />
     <ClInclude Include="KinematicWanderSteering.h" />
     <ClInclude Include="PlayerMoveToMessage.h" />
+    <ClInclude Include="Properties.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="Steering.h" />
     <ClInclude Include="UnitManager.h" />
+    <ClInclude Include="Wall.h" />
     <ClInclude Include="WanderAndFleeSteering.h" />
     <ClInclude Include="WanderAndSeekSteering.h" />
   </ItemGroup>
@@ -57,10 +59,12 @@
     <ClCompile Include="KinematicWanderSteering.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PlayerMoveToMessage.cpp" />
+    <ClCompile Include="Properties.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
     <ClCompile Include="Steering.cpp" />
     <ClCompile Include="UnitManager.cpp" />
+    <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WanderAndFleeSteering.cpp" />
     <ClCompile Include="WanderAndSeekSteering.cpp" />
   </ItemGroup>

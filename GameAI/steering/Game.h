@@ -34,6 +34,15 @@ enum Behavior
 	WANDER_AND_FLEE = 3
 };
 
+enum GameProperties
+{
+	INVALID_PROPERTY = -1,
+	ENEMY_VELOCITY = 0,
+	REACTION_RADIUS = 1,
+	ANGULAR_VELOCITY = 2,
+	SWAP_BEHAVIOR = 3
+};
+
 class Game:public Trackable
 {
 public:

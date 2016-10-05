@@ -76,6 +76,12 @@
     <ClCompile Include="WanderAndFleeSteering.cpp">
       <Filter>Source Files\Steering</Filter>
     </ClCompile>
+    <ClCompile Include="Properties.cpp">
+      <Filter>Source Files\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>Source Files\Avoidance</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -153,6 +159,12 @@
     <ClInclude Include="WanderAndFleeSteering.h">
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
+    <ClInclude Include="Properties.h">
+      <Filter>Header Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>Header Files\Avoidance</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -196,6 +208,12 @@
     </Filter>
     <Filter Include="Source Files\Input">
       <UniqueIdentifier>{3f7f156b-01fb-4d91-8460-9eada0b97d3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Avoidance">
+      <UniqueIdentifier>{39fe8cee-acda-478e-8362-d7bca747d2ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Avoidance">
+      <UniqueIdentifier>{82d0d250-be16-47c1-a910-cef61873d8d2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
