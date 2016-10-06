@@ -73,9 +73,6 @@
     <ClCompile Include="WanderAndSeekSteering.cpp">
       <Filter>Source Files\Steering</Filter>
     </ClCompile>
-    <ClCompile Include="WanderAndFleeSteering.cpp">
-      <Filter>Source Files\Steering</Filter>
-    </ClCompile>
     <ClCompile Include="Properties.cpp">
       <Filter>Source Files\Util</Filter>
     </ClCompile>
@@ -154,9 +151,6 @@
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
     <ClInclude Include="WanderAndSeekSteering.h">
-      <Filter>Header Files\Steering</Filter>
-    </ClInclude>
-    <ClInclude Include="WanderAndFleeSteering.h">
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
     <ClInclude Include="Properties.h">

@@ -129,6 +129,6 @@ void KinematicUnit::wanderAndSeek(KinematicUnit * pTarget)
 
 void KinematicUnit::wanderAndFlee(KinematicUnit * pTarget)
 {
-	WanderAndFleeSteering* pWanderAndFleeSteering = new WanderAndFleeSteering(this, gpGame->getPlayerUnit());
+	WanderAndSeekSteering* pWanderAndFleeSteering = new WanderAndSeekSteering(this, gpGame->getPlayerUnit(), true);
 	setSteering(pWanderAndFleeSteering);
 }
