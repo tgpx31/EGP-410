@@ -79,6 +79,9 @@
     <ClCompile Include="Wall.cpp">
       <Filter>Source Files\Avoidance</Filter>
     </ClCompile>
+    <ClCompile Include="BoxCollision.cpp">
+      <Filter>Source Files\Avoidance</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -157,6 +160,9 @@
       <Filter>Header Files\Util</Filter>
     </ClInclude>
     <ClInclude Include="Wall.h">
+      <Filter>Header Files\Avoidance</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxCollision.h">
       <Filter>Header Files\Avoidance</Filter>
     </ClInclude>
   </ItemGroup>
