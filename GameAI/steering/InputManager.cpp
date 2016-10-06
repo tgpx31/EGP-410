@@ -35,11 +35,17 @@ bool InputManager::init()
 		return false;
 	}
 
+	mpEventQ = al_create_event_queue();
+	al_register_event_source(mpEventQ, al_get_keyboard_event_source());
+
 	return true;
 }
 
 void InputManager::cleanUp()
 {
+	al_unregister_event_source(mpEventQ, al_get_keyboard_event_source());
+	al_destroy_event_queue(mpEventQ);
+
 	al_uninstall_keyboard();
 	al_uninstall_mouse();
 }
@@ -75,8 +81,52 @@ void InputManager::getKeyboardInput()
 	// When you read an input...
 	// send a message:
 
-	
-	if(al_key_down( &keyState, ALLEGRO_KEY_F ) )
+	while (!al_event_queue_is_empty(mpEventQ))
+	{
+
+		al_wait_for_event(mpEventQ, &mEvent);
+
+		// Keyboard
+		if (mEvent.type == ALLEGRO_EVENT_KEY_DOWN)
+		{
+			if (mEvent.keyboard.keycode == ALLEGRO_KEY_F)
+			{
+				GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), WANDER_AND_FLEE);
+				MESSAGE_MANAGER->addMessage(pMessage, 0);
+			}
+
+			if (mEvent.keyboard.keycode == ALLEGRO_KEY_S)
+			{
+				GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), WANDER_AND_SEEK);
+				MESSAGE_MANAGER->addMessage(pMessage, 0);
+			}
+
+			if (mEvent.keyboard.keycode == ALLEGRO_KEY_D)
+			{
+				GameMessage* pMessage = new DeleteUnitMessage();
+				MESSAGE_MANAGER->addMessage(pMessage, 0);
+
+				if (gpGame->getUnitManager()->getMap().empty())
+				{
+					//return true;
+					GameMessage* aMessage = new ExitGameMessage();
+					MESSAGE_MANAGER->addMessage(aMessage, 0);
+				}
+
+			}
+
+			//if escape key was down then exit the loop
+			if (mEvent.keyboard.keycode == ALLEGRO_KEY_ESCAPE)
+			{
+				//return true;
+				GameMessage* aMessage = new ExitGameMessage();
+				MESSAGE_MANAGER->addMessage(aMessage, 0);
+			}
+		}
+	}
+
+
+	/*if(al_key_down( &keyState, ALLEGRO_KEY_F ) )
 	{
 	GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), WANDER_AND_FLEE);
 	MESSAGE_MANAGER->addMessage( pMessage, 0 );
@@ -108,7 +158,7 @@ void InputManager::getKeyboardInput()
 		//return true;
 		GameMessage* aMessage = new ExitGameMessage();
 		MESSAGE_MANAGER->addMessage(aMessage, 0);
-	}
+	}*/
 }
 
 void InputManager::update(double frameTime)

@@ -31,6 +31,9 @@ private:
 
 	ALLEGRO_FONT* mpFont;
 
+	ALLEGRO_EVENT_QUEUE* mpEventQ;
+	ALLEGRO_EVENT mEvent;
+
 public:
 	InputManager(ALLEGRO_FONT* font = NULL);
 	~InputManager();
