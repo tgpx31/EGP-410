@@ -24,7 +24,7 @@ BoxCollision::BoxCollision()
 {
 }
 
-bool BoxCollision::isColliding()
+bool BoxCollision::isColliding(BoxCollision* other)
 {
 	return false;
 }

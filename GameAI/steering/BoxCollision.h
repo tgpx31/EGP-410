@@ -15,7 +15,7 @@ public:
 	BoxCollision(Vector2D dim, Vector2D pos);
 	BoxCollision();
 
-	bool isColliding();
+	bool isColliding(BoxCollision* other);
 	void update();
 
 };
