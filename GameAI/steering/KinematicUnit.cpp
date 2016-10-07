@@ -12,6 +12,7 @@
 
 #include "WanderAndSeekSteering.h"
 #include "WanderAndFleeSteering.h"
+#include "BoxCollision.h"
 
 using namespace std;
 
@@ -24,11 +25,14 @@ KinematicUnit::KinematicUnit(Sprite *pSprite, const Vector2D &position, float or
 ,mMaxVelocity(maxVelocity)
 ,mMaxAcceleration(maxAcceleration)
 {
+	mBoxCollider = new BoxCollision(mpSprite->getWidth(), mpSprite->getHeight(), mPosition.getX(), mPosition.getY());
 }
 
 KinematicUnit::~KinematicUnit()
 {
 	delete mpCurrentSteering;
+	delete mBoxCollider;
+	mBoxCollider = nullptr;
 }
 
 void KinematicUnit::draw( GraphicsBuffer* pBuffer )
@@ -71,6 +75,10 @@ void KinematicUnit::update(float time)
 
 	//set the orientation to match the direction of travel
 	//setNewOrientation();
+
+	// Keep the BoxColliders with the sprite
+	mBoxCollider->setPos(mPosition);
+	mBoxCollider->update();
 }
 
 //private - deletes old Steering before setting
@@ -131,4 +139,9 @@ void KinematicUnit::wanderAndFlee(KinematicUnit * pTarget)
 {
 	WanderAndSeekSteering* pWanderAndFleeSteering = new WanderAndSeekSteering(this, gpGame->getPlayerUnit(), true);
 	setSteering(pWanderAndFleeSteering);
+}
+
+BoxCollision* KinematicUnit::getBoxCollider()
+{
+	return mBoxCollider;
 }

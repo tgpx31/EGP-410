@@ -20,6 +20,8 @@ public:
 	float getWidth() { return mDimensions.getX(); };
 	float getHeight() { return mDimensions.getX(); };
 
+	void setPos(Vector2D newPos) { mPosition = newPos; };
+
 	bool isColliding(BoxCollision* other);
 	void update();
 

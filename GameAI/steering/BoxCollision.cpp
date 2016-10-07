@@ -1,6 +1,7 @@
 #include "BoxCollision.h"
 #include "UnitManager.h"
 #include "Game.h"
+#include "KinematicUnit.h"
 
 BoxCollision::BoxCollision(float width, float height, float x, float y)
 {
@@ -46,6 +47,19 @@ bool BoxCollision::isColliding(BoxCollision* other)
 
 void BoxCollision::update()
 {
-	// check if colliding in here
-	// Check against other units and the walls
+	// Check through the Units to see if any are colliding. They will all have a collider
+	// Walls do not need to behave a certain way to avoid each other
+	std::map<UnitKey, KinematicUnit*> map = gpGame->getUnitManager()->getMap();
+	std::map<UnitKey, KinematicUnit*>::iterator iter;
+
+	for (iter = map.begin(); iter != map.end(); ++iter)
+	{
+		if (iter->second->getBoxCollider() != this)
+			if (isColliding(iter->second->getBoxCollider()))
+			{
+				// Do something!
+				std::cout << "\nFUCK, I'M HIT\n";
+				//Bounce the other (iter->second) back!
+			}
+	}
 }

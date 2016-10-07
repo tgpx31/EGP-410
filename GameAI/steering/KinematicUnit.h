@@ -3,6 +3,8 @@
 #include "Kinematic.h"
 #include "Steering.h"
 
+class BoxCollision;
+
 /*KinematicUnit - a unit that is derived from the Kinematic class.  Adds behaviors and max speeds and a current Steering.
 
 Dean Lawson
@@ -52,12 +54,16 @@ public:
 	void wanderAndSeek(KinematicUnit* pTarget);
 	void wanderAndFlee(KinematicUnit* pTarget);
 
+	BoxCollision* getBoxCollider();
+
 private:
 	Sprite* mpSprite;
 	Steering* mpCurrentSteering;
 	Vector2D mTarget;//used only for Kinematic seek and arrive
 	float mMaxVelocity;
 	float mMaxAcceleration;
+
+	BoxCollision* mBoxCollider;
 
 	void setSteering( Steering* pSteering );
 
