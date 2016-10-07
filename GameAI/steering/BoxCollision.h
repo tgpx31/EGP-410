@@ -15,6 +15,11 @@ public:
 	BoxCollision(Vector2D dim, Vector2D pos);
 	BoxCollision();
 
+	float getX() { return mPosition.getX(); };
+	float getY() { return mPosition.getY(); };
+	float getWidth() { return mDimensions.getX(); };
+	float getHeight() { return mDimensions.getX(); };
+
 	bool isColliding(BoxCollision* other);
 	void update();
 
