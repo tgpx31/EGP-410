@@ -23,10 +23,6 @@ BoxCollision::BoxCollision(Vector2D dim, Vector2D pos)
 	std::cout << "\nBox Collider ADDED @ " << mPosition.getX() << ", " << mPosition.getY() << "\n";
 }
 
-BoxCollision::BoxCollision()
-{
-}
-
 bool BoxCollision::isColliding(BoxCollision* other)
 {
 	
@@ -60,7 +56,7 @@ void BoxCollision::update()
 				// Do something!
 				std::cout << "\nFUCK, I'M HIT\n";
 				//Bounce the other (iter->second) back!
-				Vector2D oppVel = (-iter->second->getVelocity().getX(), -iter->second->getVelocity().getX());
+				Vector2D oppVel = (-iter->second->getVelocity().getX(), -iter->second->getVelocity().getY());
 				iter->second->setVelocity(oppVel);
 			}
 	}

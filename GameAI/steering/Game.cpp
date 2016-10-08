@@ -186,13 +186,7 @@ bool Game::init()
 	//mpUnitManager->addUnit(Vector2D(0, 0), true, mpUnit);
 	//mpUnitManager->deleteUnit("Unit 1");
 
-	//Wall* wallLeft = new Wall(Vector2D(1, HEIGHT), Vector2D(0, 0));
-	// Set up the BoxColliders for walls
-	//mWindowWalls[0] = new BoxCollision(2, HEIGHT, 0, 0); // left screen bound
-	//mWindowWalls[1] = new BoxCollision(100, -HEIGHT, WIDTH, 0); // right screen bound
-	//mWindowWalls[2] = new BoxCollision(WIDTH, -100, 0, 0); // Top screen bound
-	//mWindowWalls[3] = new BoxCollision(WIDTH, 100, HEIGHT, 0); // Bottom screen bound
-
+	
 	return true;
 }
 
@@ -248,11 +242,6 @@ void Game::processLoop()
 	//update units
 	mpUnit->update( LOOP_TARGET_TIME/1000.0f );
 	mpUnitManager->update(LOOP_TARGET_TIME / 1000.0f);
-	
-	/*for (BoxCollision* wall : mWindowWalls)
-	{
-		wall->update();
-	}*/
 
 	//draw background
 	Sprite* pBackgroundSprite = mpSpriteManager->getSprite( BACKGROUND_SPRITE_ID );

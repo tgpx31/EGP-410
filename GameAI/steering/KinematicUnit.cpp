@@ -71,14 +71,14 @@ void KinematicUnit::update(float time)
 	//calculate new velocities
 	calcNewVelocities( *steering, time, mMaxVelocity, 25.0f );
 	//move to oposite side of screen if we are off
-	GRAPHICS_SYSTEM->wrapCoordinates( mPosition );
+	//GRAPHICS_SYSTEM->wrapCoordinates( mPosition );
 
 	//set the orientation to match the direction of travel
-	//setNewOrientation();
+	setNewOrientation();
 
-	// Keep the BoxColliders with the sprite
-	mBoxCollider->setPos(mPosition);
-	mBoxCollider->update();
+	//// Keep the BoxColliders with the sprite
+	//mBoxCollider->setPos(mPosition);
+	//mBoxCollider->update();
 }
 
 //private - deletes old Steering before setting

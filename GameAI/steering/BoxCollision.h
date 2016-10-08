@@ -14,7 +14,7 @@ private:
 public:
 	BoxCollision(float width, float height, float x, float y);
 	BoxCollision(Vector2D dim, Vector2D pos);
-	BoxCollision();
+	~BoxCollision() {};
 
 	float getX() { return mPosition.getX(); };
 	float getY() { return mPosition.getY(); };
