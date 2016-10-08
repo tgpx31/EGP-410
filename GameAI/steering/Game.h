@@ -19,6 +19,7 @@ class Timer;
 
 class UnitManager;
 class InputManager;
+class BoxCollision;
 
 const IDType BACKGROUND_SPRITE_ID = 0;
 const IDType PLAYER_ICON_SPRITE_ID = 1;
@@ -90,6 +91,7 @@ private:
 
 	UnitManager* mpUnitManager;
 	InputManager* mpInputManager;
+	//BoxCollision* mWindowWalls[4];
 };
 
 float genRandomBinomial();//range -1:1 from "Artificial Intelligence for Games", Millington and Funge

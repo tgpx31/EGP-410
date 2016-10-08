@@ -23,6 +23,7 @@
 
 #include "UnitManager.h"
 #include "InputManager.h"
+#include "BoxCollision.h"
 
 Game* gpGame = NULL;
 
@@ -186,6 +187,8 @@ bool Game::init()
 	//mpUnitManager->deleteUnit("Unit 1");
 
 	//Wall* wallLeft = new Wall(Vector2D(1, HEIGHT), Vector2D(0, 0));
+	// Set up the BoxColliders for walls
+	//mWindowWalls[0] = new BoxCollision(-20, HEIGHT, 0, 0); // left screen bound
 
 	return true;
 }
@@ -243,6 +246,11 @@ void Game::processLoop()
 	mpUnit->update( LOOP_TARGET_TIME/1000.0f );
 	mpUnitManager->update(LOOP_TARGET_TIME / 1000.0f);
 	
+	//for (BoxCollision* wall : mWindowWalls)
+	{
+		//wall->update();
+	}
+
 	//draw background
 	Sprite* pBackgroundSprite = mpSpriteManager->getSprite( BACKGROUND_SPRITE_ID );
 	pBackgroundSprite->draw( *(mpGraphicsSystem->getBackBuffer()), 0, 0 );
