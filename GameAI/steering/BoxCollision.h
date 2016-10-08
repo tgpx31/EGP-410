@@ -2,6 +2,7 @@
 
 #include "Trackable.h"
 #include "Vector2D.h"
+#include <allegro5\allegro_primitives.h>
 
 class BoxCollision : public Trackable
 {
@@ -24,5 +25,6 @@ public:
 
 	bool isColliding(BoxCollision* other);
 	void update();
+	//void draw() { al_draw_filled_rectangle(mPosition.getX(), mPosition.getY(), mPosition.getX() + mDimensions.getX(), mPosition.getY() + mDimensions.getY(), al_map_rgb(255,0,0)); };
 
 };

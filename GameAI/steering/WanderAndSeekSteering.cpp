@@ -51,8 +51,8 @@ Steering * WanderAndSeekSteering::getSteering()
 		// ignore this Unit
 		if (iter->second != mpMover)
 		{
-			if (((iter->second->getPosition() - mpMover->getPosition()).getLength() <= mRadius &&
-				(iter->second->getPosition() - mpMover->getPosition()).getLength() >= -mRadius))
+			if (((iter->second->getPosition() - mpMover->getPosition()).getLength() <= mRadius * .75f &&
+				(iter->second->getPosition() - mpMover->getPosition()).getLength() >= -mRadius * .75f))
 			{
 				mLinear = mpMover->getPosition() - iter->second->getPosition();
 			}

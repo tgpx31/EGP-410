@@ -91,7 +91,7 @@ private:
 
 	UnitManager* mpUnitManager;
 	InputManager* mpInputManager;
-	//BoxCollision* mWindowWalls[4];
+	BoxCollision* mWindowWalls[4];
 };
 
 float genRandomBinomial();//range -1:1 from "Artificial Intelligence for Games", Millington and Funge

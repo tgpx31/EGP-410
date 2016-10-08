@@ -177,7 +177,7 @@ bool Game::init()
 	}
 
 	//setup units
-	Vector2D pos( 0.0f, 0.0f );
+	Vector2D pos( 100.0f, 100.0f );
 	Vector2D vel( 0.0f, 0.0f );
 	mpUnit = new KinematicUnit( pArrowSprite, pos, 1, vel, 0.0f, 200.0f, 10.0f );
 
@@ -188,7 +188,10 @@ bool Game::init()
 
 	//Wall* wallLeft = new Wall(Vector2D(1, HEIGHT), Vector2D(0, 0));
 	// Set up the BoxColliders for walls
-	//mWindowWalls[0] = new BoxCollision(-20, HEIGHT, 0, 0); // left screen bound
+	//mWindowWalls[0] = new BoxCollision(2, HEIGHT, 0, 0); // left screen bound
+	//mWindowWalls[1] = new BoxCollision(100, -HEIGHT, WIDTH, 0); // right screen bound
+	//mWindowWalls[2] = new BoxCollision(WIDTH, -100, 0, 0); // Top screen bound
+	//mWindowWalls[3] = new BoxCollision(WIDTH, 100, HEIGHT, 0); // Bottom screen bound
 
 	return true;
 }
@@ -246,10 +249,10 @@ void Game::processLoop()
 	mpUnit->update( LOOP_TARGET_TIME/1000.0f );
 	mpUnitManager->update(LOOP_TARGET_TIME / 1000.0f);
 	
-	//for (BoxCollision* wall : mWindowWalls)
+	/*for (BoxCollision* wall : mWindowWalls)
 	{
-		//wall->update();
-	}
+		wall->update();
+	}*/
 
 	//draw background
 	Sprite* pBackgroundSprite = mpSpriteManager->getSprite( BACKGROUND_SPRITE_ID );
