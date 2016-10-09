@@ -122,9 +122,9 @@ void InputManager::getKeyboardInput()
 				GameMessage* pMessage = new SelectPropertiesMessage(ANGULAR_VELOCITY);
 				MESSAGE_MANAGER->addMessage(pMessage, 0);
 			}
-			if (mEvent.keyboard.keycode == ALLEGRO_KEY_W)
+			if (mEvent.keyboard.keycode == ALLEGRO_KEY_C)
 			{
-				GameMessage* pMessage = new SelectPropertiesMessage(CHANGE_WANDER_ROTATION);
+				GameMessage* pMessage = new SelectPropertiesMessage(CHANGE_MAX_ACCEL);
 				MESSAGE_MANAGER->addMessage(pMessage, 0);
 			}
 

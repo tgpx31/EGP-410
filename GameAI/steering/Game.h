@@ -45,7 +45,7 @@ enum GameProperties
 	ENEMY_VELOCITY = 0,
 	REACTION_RADIUS = 1,
 	ANGULAR_VELOCITY = 2,
-	CHANGE_WANDER_ROTATION = 3
+	CHANGE_MAX_ACCEL = 3
 };
 
 class Game:public Trackable

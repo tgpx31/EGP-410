@@ -15,6 +15,7 @@ private:
 	bool mShouldFlee;
 
 	int mRadius;
+	float mWanderRot = 1.0f;
 public:
 	WanderAndSeekSteering(KinematicUnit* pMover, KinematicUnit* pTarget, bool shouldFlee = false, int radius = DEFAULT_RADIUS);
 	~WanderAndSeekSteering() {};
@@ -22,5 +23,8 @@ public:
 	void setTarget(KinematicUnit* pTarget) { mpTarget = pTarget; };
 	void updateRadius(float radius) { mRadius += radius; };
 	float getRadius() { return mRadius; };
+	void updateWanderRot(float rot) { mWanderRot += rot; };
+	float getWanderRot() { return mWanderRot; };
+
 	virtual Steering* getSteering();
 };

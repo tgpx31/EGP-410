@@ -47,7 +47,7 @@ bool BoxCollision::update(std::vector<BoxCollision*> walls)
 	// Walls do not need to behave a certain way to avoid each other
 	std::vector<BoxCollision*>::iterator iter;
 
-	for (int i = 0; i < walls.size(); ++i)
+	for (u_int i = 0; i < walls.size(); ++i)
 	{
 		if (walls[i] != this)
 			if (isColliding(walls[i]))

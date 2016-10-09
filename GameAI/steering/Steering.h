@@ -33,8 +33,11 @@ public:
 	bool shouldApplyDirectly() const { return mApplyDirectly; };
 
 	virtual Steering* getSteering() { return this; };//overridden by sub-classes
+
 	virtual void updateRadius(float rad) {};
 	virtual float getRadius() { return 0; };
+	virtual void updateWanderRot(float rot) {};
+	virtual float getWanderRot() { return 0; };
 
 protected:
 	Vector2D mLinear;//linear velocity

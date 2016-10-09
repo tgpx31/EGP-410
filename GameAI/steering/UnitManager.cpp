@@ -38,12 +38,12 @@ void UnitManager::addUnit(Vector2D position, Behavior behavior, KinematicUnit* t
 	if (spr != NULL)
 	{
 		// use given sprite
-		newUnit = new KinematicUnit(spr, position, 1, Vector2D(0, 0), 0.0f, ENEMY_MAX_VEL, ENEMY_MAX_ACCEL);
+		newUnit = new KinematicUnit(spr, position, 1, Vector2D(0, 0), mRotVel, ENEMY_MAX_VEL, ENEMY_MAX_ACCEL);
 	}
 	else
 	{
 		// use the enemy sprite
-		newUnit = new KinematicUnit(mEnemySpr, position, 1, Vector2D(0, 0), 0.0f, ENEMY_MAX_VEL, ENEMY_MAX_ACCEL);
+		newUnit = new KinematicUnit(mEnemySpr, position, 1, Vector2D(0, 0), mRotVel, ENEMY_MAX_VEL, ENEMY_MAX_ACCEL);
 	}
 
 	// Set the steering

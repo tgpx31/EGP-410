@@ -12,6 +12,7 @@ WanderAndSeekSteering::WanderAndSeekSteering(KinematicUnit* pMover, KinematicUni
 ,mRadius(radius)
 {
 	mApplyDirectly = false;
+	mWanderRot = 1.0f;
 }
 
 Steering * WanderAndSeekSteering::getSteering()
@@ -22,7 +23,7 @@ Steering * WanderAndSeekSteering::getSteering()
 		(mpTarget->getPosition() - mpMover->getPosition()).getLength() >= -mRadius))
 	{
 		mLinear = mpMover->getOrientationAsVector() * mpMover->getMaxVelocity();
-		mAngular = mpMover->getOrientation() * (genRandomBinomial() * MAX_WANDER_ROTATION);
+		mAngular = mpMover->getOrientation() * (genRandomBinomial() * mWanderRot);
 	}
 
 	else

@@ -38,6 +38,7 @@ void ChangeCurrentPropertyMessage::process()
 	// Velocity
 	if (prop == 0)
 	{
+		gpGame->getUnitManager()->changeMaxVel(mAmount);
 		for (iter = map.begin(); iter != map.end(); ++iter)
 		{
 			iter->second->changeMaxVel(mAmount);
@@ -47,6 +48,7 @@ void ChangeCurrentPropertyMessage::process()
 	// Reaction Radius
 	else if (prop == 1)
 	{
+		//DEFAULT_RADIUS += mAmount;
 		for (iter = map.begin(); iter != map.end(); ++iter)
 		{
 			iter->second->getSteering()->updateRadius(mAmount);
@@ -56,11 +58,22 @@ void ChangeCurrentPropertyMessage::process()
 	// Angular Velocity
 	else if (prop == 2)
 	{
-
+		gpGame->getUnitManager()->changeRotVel(mAmount);
+		for (iter = map.begin(); iter != map.end(); ++iter)
+		{
+			iter->second->changeRotVel(mAmount);
+			std::cout << "\nEnemyUnit ROT_VEL: " << iter->second->getRotVelocity();
+		}
 	}
-	// Wander Accel
+	// Unit accel
 	else if (prop == 3)
 	{
-
+		// Change the Max acceleration
+		gpGame->getUnitManager()->changeMaxAccel(mAmount);
+		for (iter = map.begin(); iter != map.end(); ++iter)
+		{
+			iter->second->changeMaxAccel(mAmount);
+			std::cout << "\nEnemyUnit MaxACCEL: " << iter->second->getMaxAcceleration();
+		}
 	}
 }

@@ -1,8 +1,3 @@
-﻿  ChangeCurrentPropertyMessage.cpp
-  Generating Code...
-  Compiling...
-  WanderAndSeekSteering.cpp
-  KinematicUnit.cpp
-  Generating Code...
+﻿  main.cpp
   water.vcxproj -> C:\Users\Brian\Desktop\EGP-410\GameAI\steering\Debug\steering.exe
   water.vcxproj -> C:\Users\Brian\Desktop\EGP-410\GameAI\steering\Debug\steering.pdb (Full PDB)

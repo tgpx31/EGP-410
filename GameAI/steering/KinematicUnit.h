@@ -58,6 +58,10 @@ public:
 	void changeMaxVel(float vel) { mMaxVelocity += vel; };
 	Steering* getSteering() { return mpCurrentSteering; };
 
+	void changeRotVel(float rot) { mRotationVel += rot; };
+	float getRotVelocity() { return mRotationVel; };
+
+	void changeMaxAccel(float accel) { mMaxAcceleration += accel; };
 private:
 	Sprite* mpSprite;
 	Steering* mpCurrentSteering;

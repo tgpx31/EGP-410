@@ -205,7 +205,7 @@ bool Game::init()
 void Game::cleanup()
 {
 	// Delete the walls
-	for (int i = 0; i < mWalls.size(); ++i)
+	for (u_int i = 0; i < mWalls.size(); ++i)
 	{
 		delete mWalls[i];
 		mWalls[i] = NULL;
