@@ -128,6 +128,18 @@ void InputManager::getKeyboardInput()
 				MESSAGE_MANAGER->addMessage(pMessage, 0);
 			}
 
+			if (mEvent.keyboard.keycode == ALLEGRO_KEY_PAD_PLUS)
+			{
+				GameMessage* pMessage = new ChangeCurrentPropertyMessage(true, 10);
+				MESSAGE_MANAGER->addMessage(pMessage, 0);
+			}
+			if (mEvent.keyboard.keycode == ALLEGRO_KEY_PAD_MINUS)
+			{
+				GameMessage* pMessage = new ChangeCurrentPropertyMessage(false, 10);
+				MESSAGE_MANAGER->addMessage(pMessage, 0);
+			}
+
+
 			if (mEvent.keyboard.keycode == ALLEGRO_KEY_D)
 			{
 				GameMessage* pMessage = new DeleteUnitMessage();

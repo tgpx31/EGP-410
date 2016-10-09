@@ -55,6 +55,7 @@ public:
 	void wanderAndFlee(KinematicUnit* pTarget);
 
 	BoxCollision* getBoxCollider();
+	void changeMaxVel(float vel) { mMaxVelocity += vel; };
 
 private:
 	Sprite* mpSprite;

@@ -29,7 +29,7 @@ void Properties::draw()
 	else if (mShouldDisplay)
 	{
 		// Draw the text
-		std::cout << "\nSHOULD BE DISPLAYING TEXT RIGHT NOW\n";
+		//std::cout << "\nSHOULD BE DISPLAYING TEXT RIGHT NOW\n";
 	}
 }
 

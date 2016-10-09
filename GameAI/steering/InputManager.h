@@ -17,6 +17,7 @@
 
 #include "TogglePropertiesMessage.h"
 #include "SelectPropertiesMessage.h"
+#include "ChangeCurrentPropertyMessage.h"
 
 #include <sstream>
 

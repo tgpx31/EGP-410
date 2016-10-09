@@ -53,7 +53,7 @@ bool BoxCollision::update(std::vector<BoxCollision*> walls)
 			if (isColliding(walls[i]))
 			{
 				// Do something!
-				std::cout << "\nFUCK, I'M HITTING a WALL\n";
+				//std::cout << "\nFUCK, I'M HITTING a WALL\n";
 				//Bounce the other (iter->second) back!
 				//Vector2D oppVel = (-iter->second->getVelocity().getX(), -iter->second->getVelocity().getY());
 				//iter->second->setVelocity(oppVel);

@@ -1,10 +1,3 @@
-﻿  SelectPropertiesMessage.cpp
-  Generating Code...
-  Compiling...
-  InputManager.cpp
-  Game.cpp
-c:\users\brian\desktop\egp-410\gameai\steering\game.cpp(208): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-AddUnitMessage.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+﻿AddUnitMessage.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
   water.vcxproj -> C:\Users\Brian\Desktop\EGP-410\GameAI\steering\Debug\steering.exe
   water.vcxproj -> C:\Users\Brian\Desktop\EGP-410\GameAI\steering\Debug\steering.pdb (Full PDB)

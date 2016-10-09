@@ -27,7 +27,9 @@ public:
 
 	void toggleActive() { mShouldDisplay = !mShouldDisplay; };
 	bool getActive() { return mShouldDisplay; };
+
 	void setCurrentProperty(GameProperties prop) { mCurrentProperty = prop; };
+	GameProperties getCurrentProperty() { return mCurrentProperty; };
 
 	void draw();
 	void update();
