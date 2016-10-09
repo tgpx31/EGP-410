@@ -25,6 +25,8 @@
 #include "InputManager.h"
 #include "BoxCollision.h"
 
+#include "Properties.h"
+
 Game* gpGame = NULL;
 
 const int WIDTH = 1024;
@@ -42,6 +44,7 @@ Game::Game()
 	, mBackgroundBufferID(INVALID_ID)
 	, mpUnitManager(NULL)
 	, mpInputManager(NULL)
+	, mpPropertiesManager(NULL)
 	//,mSmurfBufferID(INVALID_ID)
 {
 }
@@ -193,6 +196,9 @@ bool Game::init()
 	mWalls.push_back(new BoxCollision(Vector2D(WIDTH, 100), Vector2D(0, -100)));
 	mWalls.push_back(new BoxCollision(Vector2D(WIDTH, 100), Vector2D(0, HEIGHT)));
 
+	// load mpFont into the Properties
+	mpPropertiesManager = new Properties(mpFont);
+
 	return true;
 }
 
@@ -235,6 +241,10 @@ void Game::cleanup()
 	mpSample = NULL;
 	al_destroy_font(mpFont);
 	mpFont = NULL;
+
+	// Delete the properties here
+	delete mpPropertiesManager;
+	mpPropertiesManager = NULL;
 
 	//shutdown components
 	al_uninstall_audio();

@@ -22,6 +22,8 @@ class UnitManager;
 class InputManager;
 class BoxCollision;
 
+class Properties;
+
 const IDType BACKGROUND_SPRITE_ID = 0;
 const IDType PLAYER_ICON_SPRITE_ID = 1;
 const IDType AI_ICON_SPRITE_ID = 2;
@@ -43,7 +45,7 @@ enum GameProperties
 	ENEMY_VELOCITY = 0,
 	REACTION_RADIUS = 1,
 	ANGULAR_VELOCITY = 2,
-	SWAP_BEHAVIOR = 3
+	CHANGE_WANDER_ROTATION = 3
 };
 
 class Game:public Trackable
@@ -95,6 +97,8 @@ private:
 	InputManager* mpInputManager;
 
 	std::vector<BoxCollision*> mWalls;
+
+	Properties* mpPropertiesManager;
 };
 
 float genRandomBinomial();//range -1:1 from "Artificial Intelligence for Games", Millington and Funge
