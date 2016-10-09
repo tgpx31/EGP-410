@@ -8,6 +8,7 @@
 #include <allegro5/allegro_audio.h>
 #include <string>
 #include "Wall.h"
+#include <vector>
 
 class GraphicsSystem;
 class GraphicsBuffer;
@@ -70,6 +71,7 @@ public:
 	inline KinematicUnit* getPlayerUnit() { return mpUnit; };//should be someplace else
 	inline UnitManager* getUnitManager() { return mpUnitManager; }
 	inline void setShouldExit(bool exit = true) { mShouldExit = exit; };
+	std::vector<BoxCollision*> getWalls() { return mWalls; };
 
 private:
 	GraphicsSystem* mpGraphicsSystem;
@@ -91,6 +93,8 @@ private:
 
 	UnitManager* mpUnitManager;
 	InputManager* mpInputManager;
+
+	std::vector<BoxCollision*> mWalls;
 };
 
 float genRandomBinomial();//range -1:1 from "Artificial Intelligence for Games", Millington and Funge

@@ -77,8 +77,15 @@ void KinematicUnit::update(float time)
 	setNewOrientation();
 
 	//// Keep the BoxColliders with the sprite
-	//mBoxCollider->setPos(mPosition);
-	//mBoxCollider->update();
+	mBoxCollider->setPos(mPosition);
+	
+	if (mBoxCollider->update(gpGame->getWalls()))
+	{
+		// shit, hit a wall. turn around
+		Vector2D oppVel = Vector2D(-mVelocity.getX(), -mVelocity.getY());
+		setVelocity(oppVel);
+		setOrientation(getOrientationFromVelocity(mOrientation, oppVel));
+	}
 }
 
 //private - deletes old Steering before setting

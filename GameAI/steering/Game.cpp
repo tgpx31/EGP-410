@@ -187,11 +187,26 @@ bool Game::init()
 	//mpUnitManager->deleteUnit("Unit 1");
 
 	
+	// Set up the walls
+	mWalls.push_back(new BoxCollision(Vector2D(100, HEIGHT), Vector2D(-100, 0)));
+	mWalls.push_back(new BoxCollision(Vector2D(100, HEIGHT), Vector2D(WIDTH, 0)));
+	mWalls.push_back(new BoxCollision(Vector2D(WIDTH, 100), Vector2D(0, -100)));
+	mWalls.push_back(new BoxCollision(Vector2D(WIDTH, 100), Vector2D(0, HEIGHT)));
+
 	return true;
 }
 
 void Game::cleanup()
 {
+	// Delete the walls
+	for (int i = 0; i < mWalls.size(); ++i)
+	{
+		delete mWalls[i];
+		mWalls[i] = NULL;
+	}
+
+	mWalls.clear();
+
 	//delete units
 	delete mpUnit;
 	mpUnit = NULL;
@@ -242,6 +257,7 @@ void Game::processLoop()
 	//update units
 	mpUnit->update( LOOP_TARGET_TIME/1000.0f );
 	mpUnitManager->update(LOOP_TARGET_TIME / 1000.0f);
+
 
 	//draw background
 	Sprite* pBackgroundSprite = mpSpriteManager->getSprite( BACKGROUND_SPRITE_ID );

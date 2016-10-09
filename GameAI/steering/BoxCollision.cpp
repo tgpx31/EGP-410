@@ -41,23 +41,24 @@ bool BoxCollision::isColliding(BoxCollision* other)
 	return false;
 }
 
-void BoxCollision::update()
+bool BoxCollision::update(std::vector<BoxCollision*> walls)
 {
 	// Check through the Units to see if any are colliding. They will all have a collider
 	// Walls do not need to behave a certain way to avoid each other
-	std::map<UnitKey, KinematicUnit*> map = gpGame->getUnitManager()->getMap();
-	std::map<UnitKey, KinematicUnit*>::iterator iter;
+	std::vector<BoxCollision*>::iterator iter;
 
-	for (iter = map.begin(); iter != map.end(); ++iter)
+	for (int i = 0; i < walls.size(); ++i)
 	{
-		if (iter->second->getBoxCollider() != this)
-			if (isColliding(iter->second->getBoxCollider()))
+		if (walls[i] != this)
+			if (isColliding(walls[i]))
 			{
 				// Do something!
-				std::cout << "\nFUCK, I'M HIT\n";
+				std::cout << "\nFUCK, I'M HITTING a WALL\n";
 				//Bounce the other (iter->second) back!
-				Vector2D oppVel = (-iter->second->getVelocity().getX(), -iter->second->getVelocity().getY());
-				iter->second->setVelocity(oppVel);
+				//Vector2D oppVel = (-iter->second->getVelocity().getX(), -iter->second->getVelocity().getY());
+				//iter->second->setVelocity(oppVel);
+				return true;
 			}
 	}
+	return false;
 }

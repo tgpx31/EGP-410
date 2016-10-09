@@ -3,6 +3,8 @@
 #include "Trackable.h"
 #include "Vector2D.h"
 #include <allegro5\allegro_primitives.h>
+#include "UnitManager.h"
+#include <vector>
 
 class BoxCollision : public Trackable
 {
@@ -19,12 +21,14 @@ public:
 	float getX() { return mPosition.getX(); };
 	float getY() { return mPosition.getY(); };
 	float getWidth() { return mDimensions.getX(); };
-	float getHeight() { return mDimensions.getX(); };
+	float getHeight() { return mDimensions.getY(); };
 
 	void setPos(Vector2D newPos) { mPosition = newPos; };
 
 	bool isColliding(BoxCollision* other);
-	void update();
+	bool update(std::vector<BoxCollision*> walls);
+
+	void setDim(Vector2D dim) { mDimensions = dim; };
 	//void draw() { al_draw_filled_rectangle(mPosition.getX(), mPosition.getY(), mPosition.getX() + mDimensions.getX(), mPosition.getY() + mDimensions.getY(), al_map_rgb(255,0,0)); };
 
 };
