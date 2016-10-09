@@ -1,4 +1,4 @@
-# EGP-410 Assignment 1 (Brian Baron)
+# EGP-410 Assignment 2 (Brian Baron)
 
 # Commit:
 	c1b7fa74f299bb9f5cba240deadbd5d51bc6735c
@@ -21,8 +21,12 @@ RELEASE:
 	* Should be fine
 
 # Keyboard Inputs:
-	* A: add unit trying to arrive at player (200px away)
-	* S: add unit trying to seek player position (100px away)
-	* D: delete a random unit (excluding player) if no units, exit
-	* ESC: exit game
+## In Properties:
+	* I: open properties menu
+	* V, R, A, C: Select properties (displayed on screen) [Velocity, Radius, Angular Velocity, Unit Accel]
+	* +/-: increment and decrement the value of selected property
+## Out of Properties:
+	* S: Spawn WanderAndSeek unit 200px away
+	* F: Spaw WanderAndFlee unit 100px away
+
 # Additional Notes:
