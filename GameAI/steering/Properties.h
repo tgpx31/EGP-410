@@ -25,6 +25,10 @@ public:
 	Properties(ALLEGRO_FONT* font);
 	~Properties();
 
+	void toggleActive() { mShouldDisplay = !mShouldDisplay; };
+	bool getActive() { return mShouldDisplay; };
+	void setCurrentProperty(GameProperties prop) { mCurrentProperty = prop; };
+
 	void draw();
 	void update();
 };

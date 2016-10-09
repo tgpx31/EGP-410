@@ -280,6 +280,9 @@ void Game::processLoop()
 	mpMessageManager->processMessagesForThisframe();
 	mpInputManager->update(LOOP_TARGET_TIME / 1000.0f);
 
+	mpPropertiesManager->draw();
+	mpPropertiesManager->update();
+
 	mpGraphicsSystem->swap();
 }
 
@@ -287,6 +290,11 @@ bool Game::endLoop()
 {
 	mpLoopTimer->sleepUntilElapsed( LOOP_TARGET_TIME );
 	return mShouldExit;
+}
+
+Properties * Game::getProperties()
+{
+	return mpPropertiesManager;
 }
 
 float genRandomBinomial()

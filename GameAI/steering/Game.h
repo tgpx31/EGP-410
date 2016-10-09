@@ -75,6 +75,8 @@ public:
 	inline void setShouldExit(bool exit = true) { mShouldExit = exit; };
 	std::vector<BoxCollision*> getWalls() { return mWalls; };
 
+	Properties* getProperties();
+
 private:
 	GraphicsSystem* mpGraphicsSystem;
 	GraphicsBufferManager* mpGraphicsBufferManager;

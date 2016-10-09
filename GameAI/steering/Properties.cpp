@@ -19,3 +19,22 @@ Properties::Properties(ALLEGRO_FONT* font)
 Properties::~Properties()
 {
 }
+
+void Properties::draw()
+{
+	if (!mShouldDisplay)
+	{
+		return;
+	}
+	else if (mShouldDisplay)
+	{
+		// Draw the text
+		std::cout << "\nSHOULD BE DISPLAYING TEXT RIGHT NOW\n";
+	}
+}
+
+void Properties::update()
+{
+	// Set the activate property to a different color
+}
+

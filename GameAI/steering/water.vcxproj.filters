@@ -82,6 +82,12 @@
     <ClCompile Include="BoxCollision.cpp">
       <Filter>Source Files\Avoidance</Filter>
     </ClCompile>
+    <ClCompile Include="TogglePropertiesMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectPropertiesMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -164,6 +170,15 @@
     </ClInclude>
     <ClInclude Include="BoxCollision.h">
       <Filter>Header Files\Avoidance</Filter>
+    </ClInclude>
+    <ClInclude Include="TogglePropertiesMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectPropertiesMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeCurrentPropertyMessage.h">
+      <Filter>Header Files\Messaging</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -101,6 +101,33 @@ void InputManager::getKeyboardInput()
 				MESSAGE_MANAGER->addMessage(pMessage, 0);
 			}
 
+			if (mEvent.keyboard.keycode == ALLEGRO_KEY_I)
+			{
+				GameMessage* pMessage = new TogglePropertiesMessage();
+				MESSAGE_MANAGER->addMessage(pMessage, 0);
+			}
+
+			if (mEvent.keyboard.keycode == ALLEGRO_KEY_V)
+			{
+				GameMessage* pMessage = new SelectPropertiesMessage(ENEMY_VELOCITY);
+				MESSAGE_MANAGER->addMessage(pMessage, 0);
+			}
+			if (mEvent.keyboard.keycode == ALLEGRO_KEY_R)
+			{
+				GameMessage* pMessage = new SelectPropertiesMessage(REACTION_RADIUS);
+				MESSAGE_MANAGER->addMessage(pMessage, 0);
+			}
+			if (mEvent.keyboard.keycode == ALLEGRO_KEY_A)
+			{
+				GameMessage* pMessage = new SelectPropertiesMessage(ANGULAR_VELOCITY);
+				MESSAGE_MANAGER->addMessage(pMessage, 0);
+			}
+			if (mEvent.keyboard.keycode == ALLEGRO_KEY_W)
+			{
+				GameMessage* pMessage = new SelectPropertiesMessage(CHANGE_WANDER_ROTATION);
+				MESSAGE_MANAGER->addMessage(pMessage, 0);
+			}
+
 			if (mEvent.keyboard.keycode == ALLEGRO_KEY_D)
 			{
 				GameMessage* pMessage = new DeleteUnitMessage();

@@ -15,6 +15,9 @@
 #include "DeleteUnitMessage.h"
 #include "ExitGameMessage.h"
 
+#include "TogglePropertiesMessage.h"
+#include "SelectPropertiesMessage.h"
+
 #include <sstream>
 
 /* Input Manager:
