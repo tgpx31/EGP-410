@@ -3,6 +3,7 @@
 #include "Properties.h"
 #include "UnitManager.h"
 #include"KinematicUnit.h"
+#include "WanderAndSeekSteering.h"
 
 ChangeCurrentPropertyMessage::ChangeCurrentPropertyMessage(bool isInc, float amount)
 :GameMessage(CHANGE_CURRENT_PROPERTY_MESSAGE)
@@ -46,7 +47,11 @@ void ChangeCurrentPropertyMessage::process()
 	// Reaction Radius
 	else if (prop == 1)
 	{
-
+		for (iter = map.begin(); iter != map.end(); ++iter)
+		{
+			iter->second->getSteering()->updateRadius(mAmount);
+			std::cout << "\nEnemyUnit ReactionRadius: " << iter->second->getSteering()->getRadius();
+		}
 	}
 	// Angular Velocity
 	else if (prop == 2)

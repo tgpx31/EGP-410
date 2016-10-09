@@ -56,6 +56,7 @@ public:
 
 	BoxCollision* getBoxCollider();
 	void changeMaxVel(float vel) { mMaxVelocity += vel; };
+	Steering* getSteering() { return mpCurrentSteering; };
 
 private:
 	Sprite* mpSprite;
@@ -67,5 +68,5 @@ private:
 	BoxCollision* mBoxCollider;
 
 	void setSteering( Steering* pSteering );
-
+	
 };

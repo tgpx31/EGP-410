@@ -20,5 +20,7 @@ public:
 	~WanderAndSeekSteering() {};
 
 	void setTarget(KinematicUnit* pTarget) { mpTarget = pTarget; };
+	void updateRadius(float radius) { mRadius += radius; };
+	float getRadius() { return mRadius; };
 	virtual Steering* getSteering();
 };

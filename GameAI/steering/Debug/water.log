@@ -1,3 +1,8 @@
-﻿AddUnitMessage.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+﻿  ChangeCurrentPropertyMessage.cpp
+  Generating Code...
+  Compiling...
+  WanderAndSeekSteering.cpp
+  KinematicUnit.cpp
+  Generating Code...
   water.vcxproj -> C:\Users\Brian\Desktop\EGP-410\GameAI\steering\Debug\steering.exe
   water.vcxproj -> C:\Users\Brian\Desktop\EGP-410\GameAI\steering\Debug\steering.pdb (Full PDB)

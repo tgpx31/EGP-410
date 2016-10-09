@@ -138,7 +138,7 @@ void KinematicUnit::dynamicArrive( KinematicUnit* pTarget )
 
 void KinematicUnit::wanderAndSeek(KinematicUnit * pTarget)
 {
-	WanderAndSeekSteering* pWanderAndSeekSteering = new WanderAndSeekSteering(this, gpGame->getPlayerUnit());
+	WanderAndSeekSteering* pWanderAndSeekSteering = new WanderAndSeekSteering(this, gpGame->getPlayerUnit(), false);
 	setSteering(pWanderAndSeekSteering);
 }
 
