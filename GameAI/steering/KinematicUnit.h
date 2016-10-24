@@ -54,6 +54,7 @@ public:
 
 	void wanderAndSeek(KinematicUnit* pTarget);
 	void wanderAndFlee(KinematicUnit* pTarget);
+	void boidsSteering();
 
 	BoxCollision* getBoxCollider();
 	void changeMaxVel(float vel) { mMaxVelocity += vel; };

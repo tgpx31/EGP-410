@@ -14,6 +14,8 @@
 #include "WanderAndFleeSteering.h"
 #include "BoxCollision.h"
 
+#include "BoidsSteering.h"
+
 using namespace std;
 
 Steering gNullSteering( gZeroVector2D, 0.0f );
@@ -146,6 +148,12 @@ void KinematicUnit::wanderAndFlee(KinematicUnit * pTarget)
 {
 	WanderAndSeekSteering* pWanderAndFleeSteering = new WanderAndSeekSteering(this, gpGame->getPlayerUnit(), true);
 	setSteering(pWanderAndFleeSteering);
+}
+
+void KinematicUnit::boidsSteering()
+{
+	BoidsSteering* pBoidsSteering = new BoidsSteering(this);
+	setSteering(pBoidsSteering);
 }
 
 BoxCollision* KinematicUnit::getBoxCollider()

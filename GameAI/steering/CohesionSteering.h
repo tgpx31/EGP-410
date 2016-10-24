@@ -3,6 +3,8 @@
 
 #include "Steering.h"
 
+class KinematicUnit;
+
 class CohesionSteering : public Steering
 {
 private:

@@ -3,16 +3,30 @@
 
 #include "Steering.h"
 
+class KinematicUnit;
+
 class AlignmentSteering;
 class CohesionSteering;
-class SepertationSteering;
+class SeperationSteering;
 
 class BoidsSteering : public Steering
 {
 private:
+	KinematicUnit* mpTarget;
+	KinematicUnit* mpMover;
+
+	AlignmentSteering* mpAlignment;
+	CohesionSteering* mpCohesion;
+	SeperationSteering* mpSeperation;
+
+	int mRadius;
 
 public:
+	BoidsSteering(KinematicUnit* pMover, KinematicUnit* pTarget = NULL);
+	~BoidsSteering();
 
+	virtual Steering* getSteering();
+	bool checkNoneNearby();
 };
 
 #endif

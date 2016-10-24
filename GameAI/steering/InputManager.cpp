@@ -98,7 +98,7 @@ void InputManager::getKeyboardInput()
 
 			if (mEvent.keyboard.keycode == ALLEGRO_KEY_S)
 			{
-				GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), WANDER_AND_SEEK);
+				GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), BOIDS_BEHAVIOR);
 				MESSAGE_MANAGER->addMessage(pMessage, 0);
 			}
 

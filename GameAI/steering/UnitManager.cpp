@@ -59,6 +59,8 @@ void UnitManager::addUnit(Vector2D position, Behavior behavior, KinematicUnit* t
 			break;
 		case 3: newUnit->wanderAndFlee(NULL);
 			break;
+		case 4:
+			newUnit->boidsSteering();
 		default: std::cout << "INVALID STEERING BEHAIVOR";
 		}
 	}

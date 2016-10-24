@@ -20,5 +20,10 @@ void AddUnitMessage::process()
 	else if (mBehavior == WANDER_AND_SEEK)
 		mPos.setX(mPos.getX() + 200);
 
+	if (mBehavior == BOIDS_BEHAVIOR)
+	{
+		mPos.setX(mPos.getX() + 100);
+	}
+
 	gpGame->getUnitManager()->addUnit(mPos, mBehavior, gpGame->getPlayerUnit());
 }

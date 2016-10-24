@@ -36,7 +36,8 @@ enum Behavior
 	DYNAMIC_SEEK = 0,
 	DYNAMIC_ARRIVE = 1,
 	WANDER_AND_SEEK = 2,
-	WANDER_AND_FLEE = 3
+	WANDER_AND_FLEE = 3,
+	BOIDS_BEHAVIOR = 4
 };
 
 enum GameProperties

@@ -48,6 +48,7 @@
   <ItemGroup>
     <ClCompile Include="AddUnitMessage.cpp" />
     <ClCompile Include="AlignmentSteering.cpp" />
+    <ClCompile Include="BoidsSteering.cpp" />
     <ClCompile Include="BoxCollision.cpp" />
     <ClCompile Include="ChangeCurrentPropertyMessage.cpp" />
     <ClCompile Include="CohesionSteering.cpp" />
