@@ -1,4 +1,5 @@
-#pragma once
+#ifndef KINEMATIC_WANDER_STEERING_H
+#define KINEMATIC_WANDER_STEERING_H
 
 #include "Steering.h"
 
@@ -17,3 +18,5 @@ public:
 private:
 	KinematicUnit* mpMover;
 };
+
+#endif

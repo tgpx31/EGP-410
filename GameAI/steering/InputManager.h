@@ -1,4 +1,5 @@
-#pragma once
+#ifndef INPUT_MANAGER_H
+#define INPUT_MANAGER_H
 
 #include "Game.h"
 #include "Vector2D.h"
@@ -41,3 +42,4 @@ public:
 	void update(double frameTime);
 };
 
+#endif

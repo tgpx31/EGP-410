@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CHANGE_CURRENT_PROPERTY_H
+#define CHANGE_CURRENT_PROPERTY_H
 
 #include "GameMessage.h"
 
@@ -13,3 +14,5 @@ public:
 
 	void process();
 };
+
+#endif

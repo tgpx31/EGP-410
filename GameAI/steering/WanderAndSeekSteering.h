@@ -1,4 +1,5 @@
-#pragma once
+#ifndef WANDER_AND_SEEK_STEERING_H
+#define WANDER_AND_SEEK_STEERING_H
 
 #include "Steering.h"
 #include "Game.h"
@@ -28,3 +29,5 @@ public:
 
 	virtual Steering* getSteering();
 };
+
+#endif

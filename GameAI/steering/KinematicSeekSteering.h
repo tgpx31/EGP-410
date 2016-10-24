@@ -1,4 +1,5 @@
-#pragma once
+#ifndef KINEMATIC_SEEK_STEERING_H
+#define KINEMATIC_SEEK_STEERING_H
 
 #include "Steering.h"
 
@@ -18,3 +19,5 @@ private:
 	Vector2D mTarget;
 	KinematicUnit* mpMover;
 };
+
+#endif

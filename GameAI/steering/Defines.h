@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DEFINES_H
+#define DEFINES_H
 
 #include <string>
 
@@ -15,3 +16,5 @@ const float DEFAULT_RADIUS = 200.0f;
 
 #define MESSAGE_MANAGER gpGame->getMessageManager()
 #define GRAPHICS_SYSTEM gpGame->getGraphicsSystem()
+
+#endif

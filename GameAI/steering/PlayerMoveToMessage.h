@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PLAYER_MOVETO_MESSAGE_H
+#define PLAYER_MOVETO_MESSAGE_H
 
 #include "GameMessage.h"
 #include "Vector2D.h"
@@ -16,3 +17,5 @@ public:
 private:
 	Vector2D mPos;
 };
+
+#endif

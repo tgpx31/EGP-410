@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ADD_UNIT_MESSAGE_H
+#define ADD_UNIT_MESSAGE_H
 
 #include "GameMessage.h"
 #include "Vector2D.h"
@@ -16,3 +17,5 @@ public:
 
 	void process();
 };
+
+#endif

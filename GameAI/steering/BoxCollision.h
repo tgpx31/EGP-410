@@ -1,4 +1,5 @@
-#pragma once
+#ifndef BOX_COLLISION_H
+#define BOX_COLLISION_H
 
 #include "Trackable.h"
 #include "Vector2D.h"
@@ -32,3 +33,5 @@ public:
 	//void draw() { al_draw_filled_rectangle(mPosition.getX(), mPosition.getY(), mPosition.getX() + mDimensions.getX(), mPosition.getY() + mDimensions.getY(), al_map_rgb(255,0,0)); };
 
 };
+
+#endif

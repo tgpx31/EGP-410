@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SELECT_PROPERTIES_MESSAGE_H
+#define SELECT_PROPERTIES_MESSAGE_H
 
 #include "GameMessage.h"
 #include "Game.h"
@@ -13,3 +14,5 @@ public:
 
 	void process();
 };
+
+#endif

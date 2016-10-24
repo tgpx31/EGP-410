@@ -1,4 +1,5 @@
-#pragma once
+#ifndef STEERING_H
+#define STEERING_H
 
 /*Steering - implementation of Steering class from "Artificial Intelligence for Games" - Millington and Funge
 	Mostly modified by adding the mApplyDirectly bool variable to indicate if this Steering should operate as an override on the Kinematic's velocities
@@ -45,3 +46,5 @@ protected:
 	bool mApplyDirectly;
 
 };
+
+#endif

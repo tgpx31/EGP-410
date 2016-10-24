@@ -1,4 +1,5 @@
-#pragma once
+#ifndef KINEMATIC_ARRIVE_STEERING_H
+#define KINEMATIC_ARRIVE_STEERING_H
 
 #include "Steering.h"
 
@@ -20,3 +21,5 @@ private:
 	float mSatisfactionRadius;
 	float mTimeToTarget;
 };
+
+#endif

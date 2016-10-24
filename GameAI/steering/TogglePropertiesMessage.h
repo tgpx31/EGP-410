@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TOGGLE_PROPERTIES_MESSAGE_H
+#define TOGGLE_PROPERTIES_MESSAGE_H
 
 #include "GameMessage.h"
 
@@ -12,3 +13,5 @@ public:
 
 	void process();
 };
+
+#endif

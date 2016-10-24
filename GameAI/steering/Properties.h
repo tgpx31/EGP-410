@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PROPERTIES_H
+#define PROPERTIES_H
 
 #include "Trackable.h"
 #include <allegro5\allegro_font.h>
@@ -34,3 +35,5 @@ public:
 	void draw();
 	void update();
 };
+
+#endif

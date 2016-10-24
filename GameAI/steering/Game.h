@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GAME_H
+#define GAME_H
 
 #include "Trackable.h"
 #include "PerformanceTracker.h"
@@ -7,7 +8,6 @@
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_audio.h>
 #include <string>
-#include "Wall.h"
 #include <vector>
 
 class GraphicsSystem;
@@ -109,3 +109,4 @@ float genRandomFloat();//range 0:1 from "Artificial Intelligence for Games", Mil
 extern Game* gpGame;
 extern PerformanceTracker* gpPerformanceTracker;
 
+#endif

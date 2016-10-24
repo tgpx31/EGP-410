@@ -1,4 +1,5 @@
-#pragma once
+#ifndef UNIT_MANAGER_H
+#define UNIT_MANAGER_H
 
 #include "Trackable.h"
 #include <string>
@@ -48,3 +49,5 @@ public:
 	void changeRotVel(float newRot) { mRotVel += newRot; };
 	void changeMaxAccel(float newAccel) { ENEMY_MAX_ACCEL += newAccel; };
 };
+
+#endif

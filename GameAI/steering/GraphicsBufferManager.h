@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GRAPHICS_BUFFER_MANAGER_H
+#define GRAPHICS_BUFFER_MANAGER_H
 
 #include <map>
 #include <string>
@@ -39,3 +40,5 @@ private:
 	map<IDDescriptor, IDType> mDescLookup;
 	static int msNextID;
 };
+
+#endif

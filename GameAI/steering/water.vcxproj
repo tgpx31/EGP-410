@@ -39,7 +39,6 @@
     <ClInclude Include="Steering.h" />
     <ClInclude Include="TogglePropertiesMessage.h" />
     <ClInclude Include="UnitManager.h" />
-    <ClInclude Include="Wall.h" />
     <ClInclude Include="WanderAndSeekSteering.h" />
   </ItemGroup>
   <ItemGroup>
@@ -71,7 +70,6 @@
     <ClCompile Include="Steering.cpp" />
     <ClCompile Include="TogglePropertiesMessage.cpp" />
     <ClCompile Include="UnitManager.cpp" />
-    <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WanderAndSeekSteering.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
