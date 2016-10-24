@@ -16,7 +16,8 @@ void DeleteUnitMessage::process()
 {
 	std::string key;
 
-	key = "Unit " + std::to_string(gpGame->getUnitManager()->getRandUnit());
+	//key = "Unit " + std::to_string(gpGame->getUnitManager()->getRandUnit());
 
-	gpGame->getUnitManager()->deleteUnit(key);
+
+	gpGame->getUnitManager()->deleteUnit();
 }

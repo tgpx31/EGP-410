@@ -4,7 +4,7 @@
 #include "Vector2D.h"
 //#include "Game.h"
 
-UnitManager::UnitManager(Sprite *enemySprite)
+UnitManager::UnitManager(Sprite* enemySprite)
 {
 	mEnemySpr = enemySprite;
 }
@@ -55,18 +55,12 @@ void UnitManager::addUnit(Vector2D position, Behavior behavior, KinematicUnit* t
 			break;
 		case 1: newUnit->dynamicArrive(NULL);
 			break;
-		case 2: newUnit->wanderAndSeek(NULL);	//std::cout << "\nYOU NEED TO IMPLEMENT WANDER_AND_SEEK\n";
+		case 2: newUnit->wanderAndSeek(NULL);
 			break;
-		case 3: newUnit->wanderAndFlee(NULL);	//std::cout << "\nYOU NEED TO IMPLEMENT WANDER_AND_FLEE\n";
+		case 3: newUnit->wanderAndFlee(NULL);
 			break;
 		default: std::cout << "INVALID STEERING BEHAIVOR";
 		}
-
-		/*if (seek)
-			newUnit->dynamicSeek(NULL);
-
-		else
-			newUnit->dynamicArrive(NULL);*/
 	}
 
 	// Add the unit to mUnits
@@ -74,15 +68,18 @@ void UnitManager::addUnit(Vector2D position, Behavior behavior, KinematicUnit* t
 	mUnits[key] = newUnit;
 }
 
-void UnitManager::deleteUnit(const UnitKey& key)
+void UnitManager::deleteUnit()
 {
-	// Delete unit with given UnitKey
-	std::map<UnitKey, KinematicUnit*>::iterator iter = mUnits.find(key);
+	std::map<UnitKey, KinematicUnit*>::iterator iter = mUnits.begin();
+	std::advance(iter, rand() % mUnits.size());
+
+	//// Delete unit with given UnitKey
+	//std::map<UnitKey, KinematicUnit*>::iterator iter = mUnits.find(key);
 
 	// If it exists..
 	if (iter != mUnits.end())
 	{
-		std::cout << "\nDELETED UNIT " << key <<  "\n";
+		//std::cout << "\nDELETED UNIT " << key <<  "\n";
 		delete iter->second;
 		mUnits.erase(iter);
 	}

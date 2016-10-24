@@ -55,7 +55,7 @@ void InputManager::getMouseInput()
 	ALLEGRO_MOUSE_STATE mouseState;
 	al_get_mouse_state(&mouseState);
 
-	if (al_mouse_button_down(&mouseState, 1))//left mouse click
+	if (al_mouse_button_down(&mouseState, 1))	//left mouse click
 	{
 		Vector2D pos(mouseState.x, mouseState.y);
 		GameMessage* pMessage = new PlayerMoveToMessage(pos);
@@ -89,6 +89,7 @@ void InputManager::getKeyboardInput()
 		// Keyboard
 		if (mEvent.type == ALLEGRO_EVENT_KEY_DOWN)
 		{
+			// Spawning key inputs
 			if (mEvent.keyboard.keycode == ALLEGRO_KEY_F)
 			{
 				GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), WANDER_AND_FLEE);
@@ -101,6 +102,7 @@ void InputManager::getKeyboardInput()
 				MESSAGE_MANAGER->addMessage(pMessage, 0);
 			}
 
+			// Properties menu key inputs
 			if (mEvent.keyboard.keycode == ALLEGRO_KEY_I)
 			{
 				GameMessage* pMessage = new TogglePropertiesMessage();
@@ -112,16 +114,19 @@ void InputManager::getKeyboardInput()
 				GameMessage* pMessage = new SelectPropertiesMessage(ENEMY_VELOCITY);
 				MESSAGE_MANAGER->addMessage(pMessage, 0);
 			}
+
 			if (mEvent.keyboard.keycode == ALLEGRO_KEY_R)
 			{
 				GameMessage* pMessage = new SelectPropertiesMessage(REACTION_RADIUS);
 				MESSAGE_MANAGER->addMessage(pMessage, 0);
 			}
+
 			if (mEvent.keyboard.keycode == ALLEGRO_KEY_A)
 			{
 				GameMessage* pMessage = new SelectPropertiesMessage(ANGULAR_VELOCITY);
 				MESSAGE_MANAGER->addMessage(pMessage, 0);
 			}
+
 			if (mEvent.keyboard.keycode == ALLEGRO_KEY_C)
 			{
 				GameMessage* pMessage = new SelectPropertiesMessage(CHANGE_MAX_ACCEL);
@@ -133,71 +138,36 @@ void InputManager::getKeyboardInput()
 				GameMessage* pMessage = new ChangeCurrentPropertyMessage(true, 10);
 				MESSAGE_MANAGER->addMessage(pMessage, 0);
 			}
+
 			if (mEvent.keyboard.keycode == ALLEGRO_KEY_PAD_MINUS)
 			{
 				GameMessage* pMessage = new ChangeCurrentPropertyMessage(false, 10);
 				MESSAGE_MANAGER->addMessage(pMessage, 0);
 			}
 
-
+			// Deletion key inputs
 			if (mEvent.keyboard.keycode == ALLEGRO_KEY_D)
 			{
-				GameMessage* pMessage = new DeleteUnitMessage();
-				MESSAGE_MANAGER->addMessage(pMessage, 0);
-
 				if (gpGame->getUnitManager()->getMap().empty())
 				{
-					//return true;
 					GameMessage* aMessage = new ExitGameMessage();
 					MESSAGE_MANAGER->addMessage(aMessage, 0);
 				}
-
+				else
+				{
+					GameMessage* pMessage = new DeleteUnitMessage();
+					MESSAGE_MANAGER->addMessage(pMessage, 0);
+				}
 			}
 
-			//if escape key was down then exit the loop
+			// Exit game key input
 			if (mEvent.keyboard.keycode == ALLEGRO_KEY_ESCAPE)
 			{
-				//return true;
 				GameMessage* aMessage = new ExitGameMessage();
 				MESSAGE_MANAGER->addMessage(aMessage, 0);
 			}
 		}
 	}
-
-
-	/*if(al_key_down( &keyState, ALLEGRO_KEY_F ) )
-	{
-	GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), WANDER_AND_FLEE);
-	MESSAGE_MANAGER->addMessage( pMessage, 0 );
-	}
-
-	if (al_key_down(&keyState, ALLEGRO_KEY_S))
-	{
-		GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), WANDER_AND_SEEK);
-		MESSAGE_MANAGER->addMessage(pMessage, 0);
-	}
-	
-	if (al_key_down(&keyState, ALLEGRO_KEY_D))
-	{
-		GameMessage* pMessage = new DeleteUnitMessage();
-		MESSAGE_MANAGER->addMessage(pMessage, 0);
-
-		if (gpGame->getUnitManager()->getMap().empty())
-		{
-			//return true;
-			GameMessage* aMessage = new ExitGameMessage();
-			MESSAGE_MANAGER->addMessage(aMessage, 0);
-		}
-			
-	}
-
-	//if escape key was down then exit the loop
-	if (al_key_down(&keyState, ALLEGRO_KEY_ESCAPE))
-	{
-		//return true;
-		GameMessage* aMessage = new ExitGameMessage();
-		MESSAGE_MANAGER->addMessage(aMessage, 0);
-	}*/
 }
 
 void InputManager::update(double frameTime)

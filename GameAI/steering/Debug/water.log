@@ -1,3 +1,14 @@
-﻿  main.cpp
-  water.vcxproj -> C:\Users\Brian\Desktop\EGP-410\GameAI\steering\Debug\steering.exe
-  water.vcxproj -> C:\Users\Brian\Desktop\EGP-410\GameAI\steering\Debug\steering.pdb (Full PDB)
+﻿  UnitManager.cpp
+  Generating Code...
+  Compiling...
+  WanderAndSeekSteering.cpp
+  KinematicUnit.cpp
+  InputManager.cpp
+  Game.cpp
+  DeleteUnitMessage.cpp
+  ChangeCurrentPropertyMessage.cpp
+  BoxCollision.cpp
+  AddUnitMessage.cpp
+  Generating Code...
+  water.vcxproj -> C:\Users\Student\Documents\_Brian\EGP-410\GameAI\steering\Debug\steering.exe
+  water.vcxproj -> C:\Users\Student\Documents\_Brian\EGP-410\GameAI\steering\Debug\steering.pdb (Full PDB)

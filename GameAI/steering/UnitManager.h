@@ -36,12 +36,12 @@ public:
 	~UnitManager();
 
 	void addUnit(Vector2D position, Behavior behavior = DYNAMIC_SEEK, KinematicUnit* target = NULL, Sprite* spr = NULL);
-	void deleteUnit(const UnitKey& key);
+	void deleteUnit();
 
 	void draw(GraphicsSystem* gSystem);
 	void update(double frameTime);
 
-	inline int getRandUnit() { return 0 + (rand() % static_cast<int>(mUnits.size() - 0 + 1)); };
+	inline int getRandUnit() { return rand() % mUnits.size(); };
 	inline std::map<UnitKey, KinematicUnit*> getMap() { return mUnits; };
 
 	void changeMaxVel(float newVel) { ENEMY_MAX_VEL += newVel; };

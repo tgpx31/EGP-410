@@ -1,20 +1,13 @@
 #pragma once
 
-#include "Trackable.h"
-
 #include "Game.h"
-
-#include "Defines.h"
 #include "Vector2D.h"
 
-#include "GameMessage.h"
 #include "GameMessageManager.h"
 #include "PlayerMoveToMessage.h"
-
 #include "AddUnitMessage.h"
 #include "DeleteUnitMessage.h"
 #include "ExitGameMessage.h"
-
 #include "TogglePropertiesMessage.h"
 #include "SelectPropertiesMessage.h"
 #include "ChangeCurrentPropertyMessage.h"

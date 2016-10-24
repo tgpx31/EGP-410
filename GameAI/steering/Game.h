@@ -48,7 +48,7 @@ enum GameProperties
 	CHANGE_MAX_ACCEL = 3
 };
 
-class Game:public Trackable
+class Game :public Trackable
 {
 public:
 	Game();

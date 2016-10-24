@@ -6,12 +6,12 @@ enum MessageType
 {
 	INVALID_MESSAGE_TYPE = -1,
 	PLAYER_MOVETO_MESSAGE = 0,
-	ADD_UNIT_MESSAGE = 1,
-	DELETE_UNIT_MESSAGE = 2,
-	EXIT_GAME_MESSAGE = 3,
-	TOGGLE_PROPERTIES_MESSAGE = 4,
-	SELECT_PROPERTIES_MESSAGE = 5,
-	CHANGE_CURRENT_PROPERTY_MESSAGE = 6
+	ADD_UNIT_MESSAGE = 1,				// Add a Unit with a specific behaivor
+	DELETE_UNIT_MESSAGE = 2,			// Delete a Unit 
+	EXIT_GAME_MESSAGE = 3,				// Exit the game
+	TOGGLE_PROPERTIES_MESSAGE = 4,		// Toggle properties menu
+	SELECT_PROPERTIES_MESSAGE = 5,		// Select active property
+	CHANGE_CURRENT_PROPERTY_MESSAGE = 6	// Modify current property
 };
 
 class GameMessage: public Trackable
