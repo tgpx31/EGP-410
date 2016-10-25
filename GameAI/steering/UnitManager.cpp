@@ -2,7 +2,6 @@
 #include "KinematicUnit.h"
 
 #include "Vector2D.h"
-//#include "Game.h"
 
 UnitManager::UnitManager(Sprite* enemySprite)
 {

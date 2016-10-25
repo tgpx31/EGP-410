@@ -1,6 +1,5 @@
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\vc140.pdb
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\vc140.idb
-c:\users\student\documents\_brian\egp-410\gameai\steering\debug\gamemessagemanager.obj
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\graphicsbuffer.obj
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\graphicsbuffermanager.obj
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\graphicssystem.obj
@@ -14,6 +13,7 @@ c:\users\student\documents\_brian\egp-410\gameai\steering\debug\main.obj
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\playermovetomessage.obj
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\properties.obj
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\selectpropertiesmessage.obj
+c:\users\student\documents\_brian\egp-410\gameai\steering\debug\seperationsteering.obj
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\sprite.obj
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\spritemanager.obj
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\steering.obj
@@ -21,18 +21,18 @@ c:\users\student\documents\_brian\egp-410\gameai\steering\debug\toggleproperties
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\unitmanager.obj
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\wanderandseeksteering.obj
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\addunitmessage.obj
+c:\users\student\documents\_brian\egp-410\gameai\steering\debug\alignmentsteering.obj
+c:\users\student\documents\_brian\egp-410\gameai\steering\debug\boidssteering.obj
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\boxcollision.obj
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\changecurrentpropertymessage.obj
+c:\users\student\documents\_brian\egp-410\gameai\steering\debug\cohesionsteering.obj
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\deleteunitmessage.obj
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\dynamicarrivesteering.obj
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\dynamicseeksteering.obj
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\exitgamemessage.obj
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\game.obj
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\gamemessage.obj
-c:\users\student\documents\_brian\egp-410\gameai\steering\debug\alignmentsteering.obj
-c:\users\student\documents\_brian\egp-410\gameai\steering\debug\seperationsteering.obj
-c:\users\student\documents\_brian\egp-410\gameai\steering\debug\boidssteering.obj
-c:\users\student\documents\_brian\egp-410\gameai\steering\debug\cohesionsteering.obj
+c:\users\student\documents\_brian\egp-410\gameai\steering\debug\gamemessagemanager.obj
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\steering.ilk
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\steering.exe
 c:\users\student\documents\_brian\egp-410\gameai\steering\debug\steering.pdb

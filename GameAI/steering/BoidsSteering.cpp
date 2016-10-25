@@ -45,6 +45,7 @@ Steering * BoidsSteering::getSteering()
 	mpAlignment->getSteering();
 	mpCohesion->getSteering();
 	mpSeperation->getSteering();
+	//mpWander->getSteering();
 
 	mpAlignment->setLinear(mpAlignment->getLinear() * 3);
 	mpCohesion->setLinear(mpCohesion->getLinear() * 1);
