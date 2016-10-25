@@ -182,13 +182,9 @@ bool Game::init()
 	//setup units
 	Vector2D pos( 100.0f, 100.0f );
 	Vector2D vel( 0.0f, 0.0f );
-	mpUnit = new KinematicUnit( pArrowSprite, pos, 1, vel, 0.0f, 200.0f, 10.0f );
+	//mpUnit = new KinematicUnit( pArrowSprite, pos, 1, vel, 0.0f, 200.0f, 10.0f );
 
 	mpUnitManager = new UnitManager(pEnemyArrow);
-	//mpUnitManager->addUnit(Vector2D(0, 0), false, mpUnit);
-	//mpUnitManager->addUnit(Vector2D(0, 0), true, mpUnit);
-	//mpUnitManager->deleteUnit("Unit 1");
-
 	
 	// Set up the walls
 	mWalls.push_back(new BoxCollision(Vector2D(100, HEIGHT), Vector2D(-100, 0)));
@@ -214,8 +210,8 @@ void Game::cleanup()
 	mWalls.clear();
 
 	//delete units
-	delete mpUnit;
-	mpUnit = NULL;
+	//delete mpUnit;
+	//mpUnit = NULL;
 
 	delete mpUnitManager;
 	mpUnitManager = NULL;
@@ -265,7 +261,7 @@ void Game::beginLoop()
 void Game::processLoop()
 {
 	//update units
-	mpUnit->update( LOOP_TARGET_TIME/1000.0f );
+	//mpUnit->update( LOOP_TARGET_TIME/1000.0f );
 	mpUnitManager->update(LOOP_TARGET_TIME / 1000.0f);
 
 
@@ -274,7 +270,7 @@ void Game::processLoop()
 	pBackgroundSprite->draw( *(mpGraphicsSystem->getBackBuffer()), 0, 0 );
 
 	//draw units
-	mpUnit->draw( GRAPHICS_SYSTEM->getBackBuffer() );
+	//mpUnit->draw( GRAPHICS_SYSTEM->getBackBuffer() );
 	mpUnitManager->draw(GRAPHICS_SYSTEM);
 
 	mpMessageManager->processMessagesForThisframe();

@@ -32,6 +32,8 @@ private:
 	ALLEGRO_EVENT_QUEUE* mpEventQ;
 	ALLEGRO_EVENT mEvent;
 
+	ALLEGRO_MOUSE_STATE mMouseState;
+
 public:
 	InputManager(ALLEGRO_FONT* font = NULL);
 	~InputManager();

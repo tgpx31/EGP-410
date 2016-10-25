@@ -19,6 +19,7 @@
 using namespace std;
 
 Steering gNullSteering( gZeroVector2D, 0.0f );
+const Vector2D CENTER_SCREEN = Vector2D(512, 384);
 
 KinematicUnit::KinematicUnit(Sprite *pSprite, const Vector2D &position, float orientation, const Vector2D &velocity, float rotationVel, float maxVelocity, float maxAcceleration)
 :Kinematic( position, orientation, velocity, rotationVel )
@@ -72,21 +73,25 @@ void KinematicUnit::update(float time)
 	Kinematic::update( time );
 	//calculate new velocities
 	calcNewVelocities( *steering, time, mMaxVelocity, 25.0f );
+
 	//move to oposite side of screen if we are off
 	//GRAPHICS_SYSTEM->wrapCoordinates( mPosition );
 
 	//set the orientation to match the direction of travel
 	setNewOrientation();
 
-	//// Keep the BoxColliders with the sprite
-	mBoxCollider->setPos(mPosition);
+	// Keep the BoxColliders with the sprite
+	mBoxCollider->setPos(mPosition);			// CHAGNE THIS TO A CIRCLE COLLIDER
 	
 	if (mBoxCollider->update(gpGame->getWalls()))
 	{
 		// shit, hit a wall. turn around
-		Vector2D oppVel = Vector2D(-mVelocity.getX(), -mVelocity.getY());
-		setVelocity(oppVel);
-		setOrientation(getOrientationFromVelocity(mOrientation, oppVel));
+		// seek the middle of the screen until not colliding
+		Vector2D bounceVel = CENTER_SCREEN - mPosition;
+		bounceVel.normalize();
+		bounceVel *= mMaxVelocity;
+
+		setVelocity(bounceVel);
 	}
 }
 

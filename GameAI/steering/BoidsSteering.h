@@ -8,7 +8,6 @@ class KinematicUnit;
 class AlignmentSteering;
 class CohesionSteering;
 class SeperationSteering;
-class KinematicWanderSteering;
 
 class BoidsSteering : public Steering
 {
@@ -19,8 +18,6 @@ private:
 	AlignmentSteering* mpAlignment;
 	CohesionSteering* mpCohesion;
 	SeperationSteering* mpSeperation;
-
-	KinematicWanderSteering* mpWander;
 
 	int mRadius;
 

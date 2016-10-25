@@ -18,7 +18,6 @@ mpTarget(pTarget)
 	mpAlignment = new AlignmentSteering(pMover);
 	mpCohesion = new CohesionSteering(pMover);
 	mpSeperation = new SeperationSteering(pMover);
-	mpWander = new KinematicWanderSteering(pMover);
 
 	mApplyDirectly = false;
 }
@@ -29,29 +28,22 @@ BoidsSteering::~BoidsSteering()
 	delete mpCohesion;
 	delete mpSeperation;
 
-	delete mpWander;
-
 	mpAlignment = NULL;
 	mpCohesion = NULL;
 	mpSeperation = NULL;
-
-	mpWander = NULL;
 }
 
 Steering * BoidsSteering::getSteering()
 {
-	//mApplyDirectly = false;
-
 	mpAlignment->getSteering();
 	mpCohesion->getSteering();
 	mpSeperation->getSteering();
-	//mpWander->getSteering();
 
 	mpAlignment->setLinear(mpAlignment->getLinear() * 3);
 	mpCohesion->setLinear(mpCohesion->getLinear() * 6);
 	mpSeperation->setLinear(mpSeperation->getLinear() * 10);
 
-	mLinear = mpAlignment->getLinear() + mpCohesion->getLinear() + mpSeperation->getLinear(); // +mpWander->getLinear();
+	mLinear = mpAlignment->getLinear() + mpCohesion->getLinear() + mpSeperation->getLinear();
 	
 	mLinear.normalize();
 	mLinear *= mpMover->getMaxVelocity();

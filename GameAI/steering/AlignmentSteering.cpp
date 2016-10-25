@@ -33,8 +33,8 @@ Vector2D AlignmentSteering::calculateAlignmentVector()
 		if (iter->second != mpMover)
 		{
 			// Check if in mpMover's radius
-			if (((iter->second->getPosition() - mpMover->getPosition()).getLength() <= mRadius &&
-				(iter->second->getPosition() - mpMover->getPosition()).getLength() >= -mRadius))
+			if ( ((iter->second->getPosition() - mpMover->getPosition()).getLength() <= mRadius &&
+				(iter->second->getPosition() - mpMover->getPosition()).getLength() >= -mRadius) )
 			{
 				alignmentVector += Vector2D(iter->second->getVelocity().getX(), iter->second->getVelocity().getY());
 

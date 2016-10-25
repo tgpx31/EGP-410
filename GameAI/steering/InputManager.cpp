@@ -52,22 +52,21 @@ void InputManager::cleanUp()
 
 void InputManager::getMouseInput()
 {
-	ALLEGRO_MOUSE_STATE mouseState;
-	al_get_mouse_state(&mouseState);
+	al_get_mouse_state(&mMouseState);
 
-	if (al_mouse_button_down(&mouseState, 1))	//left mouse click
+	if (al_mouse_button_down(&mMouseState, 1))	//left mouse click
 	{
-		Vector2D pos(mouseState.x, mouseState.y);
+		Vector2D pos(mMouseState.x, mMouseState.y);
 		GameMessage* pMessage = new PlayerMoveToMessage(pos);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
 
 	//create mouse text
 	std::stringstream mousePos;
-	mousePos << mouseState.x << ":" << mouseState.y;
+	mousePos << mMouseState.x << ":" << mMouseState.y;
 
 	//write text at mouse position
-	al_draw_text(mpFont, al_map_rgb(255, 255, 255), mouseState.x, mouseState.y, ALLEGRO_ALIGN_CENTRE, mousePos.str().c_str());
+	al_draw_text(mpFont, al_map_rgb(255, 255, 255), mMouseState.x, mMouseState.y, ALLEGRO_ALIGN_CENTRE, mousePos.str().c_str());
 }
 
 void InputManager::getKeyboardInput()
@@ -105,7 +104,9 @@ void InputManager::getKeyboardInput()
 			// Use this to spawn boids
 			if (mEvent.keyboard.keycode == ALLEGRO_KEY_I)
 			{
-				GameMessage* pMessage = new AddUnitMessage(Vector2D(300, 300), BOIDS_BEHAVIOR);
+				al_get_mouse_state(&mMouseState);
+
+				GameMessage* pMessage = new AddUnitMessage(Vector2D(mMouseState.x, mMouseState.y), BOIDS_BEHAVIOR);
 				MESSAGE_MANAGER->addMessage(pMessage, 0);
 			}
 
