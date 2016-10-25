@@ -15,15 +15,13 @@ AddUnitMessage::~AddUnitMessage()
 
 void AddUnitMessage::process()
 {
-	if (mBehavior == WANDER_AND_FLEE)
-		mPos.setX(mPos.getX() + 100);
-	else if (mBehavior == WANDER_AND_SEEK)
-		mPos.setX(mPos.getX() + 200);
-
+	// Spawn multiple boids
 	if (mBehavior == BOIDS_BEHAVIOR)
 	{
-		mPos.setX(mPos.getX() + 100);
+		for (int i = 0; i < 5; ++i)
+		{
+			gpGame->getUnitManager()->addUnit(mPos, mBehavior, gpGame->getPlayerUnit());
+			mPos += Vector2D(genRandomBinomial() * 75, genRandomBinomial() * 75);
+		}
 	}
-
-	gpGame->getUnitManager()->addUnit(mPos, mBehavior, gpGame->getPlayerUnit());
 }

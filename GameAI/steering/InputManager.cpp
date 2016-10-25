@@ -89,27 +89,33 @@ void InputManager::getKeyboardInput()
 		// Keyboard
 		if (mEvent.type == ALLEGRO_EVENT_KEY_DOWN)
 		{
-			// Spawning key inputs
-			if (mEvent.keyboard.keycode == ALLEGRO_KEY_F)
-			{
-				GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), WANDER_AND_FLEE);
-				MESSAGE_MANAGER->addMessage(pMessage, 0);
-			}
+			//// Spawning key inputs
+			//if (mEvent.keyboard.keycode == ALLEGRO_KEY_F)
+			//{
+			//	GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), WANDER_AND_FLEE);
+			//	MESSAGE_MANAGER->addMessage(pMessage, 0);
+			//}
 
-			if (mEvent.keyboard.keycode == ALLEGRO_KEY_S)
-			{
-				GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), BOIDS_BEHAVIOR);
-				MESSAGE_MANAGER->addMessage(pMessage, 0);
-			}
+			//if (mEvent.keyboard.keycode == ALLEGRO_KEY_S)
+			//{
+			//	GameMessage* pMessage = new AddUnitMessage(gpGame->getPlayerUnit()->getPosition(), BOIDS_BEHAVIOR);
+			//	MESSAGE_MANAGER->addMessage(pMessage, 0);
+			//}
 
-			// Properties menu key inputs
+			// Use this to spawn boids
 			if (mEvent.keyboard.keycode == ALLEGRO_KEY_I)
+			{
+				GameMessage* pMessage = new AddUnitMessage(Vector2D(300, 300), BOIDS_BEHAVIOR);
+				MESSAGE_MANAGER->addMessage(pMessage, 0);
+			}
+
+			/*if (mEvent.keyboard.keycode == ALLEGRO_KEY_I)
 			{
 				GameMessage* pMessage = new TogglePropertiesMessage();
 				MESSAGE_MANAGER->addMessage(pMessage, 0);
-			}
+			}*/
 
-			if (mEvent.keyboard.keycode == ALLEGRO_KEY_V)
+			/*if (mEvent.keyboard.keycode == ALLEGRO_KEY_V)
 			{
 				GameMessage* pMessage = new SelectPropertiesMessage(ENEMY_VELOCITY);
 				MESSAGE_MANAGER->addMessage(pMessage, 0);
@@ -131,7 +137,7 @@ void InputManager::getKeyboardInput()
 			{
 				GameMessage* pMessage = new SelectPropertiesMessage(CHANGE_MAX_ACCEL);
 				MESSAGE_MANAGER->addMessage(pMessage, 0);
-			}
+			}*/
 
 			if (mEvent.keyboard.keycode == ALLEGRO_KEY_PAD_PLUS)
 			{

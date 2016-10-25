@@ -8,7 +8,7 @@ CohesionSteering::CohesionSteering(KinematicUnit* pMover, KinematicUnit* pTarget
 	:mpMover(pMover),
 	mpTarget(pTarget)
 {
-	mRadius = DEFAULT_RADIUS;
+	mRadius = 150;
 }
 
 Steering * CohesionSteering::getSteering()

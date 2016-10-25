@@ -48,11 +48,11 @@ Steering * BoidsSteering::getSteering()
 	//mpWander->getSteering();
 
 	mpAlignment->setLinear(mpAlignment->getLinear() * 3);
-	mpCohesion->setLinear(mpCohesion->getLinear() * 1);
-	mpSeperation->setLinear(mpSeperation->getLinear() * 5);
+	mpCohesion->setLinear(mpCohesion->getLinear() * 6);
+	mpSeperation->setLinear(mpSeperation->getLinear() * 10);
 
-	mLinear = mpAlignment->getLinear() + mpCohesion->getLinear() + mpSeperation->getLinear() + mpWander->getLinear();
-
+	mLinear = mpAlignment->getLinear() + mpCohesion->getLinear() + mpSeperation->getLinear(); // +mpWander->getLinear();
+	
 	mLinear.normalize();
 	mLinear *= mpMover->getMaxVelocity();
 
