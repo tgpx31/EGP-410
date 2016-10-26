@@ -61,3 +61,18 @@ bool BoxCollision::update(std::vector<BoxCollision*> walls)
 	}
 	return false;
 }
+
+Vector2D BoxCollision::getCenterPoint()
+{
+	float x, y;
+	Vector2D centerPoint = Vector2D(0, 0);
+	Vector2D bottomRight = mDimensions + mPosition;
+
+	// get diagonals \/
+	x =  bottomRight.getX() - mPosition.getX();
+	y = bottomRight.getY() - mPosition.getY();
+
+	centerPoint = Vector2D(mPosition.getX() + (x / 2), mPosition.getY() + (y / 2));
+
+	return centerPoint;
+}

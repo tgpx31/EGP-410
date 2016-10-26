@@ -21,8 +21,11 @@ public:
 	inline float getX() { return mPosition.getX(); };
 	inline float getY() { return mPosition.getY(); };
 
+	inline Vector2D getPos() { return mPosition; };
+
 	inline void setPos(Vector2D newPos) { mPosition = newPos; };
 	inline void setRadius(int rad) { mRadius = rad; };
+	inline int getRadius() { return mRadius; };
 
 	bool isCollidingBoxes(BoxCollision* other);
 	bool isCollidingCylinders(CylinderCollision* other);

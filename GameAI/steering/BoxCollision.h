@@ -32,7 +32,8 @@ public:
 
 	inline void setDim(Vector2D dim) { mDimensions = dim; };
 	//void draw() { al_draw_filled_rectangle(mPosition.getX(), mPosition.getY(), mPosition.getX() + mDimensions.getX(), mPosition.getY() + mDimensions.getY(), al_map_rgb(255,0,0)); };
-
+	Vector2D getCenterPoint();
+	inline Vector2D getDimensions() { return mDimensions; };
 };
 
 #endif

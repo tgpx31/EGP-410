@@ -21,20 +21,34 @@ CylinderCollision::CylinderCollision(Vector2D position, int radius)
 
 bool CylinderCollision::isCollidingBoxes(BoxCollision * other)
 {
-	// Check if a box collider is colliding with your circle collider
-	if (((other->getPos() - mPosition).getLength() <= mRadius) &&
-		((other->getPos() - mPosition).getLength() >= -mRadius))
-	{
-		// In the radius
-		return true;
-	}
+	// Referencing http://stackoverflow.com/questions/401847/circle-rectangle-collision-detection-intersection
+	// for help, as I have never done Circle to Box collision before
 
-	return false;
+	// check the center of the box
+	Vector2D rectangleCenterPoint = other->getCenterPoint();
+	Vector2D rectDimensions = other->getDimensions();
+	Vector2D circleDist = Vector2D(std::abs(mPosition.getX() - rectangleCenterPoint.getX()), std::abs(mPosition.getY() - rectangleCenterPoint.getY()));
+
+	float cornerDistSquared = (std::pow((circleDist.getX() - rectDimensions.getX() / 2), 2)) + (std::pow(circleDist.getY() - rectDimensions.getY() / 2, 2));
+
+	if (circleDist.getX() > (rectDimensions.getX() / 2 + mRadius))
+		{ return false; }
+	if (circleDist.getY() > (rectDimensions.getY() / 2 + mRadius))
+		{ return false; }
+
+	if (circleDist.getX() <= (rectDimensions.getX() / 2))
+		{ return true; }
+	if (circleDist.getY() <= (rectDimensions.getY() / 2))
+		{ return true; }
+
+	return (cornerDistSquared <= mRadius * mRadius);
 }
 
 bool CylinderCollision::isCollidingCylinders(CylinderCollision * other)
 {
-	return false;
+	// Checking the two circles are intersecting
+	// Mathematical formula courtesy of http://math.stackexchange.com/questions/275514/two-circles-overlap
+	return (std::pow(mRadius + other->getRadius(), 2) >= (std::pow(other->getPos().getX() - mPosition.getX(), 2)) + (std::pow(mPosition.getY() - other->getPos().getY(), 2)));
 }
 
 void CylinderCollision::update(std::vector<BoxCollision*> boxes)
