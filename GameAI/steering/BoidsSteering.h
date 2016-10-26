@@ -15,6 +15,10 @@
 			|  $$$$$$/                       | $$     | $$
 			 \______/                        |__/     |__/
 *****************************************************************************
+
+In other words, this is the GroupAlignment steering. It contains all methods for boids behavior.
+https://www.youtube.com/watch?v=phaJXp_zMYM
+
 */
 
 #include "Steering.h"

@@ -48,7 +48,10 @@ public:
 	void changeMaxVel(float newVel) { ENEMY_MAX_VEL += newVel; };
 	inline int getMaxVel() { return static_cast<int>(ENEMY_MAX_VEL); };
 	void changeRotVel(float newRot) { mRotVel += newRot; };
+	inline float getRotVel() { return mRotVel; };
+
 	void changeMaxAccel(float newAccel) { ENEMY_MAX_ACCEL += newAccel; };
+	inline float getMaxAccel() { return ENEMY_MAX_ACCEL; };
 };
 
 #endif

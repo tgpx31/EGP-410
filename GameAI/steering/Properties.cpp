@@ -41,8 +41,8 @@ void Properties::draw()
 		// Update the strings
 		mPropertyTexts[0] = "[V]elocity: " + std::to_string(gpGame->getUnitManager()->getMaxVel());		
 
-		mPropertyTexts[2] = "[N]Angular Velocity: ";
-		mPropertyTexts[3] = "[M]ax Accel: ";
+		mPropertyTexts[2] = "[N]Angular Velocity: " + std::to_string(gpGame->getUnitManager()->getRotVel());
+		mPropertyTexts[3] = "[M]ax Accel: " + std::to_string(gpGame->getUnitManager()->getMaxAccel());
 
 		if (!gpGame->getUnitManager()->getMap().empty())
 		{
