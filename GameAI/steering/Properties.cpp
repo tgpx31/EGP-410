@@ -1,4 +1,5 @@
 #include "Properties.h"
+#include "UnitManager.h"
 
 Properties::Properties(ALLEGRO_FONT* font)
 {
@@ -8,10 +9,20 @@ Properties::Properties(ALLEGRO_FONT* font)
 	mCurrentProperty = INVALID_PROPERTY;
 	mpFont = font;
 
-	mPropertyTexts.push_back("[V]elocity");
+	/*mPropertyTexts.push_back("[V]elocity");
 	mPropertyTexts.push_back("[R]eaction Radius");
-	mPropertyTexts.push_back("[A]ngular Velocity");
-	mPropertyTexts.push_back("[C]Max Accel");
+	mPropertyTexts.push_back("[N]Angular Velocity");
+	mPropertyTexts.push_back("[M]ax Accel");
+	mPropertyTexts.push_back("[C]ohesion Weight");
+	mPropertyTexts.push_back("[S]eperation Weight");
+	mPropertyTexts.push_back("[A]lignment Weight");*/
+	mPropertyTexts.push_back("");
+	mPropertyTexts.push_back("");
+	mPropertyTexts.push_back("");
+	mPropertyTexts.push_back("");
+	mPropertyTexts.push_back("");
+	mPropertyTexts.push_back("");
+	mPropertyTexts.push_back("");
 
 	std::cout << "\nProperties UI initialized\n";
 }
@@ -33,7 +44,14 @@ void Properties::draw()
 		ALLEGRO_COLOR myColor = al_map_rgb(255, 255, 255);
 		ALLEGRO_COLOR hiColor = al_map_rgb(255, 0, 0);
 
-		
+		// Update the strings
+		mPropertyTexts[0] = "[V]elocity: " + std::to_string(gpGame->getUnitManager()->getMaxVel());
+		mPropertyTexts[1] = "[R]eaction Radius: ";
+		mPropertyTexts[2] = "[N]Angular Velocity: ";
+		mPropertyTexts[3] = "[M]ax Accel: ";
+		mPropertyTexts[4] = "[C]ohesion Weight: ";
+		mPropertyTexts[5] = "[S]eperation Weight: ";
+		mPropertyTexts[6] = "[A]lignment Weight: ";
 
 		switch (mCurrentProperty)
 		{
@@ -42,30 +60,80 @@ void Properties::draw()
 			al_draw_text(mpFont, myColor, 0, 16, 0, mPropertyTexts[1].c_str());
 			al_draw_text(mpFont, myColor, 0, 32, 0, mPropertyTexts[2].c_str());
 			al_draw_text(mpFont, myColor, 0, 48, 0, mPropertyTexts[3].c_str());
+
+			al_draw_text(mpFont, myColor, 0, 64, 0, mPropertyTexts[4].c_str());
+			al_draw_text(mpFont, myColor, 0, 80, 0, mPropertyTexts[5].c_str());
+			al_draw_text(mpFont, myColor, 0, 96, 0, mPropertyTexts[6].c_str());
 			break;
 		case 1:
 			al_draw_text(mpFont, myColor, 0, 0, 0, mPropertyTexts[0].c_str());
 			al_draw_text(mpFont, hiColor, 0, 16, 0, mPropertyTexts[1].c_str());
 			al_draw_text(mpFont, myColor, 0, 32, 0, mPropertyTexts[2].c_str());
 			al_draw_text(mpFont, myColor, 0, 48, 0, mPropertyTexts[3].c_str());
+
+			al_draw_text(mpFont, myColor, 0, 64, 0, mPropertyTexts[4].c_str());
+			al_draw_text(mpFont, myColor, 0, 80, 0, mPropertyTexts[5].c_str());
+			al_draw_text(mpFont, myColor, 0, 96, 0, mPropertyTexts[6].c_str());
 			break;
 		case 2:
 			al_draw_text(mpFont, myColor, 0, 0, 0, mPropertyTexts[0].c_str());
 			al_draw_text(mpFont, myColor, 0, 16, 0, mPropertyTexts[1].c_str());
 			al_draw_text(mpFont, hiColor, 0, 32, 0, mPropertyTexts[2].c_str());
 			al_draw_text(mpFont, myColor, 0, 48, 0, mPropertyTexts[3].c_str());
+
+			al_draw_text(mpFont, myColor, 0, 64, 0, mPropertyTexts[4].c_str());
+			al_draw_text(mpFont, myColor, 0, 80, 0, mPropertyTexts[5].c_str());
+			al_draw_text(mpFont, myColor, 0, 96, 0, mPropertyTexts[6].c_str());
 			break;
 		case 3:
 			al_draw_text(mpFont, myColor, 0, 0, 0, mPropertyTexts[0].c_str());
 			al_draw_text(mpFont, myColor, 0, 16, 0, mPropertyTexts[1].c_str());
 			al_draw_text(mpFont, myColor, 0, 32, 0, mPropertyTexts[2].c_str());
 			al_draw_text(mpFont, hiColor, 0, 48, 0, mPropertyTexts[3].c_str());
+
+			al_draw_text(mpFont, myColor, 0, 64, 0, mPropertyTexts[4].c_str());
+			al_draw_text(mpFont, myColor, 0, 80, 0, mPropertyTexts[5].c_str());
+			al_draw_text(mpFont, myColor, 0, 96, 0, mPropertyTexts[6].c_str());
+			break;
+		case 4:
+			al_draw_text(mpFont, myColor, 0, 0, 0, mPropertyTexts[0].c_str());
+			al_draw_text(mpFont, myColor, 0, 16, 0, mPropertyTexts[1].c_str());
+			al_draw_text(mpFont, myColor, 0, 32, 0, mPropertyTexts[2].c_str());
+			al_draw_text(mpFont, myColor, 0, 48, 0, mPropertyTexts[3].c_str());
+
+			al_draw_text(mpFont, hiColor, 0, 64, 0, mPropertyTexts[4].c_str());
+			al_draw_text(mpFont, myColor, 0, 80, 0, mPropertyTexts[5].c_str());
+			al_draw_text(mpFont, myColor, 0, 96, 0, mPropertyTexts[6].c_str());
+			break;
+		case 5:
+			al_draw_text(mpFont, myColor, 0, 0, 0, mPropertyTexts[0].c_str());
+			al_draw_text(mpFont, myColor, 0, 16, 0, mPropertyTexts[1].c_str());
+			al_draw_text(mpFont, myColor, 0, 32, 0, mPropertyTexts[2].c_str());
+			al_draw_text(mpFont, myColor, 0, 48, 0, mPropertyTexts[3].c_str());
+
+			al_draw_text(mpFont, myColor, 0, 64, 0, mPropertyTexts[4].c_str());
+			al_draw_text(mpFont, hiColor, 0, 80, 0, mPropertyTexts[5].c_str());
+			al_draw_text(mpFont, myColor, 0, 96, 0, mPropertyTexts[6].c_str());
+			break;
+		case 6:
+			al_draw_text(mpFont, myColor, 0, 0, 0, mPropertyTexts[0].c_str());
+			al_draw_text(mpFont, myColor, 0, 16, 0, mPropertyTexts[1].c_str());
+			al_draw_text(mpFont, myColor, 0, 32, 0, mPropertyTexts[2].c_str());
+			al_draw_text(mpFont, myColor, 0, 48, 0, mPropertyTexts[3].c_str());
+
+			al_draw_text(mpFont, myColor, 0, 64, 0, mPropertyTexts[4].c_str());
+			al_draw_text(mpFont, myColor, 0, 80, 0, mPropertyTexts[5].c_str());
+			al_draw_text(mpFont, hiColor, 0, 96, 0, mPropertyTexts[6].c_str());
 			break;
 		default:
-			al_draw_text(mpFont, al_map_rgb(255, 255, 255), 0, 0, 0, mPropertyTexts[0].c_str());
-			al_draw_text(mpFont, al_map_rgb(255, 255, 255), 0, 12, 0, mPropertyTexts[1].c_str());
-			al_draw_text(mpFont, al_map_rgb(255, 255, 255), 0, 24, 0, mPropertyTexts[2].c_str());
-			al_draw_text(mpFont, al_map_rgb(255, 255, 255), 0, 36, 0, mPropertyTexts[3].c_str());
+			al_draw_text(mpFont, myColor, 0, 0, 0, mPropertyTexts[0].c_str());
+			al_draw_text(mpFont, myColor, 0, 16, 0, mPropertyTexts[1].c_str());
+			al_draw_text(mpFont, myColor, 0, 32, 0, mPropertyTexts[2].c_str());
+			al_draw_text(mpFont, myColor, 0, 48, 0, mPropertyTexts[3].c_str());
+
+			al_draw_text(mpFont, myColor, 0, 64, 0, mPropertyTexts[4].c_str());
+			al_draw_text(mpFont, myColor, 0, 80, 0, mPropertyTexts[5].c_str());
+			al_draw_text(mpFont, myColor, 0, 96, 0, mPropertyTexts[6].c_str());
 			return;
 		}
 	}

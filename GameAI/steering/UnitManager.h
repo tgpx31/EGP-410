@@ -23,7 +23,7 @@ typedef std::string UnitKey;
 class UnitManager : public Trackable
 {
 private:
-	float ENEMY_MAX_VEL = 180.0F;
+	float ENEMY_MAX_VEL = 180.0f;
 	float mRotVel = 0.0f;
 
 	float ENEMY_MAX_ACCEL = 100.0f;
@@ -46,6 +46,7 @@ public:
 	inline std::map<UnitKey, KinematicUnit*> getMap() { return mUnits; };
 
 	void changeMaxVel(float newVel) { ENEMY_MAX_VEL += newVel; };
+	inline int getMaxVel() { return static_cast<int>(ENEMY_MAX_VEL); };
 	void changeRotVel(float newRot) { mRotVel += newRot; };
 	void changeMaxAccel(float newAccel) { ENEMY_MAX_ACCEL += newAccel; };
 };
