@@ -30,7 +30,7 @@ public:
 	bool isCollidingBoxes(BoxCollision* other);
 	bool isCollidingCylinders(CylinderCollision* other);
 
-	void update(std::vector<BoxCollision*> boxes);
+	bool update(std::vector<BoxCollision*> boxes);
 };
 
 #endif

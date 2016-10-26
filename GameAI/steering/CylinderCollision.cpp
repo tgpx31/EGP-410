@@ -51,6 +51,15 @@ bool CylinderCollision::isCollidingCylinders(CylinderCollision * other)
 	return (std::pow(mRadius + other->getRadius(), 2) >= (std::pow(other->getPos().getX() - mPosition.getX(), 2)) + (std::pow(mPosition.getY() - other->getPos().getY(), 2)));
 }
 
-void CylinderCollision::update(std::vector<BoxCollision*> boxes)
+bool CylinderCollision::update(std::vector<BoxCollision*> boxes)
 {
+	for (u_int i = 0; i < boxes.size(); ++i)
+	{
+		if (isCollidingBoxes(boxes[i]))
+		{
+			return true;
+		}
+	}
+
+	return false;
 }

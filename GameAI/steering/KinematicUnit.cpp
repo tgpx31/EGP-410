@@ -12,7 +12,9 @@
 
 #include "WanderAndSeekSteering.h"
 #include "WanderAndFleeSteering.h"
+
 #include "BoxCollision.h"
+#include "CylinderCollision.h"
 
 #include "BoidsSteering.h"
 
@@ -28,14 +30,18 @@ KinematicUnit::KinematicUnit(Sprite *pSprite, const Vector2D &position, float or
 ,mMaxVelocity(maxVelocity)
 ,mMaxAcceleration(maxAcceleration)
 {
-	mBoxCollider = new BoxCollision(mpSprite->getWidth(), mpSprite->getHeight(), mPosition.getX(), mPosition.getY());
+	mpBoxCollider = new BoxCollision(mpSprite->getWidth(), mpSprite->getHeight(), mPosition.getX(), mPosition.getY());
+	mpCircleCollider = new CylinderCollision(mPosition, mpSprite->getWidth() / 2);
 }
 
 KinematicUnit::~KinematicUnit()
 {
 	delete mpCurrentSteering;
-	delete mBoxCollider;
-	mBoxCollider = nullptr;
+	delete mpBoxCollider;
+	mpBoxCollider = nullptr;
+
+	delete mpCircleCollider;
+	mpCircleCollider = nullptr;
 }
 
 void KinematicUnit::draw( GraphicsBuffer* pBuffer )
@@ -81,9 +87,10 @@ void KinematicUnit::update(float time)
 	setNewOrientation();
 
 	// Keep the BoxColliders with the sprite
-	mBoxCollider->setPos(mPosition);			// CHAGNE THIS TO A CIRCLE COLLIDER
-	
-	if (mBoxCollider->update(gpGame->getWalls()))
+	mpBoxCollider->setPos(mPosition);			// CHAGNE THIS TO A CIRCLE COLLIDER
+	mpCircleCollider->setPos(mPosition);
+
+	if (mpCircleCollider->update(gpGame->getWalls()))
 	{
 		// shit, hit a wall. turn around
 		// seek the middle of the screen until not colliding
@@ -163,5 +170,5 @@ void KinematicUnit::boidsSteering()
 
 BoxCollision* KinematicUnit::getBoxCollider()
 {
-	return mBoxCollider;
+	return mpBoxCollider;
 }
