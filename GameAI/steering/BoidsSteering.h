@@ -41,6 +41,9 @@ public:
 
 	virtual Steering* getSteering();
 	bool checkNoneNearby();
+
+	void updateRadius(float radius);
+	float getRadius() { return mRadius; };
 };
 
 #endif

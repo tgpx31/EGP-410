@@ -8,7 +8,7 @@ SeperationSteering::SeperationSteering(KinematicUnit* pMover, KinematicUnit* pTa
 	:mpMover(pMover),
 	mpTarget(pTarget)
 {
-	mRadius = SEPERATION_RADIUS;
+	mRadius = static_cast<int>(DEFAULT_RADIUS * .27f);
 }
 
 Steering * SeperationSteering::getSteering()

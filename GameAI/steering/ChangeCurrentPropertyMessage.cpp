@@ -52,7 +52,7 @@ void ChangeCurrentPropertyMessage::process()
 		for (iter = map.begin(); iter != map.end(); ++iter)
 		{
 			iter->second->getSteering()->updateRadius(mAmount);
-			std::cout << "\nEnemyUnit ReactionRadius: " << iter->second->getSteering()->getRadius();
+			//std::cout << "\nEnemyUnit ReactionRadius: " << iter->second->getSteering()->getRadius();
 		}
 	}
 	// Angular Velocity

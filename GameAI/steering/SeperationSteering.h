@@ -19,6 +19,8 @@ public:
 
 	virtual Steering* getSteering();
 	Vector2D calculateSeperationVector();
+
+	void updateRadius(float radius) { mRadius += radius; };
 };
 
 #endif

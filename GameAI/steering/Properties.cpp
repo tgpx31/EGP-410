@@ -1,5 +1,6 @@
 #include "Properties.h"
 #include "UnitManager.h"
+#include "KinematicUnit.h"
 
 Properties::Properties(ALLEGRO_FONT* font)
 {
@@ -9,13 +10,6 @@ Properties::Properties(ALLEGRO_FONT* font)
 	mCurrentProperty = INVALID_PROPERTY;
 	mpFont = font;
 
-	/*mPropertyTexts.push_back("[V]elocity");
-	mPropertyTexts.push_back("[R]eaction Radius");
-	mPropertyTexts.push_back("[N]Angular Velocity");
-	mPropertyTexts.push_back("[M]ax Accel");
-	mPropertyTexts.push_back("[C]ohesion Weight");
-	mPropertyTexts.push_back("[S]eperation Weight");
-	mPropertyTexts.push_back("[A]lignment Weight");*/
 	mPropertyTexts.push_back("");
 	mPropertyTexts.push_back("");
 	mPropertyTexts.push_back("");
@@ -46,7 +40,12 @@ void Properties::draw()
 
 		// Update the strings
 		mPropertyTexts[0] = "[V]elocity: " + std::to_string(gpGame->getUnitManager()->getMaxVel());
-		mPropertyTexts[1] = "[R]eaction Radius: ";
+
+		if (!gpGame->getUnitManager()->getMap().empty())
+			mPropertyTexts[1] = "[R]eaction Radius: " + std::to_string(gpGame->getUnitManager()->getMap().begin()->second->getRadius());
+		else
+			mPropertyTexts[1] = "[R]eaction Radius: NO UNITS";
+
 		mPropertyTexts[2] = "[N]Angular Velocity: ";
 		mPropertyTexts[3] = "[M]ax Accel: ";
 		mPropertyTexts[4] = "[C]ohesion Weight: ";

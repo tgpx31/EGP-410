@@ -19,6 +19,9 @@ public:
 
 	virtual Steering* getSteering();
 	Vector2D calculateAlignmentVector();
+
+	void updateRadius(float radius) { mRadius += radius; };
+	inline float getRadius() { return mRadius; };
 };
 
 #endif

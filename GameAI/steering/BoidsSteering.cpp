@@ -13,7 +13,7 @@ BoidsSteering::BoidsSteering(KinematicUnit* pMover, KinematicUnit* pTarget)
 :mpMover(pMover),
 mpTarget(pTarget)
 {
-	//mRadius = DEFAULT_RADIUS;
+	mRadius = DEFAULT_RADIUS;
 
 	mpAlignment = new AlignmentSteering(pMover);
 	mpCohesion = new CohesionSteering(pMover);
@@ -67,4 +67,12 @@ bool BoidsSteering::checkNoneNearby()
 		}
 	}
 	return true;
+}
+
+void BoidsSteering::updateRadius(float radius)
+{
+	mpAlignment->updateRadius(radius);
+	mpCohesion->updateRadius(radius);
+	mpSeperation->updateRadius(radius);
+	mRadius = mpAlignment->getRadius();
 }
