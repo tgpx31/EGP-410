@@ -76,3 +76,8 @@ void BoidsSteering::updateRadius(float radius)
 	mpSeperation->updateRadius(radius);
 	mRadius = mpAlignment->getRadius();
 }
+
+void BoidsSteering::updateWeight(int weight, int id)
+{
+	mWeights[id] += weight;
+}

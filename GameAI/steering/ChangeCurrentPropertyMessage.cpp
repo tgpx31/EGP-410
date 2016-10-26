@@ -45,6 +45,7 @@ void ChangeCurrentPropertyMessage::process()
 			std::cout << "\nEnemyUnit MAXVEL: " << iter->second->getMaxVelocity();
 		}
 	}
+
 	// Reaction Radius
 	else if (prop == 1)
 	{
@@ -55,6 +56,7 @@ void ChangeCurrentPropertyMessage::process()
 			//std::cout << "\nEnemyUnit ReactionRadius: " << iter->second->getSteering()->getRadius();
 		}
 	}
+
 	// Angular Velocity
 	else if (prop == 2)
 	{
@@ -65,6 +67,7 @@ void ChangeCurrentPropertyMessage::process()
 			std::cout << "\nEnemyUnit ROT_VEL: " << iter->second->getRotVelocity();
 		}
 	}
+
 	// Unit accel
 	else if (prop == 3)
 	{
@@ -74,6 +77,33 @@ void ChangeCurrentPropertyMessage::process()
 		{
 			iter->second->changeMaxAccel(mAmount);
 			std::cout << "\nEnemyUnit MaxACCEL: " << iter->second->getMaxAcceleration();
+		}
+	}
+
+	// Cohesion weight
+	else if (prop == 4)
+	{
+		for (iter = map.begin(); iter != map.end(); ++iter)
+		{
+			iter->second->getSteering()->updateWeight(mAmount, 0);
+		}
+	}
+
+	// Seperation weight
+	else if (prop == 5)
+	{
+		for (iter = map.begin(); iter != map.end(); ++iter)
+		{
+			iter->second->getSteering()->updateWeight(mAmount, 1);
+		}
+	}
+
+	// Alignment weight
+	else if (prop == 6)
+	{
+		for (iter = map.begin(); iter != map.end(); ++iter)
+		{
+			iter->second->getSteering()->updateWeight(mAmount, 2);
 		}
 	}
 }

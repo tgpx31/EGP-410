@@ -39,19 +39,29 @@ void Properties::draw()
 		ALLEGRO_COLOR hiColor = al_map_rgb(255, 0, 0);
 
 		// Update the strings
-		mPropertyTexts[0] = "[V]elocity: " + std::to_string(gpGame->getUnitManager()->getMaxVel());
-
-		if (!gpGame->getUnitManager()->getMap().empty())
-			mPropertyTexts[1] = "[R]eaction Radius: " + std::to_string(gpGame->getUnitManager()->getMap().begin()->second->getRadius());
-		else
-			mPropertyTexts[1] = "[R]eaction Radius: NO UNITS";
+		mPropertyTexts[0] = "[V]elocity: " + std::to_string(gpGame->getUnitManager()->getMaxVel());		
 
 		mPropertyTexts[2] = "[N]Angular Velocity: ";
 		mPropertyTexts[3] = "[M]ax Accel: ";
-		mPropertyTexts[4] = "[C]ohesion Weight: ";
-		mPropertyTexts[5] = "[S]eperation Weight: ";
-		mPropertyTexts[6] = "[A]lignment Weight: ";
 
+		if (!gpGame->getUnitManager()->getMap().empty())
+		{
+			mPropertyTexts[1] = "[R]eaction Radius: " + std::to_string(gpGame->getUnitManager()->getMap().begin()->second->getRadius());
+
+			mPropertyTexts[4] = "[C]ohesion Weight: " + std::to_string(gpGame->getUnitManager()->getMap().begin()->second->getSteering()->getWeight(0));
+			mPropertyTexts[5] = "[S]eperation Weight: " + std::to_string(gpGame->getUnitManager()->getMap().begin()->second->getSteering()->getWeight(1));
+			mPropertyTexts[6] = "[A]lignment Weight: " + std::to_string(gpGame->getUnitManager()->getMap().begin()->second->getSteering()->getWeight(2));
+		}
+		else
+		{
+			mPropertyTexts[1] = "[R]eaction Radius: NO UNITS";
+
+			mPropertyTexts[4] = "[C]ohesion Weight: NO UNITS";
+			mPropertyTexts[5] = "[S]eperation Weight: NO UNITS";
+			mPropertyTexts[6] = "[A]lignment Weight: NO UNITS";
+		}
+			
+		
 		switch (mCurrentProperty)
 		{
 		case 0: 

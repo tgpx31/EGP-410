@@ -40,6 +40,9 @@ public:
 	virtual void updateWanderRot(float rot) {};
 	virtual float getWanderRot() { return 0; };
 
+	virtual void updateWeight(int weight, int id) {};
+	virtual int getWeight(int id) { return 0; };
+
 protected:
 	Vector2D mLinear;//linear velocity
 	float mAngular;//angular velocity

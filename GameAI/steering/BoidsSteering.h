@@ -48,6 +48,9 @@ public:
 
 	void updateRadius(float radius);
 	float getRadius() { return mRadius; };
+
+	void updateWeight(int weight, int id);
+	int getWeight(int id) { return mWeights[id]; };
 };
 
 #endif
