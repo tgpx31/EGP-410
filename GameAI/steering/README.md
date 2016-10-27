@@ -25,13 +25,14 @@ RELEASE:
 ## In Properties:
 	* P: open properties menu
 	* V, R, A, C: Select properties (displayed on screen)
-	[Velocity, Radius, Angular Velocity, Unit Accel, Cohesion, Seperation, Alignment]
+		** [Velocity, Radius, Angular Velocity, Unit Accel, Cohesion, Seperation, Alignment]
 	* +/-: increment and decrement the value of selected property
 
 ## Other Inputs:
 	* I: Spawn 5 Boids Units @ mouse position
 	* D: Delete a random Unit form the map
 	* CTRL + S: Save steering weights to savedWeights.txt
+	* ESC: Exit the game
 
 # Additional Notes:
 The Boids Steering behavior is the result of weighted blending from Cohesion, Seperation, and Alignment behaviors.
