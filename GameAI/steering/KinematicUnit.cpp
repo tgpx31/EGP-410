@@ -17,6 +17,7 @@
 #include "CylinderCollision.h"
 
 #include "BoidsSteering.h"
+#include "UnitManager.h"
 
 using namespace std;
 

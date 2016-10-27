@@ -37,6 +37,7 @@
     <ClInclude Include="KinematicWanderSteering.h" />
     <ClInclude Include="PlayerMoveToMessage.h" />
     <ClInclude Include="Properties.h" />
+    <ClInclude Include="SaveWeightsMessage.h" />
     <ClInclude Include="SelectPropertiesMessage.h" />
     <ClInclude Include="SeperationSteering.h" />
     <ClInclude Include="Sprite.h" />
@@ -73,6 +74,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PlayerMoveToMessage.cpp" />
     <ClCompile Include="Properties.cpp" />
+    <ClCompile Include="SaveWeightsMessage.cpp" />
     <ClCompile Include="SelectPropertiesMessage.cpp" />
     <ClCompile Include="SeperationSteering.cpp" />
     <ClCompile Include="Sprite.cpp" />

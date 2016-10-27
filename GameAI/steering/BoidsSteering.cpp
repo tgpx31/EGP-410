@@ -20,6 +20,10 @@ mpTarget(pTarget)
 	mpSeperation = new SeperationSteering(pMover);
 
 	mApplyDirectly = false;
+
+	mWeights[0] = 3;
+	mWeights[1] = 6;
+	mWeights[2] = 10;
 }
 
 BoidsSteering::~BoidsSteering()

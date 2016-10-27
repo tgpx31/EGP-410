@@ -103,6 +103,9 @@
     <ClCompile Include="CylinderCollision.cpp">
       <Filter>Source Files\Avoidance</Filter>
     </ClCompile>
+    <ClCompile Include="SaveWeightsMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -206,6 +209,9 @@
     </ClInclude>
     <ClInclude Include="CylinderCollision.h">
       <Filter>Header Files\Avoidance</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveWeightsMessage.h">
+      <Filter>Header Files\Messaging</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

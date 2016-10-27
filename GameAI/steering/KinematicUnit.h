@@ -58,6 +58,8 @@ public:
 	void boidsSteering();
 
 	BoxCollision* getBoxCollider();
+	inline CylinderCollision* getCollider() { return mpCircleCollider; };
+
 	void changeMaxVel(float vel) { mMaxVelocity += vel; };
 	Steering* getSteering() { return mpCurrentSteering; };
 

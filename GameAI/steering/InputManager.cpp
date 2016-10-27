@@ -112,7 +112,7 @@ void InputManager::getKeyboardInput()
 				MESSAGE_MANAGER->addMessage(pMessage, 0);
 			}
 
-			if (mEvent.keyboard.keycode == ALLEGRO_KEY_S)
+			if (mEvent.keyboard.keycode == ALLEGRO_KEY_S && !(al_key_down(&keyState, ALLEGRO_KEY_LCTRL) || al_key_down(&keyState, ALLEGRO_KEY_RCTRL)))
 			{
 				GameMessage* pMessage = new SelectPropertiesMessage(SEPERATION_WEIGHT);
 				MESSAGE_MANAGER->addMessage(pMessage, 0);
@@ -157,6 +157,13 @@ void InputManager::getKeyboardInput()
 			if (mEvent.keyboard.keycode == ALLEGRO_KEY_PAD_MINUS)
 			{
 				GameMessage* pMessage = new ChangeCurrentPropertyMessage(false, 10);
+				MESSAGE_MANAGER->addMessage(pMessage, 0);
+			}
+
+			// Save the weights
+			if (mEvent.keyboard.keycode == ALLEGRO_KEY_S && (al_key_down(&keyState, ALLEGRO_KEY_LCTRL) || al_key_down(&keyState, ALLEGRO_KEY_RCTRL))) // Allegro doesn't let you check two of the ALLEGRO_EVENTS at the same time
+			{
+				GameMessage* pMessage = new SaveWeightsMessage();
 				MESSAGE_MANAGER->addMessage(pMessage, 0);
 			}
 

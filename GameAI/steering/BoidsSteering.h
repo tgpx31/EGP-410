@@ -39,7 +39,7 @@ private:
 	CohesionSteering* mpCohesion;
 	SeperationSteering* mpSeperation;
 
-	int mWeights[3] = {3, 6, 10};
+	int mWeights[3] = {3, 6, 10};	// cohesion seperation alignment
 
 	int mRadius;
 

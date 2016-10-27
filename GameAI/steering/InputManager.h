@@ -12,6 +12,7 @@
 #include "TogglePropertiesMessage.h"
 #include "SelectPropertiesMessage.h"
 #include "ChangeCurrentPropertyMessage.h"
+#include "SaveWeightsMessage.h"
 
 #include <sstream>
 
