@@ -1,7 +1,7 @@
-# EGP-410 Assignment 2 (Brian Baron)
+# EGP-410 Assignment 3 (Brian Baron)
 
 # Commit:
-	3ed651b41d70578b27828466494bd65750eb680a
+	sha
 	Repo Link: https://github.com/tgpx31/EGP-410
 
 # To Compile/Link:
@@ -23,11 +23,16 @@ RELEASE:
 
 # Keyboard Inputs:
 ## In Properties:
-	* I: open properties menu
-	* V, R, A, C: Select properties (displayed on screen) [Velocity, Radius, Angular Velocity, Unit Accel]
+	* P: open properties menu
+	* V, R, A, C: Select properties (displayed on screen)
+	[Velocity, Radius, Angular Velocity, Unit Accel, Cohesion, Seperation, Alignment]
 	* +/-: increment and decrement the value of selected property
-## Out of Properties:
-	* S: Spawn WanderAndSeek unit 200px away
-	* F: Spaw WanderAndFlee unit 100px away
+
+## Other Inputs:
+	* I: Spawn 5 Boids Units @ mouse position
+	* D: Delete a random Unit form the map
+	* CTRL + S: Save steering weights to savedWeights.txt
 
 # Additional Notes:
+The Boids Steering behavior is the result of weighted blending from Cohesion, Seperation, and Alignment behaviors.
+savedWeights.txt is automatically loaded if existing on run. If it isn't there, it loads default weights.

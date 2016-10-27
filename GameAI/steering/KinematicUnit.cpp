@@ -165,7 +165,7 @@ void KinematicUnit::wanderAndFlee(KinematicUnit * pTarget)
 
 void KinematicUnit::boidsSteering()
 {
-	BoidsSteering* pBoidsSteering = new BoidsSteering(this);
+	BoidsSteering* pBoidsSteering = new BoidsSteering(this, NULL);
 	setSteering(pBoidsSteering);
 }
 

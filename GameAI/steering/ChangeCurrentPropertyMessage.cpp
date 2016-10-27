@@ -83,27 +83,30 @@ void ChangeCurrentPropertyMessage::process()
 	// Cohesion weight
 	else if (prop == 4)
 	{
+		gpGame->getUnitManager()->setWeight(gpGame->getUnitManager()->getWeight(0) + mAmount / 10, 0);
 		for (iter = map.begin(); iter != map.end(); ++iter)
 		{
-			iter->second->getSteering()->updateWeight(mAmount, 0);
+			iter->second->getSteering()->updateWeight(mAmount / 10, 0);
 		}
 	}
 
 	// Seperation weight
 	else if (prop == 5)
 	{
+		gpGame->getUnitManager()->setWeight(gpGame->getUnitManager()->getWeight(1) + mAmount / 10, 1);
 		for (iter = map.begin(); iter != map.end(); ++iter)
 		{
-			iter->second->getSteering()->updateWeight(mAmount, 1);
+			iter->second->getSteering()->updateWeight(mAmount / 10, 1);
 		}
 	}
 
 	// Alignment weight
 	else if (prop == 6)
 	{
+		gpGame->getUnitManager()->setWeight(gpGame->getUnitManager()->getWeight(2) + mAmount / 10, 2);
 		for (iter = map.begin(); iter != map.end(); ++iter)
 		{
-			iter->second->getSteering()->updateWeight(mAmount, 2);
+			iter->second->getSteering()->updateWeight(mAmount / 10, 2);
 		}
 	}
 }

@@ -23,6 +23,8 @@ typedef std::string UnitKey;
 class UnitManager : public Trackable
 {
 private:
+	const std::string mFile = "savedWeights.txt";
+
 	float ENEMY_MAX_VEL = 180.0f;
 	float mRotVel = 0.0f;
 
@@ -31,6 +33,9 @@ private:
 	std::map<UnitKey, KinematicUnit*> mUnits;
 	void cleanUp();
 	Sprite* mEnemySpr;
+
+	int mWeights[3] = { 6, 3, 6 };
+	void loadWeights();
 
 public:
 	UnitManager(Sprite* enemySprite);
@@ -52,6 +57,9 @@ public:
 
 	void changeMaxAccel(float newAccel) { ENEMY_MAX_ACCEL += newAccel; };
 	inline float getMaxAccel() { return ENEMY_MAX_ACCEL; };
+
+	inline int getWeight(int id) { return mWeights[id]; };
+	inline void setWeight(int val, int id) { mWeights[id] = val; };
 };
 
 #endif

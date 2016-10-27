@@ -1,27 +1,13 @@
 #ifndef BOIDS_STEERING_H
 #define BOIDS_STEERING_H
 
-/*
-*****************************************************************************
-/$$$$$$$ /$$                /$$$$$$$
-| $$__  $|__/               | $$__  $$
-| $$  \ $$/$$ /$$$$$$       | $$  \ $$/$$$$$$  /$$$$$$  /$$$$$$  /$$$$$$
-| $$$$$$$| $$/$$__  $$      | $$$$$$$/$$__  $$/$$__  $$/$$__  $$|____  $$
-| $$__  $| $| $$  \ $$      | $$____| $$  \ $| $$  \ $| $$  \ $$ /$$$$$$$
-| $$  \ $| $| $$  | $$      | $$    | $$  | $| $$  | $| $$  | $$/$$__  $$
-| $$$$$$$| $|  $$$$$$$      | $$    |  $$$$$$| $$$$$$$| $$$$$$$|  $$$$$$$
-|_______/|__/\____  $$      |__/     \______/| $$____/| $$____/ \_______/
-			 /$$  \ $$                       | $$     | $$
-			|  $$$$$$/                       | $$     | $$
-			 \______/                        |__/     |__/
-*****************************************************************************
-
-In other words, this is the GroupAlignment steering. It contains all methods for boids behavior.
-https://www.youtube.com/watch?v=phaJXp_zMYM
-
-*/
+/* Boids Steering Class
+ * Manages 3 behaivors via weighting and blending
+ * AKA the Big Poppa class
+ */
 
 #include "Steering.h"
+#include <string>
 
 class KinematicUnit;
 
@@ -39,9 +25,10 @@ private:
 	CohesionSteering* mpCohesion;
 	SeperationSteering* mpSeperation;
 
-	int mWeights[3] = {3, 6, 10};	// cohesion seperation alignment
-
+	int mWeights[3] = {0, 0, 0};	// cohesion seperation alignment
 	int mRadius;
+
+	void loadWeights();
 
 public:
 	BoidsSteering(KinematicUnit* pMover, KinematicUnit* pTarget = NULL);

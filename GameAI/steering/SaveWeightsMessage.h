@@ -7,7 +7,7 @@
 class SaveWeightsMessage : public GameMessage
 {
 private:
-	std::string mFile;
+	const std::string mFile = "savedWeights.txt";
 
 public:
 	SaveWeightsMessage();

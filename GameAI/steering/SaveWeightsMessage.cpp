@@ -9,7 +9,6 @@
 SaveWeightsMessage::SaveWeightsMessage()
 :GameMessage(SAVE_WEIGHTS_MESSAGE)
 {
-	mFile = "savedWeights.txt";
 }
 
 SaveWeightsMessage::~SaveWeightsMessage()

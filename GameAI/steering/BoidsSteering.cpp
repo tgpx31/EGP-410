@@ -9,6 +9,13 @@
 
 #include "KinematicWanderSteering.h"
 
+void BoidsSteering::loadWeights()
+{
+			mWeights[0] = gpGame->getUnitManager()->getWeight(0);
+			mWeights[1] = gpGame->getUnitManager()->getWeight(1);
+			mWeights[2] = gpGame->getUnitManager()->getWeight(2);
+}
+
 BoidsSteering::BoidsSteering(KinematicUnit* pMover, KinematicUnit* pTarget)
 :mpMover(pMover),
 mpTarget(pTarget)
@@ -20,10 +27,8 @@ mpTarget(pTarget)
 	mpSeperation = new SeperationSteering(pMover);
 
 	mApplyDirectly = false;
-
-	mWeights[0] = 3;
-	mWeights[1] = 6;
-	mWeights[2] = 10;
+	
+	loadWeights();
 }
 
 BoidsSteering::~BoidsSteering()

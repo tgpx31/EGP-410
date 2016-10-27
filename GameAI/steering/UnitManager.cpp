@@ -2,10 +2,50 @@
 #include "KinematicUnit.h"
 
 #include "Vector2D.h"
+#include <fstream>
+
+
+void UnitManager::loadWeights()
+{
+	std::string line;
+	int i = 0;
+
+
+	// If the file does not exist, do default weights
+	if (!std::ifstream(mFile))
+	{
+		return;
+	}
+	
+	// If there is a file, open a filestream
+	std::ifstream inFile;
+	inFile.open(mFile);
+
+	// check if good
+	if (!inFile.fail())
+	{
+		// read in values and assign them
+		while (!inFile.eof() && i < 2)
+		{
+			inFile >> mWeights[i];
+				
+			++i;
+		}
+	}
+	else
+	{
+		std::cout << "\nFUCK ME, RIGHT\n";
+	}
+
+	// close the file
+	inFile.close();
+	
+}
 
 UnitManager::UnitManager(Sprite* enemySprite)
 {
 	mEnemySpr = enemySprite;
+	loadWeights();
 }
 
 UnitManager::~UnitManager()

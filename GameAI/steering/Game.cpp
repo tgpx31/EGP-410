@@ -45,7 +45,6 @@ Game::Game()
 	, mpUnitManager(NULL)
 	, mpInputManager(NULL)
 	, mpPropertiesManager(NULL)
-	//,mSmurfBufferID(INVALID_ID)
 {
 }
 
