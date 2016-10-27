@@ -1,7 +1,7 @@
 # EGP-410 Assignment 3 (Brian Baron)
 
 # Commit:
-	sha
+	ddcadfb2062bfadb250beda7de7a0b670fc67697
 	Repo Link: https://github.com/tgpx31/EGP-410
 
 # To Compile/Link:
@@ -25,7 +25,7 @@ RELEASE:
 ## In Properties:
 	* P: open properties menu
 	* V, R, A, C: Select properties (displayed on screen)
-		** [Velocity, Radius, Angular Velocity, Unit Accel, Cohesion, Seperation, Alignment]
+		* [Velocity, Radius, Angular Velocity, Unit Accel, Cohesion, Seperation, Alignment]
 	* +/-: increment and decrement the value of selected property
 
 ## Other Inputs:
