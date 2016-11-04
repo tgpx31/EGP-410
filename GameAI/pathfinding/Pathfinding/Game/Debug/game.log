@@ -1,18 +1,3 @@
-﻿  PathToMessage.cpp
-  PathfindingDebugContent.cpp
-  Pathfinder.cpp
-  Path.cpp
-  Node.cpp
-  main.cpp
-  GridPathfinder.cpp
-  GridGraph.cpp
-  Graph.cpp
-  GameMessageManager.cpp
-  GameMessage.cpp
-  GameApp.cpp
-  DepthFirstPathfinder.cpp
-  DebugDisplay.cpp
-  Connection.cpp
-  Generating Code...
+﻿  main.cpp
   game.vcxproj -> C:\Users\Student\Documents\_Brian\EGP-410\GameAI\pathfinding\Pathfinding\Debug\game.exe
   game.vcxproj -> C:\Users\Student\Documents\_Brian\EGP-410\GameAI\pathfinding\Pathfinding\Debug\game.pdb (Full PDB)
