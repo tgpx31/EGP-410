@@ -5,4 +5,5 @@
   MemoryTracker.cpp
   MemoryPool.cpp
   Generating Code...
-  DeanLib.vcxproj -> C:\Users\Brian\Desktop\EGP-410\DeanLib\Debug\DeanLib.lib
+cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
+  DeanLib.vcxproj -> C:\Users\Student\Documents\_Brian\EGP-410\DeanLib\Debug\DeanLib.lib
