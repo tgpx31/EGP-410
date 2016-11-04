@@ -10,6 +10,8 @@
  */
 bool InputManager::init()
 {
+	holdClick = false;
+
 	// Initialize Allegro
 	if (!al_install_keyboard())
 	{
@@ -47,7 +49,7 @@ void InputManager::getMouseInput()
 {
 	al_get_mouse_state(&mMouseState);
 
-	if (al_mouse_button_down(&mMouseState, 1))	//left mouse click
+	if (al_mouse_button_down(&mMouseState, 1) && !holdClick)	// left mouse click
 	{
 		static Vector2D lastPos(0.0f, 0.0f);
 		Vector2D pos(mMouseState.x, mMouseState.y);
@@ -57,6 +59,13 @@ void InputManager::getMouseInput()
 			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
 			lastPos = pos;
 		}
+		holdClick = true;
+	}
+
+	// If they aren't holding the button down, let them click again
+	if (!al_mouse_button_down(&mMouseState, 1))
+	{
+		holdClick = false;
 	}
 }
 

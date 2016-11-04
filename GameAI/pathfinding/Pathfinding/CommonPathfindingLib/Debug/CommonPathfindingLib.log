@@ -1,5 +1,4 @@
-﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppClean.targets(76,5): warning : The process cannot access the file 'c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\commonpathfindinglib\debug\sprite.obj' because it is being used by another process.
-  SpriteManager.cpp
+﻿  SpriteManager.cpp
   Sprite.cpp
   GridVisualizer.cpp
   Grid.cpp
