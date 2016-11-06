@@ -27,7 +27,7 @@
 
 const IDType BACKGROUND_ID = ENDING_SEQUENTIAL_ID + 1;
 const int GRID_SQUARE_SIZE = 32;
-const std::string gFileName = "pathgrid.txt";
+const std::string gFileName = "../Editor/pathgrid.txt";
 
 GameApp::GameApp()
 :mpMessageManager(NULL)
@@ -138,20 +138,6 @@ void GameApp::processLoop()
 
 	mpMessageManager->processMessagesForThisframe();
 
-	/*ALLEGRO_MOUSE_STATE mouseState;
-	al_get_mouse_state( &mouseState );*/
-
-	//if( al_mouse_button_down( &mouseState, 1 ) )//left mouse click
-	//{
-	//	/*static Vector2D lastPos( 0.0f, 0.0f );
-	//	Vector2D pos( mouseState.x, mouseState.y );
-	//	if( lastPos.getX() != pos.getX() || lastPos.getY() != pos.getY() )
-	//	{
-	//		GameMessage* pMessage = new PathToMessage( lastPos, pos );
-	//		mpMessageManager->addMessage( pMessage, 0 );
-	//		lastPos = pos;
-	//	}*/
-	//}
 	mpInputManager->update();
 
 	//should be last thing in processLoop

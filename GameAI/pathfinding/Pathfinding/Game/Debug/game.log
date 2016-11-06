@@ -1,4 +1,2 @@
-﻿  InputManager.cpp
-cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
-  game.vcxproj -> C:\Users\Student\Documents\_Brian\EGP-410\GameAI\pathfinding\Pathfinding\Debug\game.exe
+﻿  game.vcxproj -> C:\Users\Student\Documents\_Brian\EGP-410\GameAI\pathfinding\Pathfinding\Debug\game.exe
   game.vcxproj -> C:\Users\Student\Documents\_Brian\EGP-410\GameAI\pathfinding\Pathfinding\Debug\game.pdb (Full PDB)

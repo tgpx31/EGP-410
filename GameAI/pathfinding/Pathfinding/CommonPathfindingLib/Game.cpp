@@ -96,20 +96,6 @@ bool Game::init()
 		return false;
 	}
 
-	//should probably be done in the InputSystem!
-	if( !al_install_keyboard() )
-	{
-		printf( "Keyboard not installed!\n" ); 
-		return false;
-	}
-
-	//should probably be done in the InputSystem!
-	if( !al_install_mouse() )
-	{
-		printf( "Mouse not installed!\n" ); 
-		return false;
-	}
-
 	//should be somewhere else!
 	al_init_font_addon();
 	if( !al_init_ttf_addon() )
@@ -160,8 +146,7 @@ void Game::cleanup()
 	al_shutdown_image_addon();
 	al_shutdown_font_addon();
 	al_shutdown_ttf_addon();
-	al_uninstall_keyboard();
-	al_uninstall_mouse();
+
 	al_shutdown_primitives_addon();
 }
 

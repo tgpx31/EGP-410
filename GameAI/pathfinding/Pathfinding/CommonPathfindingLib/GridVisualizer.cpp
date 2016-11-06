@@ -1,9 +1,12 @@
 #include <allegro5/allegro_primitives.h>
+#include <allegro5/allegro_ttf.h>
 #include "GridVisualizer.h"
 #include "GraphicsSystem.h"
 #include "GraphicsBuffer.h"
 #include "Grid.h"
 #include "Vector2D.h"
+
+#include "Game.h"
 
 GridVisualizer::GridVisualizer( Grid* pGrid )
 :mpGrid(pGrid)
@@ -93,6 +96,27 @@ void GridVisualizer::draw( GraphicsBuffer& dest )
 		{
 			Vector2D ulPos = mpGrid->getULCornerOfSquare( theIndices[i] );
 			al_draw_filled_rectangle( ulPos.getX(), ulPos.getY(), ulPos.getX() + squareSize, ulPos.getY() + squareSize, iter->first );
+
+			const ALLEGRO_COLOR startColor = al_map_rgb(1, 255, 128);
+			const ALLEGRO_COLOR stopColor = al_map_rgb(1, 128, 255);
+
+			// This should only happen on the start node and end node
+			// checking this way becaus ethe AllegroColorCompare operator() does not want to work
+			if (iter->first.r == startColor.r &&
+				iter->first.g == startColor.g &&
+				iter->first.b == startColor.b)
+			{
+				al_draw_text(gpGame->getFont(), al_map_rgb(255, 255, 255), ulPos.getX() + squareSize / 4, ulPos.getY() + squareSize / 4, ALLEGRO_ALIGN_LEFT, "S");
+			}
+				
+
+			if (iter->first.r == stopColor.r &&
+				iter->first.g == stopColor.g &&
+				iter->first.b == stopColor.b)
+			{
+				al_draw_text(gpGame->getFont(), al_map_rgb(255, 255, 255), ulPos.getX() + squareSize / 4, ulPos.getY() + squareSize / 4, ALLEGRO_ALIGN_LEFT, "G");
+			}
+				
 			//mpBuffer->fillRegion( ulPos, Vector2D( ulPos.getX() + squareSize, ulPos.getY() + squareSize ), iter->first );
 		}
 	}

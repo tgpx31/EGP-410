@@ -5,6 +5,8 @@
 #include "Grid.h"
 #include "GridGraph.h"
 
+#include <allegro5\allegro_ttf.h>
+
 PathToMessage::PathToMessage( const Vector2D& from, const Vector2D& to )
 :GameMessage(PATH_TO_MESSAGE)
 ,mFrom(from)
