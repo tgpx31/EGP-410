@@ -4,6 +4,7 @@
 
 #include "GameMessageManager.h"
 #include "PathToMessage.h"
+#include "GridPathfinder.h"
 
 /* Initialize
  * If any component fails install, return false
@@ -47,18 +48,36 @@ void InputManager::cleanUp()
 /* Get Input: Mouse*/
 void InputManager::getMouseInput()
 {
-	al_get_mouse_state(&mMouseState);
+	al_get_mouse_state(&mMouseState);	
 
 	if (al_mouse_button_down(&mMouseState, 1) && !holdClick)	// left mouse click
 	{
 		static Vector2D lastPos(0.0f, 0.0f);
 		Vector2D pos(mMouseState.x, mMouseState.y);
-		if (lastPos.getX() != pos.getX() || lastPos.getY() != pos.getY())
+
+		if (startNode)
 		{
+			lastPos = Vector2D(mMouseState.x, mMouseState.y);
+
+			// Can you clear the path?
+			gpGameApp->getPathfinder()->clearPath();
+
+			// path to yourself to draw yourself easily
+			GameMessage* pMessage = new PathToMessage(lastPos, lastPos);
+			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
+
+			startNode = false;
+		}
+		else
+		{
+			Vector2D pos(mMouseState.x, mMouseState.y);
+
 			GameMessage* pMessage = new PathToMessage(lastPos, pos);
 			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
-			lastPos = pos;
+
+			startNode = true;
 		}
+
 		holdClick = true;
 	}
 
