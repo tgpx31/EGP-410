@@ -4,6 +4,7 @@
 
 #include "GameMessageManager.h"
 #include "PathToMessage.h"
+#include "ExitGameMessage.h"
 #include "GridPathfinder.h"
 
 /* Initialize
@@ -107,9 +108,8 @@ void InputManager::getKeyboardInput()
 		// Exit game key input
 		if (mEvent.keyboard.keycode == ALLEGRO_KEY_ESCAPE)
 		{
-			/*GameMessage* aMessage = new ExitGameMessage();
-			MESSAGE_MANAGER->addMessage(aMessage, 0);*/
-			gpGame->markForExit();
+			GameMessage* aMessage = new ExitGameMessage();
+			gpGameApp->getMessageManager()->addMessage(aMessage, 0);
 		}
 	}
 }
