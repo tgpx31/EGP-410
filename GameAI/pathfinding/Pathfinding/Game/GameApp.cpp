@@ -135,7 +135,7 @@ void GameApp::processLoop()
 	mpGridVisualizer->draw( *pBackBuffer );
 #ifdef VISUALIZE_PATH
 	//show pathfinder visualizer
-	mpPathfinder->drawVisualization(mpGrid, pBackBuffer);
+	mpPathfinder->drawVisualization(mpGrid, pBackBuffer, mIsAStar);
 #endif
 
 	mpDebugDisplay->draw( pBackBuffer );
@@ -159,11 +159,13 @@ void GameApp::changeMethod(bool isAStar)
 	{
 		AStarPathfinder* pAStarPathfinder = new AStarPathfinder(mpGridGraph);
 		setPathfinding(pAStarPathfinder);
+		mIsAStar = isAStar;
 	}
 	else if (!isAStar)
 	{
 		DijkstraPathfinder* pDijkstraPathfinder = new DijkstraPathfinder(mpGridGraph);
 		setPathfinding(pDijkstraPathfinder);
+		mIsAStar = isAStar;
 	}
 }
 

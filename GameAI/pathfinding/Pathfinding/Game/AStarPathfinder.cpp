@@ -102,17 +102,17 @@ const Path& AStarPathfinder::findPath(Node* pFrom, Node* pTo)
 	} // End of the while loop, all necessary nodes explored
 
 	  // Time to iterate backwards
-	pCurrentNode = pTo;
-	mPath.clear();
+	//pCurrentNode = pTo;
+	//mPath.clear();
 
-	while (toNodeAdded && !mPath.containsNode(pFrom))
-	{
-		// Build the path
-		mPath.addNode(pCurrentNode);
+	//while (toNodeAdded && !mPath.containsNode(pFrom))
+	//{
+	//	// Build the path
+	//	mPath.addNode(pCurrentNode);
 
-		// iterate backwards until at start
-		pCurrentNode = pCurrentNode->becomePrev();
-	}
+	//	// iterate backwards until at start
+	//	pCurrentNode = pCurrentNode->becomePrev();
+	//}
 
 	gpPerformanceTracker->stopTracking("path");
 	mTimeElapsed = gpPerformanceTracker->getElapsedTime("path");

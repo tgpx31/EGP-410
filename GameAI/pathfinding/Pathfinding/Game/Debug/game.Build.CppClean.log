@@ -1,8 +1,11 @@
 c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\game\debug\vc140.pdb
 c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\game\debug\vc140.idb
+c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\game\debug\astarpathfinder.obj
+c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\game\debug\changemethodmessage.obj
 c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\game\debug\connection.obj
 c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\game\debug\debugdisplay.obj
 c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\game\debug\depthfirstpathfinder.obj
+c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\game\debug\dijkstrapathfinder.obj
 c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\game\debug\exitgamemessage.obj
 c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\game\debug\gameapp.obj
 c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\game\debug\gamemessage.obj
@@ -17,9 +20,6 @@ c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\game\de
 c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\game\debug\pathfinder.obj
 c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\game\debug\pathfindingdebugcontent.obj
 c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\game\debug\pathtomessage.obj
-c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\game\debug\dijkstrapathfinder.obj
-c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\game\debug\astarpathfinder.obj
-c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\game\debug\changemethodmessage.obj
 c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\debug\game.ilk
 c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\debug\game.exe
 c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\debug\game.pdb

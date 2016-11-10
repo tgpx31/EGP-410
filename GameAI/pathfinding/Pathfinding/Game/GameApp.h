@@ -48,6 +48,7 @@ public:
 
 	void changeMethod(bool isAStar);
 	void setPathfinding(GridPathfinder* pathfinder);
+
 private:
 	GameMessageManager* mpMessageManager;
 	Grid* mpGrid;
@@ -58,5 +59,7 @@ private:
 	GridPathfinder* mpPathfinder;
 
 	InputManager* mpInputManager;
+
+	bool mIsAStar = false;
 };
 

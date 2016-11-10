@@ -23,7 +23,7 @@ GridPathfinder::~GridPathfinder()
 }
 
 #ifdef VISUALIZE_PATH
-void GridPathfinder::drawVisualization( Grid* pGrid, GraphicsBuffer* pDest )
+void GridPathfinder::drawVisualization( Grid* pGrid, GraphicsBuffer* pDest, bool isAStar )
 {
 	if (mpVisualizer == NULL)
 	{
@@ -34,9 +34,15 @@ void GridPathfinder::drawVisualization( Grid* pGrid, GraphicsBuffer* pDest )
 		mpVisualizer->clear();
 	}
 
-	static ALLEGRO_COLOR pathColor = al_map_rgb( 255, 64, 64 );
-	static ALLEGRO_COLOR startColor = al_map_rgb(1, 255, 128);
-	static ALLEGRO_COLOR stopColor = al_map_rgb(1, 128, 255);
+	static ALLEGRO_COLOR pathColor;
+
+	if (!isAStar)
+		pathColor = al_map_rgb( 255, 64, 64 );
+	else
+		pathColor = al_map_rgb(64, 64, 255);
+
+	static ALLEGRO_COLOR startColor = al_map_rgb(1, 128, 255);
+	static ALLEGRO_COLOR stopColor = al_map_rgb(1, 255, 128);
 
 	unsigned int numNodes = mPath.getNumNodes();
 	ALLEGRO_COLOR currentPathColor = pathColor;
@@ -47,7 +53,11 @@ void GridPathfinder::drawVisualization( Grid* pGrid, GraphicsBuffer* pDest )
 		{
 			mpVisualizer->addColor(mPath.peekNode(i)->getId(), currentPathColor);
 			float lerpVal = lerp( i, 0, numNodes );
-			currentPathColor.r = 1.0f - lerpVal;
+
+			if (!isAStar)
+				currentPathColor.r = 1.0f - lerpVal;
+			else if (isAStar)
+				currentPathColor.b = 1.0f - lerpVal;
 		}
 
 		//add beginning and ending color

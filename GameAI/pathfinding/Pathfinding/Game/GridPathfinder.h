@@ -19,7 +19,7 @@ public:
 #ifdef VISUALIZE_PATH
 	//just for visualization
 public:
-	void drawVisualization( Grid* pGrid, GraphicsBuffer* pDest );
+	void drawVisualization( Grid* pGrid, GraphicsBuffer* pDest, bool isAStar);
 protected:
 	std::vector<Node*> mVisitedNodes;
 	GridVisualizer* mpVisualizer;
