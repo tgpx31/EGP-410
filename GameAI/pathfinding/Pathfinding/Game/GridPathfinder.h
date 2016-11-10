@@ -20,9 +20,14 @@ public:
 	//just for visualization
 public:
 	void drawVisualization( Grid* pGrid, GraphicsBuffer* pDest, bool isAStar);
+	void drawLineToNodes(Node* node);
+	//inline std::vector<Node*> getFinalPath() { return mFinalPath; };
+	inline void clearFinalPath() { mFinalPath.clear(); };
 protected:
 	std::vector<Node*> mVisitedNodes;
 	GridVisualizer* mpVisualizer;
+
+	std::vector<Node*> mFinalPath;
 #endif
 
 	double mTimeElapsed;

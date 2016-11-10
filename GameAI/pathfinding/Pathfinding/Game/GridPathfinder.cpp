@@ -1,10 +1,13 @@
 #include <allegro5/allegro.h>
+#include <allegro5\allegro_primitives.h>
 #include "GridPathfinder.h"
 #include "GridGraph.h"
 #include "GridVisualizer.h"
 #include "Path.h"
-#include "Game.h"
+#include "Grid.h"
 #include "GraphicsBuffer.h"
+#include "Vector2D.h"
+#include "GameApp.h"
 
 GridPathfinder::GridPathfinder( GridGraph* pGraph )
 :Pathfinder(pGraph)
@@ -66,5 +69,18 @@ void GridPathfinder::drawVisualization( Grid* pGrid, GraphicsBuffer* pDest, bool
 	}
 
 	mpVisualizer->draw(*pDest);
+	for (int i = 0; i < mFinalPath.size(); ++i)
+	{
+		// Draw a line
+		drawLineToNodes(mFinalPath[i]);
+	}
+}
+void GridPathfinder::drawLineToNodes(Node * node)
+{
+	al_draw_line(gpGameApp->getGrid()->getULCornerOfSquare(node->getId()).getX() + gpGameApp->getGrid()->getSquareSize() / 2,
+		gpGameApp->getGrid()->getULCornerOfSquare(node->getId()).getY() + gpGameApp->getGrid()->getSquareSize() / 2,
+		gpGameApp->getGrid()->getULCornerOfSquare(node->getPrevNode()).getX() + gpGameApp->getGrid()->getSquareSize() / 2,
+		gpGameApp->getGrid()->getULCornerOfSquare(node->getPrevNode()).getY() + gpGameApp->getGrid()->getSquareSize() / 2,
+		al_map_rgb(255, 255, 255), 5);
 }
 #endif

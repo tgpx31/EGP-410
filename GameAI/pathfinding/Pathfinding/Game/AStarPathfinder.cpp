@@ -32,6 +32,8 @@ const Path& AStarPathfinder::findPath(Node* pFrom, Node* pTo)
 	pFrom->setCostFromStart(pFrom, 0.0f);
 	nodesToVisit.push_front(pFrom);		// visit the initial node first
 
+	mFinalPath.clear();
+
 #ifdef VISUALIZE_PATH
 	mVisitedNodes.clear();
 	mVisitedNodes.push_back(pFrom);
@@ -102,17 +104,19 @@ const Path& AStarPathfinder::findPath(Node* pFrom, Node* pTo)
 	} // End of the while loop, all necessary nodes explored
 
 	  // Time to iterate backwards
-	//pCurrentNode = pTo;
-	//mPath.clear();
+	pCurrentNode = pTo;
 
-	//while (toNodeAdded && !mPath.containsNode(pFrom))
-	//{
-	//	// Build the path
-	//	mPath.addNode(pCurrentNode);
+	while (toNodeAdded)
+	{
+		// Build the path
+		mFinalPath.push_back(pCurrentNode);
 
-	//	// iterate backwards until at start
-	//	pCurrentNode = pCurrentNode->becomePrev();
-	//}
+		if (pCurrentNode == pFrom)
+			toNodeAdded = false;
+
+		// iterate backwards until at start
+		pCurrentNode = pCurrentNode->becomePrev();
+	}
 
 	gpPerformanceTracker->stopTracking("path");
 	mTimeElapsed = gpPerformanceTracker->getElapsedTime("path");

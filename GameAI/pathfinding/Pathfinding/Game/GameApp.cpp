@@ -138,6 +138,8 @@ void GameApp::processLoop()
 	mpPathfinder->drawVisualization(mpGrid, pBackBuffer, mIsAStar);
 #endif
 
+	
+
 	mpDebugDisplay->draw( pBackBuffer );
 
 	mpMessageManager->processMessagesForThisframe();
