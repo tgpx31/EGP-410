@@ -7,7 +7,7 @@
 # To Compile/Link:
 If you have the whole repo:
 Rebuild entire solution. Should be linked. Set start up project to game.
-
+  
 Otherwise:
 IN PROJECT PROPERTIES:
 DEBUG:
