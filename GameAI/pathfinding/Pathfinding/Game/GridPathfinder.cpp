@@ -51,8 +51,8 @@ void GridPathfinder::drawVisualization( Grid* pGrid, GraphicsBuffer* pDest )
 		}
 
 		//add beginning and ending color
-		mpVisualizer->addColor(mPath.peekNode(0)->getId(), startColor);
-		mpVisualizer->addColor(mPath.peekNode(numNodes - 1)->getId(), stopColor);
+		mpVisualizer->addColor(mPath.peekNode(0)->getId(), stopColor);
+		mpVisualizer->addColor(mPath.peekNode(numNodes - 1)->getId(), startColor);
 	}
 
 	mpVisualizer->draw(*pDest);

@@ -1,10 +1,2 @@
-﻿  SpriteManager.cpp
-  Sprite.cpp
-  GridVisualizer.cpp
-  Grid.cpp
-  GraphicsSystem.cpp
-  GraphicsBufferManager.cpp
-  GraphicsBuffer.cpp
-  Game.cpp
-  Generating Code...
+﻿  GridVisualizer.cpp
   CommonPathfindingLib.vcxproj -> C:\Users\Brian\Documents\_Champlain\_Montreal2016\GitRepos\EGP-410\GameAI\pathfinding\Pathfinding\CommonPathfindingLib\Debug\CommonPathfindingLib.lib
