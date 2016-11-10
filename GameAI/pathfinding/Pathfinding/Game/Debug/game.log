@@ -1,3 +1,5 @@
-﻿  DepthFirstPathfinder.cpp
-  game.vcxproj -> C:\Users\Brian\Documents\_Champlain\_Montreal2016\GitRepos\EGP-410\GameAI\pathfinding\Pathfinding\Debug\game.exe
-  game.vcxproj -> C:\Users\Brian\Documents\_Champlain\_Montreal2016\GitRepos\EGP-410\GameAI\pathfinding\Pathfinding\Debug\game.pdb (Full PDB)
+﻿  GameApp.cpp
+  DijkstraPathfinder.cpp
+  Generating Code...
+  game.vcxproj -> C:\Users\Student\Documents\_Brian\EGP-410\GameAI\pathfinding\Pathfinding\Debug\game.exe
+  game.vcxproj -> C:\Users\Student\Documents\_Brian\EGP-410\GameAI\pathfinding\Pathfinding\Debug\game.pdb (Full PDB)
