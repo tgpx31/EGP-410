@@ -21,7 +21,7 @@ public:
 public:
 	void drawVisualization( Grid* pGrid, GraphicsBuffer* pDest, bool isAStar);
 	void drawLineToNodes(Node* node);
-	//inline std::vector<Node*> getFinalPath() { return mFinalPath; };
+	
 	inline void clearFinalPath() { mFinalPath.clear(); };
 protected:
 	std::vector<Node*> mVisitedNodes;

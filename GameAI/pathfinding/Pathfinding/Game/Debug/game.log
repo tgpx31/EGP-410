@@ -1,16 +1,15 @@
 ﻿  InputManager.cpp
+  Generating Code...
+cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
+  Compiling...
+  AStarPathfinder.cpp
+  DepthFirstPathfinder.cpp
+  DijkstraPathfinder.cpp
+  GameApp.cpp
   GridPathfinder.cpp
 c:\users\student\documents\_brian\egp-410\gameai\pathfinding\pathfinding\game\gridpathfinder.cpp(72): warning C4018: '<': signed/unsigned mismatch
-  GameApp.cpp
-  Generating Code...
-  Compiling...
-  DijkstraPathfinder.cpp
-  DepthFirstPathfinder.cpp
-  AStarPathfinder.cpp
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  PathfindingDebugContent.cpp
-  Pathfinder.cpp
   PathToMessage.cpp
+  PathfindingDebugContent.cpp
+  Generating Code...
   game.vcxproj -> C:\Users\Student\Documents\_Brian\EGP-410\GameAI\pathfinding\Pathfinding\Debug\game.exe
   game.vcxproj -> C:\Users\Student\Documents\_Brian\EGP-410\GameAI\pathfinding\Pathfinding\Debug\game.pdb (Full PDB)

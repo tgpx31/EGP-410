@@ -82,9 +82,6 @@ void InputManager::getMouseInput()
 			// Can you clear the path?
 			gpGameApp->getPathfinder()->clearPath();
 			gpGameApp->getPathfinder()->clearFinalPath();
-			// path to yourself to draw yourself easily
-			/*GameMessage* pMessage = new PathToMessage(lastPos, lastPos);
-			gpGameApp->getMessageManager()->addMessage(pMessage, 0);*/
 
 			startNode = false;
 		}
