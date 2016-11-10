@@ -1,6 +1,6 @@
  Editor
 
- Timestamp is 5823c9d7 (Wed Nov  9 20:13:59 2016)
+ Timestamp is 5824c7a9 (Thu Nov 10 14:16:57 2016)
 
  Preferred load address is 00400000
 
@@ -23,17 +23,17 @@
  0003:00000a54 00000104H .CRT$XPZ                DATA
  0003:00000b58 00000104H .CRT$XTA                DATA
  0003:00000c5c 00000104H .CRT$XTZ                DATA
- 0003:00000d60 000042d4H .rdata                  DATA
- 0003:00005034 0000077cH .rdata$r                DATA
- 0003:000057b0 000001c0H .rdata$zzzdbg           DATA
- 0003:00005970 00000104H .rtc$IAA                DATA
- 0003:00005a74 00000144H .rtc$IMZ                DATA
- 0003:00005bb8 00000104H .rtc$IZZ                DATA
- 0003:00005cbc 00000104H .rtc$TAA                DATA
- 0003:00005dc0 00000144H .rtc$TMZ                DATA
- 0003:00005f04 00000104H .rtc$TZZ                DATA
- 0003:00006008 0000384aH .xdata$x                DATA
- 0003:00009852 00000000H .edata                  DATA
+ 0003:00000d60 00004294H .rdata                  DATA
+ 0003:00004ff4 0000077cH .rdata$r                DATA
+ 0003:00005770 000001a4H .rdata$zzzdbg           DATA
+ 0003:00005914 00000104H .rtc$IAA                DATA
+ 0003:00005a18 00000144H .rtc$IMZ                DATA
+ 0003:00005b5c 00000104H .rtc$IZZ                DATA
+ 0003:00005c60 00000104H .rtc$TAA                DATA
+ 0003:00005d64 00000144H .rtc$TMZ                DATA
+ 0003:00005ea8 00000108H .rtc$TZZ                DATA
+ 0003:00005fb0 0000384aH .xdata$x                DATA
+ 0003:000097fa 00000000H .edata                  DATA
  0004:00000000 00000180H .data                   DATA
  0004:00000180 00000448H .data$r                 DATA
  0004:000005c8 00000514H .bss                    DATA
@@ -49,15 +49,15 @@
 
   Address         Publics by Value              Rva+Base       Lib:Object
 
- 0000:00000000       ___guard_iat_count         00000000     <absolute>
- 0000:00000000       ___guard_fids_count        00000000     <absolute>
- 0000:00000000       ___dynamic_value_reloc_table 00000000     <absolute>
- 0000:00000000       ___safe_se_handler_table   00000000     <absolute>
  0000:00000000       ___guard_fids_table        00000000     <absolute>
+ 0000:00000000       ___safe_se_handler_table   00000000     <absolute>
+ 0000:00000000       ___dynamic_value_reloc_table 00000000     <absolute>
  0000:00000000       ___guard_longjmp_table     00000000     <absolute>
+ 0000:00000000       ___guard_iat_count         00000000     <absolute>
  0000:00000000       ___guard_longjmp_count     00000000     <absolute>
  0000:00000000       ___guard_iat_table         00000000     <absolute>
  0000:00000000       ___safe_se_handler_count   00000000     <absolute>
+ 0000:00000000       ___guard_fids_count        00000000     <absolute>
  0000:00000100       ___guard_flags             00000100     <absolute>
  0000:00000000       ___ImageBase               00400000     <linker-defined>
  0001:00000000       __enc$textbss$begin        00401000     <linker-defined>
@@ -103,8 +103,8 @@
  0002:00005650       ??1_Bxty@?$_String_val@U?$_Simple_types@D@std@@@std@@QAE@XZ 0042a650 f i Editor.obj
  0002:00005690       ??1_Container_base12@std@@QAE@XZ 0042a690 f i Editor.obj
  0002:00005720       ??2@YAPAXIPAX@Z            0042a720 f i Editor.obj
- 0002:00005760       ??_GEditor@@UAEPAXI@Z      0042a760 f i Editor.obj
  0002:00005760       ??_EEditor@@UAEPAXI@Z      0042a760 f i Editor.obj
+ 0002:00005760       ??_GEditor@@UAEPAXI@Z      0042a760 f i Editor.obj
  0002:000057f0       ??_GGrid@@QAEPAXI@Z        0042a7f0 f i Editor.obj
  0002:00005880       ??_GGridVisualizer@@QAEPAXI@Z 0042a880 f i Editor.obj
  0002:00005910       ?_Alloc_proxy@?$_String_alloc@U?$_String_base_types@DV?$allocator@D@std@@@std@@@std@@QAEXXZ 0042a910 f i Editor.obj
@@ -1580,8 +1580,8 @@
  0002:00045870       ??0bad_array_new_length@std@@QAE@XZ 0046a870 f i MSVCRTD:throw_bad_alloc.obj
  0002:000458a0       ??1bad_alloc@std@@UAE@XZ   0046a8a0 f i MSVCRTD:throw_bad_alloc.obj
  0002:000458c0       ??1bad_array_new_length@std@@UAE@XZ 0046a8c0 f i MSVCRTD:throw_bad_alloc.obj
- 0002:000458e0       ??_Gbad_alloc@std@@UAEPAXI@Z 0046a8e0 f i MSVCRTD:throw_bad_alloc.obj
  0002:000458e0       ??_Ebad_alloc@std@@UAEPAXI@Z 0046a8e0 f i MSVCRTD:throw_bad_alloc.obj
+ 0002:000458e0       ??_Gbad_alloc@std@@UAEPAXI@Z 0046a8e0 f i MSVCRTD:throw_bad_alloc.obj
  0002:00045920       ??_Gbad_array_new_length@std@@UAEPAXI@Z 0046a920 f i MSVCRTD:throw_bad_alloc.obj
  0002:00045920       ??_Ebad_array_new_length@std@@UAEPAXI@Z 0046a920 f i MSVCRTD:throw_bad_alloc.obj
  0002:00045960       ?__scrt_throw_std_bad_alloc@@YAXXZ 0046a960 f   MSVCRTD:throw_bad_alloc.obj
@@ -1738,23 +1738,23 @@
  0002:00047f72       _VirtualQuery@12           0046cf72 f   kernel32:KERNEL32.dll
  0002:00047f78       _FreeLibrary@4             0046cf78 f   kernel32:KERNEL32.dll
  0002:00047f7e       _GetProcAddress@8          0046cf7e f   kernel32:KERNEL32.dll
+ 0002:00047f90       ___scrt_stub_for_acrt_initialize 0046cf90 f   MSVCRTD:ucrt_stubs.obj
  0002:00047f90       ___acrt_initialize         0046cf90 f   MSVCRTD:ucrt_stubs.obj
  0002:00047f90       ___vcrt_initialize         0046cf90 f   MSVCRTD:ucrt_stubs.obj
- 0002:00047f90       ___scrt_stub_for_acrt_initialize 0046cf90 f   MSVCRTD:ucrt_stubs.obj
- 0002:00047fa0       ___vcrt_thread_attach      0046cfa0 f   MSVCRTD:ucrt_stubs.obj
- 0002:00047fa0       ___scrt_stub_for_acrt_thread_attach 0046cfa0 f   MSVCRTD:ucrt_stubs.obj
  0002:00047fa0       ___acrt_thread_attach      0046cfa0 f   MSVCRTD:ucrt_stubs.obj
+ 0002:00047fa0       ___scrt_stub_for_acrt_thread_attach 0046cfa0 f   MSVCRTD:ucrt_stubs.obj
+ 0002:00047fa0       ___vcrt_thread_attach      0046cfa0 f   MSVCRTD:ucrt_stubs.obj
+ 0002:00047fb0       ___acrt_thread_detach      0046cfb0 f   MSVCRTD:ucrt_stubs.obj
  0002:00047fb0       ___vcrt_thread_detach      0046cfb0 f   MSVCRTD:ucrt_stubs.obj
  0002:00047fb0       ___scrt_stub_for_acrt_thread_detach 0046cfb0 f   MSVCRTD:ucrt_stubs.obj
- 0002:00047fb0       ___acrt_thread_detach      0046cfb0 f   MSVCRTD:ucrt_stubs.obj
  0002:00047fc0       ___vcrt_uninitialize       0046cfc0 f   MSVCRTD:ucrt_stubs.obj
  0002:00047fc0       ___acrt_uninitialize       0046cfc0 f   MSVCRTD:ucrt_stubs.obj
  0002:00047fc0       ___scrt_stub_for_acrt_uninitialize 0046cfc0 f   MSVCRTD:ucrt_stubs.obj
- 0002:00047fd0       ___vcrt_uninitialize_critical 0046cfd0 f   MSVCRTD:ucrt_stubs.obj
  0002:00047fd0       ___scrt_stub_for_acrt_uninitialize_critical 0046cfd0 f   MSVCRTD:ucrt_stubs.obj
  0002:00047fd0       ___acrt_uninitialize_critical 0046cfd0 f   MSVCRTD:ucrt_stubs.obj
- 0002:00047fe0       ___scrt_stub_for_is_c_termination_complete 0046cfe0 f   MSVCRTD:ucrt_stubs.obj
+ 0002:00047fd0       ___vcrt_uninitialize_critical 0046cfd0 f   MSVCRTD:ucrt_stubs.obj
  0002:00047fe0       __is_c_termination_complete 0046cfe0 f   MSVCRTD:ucrt_stubs.obj
+ 0002:00047fe0       ___scrt_stub_for_is_c_termination_complete 0046cfe0 f   MSVCRTD:ucrt_stubs.obj
  0003:00000000       ___xc_a                    00475000     MSVCRTD:initializers.obj
  0003:0000043c       ___xc_z                    0047543c     MSVCRTD:initializers.obj
  0003:00000540       ___xi_a                    00475540     MSVCRTD:initializers.obj
@@ -1824,187 +1824,187 @@
  0003:00001a14       ??_C@_08HHJKBNGC@cour?4ttf?$AA@ 00476a14     CommonPathfindingLib:Game.obj
  0003:00001a20       ??_C@_0CE@KEIEBNEM@ttf?5font?5file?5not?5loaded?5properl@ 00476a20     CommonPathfindingLib:Game.obj
  0003:00001a4c       ??_C@_0BN@GJEDGGAG@Primitives?5addon?5not?5added?$CB?6?$AA@ 00476a4c     CommonPathfindingLib:Game.obj
- 0003:00001a70       ??_C@_1BAA@DIKOPLMF@?$AAc?$AA?3?$AA?2?$AAu?$AAs?$AAe?$AAr?$AAs?$AA?2?$AAb?$AAr?$AAi?$AAa?$AAn?$AA?2?$AAd?$AAo?$AAc?$AAu?$AAm?$AAe?$AAn?$AAt?$AAs?$AA?2?$AA_?$AAc?$AAh?$AAa?$AAm?$AAp?$AAl@ 00476a70     CommonPathfindingLib:Game.obj
- 0003:00001ba4       ??_C@_1BK@FCDNEEDD@?$AAs?$AAt?$AAa?$AAr?$AAt?$AA?5?$AA?$DM?$AA?$DN?$AA?5?$AAe?$AAn?$AAd?$AA?$AA@ 00476ba4     CommonPathfindingLib:Game.obj
- 0003:00001bc8       __real@4000000000000000    00476bc8     CommonPathfindingLib:Game.obj
- 0003:00001bd4       __real@46fffe00            00476bd4     CommonPathfindingLib:Game.obj
- 0003:00001be0       ??_C@_1IK@BHJCIFB@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00476be0     CommonPathfindingLib:GraphicsBufferManager.obj
- 0003:00001c88       ??_C@_1DO@CFEEPGGJ@?$AAm?$AAa?$AAp?$AA?1?$AAs?$AAe?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AAs?$AA?5?$AAi?$AAn?$AAc?$AAo?$AAm?$AAp?$AAa?$AAt?$AAi?$AAb?$AAl?$AAe?$AA?$AA@ 00476c88     CommonPathfindingLib:GraphicsBufferManager.obj
- 0003:00001cd4       ??_C@_0CI@FNPHFCCM@Standard?5C?$CL?$CL?5Libraries?5Invalid?5A@ 00476cd4     CommonPathfindingLib:GraphicsBufferManager.obj
- 0003:00001d08       ??_C@_1FO@GJIHNDLM@?$AA?$CC?$AAS?$AAt?$AAa?$AAn?$AAd?$AAa?$AAr?$AAd?$AA?5?$AAC?$AA?$CL?$AA?$CL?$AA?5?$AAL?$AAi?$AAb?$AAr?$AAa?$AAr?$AAi?$AAe?$AAs?$AA?5?$AAI?$AAn?$AAv?$AAa?$AAl?$AAi?$AAd?$AA?5@ 00476d08     CommonPathfindingLib:GraphicsBufferManager.obj
- 0003:00001d78       ??_C@_1BKM@LBOFJKLH@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00476d78     CommonPathfindingLib:GraphicsBufferManager.obj
- 0003:00001f80       ??_C@_1EK@PPDBPCAN@?$AAm?$AAa?$AAp?$AA?1?$AAs?$AAe?$AAt?$AA?5?$AAe?$AAr?$AAa?$AAs?$AAe?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAo?$AAu?$AAt?$AAs?$AAi?$AAd?$AAe?$AA?5?$AAr@ 00476f80     CommonPathfindingLib:GraphicsBufferManager.obj
- 0003:00001fd8       ??_C@_1BCK@OJKBJFLO@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00476fd8     CommonPathfindingLib:GraphicsBufferManager.obj
- 0003:00002140       ??_C@_1EG@EHJFMBHJ@?$AAm?$AAa?$AAp?$AA?1?$AAs?$AAe?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAn?$AAo?$AAt?$AA?5?$AAi?$AAn?$AAc?$AAr?$AAe?$AAm?$AAe?$AAn?$AAt?$AAa?$AAb@ 00477140     CommonPathfindingLib:GraphicsBufferManager.obj
- 0003:00002198       ??_C@_1BKM@BBBIHDHC@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00477198     CommonPathfindingLib:GraphicsBufferManager.obj
- 0003:000023a0       ??_C@_1BCK@EJFMHMHL@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 004773a0     CommonPathfindingLib:GraphicsBufferManager.obj
- 0003:00002508       ??_C@_1EI@FHEHNNNM@?$AAm?$AAa?$AAp?$AA?1?$AAs?$AAe?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAn?$AAo?$AAt?$AA?5?$AAd?$AAe?$AAr?$AAe?$AAf?$AAe?$AAr?$AAe?$AAn?$AAc?$AAa@ 00477508     CommonPathfindingLib:GraphicsBufferManager.obj
- 0003:00002560       ??_C@_1BKK@NKNEDAJK@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00477560     CommonPathfindingLib:GraphicsBufferManager.obj
- 0003:00002760       ??_C@_1BCI@EAFCIGCE@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00477760     CommonPathfindingLib:GraphicsBufferManager.obj
- 0003:000028c4       ??_C@_1CG@LEJCKCBB@?$AAi?$AAn?$AAv?$AAa?$AAl?$AAi?$AAd?$AA?5?$AAc?$AAo?$AAm?$AAp?$AAa?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$AA@ 004778c4     CommonPathfindingLib:GraphicsBufferManager.obj
- 0003:000028f8       ??_C@_1IG@CDANFHMM@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 004778f8     CommonPathfindingLib:GraphicsBufferManager.obj
- 0003:00002998       ??_C@_1EM@MHOKKPFH@?$AAm?$AAa?$AAp?$AA?1?$AAs?$AAe?$AAt?$AA?5?$AAi?$AAn?$AAs?$AAe?$AAr?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAo?$AAu?$AAt?$AAs?$AAi?$AAd?$AAe?$AA?5@ 00477998     CommonPathfindingLib:GraphicsBufferManager.obj
- 0003:000029f8       ??_C@_1EG@OKCGOALM@?$AAm?$AAa?$AAp?$AA?1?$AAs?$AAe?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAn?$AAo?$AAt?$AA?5?$AAd?$AAe?$AAc?$AAr?$AAe?$AAm?$AAe?$AAn?$AAt?$AAa?$AAb@ 004779f8     CommonPathfindingLib:GraphicsBufferManager.obj
- 0003:00002a50       ??_C@_1BKM@OCCKMPLD@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00477a50     CommonPathfindingLib:GraphicsBufferManager.obj
- 0003:00002c58       ??_C@_1BCK@LKGOMALK@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00477c58     CommonPathfindingLib:GraphicsBufferManager.obj
- 0003:00002dc0       ??_C@_0BE@JONHPENG@map?1set?$DMT?$DO?5too?5long?$AA@ 00477dc0     CommonPathfindingLib:GraphicsBufferManager.obj
- 0003:00002ddc       ??_C@_01CLKCMJKC@?5?$AA@   00477ddc     CommonPathfindingLib:Grid.obj
- 0003:00002de0       ??_C@_0BD@OLBABOEK@vector?$DMT?$DO?5too?5long?$AA@ 00477de0     CommonPathfindingLib:Grid.obj
- 0003:00002e10       ??_C@_01CPLAODJH@S?$AA@    00477e10     CommonPathfindingLib:GridVisualizer.obj
- 0003:00002e14       ??_C@_01BBODEMC@G?$AA@     00477e14     CommonPathfindingLib:GridVisualizer.obj
- 0003:00002e18       ??_C@_1IM@NCODKBJH@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00477e18     CommonPathfindingLib:GridVisualizer.obj
- 0003:00002ec0       ??_C@_1DM@LHGCHCBA@?$AAv?$AAe?$AAc?$AAt?$AAo?$AAr?$AA?5?$AAs?$AAu?$AAb?$AAs?$AAc?$AAr?$AAi?$AAp?$AAt?$AA?5?$AAo?$AAu?$AAt?$AA?5?$AAo?$AAf?$AA?5?$AAr?$AAa?$AAn?$AAg?$AAe?$AA?$AA@ 00477ec0     CommonPathfindingLib:GridVisualizer.obj
- 0003:00002f08       ??_C@_1HC@HBCEAHKD@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AAv?$AAe?$AAc?$AAt?$AAo?$AAr?$AA?$DM?$AAi?$AAn?$AAt?$AA?0?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AAa?$AAl?$AAl?$AAo?$AAc@ 00477f08     CommonPathfindingLib:GridVisualizer.obj
- 0003:00002f90       ??_C@_1BIE@CKJBPEOB@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00477f90     CommonPathfindingLib:GridVisualizer.obj
- 0003:00003168       ??_C@_1BIE@IKGMBNCE@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00478168     CommonPathfindingLib:GridVisualizer.obj
- 0003:00003340       ??_C@_1BIC@KMEIKKAA@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00478340     CommonPathfindingLib:GridVisualizer.obj
- 0003:00003510       ??_C@_1BIE@HJFOKBOF@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00478510     CommonPathfindingLib:GridVisualizer.obj
- 0003:000036e8       ??_C@_1BBK@NOPGMEMI@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 004786e8     CommonPathfindingLib:SpriteManager.obj
- 0003:00003840       ??_C@_1BBK@HOALCNAN@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00478840     CommonPathfindingLib:SpriteManager.obj
- 0003:00003998       ??_C@_1BBI@EPEKJCPI@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00478998     CommonPathfindingLib:SpriteManager.obj
- 0003:00003ae8       ??_C@_1BBK@INDJJBMM@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00478ae8     CommonPathfindingLib:SpriteManager.obj
- 0003:00003c3c       ??_C@_0CL@CGPALMN@GraphicsSystem?3?3failed?5to?5create@ 00478c3c     CommonPathfindingLib:GraphicsSystem.obj
- 0003:00003c70       __real@3f800000            00478c70     CommonPathfindingLib:GraphicsSystem.obj
- 0003:00003c74       __real@00000000            00478c74     CommonPathfindingLib:Sprite.obj
- 0003:00003c78       __real@0000000000000000    00478c78     DeanLib:Timer.obj
- 0003:00003c88       __real@4024000000000000    00478c88     DeanLib:Timer.obj
- 0003:00003c98       __real@408f400000000000    00478c98     DeanLib:Timer.obj
- 0003:00003ca4       ??_C@_0DI@GKEBKCHH@MemoryTracker?5being?5deleted?3?5fin@ 00478ca4     DeanLib:MemoryTracker.obj
- 0003:00003ce8       ??_C@_0BN@IJFAENGF@Current?5memory?5allocations?3?6?$AA@ 00478ce8     DeanLib:MemoryTracker.obj
- 0003:00003d0c       ??_C@_05FGNEEEOC@?5num?3?$AA@ 00478d0c     DeanLib:MemoryTracker.obj
- 0003:00003d14       ??_C@_06NLINOEAE@?5size?3?$AA@ 00478d14     DeanLib:MemoryTracker.obj
- 0003:00003d1c       ??_C@_08GEBKOLPE@address?3?$AA@ 00478d1c     DeanLib:MemoryTracker.obj
- 0003:00003d28       ??_C@_1BDA@PAJOLEOP@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00478d28     DeanLib:MemoryTracker.obj
- 0003:00003e98       ??_C@_1BDA@FAGDFNCK@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00478e98     DeanLib:MemoryTracker.obj
- 0003:00004008       ??_C@_1BCO@OEOBCANG@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00479008     DeanLib:MemoryTracker.obj
- 0003:00004178       ??_C@_1BDA@KDFBOBOL@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00479178     DeanLib:MemoryTracker.obj
- 0003:000042e4       __real@00800000            004792e4     DeanLib:Vector2D.obj
- 0003:000042e8       ??_C@_0CM@OKINAFCK@f?3?2dd?2vctools?2crt?2crtw32?2stdcpp?2@ 004792e8     msvcprtd:locale0_implib.obj
- 0003:00004320       ??_7type_info@@6B@         00479320     MSVCRTD:std_type_info_static.obj
- 0003:000043d0       ??_7bad_alloc@std@@6B@     004793d0     MSVCRTD:throw_bad_alloc.obj
- 0003:000043dc       ??_C@_0P@GHFPNOJB@bad?5allocation?$AA@ 004793dc     MSVCRTD:throw_bad_alloc.obj
- 0003:000043f4       ??_7bad_array_new_length@std@@6B@ 004793f4     MSVCRTD:throw_bad_alloc.obj
- 0003:00004400       ??_C@_0BF@KINCDENJ@bad?5array?5new?5length?$AA@ 00479400     MSVCRTD:throw_bad_alloc.obj
- 0003:000044d8       ??_C@_0NN@NGPKDKPD@The?5value?5of?5ESP?5was?5not?5properl@ 004794d8     MSVCRTD:_error_.obj
- 0003:000045e8       ??_C@_0BBN@GPMLNJCF@A?5cast?5to?5a?5smaller?5data?5type?5ha@ 004795e8     MSVCRTD:_error_.obj
- 0003:00004740       ??_C@_0BN@FFOINMNJ@Stack?5memory?5was?5corrupted?6?$AN?$AA@ 00479740     MSVCRTD:_error_.obj
- 0003:00004764       ??_C@_0DG@HKJMLLLP@A?5local?5variable?5was?5used?5before@ 00479764     MSVCRTD:_error_.obj
- 0003:000047a4       ??_C@_0CM@NGINOKPC@Stack?5memory?5around?5_alloca?5was?5@ 004797a4     MSVCRTD:_error_.obj
- 0003:000047d8       ??_C@_0BO@GNIAFIKK@Unknown?5Runtime?5Check?5Error?6?$AN?$AA@ 004797d8     MSVCRTD:_error_.obj
- 0003:00004800       ??_C@_1GM@OLMCBDMB@?$AAR?$AAu?$AAn?$AAt?$AAi?$AAm?$AAe?$AA?5?$AAC?$AAh?$AAe?$AAc?$AAk?$AA?5?$AAE?$AAr?$AAr?$AAo?$AAr?$AA?4?$AA?6?$AA?$AN?$AA?5?$AAU?$AAn?$AAa?$AAb?$AAl?$AAe?$AA?5?$AAt?$AAo@ 00479800     MSVCRTD:_error_.obj
- 0003:00004888       ??_C@_1EA@NFKNIFJP@?$AAR?$AAu?$AAn?$AA?9?$AAT?$AAi?$AAm?$AAe?$AA?5?$AAC?$AAh?$AAe?$AAc?$AAk?$AA?5?$AAF?$AAa?$AAi?$AAl?$AAu?$AAr?$AAe?$AA?5?$AA?$CD?$AA?$CF?$AAd?$AA?5?$AA?9?$AA?5?$AA?$CF?$AAs?$AA?$AA@ 00479888     MSVCRTD:_error_.obj
- 0003:000048d4       ??_C@_0BB@PFFGGCJP@Unknown?5Filename?$AA@ 004798d4     MSVCRTD:_error_.obj
- 0003:000048e8       ??_C@_0BE@GNBOBNCK@Unknown?5Module?5Name?$AA@ 004798e8     MSVCRTD:_error_.obj
- 0003:00004900       ??_C@_0CA@IODNCDPG@Run?9Time?5Check?5Failure?5?$CD?$CFd?5?9?5?$CFs?$AA@ 00479900     MSVCRTD:_error_.obj
- 0003:00004928       ??_C@_0CG@IAFNJNEE@Stack?5corrupted?5near?5unknown?5var@ 00479928     MSVCRTD:_error_.obj
- 0003:00004958       ??_C@_05MKKEDADM@?$CF?42X?5?$AA@ 00479958     MSVCRTD:_error_.obj
- 0003:00004960       ??_C@_0EJ@LJKNEOLN@Stack?5area?5around?5_alloca?5memory@ 00479960     MSVCRTD:_error_.obj
- 0003:000049b8       ??_C@_08OMAHNMHJ@?6Data?3?5?$DM?$AA@ 004799b8     MSVCRTD:_error_.obj
- 0003:000049c4       ??_C@_0CK@DKGBICFE@?6Allocation?5number?5within?5this?5f@ 004799c4     MSVCRTD:_error_.obj
- 0003:000049f8       ??_C@_07DFDJCKFN@?6Size?3?5?$AA@ 004799f8     MSVCRTD:_error_.obj
- 0003:00004a04       ??_C@_0N@MHFFIMFG@?6Address?3?50x?$AA@ 00479a04     MSVCRTD:_error_.obj
- 0003:00004a18       ??_C@_0EI@CLEPFNGI@Stack?5area?5around?5_alloca?5memory@ 00479a18     MSVCRTD:_error_.obj
- 0003:00004a70       ??_C@_0BC@HHMKLAND@?$CFs?$CFs?$CFp?$CFs?$CFzd?$CFs?$CFd?$CFs?$AA@ 00479a70     MSVCRTD:_error_.obj
- 0003:00004a88       ??_C@_01EEMJAFIK@?6?$AA@   00479a88     MSVCRTD:_error_.obj
- 0003:00004a8c       ??_C@_02LLMPMKNF@?$DO?5?$AA@ 00479a8c     MSVCRTD:_error_.obj
- 0003:00004a90       ??_C@_08KJEDNCKC@?$CFs?$CFs?$CFs?$CFs?$AA@ 00479a90     MSVCRTD:_error_.obj
- 0003:00004a9c       ??_C@_0DE@OHJBPMBP@A?5variable?5is?5being?5used?5without@ 00479a9c     MSVCRTD:_error_.obj
- 0003:00004b00       ??_C@_0BJ@HEGAHDFO@Stack?5pointer?5corruption?$AA@ 00479b00     MSVCRTD:_userapi_.obj
- 0003:00004b20       ??_C@_0CK@FEGOIOPB@Cast?5to?5smaller?5type?5causing?5los@ 00479b20     MSVCRTD:_userapi_.obj
- 0003:00004b54       ??_C@_0BI@CIGMDCBH@Stack?5memory?5corruption?$AA@ 00479b54     MSVCRTD:_userapi_.obj
- 0003:00004b70       ??_C@_0CK@CNLNOEPB@Local?5variable?5used?5before?5initi@ 00479b70     MSVCRTD:_userapi_.obj
- 0003:00004ba4       ??_C@_0BP@OGBCLIBO@Stack?5around?5_alloca?5corrupted?$AA@ 00479ba4     MSVCRTD:_userapi_.obj
- 0003:00004c28       ??_C@_1EI@MLPKHBGE@?$AAa?$AAp?$AAi?$AA?9?$AAm?$AAs?$AA?9?$AAw?$AAi?$AAn?$AA?9?$AAc?$AAo?$AAr?$AAe?$AA?9?$AAr?$AAe?$AAg?$AAi?$AAs?$AAt?$AAr?$AAy?$AA?9?$AAl?$AA1?$AA?9?$AA1?$AA?9?$AA0?$AA?4@ 00479c28     MSVCRTD:_pdblkup_.obj
- 0003:00004c80       ??_C@_1BK@JHLNAEJL@?$AAa?$AAd?$AAv?$AAa?$AAp?$AAi?$AA3?$AA2?$AA?4?$AAd?$AAl?$AAl?$AA?$AA@ 00479c80     MSVCRTD:_pdblkup_.obj
- 0003:00004ca0       ??_C@_0O@COHOBMLB@RegOpenKeyExW?$AA@ 00479ca0     MSVCRTD:_pdblkup_.obj
- 0003:00004cb0       ??_C@_0BB@GLNAEDBD@RegQueryValueExW?$AA@ 00479cb0     MSVCRTD:_pdblkup_.obj
- 0003:00004cc4       ??_C@_0M@HLOHPNFA@RegCloseKey?$AA@ 00479cc4     MSVCRTD:_pdblkup_.obj
- 0003:00004cd8       ??_C@_1HE@EBEAGLFB@?$AAS?$AAO?$AAF?$AAT?$AAW?$AAA?$AAR?$AAE?$AA?2?$AAW?$AAo?$AAw?$AA6?$AA4?$AA3?$AA2?$AAN?$AAo?$AAd?$AAe?$AA?2?$AAM?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt?$AA?2?$AAV@ 00479cd8     MSVCRTD:_pdblkup_.obj
- 0003:00004d64       ??_C@_1BG@EABPBLLF@?$AAP?$AAr?$AAo?$AAd?$AAu?$AAc?$AAt?$AAD?$AAi?$AAr?$AA?$AA@ 00479d64     MSVCRTD:_pdblkup_.obj
- 0003:00004da4       ??_C@_1BC@JINFINNJ@?$AAM?$AAS?$AAP?$AAD?$AAB?$AA1?$AA4?$AA0?$AA?$AA@ 00479da4     MSVCRTD:_pdblkup_.obj
- 0003:00004dbc       ??_C@_0BB@KCIACLNC@PDBOpenValidate5?$AA@ 00479dbc     MSVCRTD:_pdblkup_.obj
- 0003:00004dd0       ??_C@_01KDCPPGHE@r?$AA@    00479dd0     MSVCRTD:_pdblkup_.obj
- 0003:00004e18       __load_config_used         00479e18     MSVCRTD:loadcfg.obj
- 0003:00005034       ??_R4Editor@@6B@           0047a034     Editor.obj
- 0003:0000504c       ??_R3Editor@@8             0047a04c     Editor.obj
- 0003:00005060       ??_R2Editor@@8             0047a060     Editor.obj
- 0003:00005070       ??_R1A@?0A@EA@Editor@@8    0047a070     Editor.obj
- 0003:00005094       ??_R1A@?0A@EA@Game@@8      0047a094     Editor.obj
- 0003:000050b8       ??_R3Game@@8               0047a0b8     Editor.obj
- 0003:000050cc       ??_R2Game@@8               0047a0cc     Editor.obj
- 0003:000050d8       ??_R13?0A@EA@Trackable@@8  0047a0d8     Editor.obj
- 0003:000050fc       ??_R3Trackable@@8          0047a0fc     Editor.obj
- 0003:00005110       ??_R2Trackable@@8          0047a110     Editor.obj
- 0003:00005118       ??_R1A@?0A@EA@Trackable@@8 0047a118     Editor.obj
- 0003:0000513c       ??_R4exception@std@@6B@    0047a13c     main.obj
- 0003:00005154       ??_R3exception@std@@8      0047a154     main.obj
- 0003:00005168       ??_R2exception@std@@8      0047a168     main.obj
- 0003:00005170       ??_R1A@?0A@EA@exception@std@@8 0047a170     main.obj
- 0003:00005194       ??_R4?$basic_filebuf@DU?$char_traits@D@std@@@std@@6B@ 0047a194     main.obj
- 0003:000051ac       ??_R3?$basic_filebuf@DU?$char_traits@D@std@@@std@@8 0047a1ac     main.obj
- 0003:000051c0       ??_R2?$basic_filebuf@DU?$char_traits@D@std@@@std@@8 0047a1c0     main.obj
- 0003:000051cc       ??_R1A@?0A@EA@?$basic_filebuf@DU?$char_traits@D@std@@@std@@8 0047a1cc     main.obj
- 0003:000051f0       ??_R1A@?0A@EA@?$basic_streambuf@DU?$char_traits@D@std@@@std@@8 0047a1f0     main.obj
- 0003:00005214       ??_R3?$basic_streambuf@DU?$char_traits@D@std@@@std@@8 0047a214     main.obj
- 0003:00005228       ??_R2?$basic_streambuf@DU?$char_traits@D@std@@@std@@8 0047a228     main.obj
- 0003:00005230       ??_R4?$basic_ifstream@DU?$char_traits@D@std@@@std@@6B@ 0047a230     main.obj
- 0003:00005248       ??_R3?$basic_ifstream@DU?$char_traits@D@std@@@std@@8 0047a248     main.obj
- 0003:0000525c       ??_R2?$basic_ifstream@DU?$char_traits@D@std@@@std@@8 0047a25c     main.obj
- 0003:00005278       ??_R1A@?0A@EA@?$basic_ifstream@DU?$char_traits@D@std@@@std@@8 0047a278     main.obj
- 0003:0000529c       ??_R1A@?0A@EA@?$basic_istream@DU?$char_traits@D@std@@@std@@8 0047a29c     main.obj
- 0003:000052c0       ??_R3?$basic_istream@DU?$char_traits@D@std@@@std@@8 0047a2c0     main.obj
- 0003:000052d4       ??_R2?$basic_istream@DU?$char_traits@D@std@@@std@@8 0047a2d4     main.obj
- 0003:000052e8       ??_R1A@A@3FA@?$basic_ios@DU?$char_traits@D@std@@@std@@8 0047a2e8     main.obj
- 0003:0000530c       ??_R3?$basic_ios@DU?$char_traits@D@std@@@std@@8 0047a30c     main.obj
- 0003:00005320       ??_R2?$basic_ios@DU?$char_traits@D@std@@@std@@8 0047a320     main.obj
- 0003:00005330       ??_R1A@?0A@EA@?$basic_ios@DU?$char_traits@D@std@@@std@@8 0047a330     main.obj
- 0003:00005354       ??_R1A@?0A@EA@ios_base@std@@8 0047a354     main.obj
- 0003:00005378       ??_R3ios_base@std@@8       0047a378     main.obj
- 0003:0000538c       ??_R2ios_base@std@@8       0047a38c     main.obj
- 0003:00005398       ??_R17?0A@EA@?$_Iosb@H@std@@8 0047a398     main.obj
- 0003:000053bc       ??_R3?$_Iosb@H@std@@8      0047a3bc     main.obj
- 0003:000053d0       ??_R2?$_Iosb@H@std@@8      0047a3d0     main.obj
- 0003:000053d8       ??_R1A@?0A@EA@?$_Iosb@H@std@@8 0047a3d8     main.obj
- 0003:000053fc       ??_R1A@A@3EA@ios_base@std@@8 0047a3fc     main.obj
- 0003:00005420       ??_R17A@3EA@?$_Iosb@H@std@@8 0047a420     main.obj
- 0003:00005444       ??_R4?$basic_ofstream@DU?$char_traits@D@std@@@std@@6B@ 0047a444     main.obj
- 0003:0000545c       ??_R3?$basic_ofstream@DU?$char_traits@D@std@@@std@@8 0047a45c     main.obj
- 0003:00005470       ??_R2?$basic_ofstream@DU?$char_traits@D@std@@@std@@8 0047a470     main.obj
- 0003:0000548c       ??_R1A@?0A@EA@?$basic_ofstream@DU?$char_traits@D@std@@@std@@8 0047a48c     main.obj
- 0003:000054b0       ??_R1A@?0A@EA@?$basic_ostream@DU?$char_traits@D@std@@@std@@8 0047a4b0     main.obj
- 0003:000054d4       ??_R3?$basic_ostream@DU?$char_traits@D@std@@@std@@8 0047a4d4     main.obj
- 0003:000054e8       ??_R2?$basic_ostream@DU?$char_traits@D@std@@@std@@8 0047a4e8     main.obj
- 0003:000054fc       ??_R4bad_cast@std@@6B@     0047a4fc     main.obj
- 0003:00005514       ??_R3bad_cast@std@@8       0047a514     main.obj
- 0003:00005528       ??_R2bad_cast@std@@8       0047a528     main.obj
- 0003:00005534       ??_R1A@?0A@EA@bad_cast@std@@8 0047a534     main.obj
- 0003:00005558       ??_R4Game@@6B@             0047a558     CommonPathfindingLib:Game.obj
- 0003:00005570       ??_R4type_info@@6B@        0047a570     MSVCRTD:std_type_info_static.obj
- 0003:00005588       ??_R3type_info@@8          0047a588     MSVCRTD:std_type_info_static.obj
- 0003:0000559c       ??_R2type_info@@8          0047a59c     MSVCRTD:std_type_info_static.obj
- 0003:000055a4       ??_R1A@?0A@EA@type_info@@8 0047a5a4     MSVCRTD:std_type_info_static.obj
- 0003:000055c8       ??_R4bad_alloc@std@@6B@    0047a5c8     MSVCRTD:throw_bad_alloc.obj
- 0003:000055e0       ??_R3bad_alloc@std@@8      0047a5e0     MSVCRTD:throw_bad_alloc.obj
- 0003:000055f4       ??_R2bad_alloc@std@@8      0047a5f4     MSVCRTD:throw_bad_alloc.obj
- 0003:00005600       ??_R1A@?0A@EA@bad_alloc@std@@8 0047a600     MSVCRTD:throw_bad_alloc.obj
- 0003:00005624       ??_R4bad_array_new_length@std@@6B@ 0047a624     MSVCRTD:throw_bad_alloc.obj
- 0003:0000563c       ??_R3bad_array_new_length@std@@8 0047a63c     MSVCRTD:throw_bad_alloc.obj
- 0003:00005650       ??_R2bad_array_new_length@std@@8 0047a650     MSVCRTD:throw_bad_alloc.obj
- 0003:00005660       ??_R1A@?0A@EA@bad_array_new_length@std@@8 0047a660     MSVCRTD:throw_bad_alloc.obj
- 0003:00005970       ___rtc_iaa                 0047a970     MSVCRTD:_initsect_.obj
- 0003:00005bb8       ___rtc_izz                 0047abb8     MSVCRTD:_initsect_.obj
- 0003:00005cbc       ___rtc_taa                 0047acbc     MSVCRTD:_initsect_.obj
- 0003:00005f04       ___rtc_tzz                 0047af04     MSVCRTD:_initsect_.obj
- 0003:000066f0       __CT??_R0?AVexception@std@@@8??0exception@std@@QAE@ABV01@@Z12 0047b6f0     main.obj
- 0003:00006710       __TI2?AVbad_cast@std@@     0047b710     main.obj
- 0003:00006724       __CTA2?AVbad_cast@std@@    0047b724     main.obj
- 0003:00006734       __CT??_R0?AVbad_cast@std@@@8??0bad_cast@std@@QAE@ABV01@@Z12 0047b734     main.obj
- 0003:00009168       __TI2?AVbad_alloc@std@@    0047e168     MSVCRTD:throw_bad_alloc.obj
- 0003:0000917c       __CTA2?AVbad_alloc@std@@   0047e17c     MSVCRTD:throw_bad_alloc.obj
- 0003:0000918c       __CT??_R0?AVbad_alloc@std@@@8??0bad_alloc@std@@QAE@ABV01@@Z12 0047e18c     MSVCRTD:throw_bad_alloc.obj
- 0003:000091ac       __TI3?AVbad_array_new_length@std@@ 0047e1ac     MSVCRTD:throw_bad_alloc.obj
- 0003:000091c0       __CTA3?AVbad_array_new_length@std@@ 0047e1c0     MSVCRTD:throw_bad_alloc.obj
- 0003:000091d4       __CT??_R0?AVbad_array_new_length@std@@@8??0bad_array_new_length@std@@QAE@ABV01@@Z12 0047e1d4     MSVCRTD:throw_bad_alloc.obj
+ 0003:00001a70       ??_C@_1MO@NLCFAPPM@?$AAc?$AA?3?$AA?2?$AAu?$AAs?$AAe?$AAr?$AAs?$AA?2?$AAs?$AAt?$AAu?$AAd?$AAe?$AAn?$AAt?$AA?2?$AAd?$AAo?$AAc?$AAu?$AAm?$AAe?$AAn?$AAt?$AAs?$AA?2?$AA_?$AAb?$AAr?$AAi?$AAa@ 00476a70     CommonPathfindingLib:Game.obj
+ 0003:00001b68       ??_C@_1BK@FCDNEEDD@?$AAs?$AAt?$AAa?$AAr?$AAt?$AA?5?$AA?$DM?$AA?$DN?$AA?5?$AAe?$AAn?$AAd?$AA?$AA@ 00476b68     CommonPathfindingLib:Game.obj
+ 0003:00001b88       __real@4000000000000000    00476b88     CommonPathfindingLib:Game.obj
+ 0003:00001b94       __real@46fffe00            00476b94     CommonPathfindingLib:Game.obj
+ 0003:00001ba0       ??_C@_1IK@BHJCIFB@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00476ba0     CommonPathfindingLib:GraphicsBufferManager.obj
+ 0003:00001c48       ??_C@_1DO@CFEEPGGJ@?$AAm?$AAa?$AAp?$AA?1?$AAs?$AAe?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AAs?$AA?5?$AAi?$AAn?$AAc?$AAo?$AAm?$AAp?$AAa?$AAt?$AAi?$AAb?$AAl?$AAe?$AA?$AA@ 00476c48     CommonPathfindingLib:GraphicsBufferManager.obj
+ 0003:00001c94       ??_C@_0CI@FNPHFCCM@Standard?5C?$CL?$CL?5Libraries?5Invalid?5A@ 00476c94     CommonPathfindingLib:GraphicsBufferManager.obj
+ 0003:00001cc8       ??_C@_1FO@GJIHNDLM@?$AA?$CC?$AAS?$AAt?$AAa?$AAn?$AAd?$AAa?$AAr?$AAd?$AA?5?$AAC?$AA?$CL?$AA?$CL?$AA?5?$AAL?$AAi?$AAb?$AAr?$AAa?$AAr?$AAi?$AAe?$AAs?$AA?5?$AAI?$AAn?$AAv?$AAa?$AAl?$AAi?$AAd?$AA?5@ 00476cc8     CommonPathfindingLib:GraphicsBufferManager.obj
+ 0003:00001d38       ??_C@_1BKM@LBOFJKLH@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00476d38     CommonPathfindingLib:GraphicsBufferManager.obj
+ 0003:00001f40       ??_C@_1EK@PPDBPCAN@?$AAm?$AAa?$AAp?$AA?1?$AAs?$AAe?$AAt?$AA?5?$AAe?$AAr?$AAa?$AAs?$AAe?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAo?$AAu?$AAt?$AAs?$AAi?$AAd?$AAe?$AA?5?$AAr@ 00476f40     CommonPathfindingLib:GraphicsBufferManager.obj
+ 0003:00001f98       ??_C@_1BCK@OJKBJFLO@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00476f98     CommonPathfindingLib:GraphicsBufferManager.obj
+ 0003:00002100       ??_C@_1EG@EHJFMBHJ@?$AAm?$AAa?$AAp?$AA?1?$AAs?$AAe?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAn?$AAo?$AAt?$AA?5?$AAi?$AAn?$AAc?$AAr?$AAe?$AAm?$AAe?$AAn?$AAt?$AAa?$AAb@ 00477100     CommonPathfindingLib:GraphicsBufferManager.obj
+ 0003:00002158       ??_C@_1BKM@BBBIHDHC@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00477158     CommonPathfindingLib:GraphicsBufferManager.obj
+ 0003:00002360       ??_C@_1BCK@EJFMHMHL@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00477360     CommonPathfindingLib:GraphicsBufferManager.obj
+ 0003:000024c8       ??_C@_1EI@FHEHNNNM@?$AAm?$AAa?$AAp?$AA?1?$AAs?$AAe?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAn?$AAo?$AAt?$AA?5?$AAd?$AAe?$AAr?$AAe?$AAf?$AAe?$AAr?$AAe?$AAn?$AAc?$AAa@ 004774c8     CommonPathfindingLib:GraphicsBufferManager.obj
+ 0003:00002520       ??_C@_1BKK@NKNEDAJK@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00477520     CommonPathfindingLib:GraphicsBufferManager.obj
+ 0003:00002720       ??_C@_1BCI@EAFCIGCE@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00477720     CommonPathfindingLib:GraphicsBufferManager.obj
+ 0003:00002884       ??_C@_1CG@LEJCKCBB@?$AAi?$AAn?$AAv?$AAa?$AAl?$AAi?$AAd?$AA?5?$AAc?$AAo?$AAm?$AAp?$AAa?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$AA@ 00477884     CommonPathfindingLib:GraphicsBufferManager.obj
+ 0003:000028b8       ??_C@_1IG@CDANFHMM@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 004778b8     CommonPathfindingLib:GraphicsBufferManager.obj
+ 0003:00002958       ??_C@_1EM@MHOKKPFH@?$AAm?$AAa?$AAp?$AA?1?$AAs?$AAe?$AAt?$AA?5?$AAi?$AAn?$AAs?$AAe?$AAr?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAo?$AAu?$AAt?$AAs?$AAi?$AAd?$AAe?$AA?5@ 00477958     CommonPathfindingLib:GraphicsBufferManager.obj
+ 0003:000029b8       ??_C@_1EG@OKCGOALM@?$AAm?$AAa?$AAp?$AA?1?$AAs?$AAe?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAn?$AAo?$AAt?$AA?5?$AAd?$AAe?$AAc?$AAr?$AAe?$AAm?$AAe?$AAn?$AAt?$AAa?$AAb@ 004779b8     CommonPathfindingLib:GraphicsBufferManager.obj
+ 0003:00002a10       ??_C@_1BKM@OCCKMPLD@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00477a10     CommonPathfindingLib:GraphicsBufferManager.obj
+ 0003:00002c18       ??_C@_1BCK@LKGOMALK@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00477c18     CommonPathfindingLib:GraphicsBufferManager.obj
+ 0003:00002d80       ??_C@_0BE@JONHPENG@map?1set?$DMT?$DO?5too?5long?$AA@ 00477d80     CommonPathfindingLib:GraphicsBufferManager.obj
+ 0003:00002d9c       ??_C@_01CLKCMJKC@?5?$AA@   00477d9c     CommonPathfindingLib:Grid.obj
+ 0003:00002da0       ??_C@_0BD@OLBABOEK@vector?$DMT?$DO?5too?5long?$AA@ 00477da0     CommonPathfindingLib:Grid.obj
+ 0003:00002dd0       ??_C@_01CPLAODJH@S?$AA@    00477dd0     CommonPathfindingLib:GridVisualizer.obj
+ 0003:00002dd4       ??_C@_01BBODEMC@G?$AA@     00477dd4     CommonPathfindingLib:GridVisualizer.obj
+ 0003:00002dd8       ??_C@_1IM@NCODKBJH@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00477dd8     CommonPathfindingLib:GridVisualizer.obj
+ 0003:00002e80       ??_C@_1DM@LHGCHCBA@?$AAv?$AAe?$AAc?$AAt?$AAo?$AAr?$AA?5?$AAs?$AAu?$AAb?$AAs?$AAc?$AAr?$AAi?$AAp?$AAt?$AA?5?$AAo?$AAu?$AAt?$AA?5?$AAo?$AAf?$AA?5?$AAr?$AAa?$AAn?$AAg?$AAe?$AA?$AA@ 00477e80     CommonPathfindingLib:GridVisualizer.obj
+ 0003:00002ec8       ??_C@_1HC@HBCEAHKD@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AAv?$AAe?$AAc?$AAt?$AAo?$AAr?$AA?$DM?$AAi?$AAn?$AAt?$AA?0?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AAa?$AAl?$AAl?$AAo?$AAc@ 00477ec8     CommonPathfindingLib:GridVisualizer.obj
+ 0003:00002f50       ??_C@_1BIE@CKJBPEOB@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00477f50     CommonPathfindingLib:GridVisualizer.obj
+ 0003:00003128       ??_C@_1BIE@IKGMBNCE@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00478128     CommonPathfindingLib:GridVisualizer.obj
+ 0003:00003300       ??_C@_1BIC@KMEIKKAA@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00478300     CommonPathfindingLib:GridVisualizer.obj
+ 0003:000034d0       ??_C@_1BIE@HJFOKBOF@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 004784d0     CommonPathfindingLib:GridVisualizer.obj
+ 0003:000036a8       ??_C@_1BBK@NOPGMEMI@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 004786a8     CommonPathfindingLib:SpriteManager.obj
+ 0003:00003800       ??_C@_1BBK@HOALCNAN@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00478800     CommonPathfindingLib:SpriteManager.obj
+ 0003:00003958       ??_C@_1BBI@EPEKJCPI@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00478958     CommonPathfindingLib:SpriteManager.obj
+ 0003:00003aa8       ??_C@_1BBK@INDJJBMM@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00478aa8     CommonPathfindingLib:SpriteManager.obj
+ 0003:00003bfc       ??_C@_0CL@CGPALMN@GraphicsSystem?3?3failed?5to?5create@ 00478bfc     CommonPathfindingLib:GraphicsSystem.obj
+ 0003:00003c30       __real@3f800000            00478c30     CommonPathfindingLib:GraphicsSystem.obj
+ 0003:00003c34       __real@00000000            00478c34     CommonPathfindingLib:Sprite.obj
+ 0003:00003c38       __real@0000000000000000    00478c38     DeanLib:Timer.obj
+ 0003:00003c48       __real@4024000000000000    00478c48     DeanLib:Timer.obj
+ 0003:00003c58       __real@408f400000000000    00478c58     DeanLib:Timer.obj
+ 0003:00003c64       ??_C@_0DI@GKEBKCHH@MemoryTracker?5being?5deleted?3?5fin@ 00478c64     DeanLib:MemoryTracker.obj
+ 0003:00003ca8       ??_C@_0BN@IJFAENGF@Current?5memory?5allocations?3?6?$AA@ 00478ca8     DeanLib:MemoryTracker.obj
+ 0003:00003ccc       ??_C@_05FGNEEEOC@?5num?3?$AA@ 00478ccc     DeanLib:MemoryTracker.obj
+ 0003:00003cd4       ??_C@_06NLINOEAE@?5size?3?$AA@ 00478cd4     DeanLib:MemoryTracker.obj
+ 0003:00003cdc       ??_C@_08GEBKOLPE@address?3?$AA@ 00478cdc     DeanLib:MemoryTracker.obj
+ 0003:00003ce8       ??_C@_1BDA@PAJOLEOP@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00478ce8     DeanLib:MemoryTracker.obj
+ 0003:00003e58       ??_C@_1BDA@FAGDFNCK@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00478e58     DeanLib:MemoryTracker.obj
+ 0003:00003fc8       ??_C@_1BCO@OEOBCANG@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00478fc8     DeanLib:MemoryTracker.obj
+ 0003:00004138       ??_C@_1BDA@KDFBOBOL@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00479138     DeanLib:MemoryTracker.obj
+ 0003:000042a4       __real@00800000            004792a4     DeanLib:Vector2D.obj
+ 0003:000042a8       ??_C@_0CM@OKINAFCK@f?3?2dd?2vctools?2crt?2crtw32?2stdcpp?2@ 004792a8     msvcprtd:locale0_implib.obj
+ 0003:000042e0       ??_7type_info@@6B@         004792e0     MSVCRTD:std_type_info_static.obj
+ 0003:00004390       ??_7bad_alloc@std@@6B@     00479390     MSVCRTD:throw_bad_alloc.obj
+ 0003:0000439c       ??_C@_0P@GHFPNOJB@bad?5allocation?$AA@ 0047939c     MSVCRTD:throw_bad_alloc.obj
+ 0003:000043b4       ??_7bad_array_new_length@std@@6B@ 004793b4     MSVCRTD:throw_bad_alloc.obj
+ 0003:000043c0       ??_C@_0BF@KINCDENJ@bad?5array?5new?5length?$AA@ 004793c0     MSVCRTD:throw_bad_alloc.obj
+ 0003:00004498       ??_C@_0NN@NGPKDKPD@The?5value?5of?5ESP?5was?5not?5properl@ 00479498     MSVCRTD:_error_.obj
+ 0003:000045a8       ??_C@_0BBN@GPMLNJCF@A?5cast?5to?5a?5smaller?5data?5type?5ha@ 004795a8     MSVCRTD:_error_.obj
+ 0003:00004700       ??_C@_0BN@FFOINMNJ@Stack?5memory?5was?5corrupted?6?$AN?$AA@ 00479700     MSVCRTD:_error_.obj
+ 0003:00004724       ??_C@_0DG@HKJMLLLP@A?5local?5variable?5was?5used?5before@ 00479724     MSVCRTD:_error_.obj
+ 0003:00004764       ??_C@_0CM@NGINOKPC@Stack?5memory?5around?5_alloca?5was?5@ 00479764     MSVCRTD:_error_.obj
+ 0003:00004798       ??_C@_0BO@GNIAFIKK@Unknown?5Runtime?5Check?5Error?6?$AN?$AA@ 00479798     MSVCRTD:_error_.obj
+ 0003:000047c0       ??_C@_1GM@OLMCBDMB@?$AAR?$AAu?$AAn?$AAt?$AAi?$AAm?$AAe?$AA?5?$AAC?$AAh?$AAe?$AAc?$AAk?$AA?5?$AAE?$AAr?$AAr?$AAo?$AAr?$AA?4?$AA?6?$AA?$AN?$AA?5?$AAU?$AAn?$AAa?$AAb?$AAl?$AAe?$AA?5?$AAt?$AAo@ 004797c0     MSVCRTD:_error_.obj
+ 0003:00004848       ??_C@_1EA@NFKNIFJP@?$AAR?$AAu?$AAn?$AA?9?$AAT?$AAi?$AAm?$AAe?$AA?5?$AAC?$AAh?$AAe?$AAc?$AAk?$AA?5?$AAF?$AAa?$AAi?$AAl?$AAu?$AAr?$AAe?$AA?5?$AA?$CD?$AA?$CF?$AAd?$AA?5?$AA?9?$AA?5?$AA?$CF?$AAs?$AA?$AA@ 00479848     MSVCRTD:_error_.obj
+ 0003:00004894       ??_C@_0BB@PFFGGCJP@Unknown?5Filename?$AA@ 00479894     MSVCRTD:_error_.obj
+ 0003:000048a8       ??_C@_0BE@GNBOBNCK@Unknown?5Module?5Name?$AA@ 004798a8     MSVCRTD:_error_.obj
+ 0003:000048c0       ??_C@_0CA@IODNCDPG@Run?9Time?5Check?5Failure?5?$CD?$CFd?5?9?5?$CFs?$AA@ 004798c0     MSVCRTD:_error_.obj
+ 0003:000048e8       ??_C@_0CG@IAFNJNEE@Stack?5corrupted?5near?5unknown?5var@ 004798e8     MSVCRTD:_error_.obj
+ 0003:00004918       ??_C@_05MKKEDADM@?$CF?42X?5?$AA@ 00479918     MSVCRTD:_error_.obj
+ 0003:00004920       ??_C@_0EJ@LJKNEOLN@Stack?5area?5around?5_alloca?5memory@ 00479920     MSVCRTD:_error_.obj
+ 0003:00004978       ??_C@_08OMAHNMHJ@?6Data?3?5?$DM?$AA@ 00479978     MSVCRTD:_error_.obj
+ 0003:00004984       ??_C@_0CK@DKGBICFE@?6Allocation?5number?5within?5this?5f@ 00479984     MSVCRTD:_error_.obj
+ 0003:000049b8       ??_C@_07DFDJCKFN@?6Size?3?5?$AA@ 004799b8     MSVCRTD:_error_.obj
+ 0003:000049c4       ??_C@_0N@MHFFIMFG@?6Address?3?50x?$AA@ 004799c4     MSVCRTD:_error_.obj
+ 0003:000049d8       ??_C@_0EI@CLEPFNGI@Stack?5area?5around?5_alloca?5memory@ 004799d8     MSVCRTD:_error_.obj
+ 0003:00004a30       ??_C@_0BC@HHMKLAND@?$CFs?$CFs?$CFp?$CFs?$CFzd?$CFs?$CFd?$CFs?$AA@ 00479a30     MSVCRTD:_error_.obj
+ 0003:00004a48       ??_C@_01EEMJAFIK@?6?$AA@   00479a48     MSVCRTD:_error_.obj
+ 0003:00004a4c       ??_C@_02LLMPMKNF@?$DO?5?$AA@ 00479a4c     MSVCRTD:_error_.obj
+ 0003:00004a50       ??_C@_08KJEDNCKC@?$CFs?$CFs?$CFs?$CFs?$AA@ 00479a50     MSVCRTD:_error_.obj
+ 0003:00004a5c       ??_C@_0DE@OHJBPMBP@A?5variable?5is?5being?5used?5without@ 00479a5c     MSVCRTD:_error_.obj
+ 0003:00004ac0       ??_C@_0BJ@HEGAHDFO@Stack?5pointer?5corruption?$AA@ 00479ac0     MSVCRTD:_userapi_.obj
+ 0003:00004ae0       ??_C@_0CK@FEGOIOPB@Cast?5to?5smaller?5type?5causing?5los@ 00479ae0     MSVCRTD:_userapi_.obj
+ 0003:00004b14       ??_C@_0BI@CIGMDCBH@Stack?5memory?5corruption?$AA@ 00479b14     MSVCRTD:_userapi_.obj
+ 0003:00004b30       ??_C@_0CK@CNLNOEPB@Local?5variable?5used?5before?5initi@ 00479b30     MSVCRTD:_userapi_.obj
+ 0003:00004b64       ??_C@_0BP@OGBCLIBO@Stack?5around?5_alloca?5corrupted?$AA@ 00479b64     MSVCRTD:_userapi_.obj
+ 0003:00004be8       ??_C@_1EI@MLPKHBGE@?$AAa?$AAp?$AAi?$AA?9?$AAm?$AAs?$AA?9?$AAw?$AAi?$AAn?$AA?9?$AAc?$AAo?$AAr?$AAe?$AA?9?$AAr?$AAe?$AAg?$AAi?$AAs?$AAt?$AAr?$AAy?$AA?9?$AAl?$AA1?$AA?9?$AA1?$AA?9?$AA0?$AA?4@ 00479be8     MSVCRTD:_pdblkup_.obj
+ 0003:00004c40       ??_C@_1BK@JHLNAEJL@?$AAa?$AAd?$AAv?$AAa?$AAp?$AAi?$AA3?$AA2?$AA?4?$AAd?$AAl?$AAl?$AA?$AA@ 00479c40     MSVCRTD:_pdblkup_.obj
+ 0003:00004c60       ??_C@_0O@COHOBMLB@RegOpenKeyExW?$AA@ 00479c60     MSVCRTD:_pdblkup_.obj
+ 0003:00004c70       ??_C@_0BB@GLNAEDBD@RegQueryValueExW?$AA@ 00479c70     MSVCRTD:_pdblkup_.obj
+ 0003:00004c84       ??_C@_0M@HLOHPNFA@RegCloseKey?$AA@ 00479c84     MSVCRTD:_pdblkup_.obj
+ 0003:00004c98       ??_C@_1HE@EBEAGLFB@?$AAS?$AAO?$AAF?$AAT?$AAW?$AAA?$AAR?$AAE?$AA?2?$AAW?$AAo?$AAw?$AA6?$AA4?$AA3?$AA2?$AAN?$AAo?$AAd?$AAe?$AA?2?$AAM?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt?$AA?2?$AAV@ 00479c98     MSVCRTD:_pdblkup_.obj
+ 0003:00004d24       ??_C@_1BG@EABPBLLF@?$AAP?$AAr?$AAo?$AAd?$AAu?$AAc?$AAt?$AAD?$AAi?$AAr?$AA?$AA@ 00479d24     MSVCRTD:_pdblkup_.obj
+ 0003:00004d64       ??_C@_1BC@JINFINNJ@?$AAM?$AAS?$AAP?$AAD?$AAB?$AA1?$AA4?$AA0?$AA?$AA@ 00479d64     MSVCRTD:_pdblkup_.obj
+ 0003:00004d7c       ??_C@_0BB@KCIACLNC@PDBOpenValidate5?$AA@ 00479d7c     MSVCRTD:_pdblkup_.obj
+ 0003:00004d90       ??_C@_01KDCPPGHE@r?$AA@    00479d90     MSVCRTD:_pdblkup_.obj
+ 0003:00004dd8       __load_config_used         00479dd8     MSVCRTD:loadcfg.obj
+ 0003:00004ff4       ??_R4Editor@@6B@           00479ff4     Editor.obj
+ 0003:0000500c       ??_R3Editor@@8             0047a00c     Editor.obj
+ 0003:00005020       ??_R2Editor@@8             0047a020     Editor.obj
+ 0003:00005030       ??_R1A@?0A@EA@Editor@@8    0047a030     Editor.obj
+ 0003:00005054       ??_R1A@?0A@EA@Game@@8      0047a054     Editor.obj
+ 0003:00005078       ??_R3Game@@8               0047a078     Editor.obj
+ 0003:0000508c       ??_R2Game@@8               0047a08c     Editor.obj
+ 0003:00005098       ??_R13?0A@EA@Trackable@@8  0047a098     Editor.obj
+ 0003:000050bc       ??_R3Trackable@@8          0047a0bc     Editor.obj
+ 0003:000050d0       ??_R2Trackable@@8          0047a0d0     Editor.obj
+ 0003:000050d8       ??_R1A@?0A@EA@Trackable@@8 0047a0d8     Editor.obj
+ 0003:000050fc       ??_R4exception@std@@6B@    0047a0fc     main.obj
+ 0003:00005114       ??_R3exception@std@@8      0047a114     main.obj
+ 0003:00005128       ??_R2exception@std@@8      0047a128     main.obj
+ 0003:00005130       ??_R1A@?0A@EA@exception@std@@8 0047a130     main.obj
+ 0003:00005154       ??_R4?$basic_filebuf@DU?$char_traits@D@std@@@std@@6B@ 0047a154     main.obj
+ 0003:0000516c       ??_R3?$basic_filebuf@DU?$char_traits@D@std@@@std@@8 0047a16c     main.obj
+ 0003:00005180       ??_R2?$basic_filebuf@DU?$char_traits@D@std@@@std@@8 0047a180     main.obj
+ 0003:0000518c       ??_R1A@?0A@EA@?$basic_filebuf@DU?$char_traits@D@std@@@std@@8 0047a18c     main.obj
+ 0003:000051b0       ??_R1A@?0A@EA@?$basic_streambuf@DU?$char_traits@D@std@@@std@@8 0047a1b0     main.obj
+ 0003:000051d4       ??_R3?$basic_streambuf@DU?$char_traits@D@std@@@std@@8 0047a1d4     main.obj
+ 0003:000051e8       ??_R2?$basic_streambuf@DU?$char_traits@D@std@@@std@@8 0047a1e8     main.obj
+ 0003:000051f0       ??_R4?$basic_ifstream@DU?$char_traits@D@std@@@std@@6B@ 0047a1f0     main.obj
+ 0003:00005208       ??_R3?$basic_ifstream@DU?$char_traits@D@std@@@std@@8 0047a208     main.obj
+ 0003:0000521c       ??_R2?$basic_ifstream@DU?$char_traits@D@std@@@std@@8 0047a21c     main.obj
+ 0003:00005238       ??_R1A@?0A@EA@?$basic_ifstream@DU?$char_traits@D@std@@@std@@8 0047a238     main.obj
+ 0003:0000525c       ??_R1A@?0A@EA@?$basic_istream@DU?$char_traits@D@std@@@std@@8 0047a25c     main.obj
+ 0003:00005280       ??_R3?$basic_istream@DU?$char_traits@D@std@@@std@@8 0047a280     main.obj
+ 0003:00005294       ??_R2?$basic_istream@DU?$char_traits@D@std@@@std@@8 0047a294     main.obj
+ 0003:000052a8       ??_R1A@A@3FA@?$basic_ios@DU?$char_traits@D@std@@@std@@8 0047a2a8     main.obj
+ 0003:000052cc       ??_R3?$basic_ios@DU?$char_traits@D@std@@@std@@8 0047a2cc     main.obj
+ 0003:000052e0       ??_R2?$basic_ios@DU?$char_traits@D@std@@@std@@8 0047a2e0     main.obj
+ 0003:000052f0       ??_R1A@?0A@EA@?$basic_ios@DU?$char_traits@D@std@@@std@@8 0047a2f0     main.obj
+ 0003:00005314       ??_R1A@?0A@EA@ios_base@std@@8 0047a314     main.obj
+ 0003:00005338       ??_R3ios_base@std@@8       0047a338     main.obj
+ 0003:0000534c       ??_R2ios_base@std@@8       0047a34c     main.obj
+ 0003:00005358       ??_R17?0A@EA@?$_Iosb@H@std@@8 0047a358     main.obj
+ 0003:0000537c       ??_R3?$_Iosb@H@std@@8      0047a37c     main.obj
+ 0003:00005390       ??_R2?$_Iosb@H@std@@8      0047a390     main.obj
+ 0003:00005398       ??_R1A@?0A@EA@?$_Iosb@H@std@@8 0047a398     main.obj
+ 0003:000053bc       ??_R1A@A@3EA@ios_base@std@@8 0047a3bc     main.obj
+ 0003:000053e0       ??_R17A@3EA@?$_Iosb@H@std@@8 0047a3e0     main.obj
+ 0003:00005404       ??_R4?$basic_ofstream@DU?$char_traits@D@std@@@std@@6B@ 0047a404     main.obj
+ 0003:0000541c       ??_R3?$basic_ofstream@DU?$char_traits@D@std@@@std@@8 0047a41c     main.obj
+ 0003:00005430       ??_R2?$basic_ofstream@DU?$char_traits@D@std@@@std@@8 0047a430     main.obj
+ 0003:0000544c       ??_R1A@?0A@EA@?$basic_ofstream@DU?$char_traits@D@std@@@std@@8 0047a44c     main.obj
+ 0003:00005470       ??_R1A@?0A@EA@?$basic_ostream@DU?$char_traits@D@std@@@std@@8 0047a470     main.obj
+ 0003:00005494       ??_R3?$basic_ostream@DU?$char_traits@D@std@@@std@@8 0047a494     main.obj
+ 0003:000054a8       ??_R2?$basic_ostream@DU?$char_traits@D@std@@@std@@8 0047a4a8     main.obj
+ 0003:000054bc       ??_R4bad_cast@std@@6B@     0047a4bc     main.obj
+ 0003:000054d4       ??_R3bad_cast@std@@8       0047a4d4     main.obj
+ 0003:000054e8       ??_R2bad_cast@std@@8       0047a4e8     main.obj
+ 0003:000054f4       ??_R1A@?0A@EA@bad_cast@std@@8 0047a4f4     main.obj
+ 0003:00005518       ??_R4Game@@6B@             0047a518     CommonPathfindingLib:Game.obj
+ 0003:00005530       ??_R4type_info@@6B@        0047a530     MSVCRTD:std_type_info_static.obj
+ 0003:00005548       ??_R3type_info@@8          0047a548     MSVCRTD:std_type_info_static.obj
+ 0003:0000555c       ??_R2type_info@@8          0047a55c     MSVCRTD:std_type_info_static.obj
+ 0003:00005564       ??_R1A@?0A@EA@type_info@@8 0047a564     MSVCRTD:std_type_info_static.obj
+ 0003:00005588       ??_R4bad_alloc@std@@6B@    0047a588     MSVCRTD:throw_bad_alloc.obj
+ 0003:000055a0       ??_R3bad_alloc@std@@8      0047a5a0     MSVCRTD:throw_bad_alloc.obj
+ 0003:000055b4       ??_R2bad_alloc@std@@8      0047a5b4     MSVCRTD:throw_bad_alloc.obj
+ 0003:000055c0       ??_R1A@?0A@EA@bad_alloc@std@@8 0047a5c0     MSVCRTD:throw_bad_alloc.obj
+ 0003:000055e4       ??_R4bad_array_new_length@std@@6B@ 0047a5e4     MSVCRTD:throw_bad_alloc.obj
+ 0003:000055fc       ??_R3bad_array_new_length@std@@8 0047a5fc     MSVCRTD:throw_bad_alloc.obj
+ 0003:00005610       ??_R2bad_array_new_length@std@@8 0047a610     MSVCRTD:throw_bad_alloc.obj
+ 0003:00005620       ??_R1A@?0A@EA@bad_array_new_length@std@@8 0047a620     MSVCRTD:throw_bad_alloc.obj
+ 0003:00005914       ___rtc_iaa                 0047a914     MSVCRTD:_initsect_.obj
+ 0003:00005b5c       ___rtc_izz                 0047ab5c     MSVCRTD:_initsect_.obj
+ 0003:00005c60       ___rtc_taa                 0047ac60     MSVCRTD:_initsect_.obj
+ 0003:00005ea8       ___rtc_tzz                 0047aea8     MSVCRTD:_initsect_.obj
+ 0003:00006698       __CT??_R0?AVexception@std@@@8??0exception@std@@QAE@ABV01@@Z12 0047b698     main.obj
+ 0003:000066b8       __TI2?AVbad_cast@std@@     0047b6b8     main.obj
+ 0003:000066cc       __CTA2?AVbad_cast@std@@    0047b6cc     main.obj
+ 0003:000066dc       __CT??_R0?AVbad_cast@std@@@8??0bad_cast@std@@QAE@ABV01@@Z12 0047b6dc     main.obj
+ 0003:00009110       __TI2?AVbad_alloc@std@@    0047e110     MSVCRTD:throw_bad_alloc.obj
+ 0003:00009124       __CTA2?AVbad_alloc@std@@   0047e124     MSVCRTD:throw_bad_alloc.obj
+ 0003:00009134       __CT??_R0?AVbad_alloc@std@@@8??0bad_alloc@std@@QAE@ABV01@@Z12 0047e134     MSVCRTD:throw_bad_alloc.obj
+ 0003:00009154       __TI3?AVbad_array_new_length@std@@ 0047e154     MSVCRTD:throw_bad_alloc.obj
+ 0003:00009168       __CTA3?AVbad_array_new_length@std@@ 0047e168     MSVCRTD:throw_bad_alloc.obj
+ 0003:0000917c       __CT??_R0?AVbad_array_new_length@std@@@8??0bad_array_new_length@std@@QAE@ABV01@@Z12 0047e17c     MSVCRTD:throw_bad_alloc.obj
  0004:00000000       ?__LINE__Var@?0??_Allocate@std@@YAPAXII_N@Z@4JA 0047f000     Editor.obj
  0004:00000004       ?__LINE__Var@?0??_Deallocate@std@@YAXPAXII@Z@4JA 0047f004     Editor.obj
  0004:00000008       ?__LINE__Var@?0??lerp@@YAMHHH@Z@4JA 0047f008     CommonPathfindingLib:Game.obj

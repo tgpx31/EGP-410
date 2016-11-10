@@ -16,6 +16,7 @@
 
 #include "DepthFirstPathfinder.h"
 #include "DijkstraPathfinder.h"
+#include "AStarPathfinder.h"
 
 #include "Pathfinder.h"
 #include "GridPathfinder.h"
@@ -150,4 +151,32 @@ void GameApp::processLoop()
 bool GameApp::endLoop()
 {
 	return Game::endLoop();
+}
+
+void GameApp::changeMethod(bool isAStar)
+{
+	if (isAStar)
+	{
+		AStarPathfinder* pAStarPathfinder = new AStarPathfinder(mpGridGraph);
+		setPathfinding(pAStarPathfinder);
+	}
+	else if (!isAStar)
+	{
+		DijkstraPathfinder* pDijkstraPathfinder = new DijkstraPathfinder(mpGridGraph);
+		setPathfinding(pDijkstraPathfinder);
+	}
+}
+
+void GameApp::setPathfinding(GridPathfinder * pathfinder)
+{
+	// Delete the old pathfinder and display
+	delete mpPathfinder;
+	delete mpDebugDisplay;
+
+	// Set to the new instance
+	mpPathfinder = pathfinder;
+
+	// reinitialize the debug display, same way as in init
+	PathfindingDebugContent* pDebugContent = new PathfindingDebugContent(mpPathfinder);
+	mpDebugDisplay = new DebugDisplay(Vector2D(0, 12), pDebugContent);
 }

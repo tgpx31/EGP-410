@@ -45,6 +45,9 @@ public:
 	inline GridPathfinder* getPathfinder() { return mpPathfinder; };
 	inline Grid* getGrid() { return mpGrid; };
 	inline GridGraph* getGridGraph() { return mpGridGraph; };
+
+	void changeMethod(bool isAStar);
+	void setPathfinding(GridPathfinder* pathfinder);
 private:
 	GameMessageManager* mpMessageManager;
 	Grid* mpGrid;

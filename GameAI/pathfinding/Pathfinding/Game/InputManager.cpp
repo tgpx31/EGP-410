@@ -5,7 +5,12 @@
 #include "GameMessageManager.h"
 #include "PathToMessage.h"
 #include "ExitGameMessage.h"
+#include "ChangeMethodMessage.h"
 #include "GridPathfinder.h"
+
+#include "Grid.h"
+#include <allegro5/allegro_primitives.h>
+#include <allegro5/allegro_ttf.h>
 
 /* Initialize
  * If any component fails install, return false
@@ -45,15 +50,29 @@ void InputManager::cleanUp()
 	al_uninstall_mouse();
 }
 
+void InputManager::drawFirst(Vector2D start)
+{
+	// Draw the start node
+	Vector2D ulPos = gpGameApp->getGrid()->getULCornerOfSquare(gpGameApp->getGrid()->getSquareIndexFromPixelXY((int)start.getX(), (int)start.getY()));
+
+
+	al_draw_filled_rectangle(ulPos.getX(), ulPos.getY(), ulPos.getX() + 32, ulPos.getY() + 32, al_map_rgb(1, 255, 128));
+
+	al_draw_text(gpGame->getFont(), al_map_rgb(255, 255, 255), 
+				ulPos.getX() + gpGameApp->getGrid()->getSquareSize() / 4, ulPos.getY() + gpGameApp->getGrid()->getSquareSize() / 4,
+				ALLEGRO_ALIGN_LEFT, "S");
+}
+
 
 /* Get Input: Mouse*/
 void InputManager::getMouseInput()
 {
-	al_get_mouse_state(&mMouseState);	
+	al_get_mouse_state(&mMouseState);
+	static Vector2D lastPos(0.0f, 0.0f);
 
 	if (al_mouse_button_down(&mMouseState, 1) && !holdClick)	// left mouse click
 	{
-		static Vector2D lastPos(0.0f, 0.0f);
+		
 		Vector2D pos(mMouseState.x, mMouseState.y);
 
 		if (startNode)
@@ -64,8 +83,8 @@ void InputManager::getMouseInput()
 			gpGameApp->getPathfinder()->clearPath();
 
 			// path to yourself to draw yourself easily
-			GameMessage* pMessage = new PathToMessage(lastPos, lastPos);
-			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
+			/*GameMessage* pMessage = new PathToMessage(lastPos, lastPos);
+			gpGameApp->getMessageManager()->addMessage(pMessage, 0);*/
 
 			startNode = false;
 		}
@@ -80,6 +99,11 @@ void InputManager::getMouseInput()
 		}
 
 		holdClick = true;
+	}
+
+	if (!startNode)
+	{
+		drawFirst(lastPos);
 	}
 
 	// If they aren't holding the button down, let them click again
@@ -109,6 +133,18 @@ void InputManager::getKeyboardInput()
 		if (mEvent.keyboard.keycode == ALLEGRO_KEY_ESCAPE)
 		{
 			GameMessage* aMessage = new ExitGameMessage();
+			gpGameApp->getMessageManager()->addMessage(aMessage, 0);
+		}
+
+		if (mEvent.keyboard.keycode == ALLEGRO_KEY_D)
+		{
+			GameMessage* aMessage = new ChangeMethodMessage(false);
+			gpGameApp->getMessageManager()->addMessage(aMessage, 0);
+		}
+
+		if (mEvent.keyboard.keycode == ALLEGRO_KEY_A)
+		{
+			GameMessage* aMessage = new ChangeMethodMessage(true);
 			gpGameApp->getMessageManager()->addMessage(aMessage, 0);
 		}
 	}

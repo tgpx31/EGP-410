@@ -8,6 +8,8 @@
 #include "Trackable.h"
 #include "allegro5\allegro.h"
 
+class Vector2D;
+
 class InputManager : public Trackable
 {
 private:
@@ -21,6 +23,7 @@ private:
 	void getKeyboardInput();			// Get Keyboard Input
 
 	void cleanUp();		// Clean up allocated memory
+	void drawFirst(Vector2D start);
 
 public:
 	InputManager() {};

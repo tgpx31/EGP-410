@@ -1,1 +1,10 @@
-﻿  CommonPathfindingLib.vcxproj -> C:\Users\Student\Documents\_Brian\EGP-410\GameAI\pathfinding\Pathfinding\CommonPathfindingLib\Debug\CommonPathfindingLib.lib
+﻿  SpriteManager.cpp
+  Sprite.cpp
+  GridVisualizer.cpp
+  Grid.cpp
+  GraphicsSystem.cpp
+  GraphicsBufferManager.cpp
+  GraphicsBuffer.cpp
+  Game.cpp
+  Generating Code...
+  CommonPathfindingLib.vcxproj -> C:\Users\Student\Documents\_Brian\EGP-410\GameAI\pathfinding\Pathfinding\CommonPathfindingLib\Debug\CommonPathfindingLib.lib
