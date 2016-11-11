@@ -16,5 +16,5 @@ public:
 
 	const Path& findPath(Node* pFrom, Node* pTo);//make sure to delete the path when you are done!
 private:
-
+	float getHeuristic(Node* node, Node* goal);
 };

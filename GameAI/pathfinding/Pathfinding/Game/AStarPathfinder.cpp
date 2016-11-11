@@ -79,8 +79,7 @@ const Path& AStarPathfinder::findPath(Node* pFrom, Node* pTo)
 					nodesToVisit.push_front(closestToTarget);
 				}
 				// If there is a node that is closer to the target, prioritize that
-				else if (std::abs((gpGameApp->getGrid()->getULCornerOfSquare(pTo->getId()) - gpGameApp->getGrid()->getULCornerOfSquare(pTempToNode->getId())).getLength()) <
-					     std::abs((gpGameApp->getGrid()->getULCornerOfSquare(pTo->getId()) - gpGameApp->getGrid()->getULCornerOfSquare(closestToTarget->getId())).getLength()))
+				else if (getHeuristic(pTempToNode, pTo) < getHeuristic(closestToTarget, pTo))
 				{
 					closestToTarget = pTempToNode;
 					nodesToVisit.push_front(closestToTarget);
@@ -123,4 +122,13 @@ const Path& AStarPathfinder::findPath(Node* pFrom, Node* pTo)
 
 	return mPath;
 
+}
+
+float AStarPathfinder::getHeuristic(Node * node, Node * goal)
+{
+	// Heuristic used is based off of the Manhattan Distance, referenced @ http://theory.stanford.edu/~amitp/GameProgramming/Heuristics.html
+	float dx = abs(gpGameApp->getGrid()->getULCornerOfSquare(node->getId()).getX() - gpGameApp->getGrid()->getULCornerOfSquare(goal->getId()).getX());
+	float dy = abs(gpGameApp->getGrid()->getULCornerOfSquare(node->getId()).getY() - gpGameApp->getGrid()->getULCornerOfSquare(goal->getId()).getY());
+
+	return (dx + dy);
 }
