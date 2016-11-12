@@ -29,8 +29,8 @@ const Path& AStarPathfinder::findPath(Node* pFrom, Node* pTo)
 
 	list<Node*> nodesToVisit;				// allocate nodes to visit list and place starting node in it
 	pFrom->setPrevNode(pFrom->getId());		// it's the start, doesn't come from anywhere
-	pFrom->setCostFromStart(pFrom, 0.0f);
-	nodesToVisit.push_front(pFrom);		// visit the initial node first
+	pFrom->setCostFromStart(pFrom, 0.0f);	// start node has cost of 0
+	nodesToVisit.push_front(pFrom);			// visit the initial node first
 
 	mFinalPath.clear();
 
@@ -39,7 +39,7 @@ const Path& AStarPathfinder::findPath(Node* pFrom, Node* pTo)
 	mVisitedNodes.push_back(pFrom);
 #endif
 
-	mPath.clear();
+	mPath.clear();							// mPath does not contain the actual calculated path (based on Dean's original codebase)
 
 	Node* pCurrentNode = NULL;
 	bool toNodeAdded = false;
@@ -51,10 +51,8 @@ const Path& AStarPathfinder::findPath(Node* pFrom, Node* pTo)
 		//remove node from list
 		nodesToVisit.pop_front();
 
-		// Should you be adding it to the path?
-		//add Node to Path
+		//add Node to mPath
 		mPath.addNode(pCurrentNode);
-		//mVisitedNodes.push_back(pCurrentNode);
 
 		//get the Connections for the current node
 		vector<Connection*> connections = mpGraph->getConnections(pCurrentNode->getId());
@@ -65,26 +63,31 @@ const Path& AStarPathfinder::findPath(Node* pFrom, Node* pTo)
 		{
 			Connection* pConnection = connections[i];
 			Node* pTempToNode = connections[i]->getToNode();
+
 			if (!toNodeAdded &&
 				!mPath.containsNode(pTempToNode) &&
 				find(nodesToVisit.begin(), nodesToVisit.end(), pTempToNode) == nodesToVisit.end())
 			{
-				pTempToNode->setPrevNode(pCurrentNode->getId());
-				pTempToNode->setCostFromStart(pCurrentNode, connections[i]->getCost());
+				pTempToNode->setPrevNode(pCurrentNode->getId());						// set the prev. node for pCurrentNode
+				pTempToNode->setCostFromStart(pCurrentNode, connections[i]->getCost()); // set pCurrentNode's cost from start
 
-				// Check your hueristic here
+				// Set the initial connection's toNode as the closest
 				if (closestToTarget == NULL)
 				{
 					closestToTarget = pTempToNode;
 					nodesToVisit.push_front(closestToTarget);
 				}
-				// If there is a node that is closer to the target, prioritize that
+
+				// Check your heuristic here
+				// If there is a node that is closer to the target, prioritize that (put it at the front)
 				else if (getHeuristic(pTempToNode, pTo) < getHeuristic(closestToTarget, pTo))
 				{
 					closestToTarget = pTempToNode;
 					nodesToVisit.push_front(closestToTarget);
 				}
-				// Otherwise push_back
+
+				// Otherwise, push_back
+				// it's further than the currently closest, so it is less likely to help find the path needed
 				else
 				{
 					nodesToVisit.push_back(pTempToNode);
@@ -100,11 +103,14 @@ const Path& AStarPathfinder::findPath(Node* pFrom, Node* pTo)
 
 			}
 		}
-	} // End of the while loop, all necessary nodes explored
+	}
+	// End of the while loop, all necessary nodes explored
 
-	  // Time to iterate backwards
+	// Time to iterate backwards
 	pCurrentNode = pTo;
 
+	// Uses toNodeAdded for the loop
+	// flips off when the start node is added into the path
 	while (toNodeAdded)
 	{
 		// Build the path
@@ -121,12 +127,13 @@ const Path& AStarPathfinder::findPath(Node* pFrom, Node* pTo)
 	mTimeElapsed = gpPerformanceTracker->getElapsedTime("path");
 
 	return mPath;
-
 }
 
 float AStarPathfinder::getHeuristic(Node * node, Node * goal)
 {
 	// Heuristic used is based off of the Manhattan Distance, referenced @ http://theory.stanford.edu/~amitp/GameProgramming/Heuristics.html
+	// Manhattan distance heuristic is admissable
+	// To use an inadmissable heuristic, use euclidian distance
 	float dx = abs(gpGameApp->getGrid()->getULCornerOfSquare(node->getId()).getX() - gpGameApp->getGrid()->getULCornerOfSquare(goal->getId()).getX());
 	float dy = abs(gpGameApp->getGrid()->getULCornerOfSquare(node->getId()).getY() - gpGameApp->getGrid()->getULCornerOfSquare(goal->getId()).getY());
 

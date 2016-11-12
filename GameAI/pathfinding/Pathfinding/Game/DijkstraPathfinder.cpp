@@ -26,10 +26,10 @@ const Path& DijkstraPathfinder::findPath(Node* pFrom, Node* pTo)
 
 	list<Node*> nodesToVisit;				// allocate nodes to visit list and place starting node in it
 	pFrom->setPrevNode(pFrom->getId());		// it's the start, doesn't come from anywhere
-	pFrom->setCostFromStart(pFrom, 0.0f);
-	nodesToVisit.push_front(pFrom);		// visit the initial node first
+	pFrom->setCostFromStart(pFrom, 0.0f);	// start node has cost of 0
+	nodesToVisit.push_front(pFrom);			// visit the initial node first
 
-	mFinalPath.clear();
+	mFinalPath.clear();						// mPath does not contain the actual calculated path (based on Dean's original codebase)
 
 #ifdef VISUALIZE_PATH
 	mVisitedNodes.clear();
@@ -48,10 +48,8 @@ const Path& DijkstraPathfinder::findPath(Node* pFrom, Node* pTo)
 		//remove node from list
 		nodesToVisit.pop_front();
 
-		// Should you be adding it to the path?
 		//add Node to Path
 		mPath.addNode(pCurrentNode);
-		//mVisitedNodes.push_back(pCurrentNode);
 
 		//get the Connections for the current node
 		vector<Connection*> connections = mpGraph->getConnections(pCurrentNode->getId());
@@ -68,8 +66,8 @@ const Path& DijkstraPathfinder::findPath(Node* pFrom, Node* pTo)
 				pTempToNode->setPrevNode(pCurrentNode->getId());
 				pTempToNode->setCostFromStart(pCurrentNode, connections[i]->getCost());
 
-				//nodesToVisit.push_front( pTempToNode );//uncomment me for depth-first search
-				nodesToVisit.push_back(pTempToNode);//uncomment me for breadth-first search
+				//nodesToVisit.push_front( pTempToNode );	//uncomment me for depth-first search
+				nodesToVisit.push_back(pTempToNode);		//uncomment me for breadth-first search
 				if (pTempToNode == pTo)
 				{
 					toNodeAdded = true;
@@ -80,11 +78,14 @@ const Path& DijkstraPathfinder::findPath(Node* pFrom, Node* pTo)
 
 			}
 		}
-	} // End of the while loop, all necessary nodes explored
+	}
+	// End of the while loop, all necessary nodes explored
 
-	  // Time to iterate backwards
+	// Time to iterate backwards
 	pCurrentNode = pTo;
 
+	// Uses toNodeAdded for the loop
+	// flips off when the start node is added into the path
 	while (toNodeAdded)
 	{
 		// Build the path
