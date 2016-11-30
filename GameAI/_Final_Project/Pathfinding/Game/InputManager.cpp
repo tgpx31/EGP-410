@@ -125,24 +125,66 @@ void InputManager::getKeyboardInput()
 	while (!al_event_queue_is_empty(mpEventQ))
 	{
 		al_wait_for_event(mpEventQ, &mEvent);
-
-		// Exit game key input
-		if (mEvent.keyboard.keycode == ALLEGRO_KEY_ESCAPE)
+		switch (mEvent.keyboard.keycode)
+		{
+		case ALLEGRO_KEY_ESCAPE:
 		{
 			GameMessage* aMessage = new ExitGameMessage();
 			gpGameApp->getMessageManager()->addMessage(aMessage, 0);
+			break;
 		}
 
-		if (mEvent.keyboard.keycode == ALLEGRO_KEY_D)
+		/**
+		*	WASD for PLAYER movement
+		**/
+		case ALLEGRO_KEY_W:
 		{
-			GameMessage* aMessage = new ChangeMethodMessage(false);
-			gpGameApp->getMessageManager()->addMessage(aMessage, 0);
+			std::cout << "\nNO WASD YET W\n";
+			/*GameMessage* aMessage = new ChangeMethodMessage(false);
+			gpGameApp->getMessageManager()->addMessage(aMessage, 0);*/
+			break;
 		}
 
-		if (mEvent.keyboard.keycode == ALLEGRO_KEY_A)
+		case ALLEGRO_KEY_A:
 		{
-			GameMessage* aMessage = new ChangeMethodMessage(true);
-			gpGameApp->getMessageManager()->addMessage(aMessage, 0);
+			std::cout << "\nNO WASD YET A\n";
+			break;
+		}
+
+		case ALLEGRO_KEY_S:
+		{
+			std::cout << "\nNO WASD YET S\n";
+			break;
+		}
+
+		case ALLEGRO_KEY_D:
+		{
+			std::cout << "\nNO WASD YET D\n";
+			break;
+		}
+
+		/**
+		*	I for INVINCIBLE PLAYER
+		**/
+		case ALLEGRO_KEY_I:
+		{
+			std::cout << "\nMAKE THE PLAYER INVINCIBLE\n";
+			break;
+		}
+
+		/**
+		*	P for PROPERTIES
+		*	Up and Down arrows toggle through property list
+		*	+/- to edit values
+		**/
+
+		/**
+		*	X for DEBUG MODE
+		**/
+
+		default:
+			std::cout << "\nYou hit the DEFAULT CASE\n";
+			break;
 		}
 	}
 }

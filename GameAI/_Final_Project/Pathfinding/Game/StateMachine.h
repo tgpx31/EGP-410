@@ -22,11 +22,13 @@ enum TransitionType
 {
 	INVALID_TRANSITION_TYPE = -1,
 	/* Add differing transitions */
+	// Player Transitions
 	MOVEMENT_TRANSITION = 0,
 	POWERUP_TRANSITION = 1,
 	DAMAGED_TRANSITION = 2,
 	END_GAME_TRANSITION = 3,
 	RETRY_TRANSITION = 4
+	// NPC Transitions
 };
 
 /**
