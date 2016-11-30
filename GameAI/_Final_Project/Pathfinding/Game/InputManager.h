@@ -22,7 +22,7 @@ private:
 	void getMouseInput();				// Get mouse input
 	void getKeyboardInput();			// Get Keyboard Input
 
-	void cleanUp();		// Clean up allocated memory
+	void cleanUp();						// Clean up allocated memory
 	void drawFirst(Vector2D start);
 
 public:

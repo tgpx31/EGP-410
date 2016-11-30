@@ -7,6 +7,7 @@
 **/
 SM_State::~SM_State() {}
 
+// Add transition
 void SM_State::addTransition(Transition * pTransition)
 {
 	mTransitions[pTransition->getTransitionType()] = pTransition;
@@ -21,6 +22,7 @@ void StateMachine::addState(SM_State * pState)
 	mStates[pState->getID()] = pState;
 }
 
+// Update
 void StateMachine::update()
 {
 	if (mpCurrentState == NULL)
@@ -36,6 +38,7 @@ void StateMachine::update()
 	}
 }
 
+// Start
 void StateMachine::start()
 {
 	if (mInitialStateID != -1)
@@ -44,6 +47,7 @@ void StateMachine::start()
 	}
 }
 
+// Transition to state
 void StateMachine::transitionToState(const SM_ID & targetID)
 {
 	if (mpCurrentState != NULL)
