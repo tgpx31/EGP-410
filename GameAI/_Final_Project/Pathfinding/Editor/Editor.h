@@ -16,6 +16,8 @@ class Sprite;
 class Grid;
 class GridVisualizer;
 class GraphicsBuffer;
+class InputManager;
+class GameMessageManager;
 
 const float LOOP_TARGET_TIME = 33.3f;//how long should each frame of execution take? 30fps = 33.3ms/frame
 
@@ -27,6 +29,10 @@ public:
 
 	inline Grid* getGrid() { return mpGrid; };
 	inline GridVisualizer* getGridVisualizer() { return mpGridVisualizer; };
+	inline InputManager* getInputManager() { return mpInputManager; };
+	inline GameMessageManager* getMessageManager() { return mpMessageManager; };
+
+	inline std::string getFilename() { return FILE_NAME; };
 
 	virtual bool init();
 	virtual void cleanup();
@@ -42,5 +48,9 @@ public:
 private:
 	Grid* mpGrid;
 	GridVisualizer* mpGridVisualizer;
+	InputManager* mpInputManager;
+	GameMessageManager* mpMessageManager;
+
+	const std::string FILE_NAME = "pathgrid.txt";
 
 };

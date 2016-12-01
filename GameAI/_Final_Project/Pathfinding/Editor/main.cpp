@@ -41,7 +41,9 @@ int main(void)
 		//get current keyboard state
 		ALLEGRO_KEYBOARD_STATE keyState;
 		al_get_keyboard_state( &keyState );
-
+		
+		
+		/*
 		//if escape key was down then exit the loop
 		if( al_key_down( &keyState, ALLEGRO_KEY_ESCAPE ) )
 		{
@@ -56,7 +58,6 @@ int main(void)
 				pEditor->saveGrid(theStream);
 				theStream.close();
 				cout << "Grid saved!\n";
-				Sleep(1000);//very bogus
 			}
 		}
 		else if( al_key_down( &keyState, ALLEGRO_KEY_L ) )
@@ -69,9 +70,10 @@ int main(void)
 				theStream.close();
 				pEditor->getGridVisualizer()->setModified();
 				cout << "Grid loaded!\n";
-				Sleep(1000);//very bogus
 			}
 		}
+		*/
+
 
 		gpGame->beginLoop();
 		gpGame->processLoop();

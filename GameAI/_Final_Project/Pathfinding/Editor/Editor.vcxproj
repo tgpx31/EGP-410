@@ -58,7 +58,7 @@
       <AdditionalDependencies>CommonPathfindingLib.lib;allegro-5.0.10-monolith-md-debug.lib;DeanLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateMapFile>true</GenerateMapFile>
       <MapExports>false</MapExports>
-      <AdditionalLibraryDirectories>..\CommonPathfindingLib\Debug;..\..\..\..\External libs\Allegro5\lib;..\..\..\..\DeanLib\debug</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\CommonPathfindingLib\Debug;..\..\..\..\External Libs\Allegro5\lib;..\..\..\..\DeanLib\debug</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -76,10 +76,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Editor.cpp" />
+    <ClCompile Include="ExitGameMessage.cpp" />
+    <ClCompile Include="GameMessage.cpp" />
+    <ClCompile Include="GameMessageManager.cpp" />
+    <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="LoadMessage.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SaveMessage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Editor.h" />
+    <ClInclude Include="ExitGameMessage.h" />
+    <ClInclude Include="GameMessage.h" />
+    <ClInclude Include="GameMessageManager.h" />
+    <ClInclude Include="InputManager.h" />
+    <ClInclude Include="LoadMessage.h" />
+    <ClInclude Include="SaveMessage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

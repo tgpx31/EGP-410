@@ -12,6 +12,9 @@
 #include "SpriteManager.h"
 #include "Vector2D.h"
 
+#include "InputManager.h"
+#include "GameMessageManager.h"
+
 using namespace std;
 
 const int GRID_SQUARE_SIZE = 32;
@@ -21,6 +24,8 @@ Editor::Editor()
 :Game()
 ,mpGrid(NULL)
 ,mpGridVisualizer(NULL)
+,mpInputManager(NULL)
+,mpMessageManager(NULL)
 {
 }
 
@@ -38,9 +43,14 @@ bool Editor::init()
 		return false;
 	}
 
+	mpMessageManager = new GameMessageManager();
+
 	mpGrid = new Grid(mpGraphicsSystem->getWidth(), mpGraphicsSystem->getHeight(), GRID_SQUARE_SIZE);
 
 	mpGridVisualizer = new GridVisualizer( mpGrid );
+
+	mpInputManager = new InputManager();
+	mpInputManager->init();
 
 	//load buffers
 	mpGraphicsBufferManager->loadBuffer( BACKGROUND_ID, "wallpaper.bmp");
@@ -63,6 +73,12 @@ void Editor::cleanup()
 
 	delete mpGrid;
 	mpGrid = NULL;
+
+	delete mpInputManager;
+	mpInputManager = NULL;
+
+	delete mpMessageManager;
+	mpMessageManager = NULL;
 }
 
 void Editor::beginLoop()
@@ -73,9 +89,12 @@ void Editor::beginLoop()
 
 void Editor::processLoop()
 {
+	mpInputManager->update();
+	
 	ALLEGRO_MOUSE_STATE mouseState;
 	al_get_mouse_state( &mouseState );
 
+	/* This all needs to be put in the input manager */
 	if( al_mouse_button_down( &mouseState, 1 ) )//left mouse click
 	{
 		mpGrid->setValueAtPixelXY( mouseState.x, mouseState.y, BLOCKING_VALUE );
@@ -86,6 +105,8 @@ void Editor::processLoop()
 		mpGrid->setValueAtPixelXY( mouseState.x, mouseState.y, CLEAR_VALUE );
 		mpGridVisualizer->setModified();
 	}
+
+	mpMessageManager->processMessagesForThisframe();
 
 	//copy to back buffer
 	mpGridVisualizer->draw(*(mpGraphicsSystem->getBackBuffer()));
