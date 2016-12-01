@@ -81,7 +81,6 @@
     <ClInclude Include="AStarPathfinder.h" />
     <ClInclude Include="ChangeMethodMessage.h" />
     <ClInclude Include="Connection.h" />
-    <ClInclude Include="DamageState.h" />
     <ClInclude Include="DebugContent.h" />
     <ClInclude Include="DebugDisplay.h" />
     <ClInclude Include="DepthFirstPathfinder.h" />
@@ -105,7 +104,6 @@
     <ClCompile Include="AStarPathfinder.cpp" />
     <ClCompile Include="ChangeMethodMessage.cpp" />
     <ClCompile Include="Connection.cpp" />
-    <ClCompile Include="DamageState.cpp" />
     <ClCompile Include="DebugDisplay.cpp" />
     <ClCompile Include="DepthFirstPathfinder.cpp" />
     <ClCompile Include="DijkstraPathfinder.cpp" />

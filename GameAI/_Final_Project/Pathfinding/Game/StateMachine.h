@@ -9,6 +9,7 @@
 *	Contains:
 *		Transitions
 *		Transition Types
+*
 *		States
 *		State Machine
 **/
@@ -21,14 +22,22 @@ typedef int SM_ID;
 enum TransitionType
 {
 	INVALID_TRANSITION_TYPE = -1,
-	/* Add differing transitions */
+	
 	// Player Transitions
-	MOVEMENT_TRANSITION = 0,
-	POWERUP_TRANSITION = 1,
-	DAMAGED_TRANSITION = 2,
-	END_GAME_TRANSITION = 3,
-	RETRY_TRANSITION = 4
+	DIRECTIONAL_VELOCITY_TRANSITION = 0,
+	POWERUP_TO_NORMAL_TRANSITION = 1,
+	NORMAL_TO_POWERUP_TRANSITION = 2,
+	GAME_OVER_TRANSITION = 3,
+
 	// NPC Transitions
+	TO_CHASE_TRANSITION = 4,
+	TO_FLEE_TRANSITION = 5,
+	RETURN_TO_PREVIOUS_TRANSITION = 6,
+	WANDER_TO_PATROL_TRANSITION = 7,
+	PATROL_TO_WANDER_TRANSITION = 8,
+
+	// Game state Transitions
+	END_GAME_TRANSITION = 9
 };
 
 /**
