@@ -75,6 +75,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ChangeModeMessage.cpp" />
     <ClCompile Include="Editor.cpp" />
     <ClCompile Include="ExitGameMessage.cpp" />
     <ClCompile Include="GameMessage.cpp" />
@@ -83,8 +84,10 @@
     <ClCompile Include="LoadMessage.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SaveMessage.cpp" />
+    <ClCompile Include="ToggleHelpMessage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ChangeModeMessage.h" />
     <ClInclude Include="Editor.h" />
     <ClInclude Include="ExitGameMessage.h" />
     <ClInclude Include="GameMessage.h" />
@@ -92,6 +95,7 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="LoadMessage.h" />
     <ClInclude Include="SaveMessage.h" />
+    <ClInclude Include="ToggleHelpMessage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

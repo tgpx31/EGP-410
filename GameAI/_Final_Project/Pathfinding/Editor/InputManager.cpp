@@ -3,6 +3,8 @@
 #include "ExitGameMessage.h"
 #include "SaveMessage.h"
 #include "LoadMessage.h"
+#include "ChangeModeMessage.h"
+#include "ToggleHelpMessage.h"
 #include "Editor.h"
 
 /* Initialize
@@ -79,29 +81,45 @@ void InputManager::getKeyboardInput()
 	{
 		al_wait_for_event(mpEventQ, &mEvent);
 
-		// Exit game key input
-		if (mEvent.keyboard.keycode == ALLEGRO_KEY_ESCAPE)
+		GameMessage* pMessage = NULL;
+
+		switch (mEvent.keyboard.keycode)
 		{
-			GameMessage* pMessage = new ExitGameMessage();
+			case ALLEGRO_KEY_ESCAPE:
+				pMessage = new ExitGameMessage();
+				break;
+			case ALLEGRO_KEY_S:
+				pMessage = new SaveMessage();
+				break;
+			case ALLEGRO_KEY_L:
+				pMessage = new LoadMessage();
+				break;
+			case ALLEGRO_KEY_1:
+				//Set editor to place wall blocks
+				pMessage = new ChangeModeMessage(WALL);
+				break;
+			case ALLEGRO_KEY_2:
+				//Set eidtor to place enemy spawn points
+				pMessage = new ChangeModeMessage(ENEMY_SPAWN);
+				break;
+			case ALLEGRO_KEY_3:
+				//Set editor to place player spawn point
+				pMessage = new ChangeModeMessage(PLAYER_SPAWN);
+				break;
+			case ALLEGRO_KEY_4:
+				//Set editor to place All-Mighty-Candy
+				pMessage = new ChangeModeMessage(CANDY);
+				break;
+			case ALLEGRO_KEY_TILDE:
+				pMessage = new ToggleHelpMessage();
+				break;
+		}
+
+		if (pMessage != NULL)
+		{
 			Editor* pEditor = dynamic_cast<Editor*>(gpGame);
 			pEditor->getMessageManager()->addMessage(pMessage, 0);
 		}
-
-		if (mEvent.keyboard.keycode == ALLEGRO_KEY_S)
-		{
-			GameMessage* pMessage = new SaveMessage();
-			Editor* pEditor = dynamic_cast<Editor*>(gpGame);
-			pEditor->getMessageManager()->addMessage(pMessage, 0);
-		}
-
-		if (mEvent.keyboard.keycode == ALLEGRO_KEY_L)
-		{
-			GameMessage* pMessage = new LoadMessage();
-			Editor* pEditor = dynamic_cast<Editor*>(gpGame);
-			pEditor->getMessageManager()->addMessage(pMessage, 0);
-		}
-
-		/* Good code goes here */
 	}
 }
 
