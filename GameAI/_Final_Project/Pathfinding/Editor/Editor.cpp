@@ -14,6 +14,7 @@
 
 #include "InputManager.h"
 #include "GameMessageManager.h"
+#include "HelpMenu.h"
 
 using namespace std;
 
@@ -26,6 +27,7 @@ Editor::Editor()
 ,mpGridVisualizer(NULL)
 ,mpInputManager(NULL)
 ,mpMessageManager(NULL)
+,mpHelpMenu(NULL)
 ,mEditGridValue(BLOCKING_VALUE)
 ,mCurrentMapID(0)
 {
@@ -54,6 +56,8 @@ bool Editor::init()
 
 	mpInputManager = new InputManager();
 	mpInputManager->init();
+
+	mpHelpMenu = new HelpMenu();
 
 	//load buffers
 	mpGraphicsBufferManager->loadBuffer( BACKGROUND_ID, "wallpaper.bmp");
@@ -115,6 +119,9 @@ void Editor::cleanup()
 
 	delete mpMessageManager;
 	mpMessageManager = NULL;
+
+	delete mpHelpMenu;
+	mpHelpMenu = NULL;
 }
 
 void Editor::beginLoop()
@@ -128,8 +135,8 @@ void Editor::processLoop()
 	mpInputManager->update();
 	mpMessageManager->processMessagesForThisframe();
 
-	//copy to back buffer
 	mpGridVisualizer->draw(*(mpGraphicsSystem->getBackBuffer()));
+	mpHelpMenu->draw();
 
 	//should be last thing in processLoop
 	Game::processLoop();

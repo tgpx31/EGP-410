@@ -18,6 +18,7 @@ class GridVisualizer;
 class GraphicsBuffer;
 class InputManager;
 class GameMessageManager;
+class HelpMenu;
 
 const float LOOP_TARGET_TIME = 33.3f;//how long should each frame of execution take? 30fps = 33.3ms/frame
 
@@ -34,11 +35,13 @@ public:
 
 	inline int getEditGridValue() { return mEditGridValue; };
 	inline int getCurrentMapID() { return mCurrentMapID; };
+	inline bool getShowHelp() { return mShowHelp; };
 
 	inline std::string getFilename() { return FILE_PATH + FILE_NAME + std::to_string(mCurrentMapID) + FILE_EXT; };
 
 	inline void setEditGridValue(int value) { mEditGridValue = value; };
 	inline void setCurrentMapID(int value) { mCurrentMapID = value; };
+	inline void setShowHelp(bool value) { mShowHelp = value; };
 
 	virtual bool init();
 	virtual void cleanup();
@@ -56,8 +59,10 @@ private:
 	GridVisualizer* mpGridVisualizer;
 	InputManager* mpInputManager;
 	GameMessageManager* mpMessageManager;
+	HelpMenu* mpHelpMenu;
 
 	int mEditGridValue;
+	bool mShowHelp;
 
 	const std::string FILE_PATH = "../Assets/Maps/";
 	const std::string FILE_NAME = "map";

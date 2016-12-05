@@ -82,6 +82,7 @@
     <ClCompile Include="ExitGameMessage.cpp" />
     <ClCompile Include="GameMessage.cpp" />
     <ClCompile Include="GameMessageManager.cpp" />
+    <ClCompile Include="HelpMenu.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="LoadMessage.cpp" />
     <ClCompile Include="main.cpp" />
@@ -96,6 +97,7 @@
     <ClInclude Include="ExitGameMessage.h" />
     <ClInclude Include="GameMessage.h" />
     <ClInclude Include="GameMessageManager.h" />
+    <ClInclude Include="HelpMenu.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="LoadMessage.h" />
     <ClInclude Include="SaveMessage.h" />
