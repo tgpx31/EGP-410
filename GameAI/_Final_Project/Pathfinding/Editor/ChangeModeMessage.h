@@ -2,21 +2,13 @@
 
 #include "GameMessage.h"
 
-enum EDIT_MODES
-{
-	WALL,
-	ENEMY_SPAWN,
-	PLAYER_SPAWN,
-	CANDY
-};
-
 class ChangeModeMessage : public GameMessage
 {
 private:
-	EDIT_MODES mMode;
+	int mValue;
 
 public:
-	ChangeModeMessage(EDIT_MODES mode);
+	ChangeModeMessage(int value);
 	~ChangeModeMessage();
 
 	void process();

@@ -31,6 +31,9 @@
     <ClCompile Include="ChangeModeMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
     </ClCompile>
+    <ClCompile Include="EditGridMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -84,6 +87,9 @@
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
     <ClInclude Include="ChangeModeMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="EditGridMessage.h">
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
   </ItemGroup>

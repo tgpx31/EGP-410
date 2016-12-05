@@ -76,6 +76,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ChangeModeMessage.cpp" />
+    <ClCompile Include="EditGridMessage.cpp" />
     <ClCompile Include="Editor.cpp" />
     <ClCompile Include="ExitGameMessage.cpp" />
     <ClCompile Include="GameMessage.cpp" />
@@ -88,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChangeModeMessage.h" />
+    <ClInclude Include="EditGridMessage.h" />
     <ClInclude Include="Editor.h" />
     <ClInclude Include="ExitGameMessage.h" />
     <ClInclude Include="GameMessage.h" />

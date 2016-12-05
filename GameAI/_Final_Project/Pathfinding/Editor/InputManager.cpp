@@ -5,6 +5,8 @@
 #include "LoadMessage.h"
 #include "ChangeModeMessage.h"
 #include "ToggleHelpMessage.h"
+#include "EditGridMessage.h"
+#include "Grid.h"
 #include "Editor.h"
 
 /* Initialize
@@ -12,8 +14,6 @@
 */
 bool InputManager::init()
 {
-	holdClick = false;
-
 	// Initialize Allegro
 	if (!al_install_keyboard())
 	{
@@ -50,18 +50,17 @@ void InputManager::getMouseInput()
 {
 	al_get_mouse_state(&mMouseState);
 
-	if (al_mouse_button_down(&mMouseState, 1) && !holdClick)	// left mouse click
+	if (al_mouse_button_down(&mMouseState, 1))	//Left mouse click
 	{
-
-		/* Good code goes here */
-
-		holdClick = true;
+		Editor* pEditor = dynamic_cast<Editor*>(gpGame);
+		GameMessage* pMessage = new EditGridMessage(mMouseState.x, mMouseState.y, pEditor->getEditGridValue());
+		pEditor->getMessageManager()->addMessage(pMessage, 0);
 	}
-
-	// If they aren't holding the button down, let them click again
-	if (!al_mouse_button_down(&mMouseState, 1))
-	{
-		holdClick = false;
+	else if (al_mouse_button_down(&mMouseState, 2)) //Right mouse click
+	{	
+		Editor* pEditor = dynamic_cast<Editor*>(gpGame);
+		GameMessage* pMessage = new EditGridMessage(mMouseState.x, mMouseState.y, CLEAR_VALUE);
+		pEditor->getMessageManager()->addMessage(pMessage, 0);
 	}
 }
 
@@ -101,19 +100,19 @@ void InputManager::getKeyboardInput()
 				break;
 			case ALLEGRO_KEY_1:
 				//Set editor to place wall blocks
-				pMessage = new ChangeModeMessage(WALL);
+				pMessage = new ChangeModeMessage(BLOCKING_VALUE);
 				break;
 			case ALLEGRO_KEY_2:
 				//Set eidtor to place enemy spawn points
-				pMessage = new ChangeModeMessage(ENEMY_SPAWN);
+				pMessage = new ChangeModeMessage(ENEMY_SPAWN_VALUE);
 				break;
 			case ALLEGRO_KEY_3:
 				//Set editor to place player spawn point
-				pMessage = new ChangeModeMessage(PLAYER_SPAWN);
+				pMessage = new ChangeModeMessage(PLAYER_SPAWN_VALUE);
 				break;
 			case ALLEGRO_KEY_4:
 				//Set editor to place All-Mighty-Candy
-				pMessage = new ChangeModeMessage(CANDY);
+				pMessage = new ChangeModeMessage(CANDY_VALUE);
 				break;
 			case ALLEGRO_KEY_TILDE:
 				pMessage = new ToggleHelpMessage();

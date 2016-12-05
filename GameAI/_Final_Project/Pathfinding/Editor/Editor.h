@@ -32,7 +32,11 @@ public:
 	inline InputManager* getInputManager() { return mpInputManager; };
 	inline GameMessageManager* getMessageManager() { return mpMessageManager; };
 
+	inline int getEditGridValue() { return mEditGridValue; };
+
 	inline std::string getFilename() { return FILE_NAME; };
+
+	inline void setEditGridValue(int value) { mEditGridValue = value; };
 
 	virtual bool init();
 	virtual void cleanup();
@@ -51,6 +55,7 @@ private:
 	InputManager* mpInputManager;
 	GameMessageManager* mpMessageManager;
 
-	const std::string FILE_NAME = "pathgrid.txt";
+	int mEditGridValue;
 
+	const std::string FILE_NAME = "pathgrid.txt";
 };

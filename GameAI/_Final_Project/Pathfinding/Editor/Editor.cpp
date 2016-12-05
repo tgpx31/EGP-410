@@ -26,6 +26,7 @@ Editor::Editor()
 ,mpGridVisualizer(NULL)
 ,mpInputManager(NULL)
 ,mpMessageManager(NULL)
+,mEditGridValue(BLOCKING_VALUE)
 {
 }
 

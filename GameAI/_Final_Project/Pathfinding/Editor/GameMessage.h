@@ -9,7 +9,8 @@ enum MessageType
 	SAVE_MESSAGE,
 	LOAD_MESSAGE,
 	TOGGLE_HELP_MESSAGE,
-	CHANGE_MODE_MESSAGE
+	CHANGE_MODE_MESSAGE,
+	EDIT_GRID_MESSAGE
 };
 
 class GameMessage : public Trackable
