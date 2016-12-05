@@ -10,9 +10,11 @@ const int CLEAR_VALUE = 0;
 const int BLOCKING_VALUE = 1;
 
 /* 
- * I don't like doing this but 
- * the first rule of refactoring is 
- * don't do it if you you don't have to.
+ * It hurts to do this as opposed 
+ * to converting everything to an 
+ * enum but the first rule of 
+ * refactoring is don't do it if 
+ * you you don't have to.
  */
 const int COIN_VALUE = 2;
 const int CANDY_VALUE = 3;

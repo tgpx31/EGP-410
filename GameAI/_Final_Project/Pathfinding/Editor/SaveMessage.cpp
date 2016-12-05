@@ -20,6 +20,5 @@ void SaveMessage::process()
 	pEditor->saveGrid(theStream);
 	theStream.close();
 	
-	std::cout << "Grid saved!\n";
-	
+	std::cout << "Saved map to " << pEditor->getFilename() << std::endl;
 }

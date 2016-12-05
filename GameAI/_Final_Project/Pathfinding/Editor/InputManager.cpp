@@ -6,6 +6,7 @@
 #include "ChangeModeMessage.h"
 #include "ToggleHelpMessage.h"
 #include "EditGridMessage.h"
+#include "ChangeMapMessage.h"
 #include "Grid.h"
 #include "Editor.h"
 
@@ -117,6 +118,32 @@ void InputManager::getKeyboardInput()
 			case ALLEGRO_KEY_TILDE:
 				pMessage = new ToggleHelpMessage();
 				break;
+			case ALLEGRO_KEY_UP:
+			{
+				Editor* pEditor = dynamic_cast<Editor*>(gpGame);
+
+				pMessage = new SaveMessage();
+				pEditor->getMessageManager()->addMessage(pMessage, 0);
+
+				pMessage = new ChangeMapMessage(pEditor->getCurrentMapID() + 1);
+				pEditor->getMessageManager()->addMessage(pMessage, 0);
+
+				pMessage = new LoadMessage(); //Doesn't add to message manager so below functionality still works
+				break;
+			}
+			case ALLEGRO_KEY_DOWN:
+			{
+				Editor* pEditor = dynamic_cast<Editor*>(gpGame);
+
+				pMessage = new SaveMessage();
+				pEditor->getMessageManager()->addMessage(pMessage, 0);
+
+				pMessage = new ChangeMapMessage(pEditor->getCurrentMapID() - 1);
+				pEditor->getMessageManager()->addMessage(pMessage, 0);
+
+				pMessage = new LoadMessage(); //Doesn't add to message manager so below functionality still works
+				break;
+			}
 		}
 
 		if (pMessage != NULL)

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Game.h"
-#include <fstream>
+#include <string>
 
 /*Editor - class to hold all application related info.
 
@@ -33,10 +33,12 @@ public:
 	inline GameMessageManager* getMessageManager() { return mpMessageManager; };
 
 	inline int getEditGridValue() { return mEditGridValue; };
+	inline int getCurrentMapID() { return mCurrentMapID; };
 
-	inline std::string getFilename() { return FILE_NAME; };
+	inline std::string getFilename() { return FILE_PATH + FILE_NAME + std::to_string(mCurrentMapID) + FILE_EXT; };
 
 	inline void setEditGridValue(int value) { mEditGridValue = value; };
+	inline void setCurrentMapID(int value) { mCurrentMapID = value; };
 
 	virtual bool init();
 	virtual void cleanup();
@@ -57,5 +59,8 @@ private:
 
 	int mEditGridValue;
 
-	const std::string FILE_NAME = "pathgrid.txt";
+	const std::string FILE_PATH = "../Assets/Maps/";
+	const std::string FILE_NAME = "map";
+	const std::string FILE_EXT = ".txt";
+	int mCurrentMapID;
 };

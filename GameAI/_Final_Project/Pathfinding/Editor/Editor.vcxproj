@@ -75,6 +75,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ChangeMapMessage.cpp" />
     <ClCompile Include="ChangeModeMessage.cpp" />
     <ClCompile Include="EditGridMessage.cpp" />
     <ClCompile Include="Editor.cpp" />
@@ -88,6 +89,7 @@
     <ClCompile Include="ToggleHelpMessage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ChangeMapMessage.h" />
     <ClInclude Include="ChangeModeMessage.h" />
     <ClInclude Include="EditGridMessage.h" />
     <ClInclude Include="Editor.h" />

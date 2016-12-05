@@ -25,5 +25,5 @@ void LoadMessage::process()
 
 	pEditor->getGridVisualizer()->setModified();
 
-	std::cout << "Grid loaded!\n";
+	std::cout << "Loaded map from " << pEditor->getFilename() << std::endl;
 }

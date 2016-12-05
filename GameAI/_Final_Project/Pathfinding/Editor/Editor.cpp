@@ -27,6 +27,7 @@ Editor::Editor()
 ,mpInputManager(NULL)
 ,mpMessageManager(NULL)
 ,mEditGridValue(BLOCKING_VALUE)
+,mCurrentMapID(0)
 {
 }
 
@@ -91,22 +92,6 @@ void Editor::beginLoop()
 void Editor::processLoop()
 {
 	mpInputManager->update();
-	
-	ALLEGRO_MOUSE_STATE mouseState;
-	al_get_mouse_state( &mouseState );
-
-	/* This all needs to be put in the input manager */
-	if( al_mouse_button_down( &mouseState, 1 ) )//left mouse click
-	{
-		mpGrid->setValueAtPixelXY( mouseState.x, mouseState.y, BLOCKING_VALUE );
-		mpGridVisualizer->setModified();
-	}
-	else if( al_mouse_button_down( &mouseState, 2 ) )//right mouse down
-	{
-		mpGrid->setValueAtPixelXY( mouseState.x, mouseState.y, CLEAR_VALUE );
-		mpGridVisualizer->setModified();
-	}
-
 	mpMessageManager->processMessagesForThisframe();
 
 	//copy to back buffer
