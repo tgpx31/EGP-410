@@ -50,20 +50,54 @@ bool Editor::init()
 	mpGrid = new Grid(mpGraphicsSystem->getWidth(), mpGraphicsSystem->getHeight(), GRID_SQUARE_SIZE);
 
 	mpGridVisualizer = new GridVisualizer( mpGrid );
+	mpGridVisualizer->setEditor(true);
 
 	mpInputManager = new InputManager();
 	mpInputManager->init();
 
 	//load buffers
 	mpGraphicsBufferManager->loadBuffer( BACKGROUND_ID, "wallpaper.bmp");
+	mpGraphicsBufferManager->loadBuffer(BLOCKING_VALUE, "../Assets/Images/blocking.png");
+	mpGraphicsBufferManager->loadBuffer(ENEMY_SPAWN_VALUE, "../Assets/Images/og_ghost.png");
+	mpGraphicsBufferManager->loadBuffer(PLAYER_SPAWN_VALUE, "../Assets/Images/og_pac.png");
+	mpGraphicsBufferManager->loadBuffer(CANDY_VALUE, "../Assets/Images/candy.png");
 
 	//setup sprites
-	GraphicsBuffer* pBackGroundBuffer = mpGraphicsBufferManager->getBuffer( BACKGROUND_ID );
-	if( pBackGroundBuffer != NULL )
+	GraphicsBuffer* pBuffer = mpGraphicsBufferManager->getBuffer( BACKGROUND_ID );
+	if( pBuffer != NULL )
 	{
-		mpSpriteManager->createAndManageSprite( BACKGROUND_SPRITE_ID, pBackGroundBuffer, 0, 0, pBackGroundBuffer->getWidth(), pBackGroundBuffer->getHeight() );
+		mpSpriteManager->createAndManageSprite( BACKGROUND_SPRITE_ID, pBuffer, 0, 0, pBuffer->getWidth(), pBuffer->getHeight() );
+		std::cout << "Background sprite loaded" << std::endl;
 	}
-	
+
+	pBuffer = mpGraphicsBufferManager->getBuffer(BLOCKING_VALUE);
+	if (pBuffer != NULL)
+	{
+		mpSpriteManager->createAndManageSprite(BLOCKING_VALUE, pBuffer, 0, 0, pBuffer->getWidth(), pBuffer->getHeight());
+		std::cout << "Blocking sprite loaded" << std::endl;
+	}
+
+	pBuffer = mpGraphicsBufferManager->getBuffer(ENEMY_SPAWN_VALUE);
+	if (pBuffer != NULL)
+	{
+		mpSpriteManager->createAndManageSprite(ENEMY_SPAWN_VALUE, pBuffer, 0, 0, pBuffer->getWidth(), pBuffer->getHeight());
+		std::cout << "Enemy spawn sprite loaded" << std::endl;
+	}
+
+	pBuffer = mpGraphicsBufferManager->getBuffer(PLAYER_SPAWN_VALUE);
+	if (pBuffer != NULL)
+	{
+		mpSpriteManager->createAndManageSprite(PLAYER_SPAWN_VALUE, pBuffer, 0, 0, pBuffer->getWidth(), pBuffer->getHeight());
+		std::cout << "Player spawn sprite loaded" << std::endl;
+	}
+
+	pBuffer = mpGraphicsBufferManager->getBuffer(CANDY_VALUE);
+	if (pBuffer != NULL)
+	{
+		mpSpriteManager->createAndManageSprite(CANDY_VALUE, pBuffer, 0, 0, pBuffer->getWidth(), pBuffer->getHeight());
+		std::cout << "Candy sprite loaded" << std::endl;
+	}
+
 	mpMasterTimer->start();
 	return true;
 }

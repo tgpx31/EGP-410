@@ -22,6 +22,8 @@ public:
 	void setModified() { mDirty = true; };
 	void draw( GraphicsBuffer& dest );
 	void clear();
+
+	inline void setEditor(bool value) { mEditor = value; };
 private:
 	void refresh();
 
@@ -30,4 +32,5 @@ private:
 	std::map< ALLEGRO_COLOR, std::vector<int>, AllegroColorCompare > mColormap;
 
 	bool mDirty;
+	bool mEditor;
 };

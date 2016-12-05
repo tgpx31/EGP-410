@@ -41,6 +41,7 @@ public:
 	int getGridWidth() const { return mGridWidth; };
 	int getGridHeight() const { return mGridHeight; };
 	int getSquareSize() const { return mSquareSize; };
+	int getNumValues() const { return mGridWidth * mGridHeight; };
 
 	//get adjacent grid square indices
 	std::vector<int> getAdjacentIndices( int theSquareIndex ) const;

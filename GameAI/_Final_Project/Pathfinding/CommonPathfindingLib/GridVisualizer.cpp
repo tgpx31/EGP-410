@@ -7,10 +7,13 @@
 #include "Vector2D.h"
 
 #include "Game.h"
+#include "SpriteManager.h"
+#include "Sprite.h"
 
 GridVisualizer::GridVisualizer( Grid* pGrid )
 :mpGrid(pGrid)
 ,mDirty(true)
+,mEditor(false)
 {
 }
 
@@ -30,7 +33,7 @@ void GridVisualizer::refresh()
 		//get any non-zero squares and send them to the visualizer
 		for( int i=0; i<size; i++ )
 		{
-			if( mpGrid->getValueAtIndex(i) != 0 )
+			if( mpGrid->getValueAtIndex(i) == 1 )
 			{
 				addColor( i, color );
 			}
@@ -118,6 +121,30 @@ void GridVisualizer::draw( GraphicsBuffer& dest )
 			}
 				
 			//mpBuffer->fillRegion( ulPos, Vector2D( ulPos.getX() + squareSize, ulPos.getY() + squareSize ), iter->first );
+		}
+	}
+
+	if (mEditor)
+	{
+		int numValues = mpGrid->getNumValues();
+		int value;
+
+		for (int j = 0; j < numValues; j++)
+		{
+			value = mpGrid->getValueAtIndex(j);
+
+			switch (value)
+			{
+			case ENEMY_SPAWN_VALUE:
+				gpGame->getSpriteManager()->getSprite(ENEMY_SPAWN_VALUE)->draw(dest, mpGrid->getULCornerOfSquare(j).getX(), mpGrid->getULCornerOfSquare(j).getY());
+				break;
+			case PLAYER_SPAWN_VALUE:
+				gpGame->getSpriteManager()->getSprite(PLAYER_SPAWN_VALUE)->draw(dest, mpGrid->getULCornerOfSquare(j).getX(), mpGrid->getULCornerOfSquare(j).getY());
+				break;
+			case CANDY_VALUE:
+				gpGame->getSpriteManager()->getSprite(CANDY_VALUE)->draw(dest, mpGrid->getULCornerOfSquare(j).getX(), mpGrid->getULCornerOfSquare(j).getY());
+				break;
+			}
 		}
 	}
 
