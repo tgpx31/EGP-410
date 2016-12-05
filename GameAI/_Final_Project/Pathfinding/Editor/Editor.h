@@ -33,9 +33,9 @@ public:
 	inline InputManager* getInputManager() { return mpInputManager; };
 	inline GameMessageManager* getMessageManager() { return mpMessageManager; };
 
-	inline int getEditGridValue() { return mEditGridValue; };
-	inline int getCurrentMapID() { return mCurrentMapID; };
-	inline bool getShowHelp() { return mShowHelp; };
+	inline int getEditGridValue() const { return mEditGridValue; };
+	inline int getCurrentMapID() const { return mCurrentMapID; };
+	inline bool getShowHelp() const  { return mShowHelp; };
 
 	inline std::string getFilename() { return FILE_PATH + FILE_NAME + std::to_string(mCurrentMapID) + FILE_EXT; };
 

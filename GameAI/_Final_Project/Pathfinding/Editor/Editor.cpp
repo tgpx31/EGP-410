@@ -30,6 +30,7 @@ Editor::Editor()
 ,mpHelpMenu(NULL)
 ,mEditGridValue(BLOCKING_VALUE)
 ,mCurrentMapID(0)
+,mShowHelp(false)
 {
 }
 

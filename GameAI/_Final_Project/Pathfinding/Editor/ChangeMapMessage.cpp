@@ -5,6 +5,8 @@ ChangeMapMessage::ChangeMapMessage(int mapID) : GameMessage(CHANGE_MAP_MESSAGE)
 {
 	if (mapID < 0)
 		mMapID = 0;
+	else if (mapID > 3)
+		mMapID = 3;
 	else
 		mMapID = mapID;
 }
