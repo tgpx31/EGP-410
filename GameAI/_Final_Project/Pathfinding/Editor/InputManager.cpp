@@ -81,6 +81,11 @@ void InputManager::getKeyboardInput()
 	{
 		al_wait_for_event(mpEventQ, &mEvent);
 
+		if (mEvent.type != ALLEGRO_EVENT_KEY_CHAR || mEvent.keyboard.repeat == true)
+		{
+			continue;
+		}
+
 		GameMessage* pMessage = NULL;
 
 		switch (mEvent.keyboard.keycode)

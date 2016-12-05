@@ -125,6 +125,12 @@ void InputManager::getKeyboardInput()
 	while (!al_event_queue_is_empty(mpEventQ))
 	{
 		al_wait_for_event(mpEventQ, &mEvent);
+
+		if (mEvent.type != ALLEGRO_EVENT_KEY_CHAR || mEvent.keyboard.repeat == true)
+		{
+			continue;
+		}
+
 		switch (mEvent.keyboard.keycode)
 		{
 		case ALLEGRO_KEY_ESCAPE:
