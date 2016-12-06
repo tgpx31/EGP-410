@@ -44,9 +44,16 @@ bool Editor::init()
 	bool retVal = Game::init();
 	if( retVal == false )
 	{
-
 		return false;
 	}
+
+	/*
+	std::ifstream theStream(getFilename());
+	loadGrid(theStream);
+	theStream.close();
+	mpGridVisualizer->setModified();
+	std::cout << "Loaded map from " << getFilename() << std::endl;
+	*/
 
 	mpMessageManager = new GameMessageManager();
 
