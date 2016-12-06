@@ -47,14 +47,6 @@ bool Editor::init()
 		return false;
 	}
 
-	/*
-	std::ifstream theStream(getFilename());
-	loadGrid(theStream);
-	theStream.close();
-	mpGridVisualizer->setModified();
-	std::cout << "Loaded map from " << getFilename() << std::endl;
-	*/
-
 	mpMessageManager = new GameMessageManager();
 
 	mpGrid = new Grid(mpGraphicsSystem->getWidth(), mpGraphicsSystem->getHeight(), GRID_SQUARE_SIZE);

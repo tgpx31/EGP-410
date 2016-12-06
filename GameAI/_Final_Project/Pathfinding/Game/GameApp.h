@@ -12,7 +12,7 @@ Champlain College
 //forward declarations
 class GraphicsBuffer;
 class Sprite;
-class KinematicUnit;
+
 class GameMessageManager;
 class Grid;
 class GridVisualizer;
@@ -24,6 +24,14 @@ class InputManager;
 
 const float LOOP_TARGET_TIME = 33.3f;//how long should each frame of execution take? 30fps = 33.3ms/frame
 
+class UnitManager;
+
+enum SpriteType
+{
+	INVALID_SRITE_TYPE = -1,
+	ENEMY_REG = 1,
+	ENEMY_SCARED = 2
+};
 
 class GameApp: public Game
 {
@@ -61,5 +69,8 @@ private:
 	InputManager* mpInputManager;
 
 	bool mIsAStar = false;
+
+	// Units
+	UnitManager* mpUnitManager;
 };
 

@@ -29,7 +29,9 @@
 
 #include "InputManager.h"
 
-const IDType BACKGROUND_ID = ENDING_SEQUENTIAL_ID + 1;
+#include "UnitManager.h"
+
+const IDType BACKGROUND_ID = 0;
 const int GRID_SQUARE_SIZE = 32;
 const std::string gFileName = "../Editor/pathgrid.txt";
 
@@ -40,6 +42,7 @@ GameApp::GameApp()
 ,mpPathfinder(NULL)
 ,mpDebugDisplay(NULL)
 ,mpInputManager(NULL)
+,mpUnitManager(NULL)
 {
 }
 
@@ -93,6 +96,24 @@ bool GameApp::init()
 		return false;
 	}
 
+	// Init the unit manager
+	// Load the default sprites from buffers
+	mpGraphicsBufferManager->loadBuffer(ENEMY_REG, "../Assets/Images/og_ghost.png");
+	mpGraphicsBufferManager->loadBuffer(ENEMY_SCARED, "../Assets/Images/scared_ghost.png");
+
+	GraphicsBuffer* pBuffer = gpGameApp->getGraphicsBufferManager()->getBuffer(ENEMY_REG);
+	if (pBuffer != NULL)
+	{
+		mpSpriteManager->createAndManageSprite(ENEMY_REG, pBuffer, 0, 0, pBuffer->getWidth(), pBuffer->getHeight());
+	}
+	pBuffer = gpGameApp->getGraphicsBufferManager()->getBuffer(ENEMY_SCARED);
+	if (pBuffer != NULL)
+	{
+		mpSpriteManager->createAndManageSprite(ENEMY_SCARED, pBuffer, 0, 0, pBuffer->getWidth(), pBuffer->getHeight());
+	}
+
+	mpUnitManager = new UnitManager();
+
 	mpMasterTimer->start();
 	return true;
 }
@@ -119,6 +140,9 @@ void GameApp::cleanup()
 
 	delete mpInputManager;
 	mpInputManager = nullptr;
+
+	delete mpUnitManager;
+	mpUnitManager = nullptr;
 }
 
 void GameApp::beginLoop()
