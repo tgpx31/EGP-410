@@ -41,11 +41,11 @@ public:
 	UnitManager();
 	~UnitManager();
 
-	void addUnit(Vector2D position, Behavior behavior = INVALID_BEHAVIOR, KinematicUnit* target = NULL, Sprite* spr = NULL);
+	void addUnit(Vector2D position, Sprite* spr = NULL, Behavior behavior = INVALID_BEHAVIOR, KinematicUnit* target = NULL);
 	void deleteUnit();
 
 	void draw(GraphicsSystem* gSystem);
-	void update(double frameTime);
+	void update(double frameTime = 0.0);
 
 	inline int getRandUnit() { return rand() % mUnits.size(); };
 	inline std::map<UnitKey, KinematicUnit*> getMap() { return mUnits; };

@@ -65,6 +65,8 @@ public:
 	void changeMaxAccel(float accel) { mMaxAcceleration += accel; };
 
 	inline int getRadius() { return mpCurrentSteering->getRadius(); };
+
+	inline void setSprite(Sprite* newSpr) { mpSprite = newSpr; };
 private:
 	Sprite* mpSprite;
 	Steering* mpCurrentSteering;

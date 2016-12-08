@@ -113,6 +113,7 @@ bool GameApp::init()
 	}
 
 	mpUnitManager = new UnitManager();
+	mpUnitManager->addUnit(Vector2D(100, 100), mpSpriteManager->getSprite(ENEMY_REG));
 
 	mpMasterTimer->start();
 	return true;
@@ -169,6 +170,10 @@ void GameApp::processLoop()
 	mpMessageManager->processMessagesForThisframe();
 
 	mpInputManager->update();
+
+	// units
+	mpUnitManager->update();
+	mpUnitManager->draw(mpGraphicsSystem);
 
 	//should be last thing in processLoop
 	Game::processLoop();
