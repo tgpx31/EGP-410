@@ -16,10 +16,10 @@ const int BLOCKING_VALUE = 1;
  * refactoring is don't do it if 
  * you you don't have to.
  */
-const int COIN_VALUE = 2;
-const int CANDY_VALUE = 3;
-const int ENEMY_SPAWN_VALUE = 4;
-const int PLAYER_SPAWN_VALUE = 5;
+const int ENEMY_SPAWN_VALUE = 2;
+const int PLAYER_SPAWN_VALUE = 3;
+const int CANDY_VALUE = 4;
+const int DOOR_VALUE = 5;
 
 class Grid:public Trackable
 {

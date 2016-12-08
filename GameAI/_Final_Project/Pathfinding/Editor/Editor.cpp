@@ -14,6 +14,7 @@
 
 #include "InputManager.h"
 #include "GameMessageManager.h"
+#include "LoadMessage.h"
 #include "HelpMenu.h"
 
 using namespace std;
@@ -65,6 +66,7 @@ bool Editor::init()
 	mpGraphicsBufferManager->loadBuffer(ENEMY_SPAWN_VALUE, "../Assets/Images/og_ghost.png");
 	mpGraphicsBufferManager->loadBuffer(PLAYER_SPAWN_VALUE, "../Assets/Images/og_pac.png");
 	mpGraphicsBufferManager->loadBuffer(CANDY_VALUE, "../Assets/Images/candy.png");
+	mpGraphicsBufferManager->loadBuffer(DOOR_VALUE, "../Assets/Images/door.png");
 
 	//setup sprites
 	GraphicsBuffer* pBuffer = mpGraphicsBufferManager->getBuffer( BACKGROUND_ID );
@@ -101,6 +103,19 @@ bool Editor::init()
 		mpSpriteManager->createAndManageSprite(CANDY_VALUE, pBuffer, 0, 0, pBuffer->getWidth(), pBuffer->getHeight());
 		std::cout << "Candy sprite loaded" << std::endl;
 	}
+
+	pBuffer = mpGraphicsBufferManager->getBuffer(DOOR_VALUE);
+	if (pBuffer != NULL)
+	{
+		mpSpriteManager->createAndManageSprite(DOOR_VALUE, pBuffer, 0, 0, pBuffer->getWidth(), pBuffer->getHeight());
+		std::cout << "Door sprite loaded" << std::endl;
+	}
+
+	std::ifstream theStream(getFilename());
+	loadGrid(theStream);
+	theStream.close();
+	mpGridVisualizer->setModified();
+	std::cout << "Loaded map from " << getFilename() << std::endl;
 
 	mpMasterTimer->start();
 	return true;
