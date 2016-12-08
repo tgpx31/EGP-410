@@ -46,6 +46,7 @@ GameApp::GameApp()
 ,mpUnitManager(NULL)
 ,mpPlayerUnit(NULL)
 {
+	mLoopTargetTime = LOOP_TARGET_TIME;
 }
 
 GameApp::~GameApp()

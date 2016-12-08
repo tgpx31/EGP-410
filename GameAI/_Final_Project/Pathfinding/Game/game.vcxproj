@@ -102,6 +102,7 @@
     <ClInclude Include="Pathfinder.h" />
     <ClInclude Include="PathfindingDebugContent.h" />
     <ClInclude Include="PathToMessage.h" />
+    <ClInclude Include="PlayerMoveState.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="Steering.h" />
     <ClInclude Include="UnitManager.h" />
@@ -131,6 +132,7 @@
     <ClCompile Include="Pathfinder.cpp" />
     <ClCompile Include="PathfindingDebugContent.cpp" />
     <ClCompile Include="PathToMessage.cpp" />
+    <ClCompile Include="PlayerMoveState.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Steering.cpp" />
     <ClCompile Include="UnitManager.cpp" />

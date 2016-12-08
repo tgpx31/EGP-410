@@ -22,12 +22,17 @@ Champlain College
 //forward declarations
 class Sprite;
 class GraphicsBuffer;
+class StateMachine;
+class SM_State;
+class Transition;
 
 extern Steering gNullSteering;//global object - can point to it for a "NULL" Steering
 
 							  //minmimum forward speed a unit has to have inorder to rotate 
 							  //(keeps unit from spinning in place after stopping)
 const float MIN_VELOCITY_TO_TURN_SQUARED = 1.0f;
+const int NUM_STATES = 1;
+const int NUM_TRANSITIONS = 1;
 
 class KinematicUnit : public Kinematic
 {
@@ -65,6 +70,7 @@ public:
 	// Write in behavior here
 	// SM using A* and steering
 
+
 	inline CylinderCollision* getCollider() { return mpCircleCollider; };
 	Steering* getSteering() { return mpCurrentSteering; };	
 	
@@ -74,6 +80,14 @@ private:
 	Vector2D mTarget;
 	CylinderCollision* mpCircleCollider;
 
+	StateMachine* mpStateMachine;
+	SM_State* mpStateList[NUM_STATES];
+	Transition* mpTransitions[NUM_TRANSITIONS];
+
+	void initStates();
+	void initTransitions();
+	void applyTransitionsToStates();
+	void addStatesToStateMachine();
 
 	float mMaxVelocity;
 	float mMaxAcceleration;

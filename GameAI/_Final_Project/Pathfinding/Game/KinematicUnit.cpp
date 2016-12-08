@@ -11,6 +11,9 @@
 
 #include "CylinderCollision.h"
 
+#include "StateMachine.h"
+#include "PlayerMoveState.h"
+
 using namespace std;
 
 Steering gNullSteering(gZeroVector2D, 0.0f);
@@ -22,8 +25,17 @@ KinematicUnit::KinematicUnit(Sprite *pSprite, const Vector2D &position, float or
 	, mpCurrentSteering(NULL)
 	, mMaxVelocity(maxVelocity)
 	, mMaxAcceleration(maxAcceleration)
+	, mpStateMachine(NULL)
 {
 	mpCircleCollider = new CylinderCollision(mPosition, mpSprite->getWidth() / 2);
+
+	// init the states and transitions
+	mpStateMachine = new StateMachine();
+
+	initStates();
+	initTransitions();
+	applyTransitionsToStates();
+	addStatesToStateMachine();
 }
 
 KinematicUnit::~KinematicUnit()
@@ -32,6 +44,20 @@ KinematicUnit::~KinematicUnit()
 
 	delete mpCircleCollider;
 	mpCircleCollider = nullptr;
+
+	delete mpStateMachine;
+
+	
+
+	for (SM_ID i = 0; i < NUM_TRANSITIONS; ++i)
+	{
+		delete mpTransitions[i];
+	}
+
+	for (SM_ID i = 0; i < NUM_STATES; ++i)
+	{
+		delete mpStateList[i];
+	}
 }
 
 void KinematicUnit::draw(GraphicsBuffer* pBuffer)
@@ -87,6 +113,29 @@ void KinematicUnit::update(float time)
 
 	//	setVelocity(bounceVel);
 	//}
+}
+
+void KinematicUnit::initStates()
+{
+	mpStateList[0] = new PlayerMoveState(0);
+}
+
+void KinematicUnit::initTransitions()
+{
+	mpTransitions[0] = new Transition(DIRECTIONAL_VELOCITY_TRANSITION, 0);
+}
+
+void KinematicUnit::applyTransitionsToStates()
+{
+	mpStateList[0]->addTransition(mpTransitions[0]);
+}
+
+void KinematicUnit::addStatesToStateMachine()
+{
+	mpStateMachine->addState(mpStateList[0]);
+
+	// set initial stuff
+	mpStateMachine->setInitialStateID(0);
 }
 
 //private - deletes old Steering before setting

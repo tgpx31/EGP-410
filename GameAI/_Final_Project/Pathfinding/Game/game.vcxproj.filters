@@ -144,6 +144,9 @@
     <ClInclude Include="BoxCollision.h">
       <Filter>Header Files\Collision</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerMoveState.h">
+      <Filter>Header Files\states</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graph.cpp">
@@ -226,6 +229,9 @@
     </ClCompile>
     <ClCompile Include="BoxCollision.cpp">
       <Filter>Source Files\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerMoveState.cpp">
+      <Filter>Source Files\states</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
