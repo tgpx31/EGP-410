@@ -30,6 +30,7 @@
 #include "InputManager.h"
 
 #include "UnitManager.h"
+#include "KinematicUnit.h"
 
 const IDType BACKGROUND_ID = 0;
 const int GRID_SQUARE_SIZE = 32;
@@ -43,6 +44,7 @@ GameApp::GameApp()
 ,mpDebugDisplay(NULL)
 ,mpInputManager(NULL)
 ,mpUnitManager(NULL)
+,mpPlayerUnit(NULL)
 {
 }
 
@@ -100,6 +102,7 @@ bool GameApp::init()
 	// Load the default sprites from buffers
 	mpGraphicsBufferManager->loadBuffer(ENEMY_REG, "../Assets/Images/og_ghost.png");
 	mpGraphicsBufferManager->loadBuffer(ENEMY_SCARED, "../Assets/Images/scared_ghost.png");
+	mpGraphicsBufferManager->loadBuffer(PLAYER, "../Assets/Images/og_pac.png");
 
 	GraphicsBuffer* pBuffer = gpGameApp->getGraphicsBufferManager()->getBuffer(ENEMY_REG);
 	if (pBuffer != NULL)
@@ -112,8 +115,19 @@ bool GameApp::init()
 		mpSpriteManager->createAndManageSprite(ENEMY_SCARED, pBuffer, 0, 0, pBuffer->getWidth(), pBuffer->getHeight());
 	}
 
+	pBuffer = gpGameApp->getGraphicsBufferManager()->getBuffer(PLAYER);
+	if (pBuffer != NULL)
+	{
+		mpSpriteManager->createAndManageSprite(PLAYER, pBuffer, 0, 0, pBuffer->getWidth(), pBuffer->getHeight());
+	}
+
 	mpUnitManager = new UnitManager();
 	mpUnitManager->addUnit(Vector2D(100, 100), mpSpriteManager->getSprite(ENEMY_REG));
+
+	// Player Unit
+	// There should be a function for this!
+	// Initialize @ player spawn point for current level
+	mpPlayerUnit = new KinematicUnit(mpSpriteManager->getSprite(PLAYER), Vector2D(0,0), 0, Vector2D(0,0), 0, 5.0f, 1.0f);
 
 	mpMasterTimer->start();
 	return true;
@@ -144,6 +158,9 @@ void GameApp::cleanup()
 
 	delete mpUnitManager;
 	mpUnitManager = nullptr;
+
+	delete mpPlayerUnit;
+	mpPlayerUnit = nullptr;
 }
 
 void GameApp::beginLoop()
@@ -172,6 +189,9 @@ void GameApp::processLoop()
 	mpInputManager->update();
 
 	// units
+	mpPlayerUnit->update();
+	mpPlayerUnit->draw(mpGraphicsSystem->getBackBuffer());
+
 	mpUnitManager->update();
 	mpUnitManager->draw(mpGraphicsSystem);
 

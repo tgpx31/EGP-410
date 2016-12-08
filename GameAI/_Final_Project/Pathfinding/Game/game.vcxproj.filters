@@ -135,9 +135,6 @@
     <ClInclude Include="UnitManager.h">
       <Filter>Header Files\Units</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files\Units</Filter>
-    </ClInclude>
     <ClInclude Include="Steering.h">
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
@@ -216,9 +213,6 @@
       <Filter>Source Files\Units</Filter>
     </ClCompile>
     <ClCompile Include="KinematicUnit.cpp">
-      <Filter>Source Files\Units</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
       <Filter>Source Files\Units</Filter>
     </ClCompile>
     <ClCompile Include="UnitManager.cpp">

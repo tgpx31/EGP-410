@@ -25,12 +25,14 @@ class InputManager;
 const float LOOP_TARGET_TIME = 33.3f;//how long should each frame of execution take? 30fps = 33.3ms/frame
 
 class UnitManager;
+class KinematicUnit;
 
 enum SpriteType
 {
 	INVALID_SRITE_TYPE = -1,
 	ENEMY_REG = 1,
-	ENEMY_SCARED = 2
+	ENEMY_SCARED = 2,
+	PLAYER = 3
 };
 
 class GameApp: public Game
@@ -57,6 +59,8 @@ public:
 	void changeMethod(bool isAStar);
 	void setPathfinding(GridPathfinder* pathfinder);
 
+	inline KinematicUnit* getPlayer() { return mpPlayerUnit; };
+
 private:
 	GameMessageManager* mpMessageManager;
 	Grid* mpGrid;
@@ -72,5 +76,6 @@ private:
 
 	// Units
 	UnitManager* mpUnitManager;
+	KinematicUnit* mpPlayerUnit;
 };
 

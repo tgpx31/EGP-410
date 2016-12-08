@@ -37,44 +37,46 @@ public:
 
 	//getters and setters
 	void setTarget(const Vector2D& target) { mTarget = target; };
+
 	const Vector2D& getPosition() const { return mPosition; };
-	float getMaxVelocity() const { return mMaxVelocity; };
-	Vector2D getVelocity() const { return mVelocity; };
-	float getMaxAcceleration() const { return mMaxAcceleration; };
-	void setVelocity(const Vector2D& velocity) { mVelocity = velocity; };
+
+	inline Vector2D getVelocity() const { return mVelocity; };
+	inline void setVelocity(const Vector2D& velocity) { mVelocity = velocity; };
+
+	inline float getMaxVelocity() const { return mMaxVelocity; };
+	inline void changeMaxVel(float vel) { mMaxVelocity += vel; };
+	
+	inline float getMaxAcceleration() const { return mMaxAcceleration; };
+	inline void changeMaxAccel(float accel) { mMaxAcceleration += accel; };
+
+	inline void changeRotVel(float rot) { mRotationVel += rot; };
+	inline float getRotVelocity() { return mRotationVel; };
+
+	inline int getRadius() { return mpCurrentSteering->getRadius(); };
+
+	inline void setSprite(Sprite* newSpr) { mpSprite = newSpr; };
 
 	virtual void setNewOrientation();//face the direction you are moving
-
-									 //draw yourself to the indicated buffer
-	void draw(GraphicsBuffer* pBuffer);
-	//move according to the current velocities and update velocities based on current Steering
-	void update(float time);
+									 
+	void draw(GraphicsBuffer* pBuffer);//draw yourself to the indicated buffer
+	void update(float time = 0.0f);//move according to the current velocities and update velocities based on current Steering
 
 	//initiate behaviors
 	// Write in behavior here
 	// SM using A* and steering
 
 	inline CylinderCollision* getCollider() { return mpCircleCollider; };
-
-	void changeMaxVel(float vel) { mMaxVelocity += vel; };
-	Steering* getSteering() { return mpCurrentSteering; };
-
-	void changeRotVel(float rot) { mRotationVel += rot; };
-	float getRotVelocity() { return mRotationVel; };
-
-	void changeMaxAccel(float accel) { mMaxAcceleration += accel; };
-
-	inline int getRadius() { return mpCurrentSteering->getRadius(); };
-
-	inline void setSprite(Sprite* newSpr) { mpSprite = newSpr; };
+	Steering* getSteering() { return mpCurrentSteering; };	
+	
 private:
 	Sprite* mpSprite;
 	Steering* mpCurrentSteering;
 	Vector2D mTarget;
+	CylinderCollision* mpCircleCollider;
+
+
 	float mMaxVelocity;
 	float mMaxAcceleration;
-
-	CylinderCollision* mpCircleCollider;
 
 	void setSteering(Steering* pSteering);
 
