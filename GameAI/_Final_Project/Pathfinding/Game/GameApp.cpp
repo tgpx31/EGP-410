@@ -104,6 +104,7 @@ bool GameApp::init()
 	mpGraphicsBufferManager->loadBuffer(ENEMY_REG, "../Assets/Images/og_ghost.png");
 	mpGraphicsBufferManager->loadBuffer(ENEMY_SCARED, "../Assets/Images/scared_ghost.png");
 	mpGraphicsBufferManager->loadBuffer(PLAYER, "../Assets/Images/og_pac.png");
+	mpGraphicsBufferManager->loadBuffer(COIN, "../Assets/Images/coin.png");
 
 	GraphicsBuffer* pBuffer = gpGameApp->getGraphicsBufferManager()->getBuffer(ENEMY_REG);
 	if (pBuffer != NULL)
@@ -120,6 +121,11 @@ bool GameApp::init()
 	if (pBuffer != NULL)
 	{
 		mpSpriteManager->createAndManageSprite(PLAYER, pBuffer, 0, 0, pBuffer->getWidth(), pBuffer->getHeight());
+	}
+	pBuffer = gpGameApp->getGraphicsBufferManager()->getBuffer(COIN);
+	if (pBuffer != NULL)
+	{
+		mpSpriteManager->createAndManageSprite(COIN, pBuffer, 0, 0, pBuffer->getWidth(), pBuffer->getHeight());
 	}
 
 	mpUnitManager = new UnitManager();

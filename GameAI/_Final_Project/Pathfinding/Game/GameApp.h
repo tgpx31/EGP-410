@@ -32,7 +32,8 @@ enum SpriteType
 	INVALID_SRITE_TYPE = -1,
 	ENEMY_REG = 1,
 	ENEMY_SCARED = 2,
-	PLAYER = 3
+	PLAYER = 3,
+	COIN = 4,
 };
 
 class GameApp: public Game

@@ -61,6 +61,12 @@
     <Filter Include="Source Files\Collision">
       <UniqueIdentifier>{b4c35f0b-1c89-4184-ac0d-1e3db349be65}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Level">
+      <UniqueIdentifier>{72c986c4-310b-4cdd-9671-f2296a18c0a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Level">
+      <UniqueIdentifier>{ba51dc19-96f0-4ac1-bee5-dd0fb1b9752c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Connection.h">
@@ -147,6 +153,9 @@
     <ClInclude Include="PlayerMoveState.h">
       <Filter>Header Files\states</Filter>
     </ClInclude>
+    <ClInclude Include="GameMap.h">
+      <Filter>Header Files\Level</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graph.cpp">
@@ -232,6 +241,9 @@
     </ClCompile>
     <ClCompile Include="PlayerMoveState.cpp">
       <Filter>Source Files\states</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMap.cpp">
+      <Filter>Source Files\Level</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

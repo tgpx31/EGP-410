@@ -89,6 +89,7 @@
     <ClInclude Include="DijkstraPathfinder.h" />
     <ClInclude Include="ExitGameMessage.h" />
     <ClInclude Include="GameApp.h" />
+    <ClInclude Include="GameMap.h" />
     <ClInclude Include="GameMessage.h" />
     <ClInclude Include="GameMessageManager.h" />
     <ClInclude Include="Graph.h" />
@@ -118,6 +119,7 @@
     <ClCompile Include="DijkstraPathfinder.cpp" />
     <ClCompile Include="ExitGameMessage.cpp" />
     <ClCompile Include="GameApp.cpp" />
+    <ClCompile Include="GameMap.cpp" />
     <ClCompile Include="GameMessage.cpp" />
     <ClCompile Include="GameMessageManager.cpp" />
     <ClCompile Include="Graph.cpp" />
