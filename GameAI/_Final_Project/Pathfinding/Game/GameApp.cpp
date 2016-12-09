@@ -2,35 +2,14 @@
 #include "Game.h"
 #include "GameApp.h"
 #include "GameMessageManager.h"
-#include "PathToMessage.h"
-#include "GraphicsSystem.h"
 #include "GraphicsBuffer.h"
 #include "GraphicsBufferManager.h"
-#include "Sprite.h"
 #include "SpriteManager.h"
-#include "Vector2D.h"
-#include "Grid.h"
-#include "GridGraph.h"
-#include "Connection.h"
-#include "Path.h"
-
-#include "DepthFirstPathfinder.h"
-#include "DijkstraPathfinder.h"
-#include "AStarPathfinder.h"
-
-#include "Pathfinder.h"
-#include "GridPathfinder.h"
-#include "GridVisualizer.h"
-#include "DebugDisplay.h"
-#include "PathfindingDebugContent.h"
-
-#include <fstream>
-#include <vector>
 
 #include "InputManager.h"
-
 #include "UnitManager.h"
 #include "KinematicUnit.h"
+#include "GameMapManager.h"
 
 const IDType BACKGROUND_ID = 0;
 const int GRID_SQUARE_SIZE = 32;
@@ -38,13 +17,10 @@ const std::string gFileName = "../Editor/pathgrid.txt";
 
 GameApp::GameApp()
 :mpMessageManager(NULL)
-,mpGrid(NULL)
-,mpGridGraph(NULL)
-,mpPathfinder(NULL)
-,mpDebugDisplay(NULL)
 ,mpInputManager(NULL)
 ,mpUnitManager(NULL)
 ,mpPlayerUnit(NULL)
+,mpGameMapManager(NULL)
 {
 	mLoopTargetTime = LOOP_TARGET_TIME;
 }
@@ -65,19 +41,6 @@ bool GameApp::init()
 
 	mpMessageManager = new GameMessageManager();
 
-	//create and load the Grid, GridBuffer, and GridRenderer
-	mpGrid = new Grid(mpGraphicsSystem->getWidth(), mpGraphicsSystem->getHeight(), GRID_SQUARE_SIZE);
-	mpGridVisualizer = new GridVisualizer( mpGrid );
-	std::ifstream theStream( gFileName );
-	mpGrid->load( theStream );
-
-	//create the GridGraph for pathfinding
-	mpGridGraph = new GridGraph(mpGrid);
-	//init the nodes and connections
-	mpGridGraph->init();
-
-	mpPathfinder = new DijkstraPathfinder(mpGridGraph);
-
 	//load buffers
 	mpGraphicsBufferManager->loadBuffer( BACKGROUND_ID, "wallpaper.bmp");
 
@@ -87,10 +50,6 @@ bool GameApp::init()
 	{
 		mpSpriteManager->createAndManageSprite( BACKGROUND_SPRITE_ID, pBackGroundBuffer, 0, 0, pBackGroundBuffer->getWidth(), pBackGroundBuffer->getHeight() );
 	}
-
-	//debug display
-	PathfindingDebugContent* pContent = new PathfindingDebugContent( mpPathfinder );
-	mpDebugDisplay = new DebugDisplay( Vector2D(0,12), pContent );
 
 	mpInputManager = new InputManager();
 	if (!mpInputManager->init())
@@ -136,6 +95,13 @@ bool GameApp::init()
 	// Initialize @ player spawn point for current level
 	mpPlayerUnit = new KinematicUnit(mpSpriteManager->getSprite(PLAYER), Vector2D(0,0), 0, Vector2D(0,0), 0, 5.0f, 1.0f);
 
+	mpGameMapManager = new GameMapManager();
+	mpGameMapManager->loadMap(0, "../Assets/Maps/map0.txt");
+	mpGameMapManager->loadMap(1, "../Assets/Maps/map1.txt");
+	mpGameMapManager->loadMap(2, "../Assets/Maps/map2.txt");
+	mpGameMapManager->loadMap(3, "../Assets/Maps/map3.txt");
+	mpGameMapManager->setCurrentMap(0);
+
 	mpMasterTimer->start();
 	return true;
 }
@@ -145,21 +111,6 @@ void GameApp::cleanup()
 	delete mpMessageManager;
 	mpMessageManager = NULL;
 
-	delete mpGrid;
-	mpGrid = NULL;
-
-	delete mpGridVisualizer;
-	mpGridVisualizer = NULL;
-
-	delete mpGridGraph;
-	mpGridGraph = NULL;
-
-	delete mpPathfinder;
-	mpPathfinder = NULL;
-
-	delete mpDebugDisplay;
-	mpDebugDisplay = NULL;
-
 	delete mpInputManager;
 	mpInputManager = nullptr;
 
@@ -168,6 +119,9 @@ void GameApp::cleanup()
 
 	delete mpPlayerUnit;
 	mpPlayerUnit = nullptr;
+
+	delete mpGameMapManager;
+	mpGameMapManager = NULL;
 }
 
 void GameApp::beginLoop()
@@ -178,28 +132,17 @@ void GameApp::beginLoop()
 
 void GameApp::processLoop()
 {
-	//get back buffer
-	GraphicsBuffer* pBackBuffer = mpGraphicsSystem->getBackBuffer();
-	//copy to back buffer
-	mpGridVisualizer->draw( *pBackBuffer );
-#ifdef VISUALIZE_PATH
-	//show pathfinder visualizer
-	mpPathfinder->drawVisualization(mpGrid, pBackBuffer, mIsAStar);
-#endif
-
-	
-
-	mpDebugDisplay->draw( pBackBuffer );
-
-	mpMessageManager->processMessagesForThisframe();
-
+	//Get Input
 	mpInputManager->update();
 
-	// units
+	//Update
+	mpMessageManager->processMessagesForThisframe();
 	mpPlayerUnit->update();
-	mpPlayerUnit->draw(mpGraphicsSystem->getBackBuffer());
-
 	mpUnitManager->update();
+
+	//Draw
+	mpGameMapManager->drawCurrentMap();
+	mpPlayerUnit->draw(mpGraphicsSystem->getBackBuffer());
 	mpUnitManager->draw(mpGraphicsSystem);
 
 	//should be last thing in processLoop
@@ -209,34 +152,4 @@ void GameApp::processLoop()
 bool GameApp::endLoop()
 {
 	return Game::endLoop();
-}
-
-void GameApp::changeMethod(bool isAStar)
-{
-	if (isAStar)
-	{
-		AStarPathfinder* pAStarPathfinder = new AStarPathfinder(mpGridGraph);
-		setPathfinding(pAStarPathfinder);
-		mIsAStar = isAStar;
-	}
-	else if (!isAStar)
-	{
-		DijkstraPathfinder* pDijkstraPathfinder = new DijkstraPathfinder(mpGridGraph);
-		setPathfinding(pDijkstraPathfinder);
-		mIsAStar = isAStar;
-	}
-}
-
-void GameApp::setPathfinding(GridPathfinder * pathfinder)
-{
-	// Delete the old pathfinder and display
-	delete mpPathfinder;
-	delete mpDebugDisplay;
-
-	// Set to the new instance
-	mpPathfinder = pathfinder;
-
-	// reinitialize the debug display, same way as in init
-	PathfindingDebugContent* pDebugContent = new PathfindingDebugContent(mpPathfinder);
-	mpDebugDisplay = new DebugDisplay(Vector2D(0, 12), pDebugContent);
 }

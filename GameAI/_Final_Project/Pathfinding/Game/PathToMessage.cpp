@@ -20,6 +20,9 @@ PathToMessage::~PathToMessage()
 
 void PathToMessage::process()
 {
+	//TODO: Change functionality to work with new multimap system
+	
+	/*
 	GameApp* pGame = dynamic_cast<GameApp*>(gpGame);
 	if( pGame != NULL ) 
 	{
@@ -35,4 +38,7 @@ void PathToMessage::process()
 			pPathfinder->findPath(pFromNode, pToNode);
 		}
 	}
+	*/
+
+	std::cout << "PathToMessage::process() is not implemented. See source for details." << std::endl;
 }

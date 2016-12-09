@@ -12,12 +12,16 @@ GameMap::GameMap(std::string filename)
 {
 	mFilename = filename;
 	
+	mpGrid = new Grid(gpGame->getGraphicsSystem()->getWidth(), gpGame->getGraphicsSystem()->getHeight(), 32);
+
 	std::ifstream fin;
 	fin.open(mFilename);
 	mpGrid->load(fin);
 	fin.close();
 	
 	mpGridVisualizer = new GridVisualizer(mpGrid);
+
+	mpCoinManager = new UnitManager();
 
 	int numValues = mpGrid->getNumValues();
 

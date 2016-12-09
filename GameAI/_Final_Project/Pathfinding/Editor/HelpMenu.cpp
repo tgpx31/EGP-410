@@ -43,7 +43,6 @@ void HelpMenu::draw()
 		break;
 	}
 
-	//TODO: Make this display current edit string
 	al_draw_text(pFont, al_map_rgb(255, 255, 255), 0, lineHeight * 0, ALLEGRO_ALIGN_LEFT, currentMap.c_str());
 	al_draw_text(pFont, al_map_rgb(255, 255, 255), 0, lineHeight * 1, ALLEGRO_ALIGN_LEFT,  editString.c_str());
 	al_draw_text(pFont, al_map_rgb(255, 255, 255), 0, lineHeight * 2, ALLEGRO_ALIGN_LEFT, "Press ~ to toggle help menu");

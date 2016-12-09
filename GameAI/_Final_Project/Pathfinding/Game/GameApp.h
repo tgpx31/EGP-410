@@ -26,6 +26,7 @@ const float LOOP_TARGET_TIME = 33.3f;//how long should each frame of execution t
 
 class UnitManager;
 class KinematicUnit;
+class GameMapManager;
 
 enum SpriteType
 {
@@ -52,26 +53,14 @@ public:
 
 	//accessors
 	inline GameMessageManager* getMessageManager() { return mpMessageManager; };
-	inline GridVisualizer* getGridVisualizer() { return mpGridVisualizer; };
-	inline GridPathfinder* getPathfinder() { return mpPathfinder; };
-	inline Grid* getGrid() { return mpGrid; };
-	inline GridGraph* getGridGraph() { return mpGridGraph; };
-
-	void changeMethod(bool isAStar);
-	void setPathfinding(GridPathfinder* pathfinder);
-
+	inline GameMapManager* getGameMapManager() { return mpGameMapManager; };
 	inline KinematicUnit* getPlayer() { return mpPlayerUnit; };
 
 private:
 	GameMessageManager* mpMessageManager;
-	Grid* mpGrid;
-	GridVisualizer* mpGridVisualizer;
-	GridGraph* mpGridGraph;
-	DebugDisplay* mpDebugDisplay;
-
-	GridPathfinder* mpPathfinder;
 
 	InputManager* mpInputManager;
+	GameMapManager* mpGameMapManager;
 
 	bool mIsAStar = false;
 

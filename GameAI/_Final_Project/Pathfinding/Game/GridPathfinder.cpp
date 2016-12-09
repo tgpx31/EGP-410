@@ -77,10 +77,15 @@ void GridPathfinder::drawVisualization( Grid* pGrid, GraphicsBuffer* pDest, bool
 }
 void GridPathfinder::drawLineToNodes(Node * node)
 {
+	//TODO: Change functionality to work with new multipmap system
+	/*
 	al_draw_line(gpGameApp->getGrid()->getULCornerOfSquare(node->getId()).getX() + gpGameApp->getGrid()->getSquareSize() / 2,
 		gpGameApp->getGrid()->getULCornerOfSquare(node->getId()).getY() + gpGameApp->getGrid()->getSquareSize() / 2,
 		gpGameApp->getGrid()->getULCornerOfSquare(node->getPrevNode()).getX() + gpGameApp->getGrid()->getSquareSize() / 2,
 		gpGameApp->getGrid()->getULCornerOfSquare(node->getPrevNode()).getY() + gpGameApp->getGrid()->getSquareSize() / 2,
 		al_map_rgb(255, 255, 255), 5);
+	*/
+
+	std::cout << "GridPathfinder::drawLineToNodes(Node * node) is not implemented. See source for details." << std::endl;
 }
 #endif

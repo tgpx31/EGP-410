@@ -40,5 +40,10 @@ void Node::setCostFromStart(Node* pPrevNode, float cost)
 
 Node * Node::becomePrev()
 {
-	return gpGameApp->getGridGraph()->getNode(mPrevNodeId);
+	//TODO: Change functionality to work with new multimap system
+	//return gpGameApp->getGridGraph()->getNode(mPrevNodeId);
+
+	std::cout << "Node::becomePrev() is not implemented. See see source for details." << std::endl;
+
+	return nullptr;
 }

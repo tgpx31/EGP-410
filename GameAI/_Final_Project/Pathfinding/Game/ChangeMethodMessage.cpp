@@ -17,6 +17,6 @@ void ChangeMethodMessage::process()
 	if (pGame != NULL)
 	{
 		// Set the pathfinding method based on mIsAStar
-		gpGameApp->changeMethod(mIsAStar);
+		//gpGameApp->changeMethod(mIsAStar);
 	}
 }

@@ -159,6 +159,9 @@
     <ClInclude Include="GameMapManager.h">
       <Filter>Header Files\Level</Filter>
     </ClInclude>
+    <ClInclude Include="SetCurrentMapMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graph.cpp">
@@ -250,6 +253,9 @@
     </ClCompile>
     <ClCompile Include="GameMapManager.cpp">
       <Filter>Source Files\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="SetCurrentMapMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
