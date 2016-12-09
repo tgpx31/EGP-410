@@ -90,6 +90,7 @@
     <ClInclude Include="ExitGameMessage.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="GameMap.h" />
+    <ClInclude Include="GameMapManager.h" />
     <ClInclude Include="GameMessage.h" />
     <ClInclude Include="GameMessageManager.h" />
     <ClInclude Include="Graph.h" />
@@ -120,6 +121,7 @@
     <ClCompile Include="ExitGameMessage.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GameMap.cpp" />
+    <ClCompile Include="GameMapManager.cpp" />
     <ClCompile Include="GameMessage.cpp" />
     <ClCompile Include="GameMessageManager.cpp" />
     <ClCompile Include="Graph.cpp" />

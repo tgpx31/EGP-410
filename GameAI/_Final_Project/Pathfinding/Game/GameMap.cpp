@@ -3,6 +3,8 @@
 #include "UnitManager.h"
 #include "SpriteManager.h"
 #include "GameApp.h"
+#include "Game.h"
+#include "GridVisualizer.h"
 
 #include <fstream>
 
@@ -14,6 +16,8 @@ GameMap::GameMap(std::string filename)
 	fin.open(mFilename);
 	mpGrid->load(fin);
 	fin.close();
+	
+	mpGridVisualizer = new GridVisualizer(mpGrid);
 
 	int numValues = mpGrid->getNumValues();
 
@@ -32,6 +36,20 @@ GameMap::~GameMap()
 	delete mpGrid;
 	mpGrid = NULL;
 
+	delete mpGridVisualizer;
+	mpGridVisualizer = NULL;
+
 	delete mpCoinManager;
 	mpCoinManager = NULL;
+}
+
+void GameMap::update()
+{
+	/* Check coins for collisions with player, update as necessary */
+}
+
+void GameMap::draw()
+{
+	mpGridVisualizer->draw(*gpGame->getGraphicsSystem()->getBackBuffer());
+	mpCoinManager->draw(gpGame->getGraphicsSystem());
 }
