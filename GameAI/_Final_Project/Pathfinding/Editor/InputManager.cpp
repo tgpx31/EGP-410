@@ -121,7 +121,7 @@ void InputManager::getKeyboardInput()
 			case ALLEGRO_KEY_6:
 				pMessage = new ChangeModeMessage(DOOR_VALUE);
 				break;
-			case ALLEGRO_KEY_TILDE:
+			case ALLEGRO_KEY_F1:
 				pMessage = new ToggleHelpMessage();
 				break;
 			case ALLEGRO_KEY_UP:
