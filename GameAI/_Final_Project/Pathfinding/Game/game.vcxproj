@@ -87,6 +87,7 @@
     <ClInclude Include="DebugDisplay.h" />
     <ClInclude Include="DepthFirstPathfinder.h" />
     <ClInclude Include="DijkstraPathfinder.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="ExitGameMessage.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="GameMap.h" />
@@ -104,6 +105,7 @@
     <ClInclude Include="Pathfinder.h" />
     <ClInclude Include="PathfindingDebugContent.h" />
     <ClInclude Include="PathToMessage.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerMoveState.h" />
     <ClInclude Include="SetCurrentMapMessage.h" />
     <ClInclude Include="StateMachine.h" />
@@ -119,6 +121,7 @@
     <ClCompile Include="DebugDisplay.cpp" />
     <ClCompile Include="DepthFirstPathfinder.cpp" />
     <ClCompile Include="DijkstraPathfinder.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="ExitGameMessage.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GameMap.cpp" />
@@ -137,6 +140,7 @@
     <ClCompile Include="Pathfinder.cpp" />
     <ClCompile Include="PathfindingDebugContent.cpp" />
     <ClCompile Include="PathToMessage.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerMoveState.cpp" />
     <ClCompile Include="SetCurrentMapMessage.cpp" />
     <ClCompile Include="StateMachine.cpp" />

@@ -63,6 +63,12 @@
     <Filter Include="Source Files\Level">
       <UniqueIdentifier>{ba51dc19-96f0-4ac1-bee5-dd0fb1b9752c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Characters">
+      <UniqueIdentifier>{1e1e22ea-3536-4c75-ba56-df7dcc1b3448}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Characters">
+      <UniqueIdentifier>{377c72b7-892d-4da2-9147-cbd324b9a294}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Connection.h">
@@ -158,6 +164,12 @@
     <ClInclude Include="SetCurrentMapMessage.h">
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Header Files\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files\Characters</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graph.cpp">
@@ -252,6 +264,12 @@
     </ClCompile>
     <ClCompile Include="SetCurrentMapMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Characters</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

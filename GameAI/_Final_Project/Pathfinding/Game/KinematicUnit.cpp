@@ -25,10 +25,10 @@ KinematicUnit::KinematicUnit(Sprite *pSprite, const Vector2D &position, float or
 	, mpCurrentSteering(NULL)
 	, mMaxVelocity(maxVelocity)
 	, mMaxAcceleration(maxAcceleration)
-	, mpStateMachine(NULL)
 {
 	mpCircleCollider = new CylinderCollision(mPosition, mpSprite->getWidth() / 2);
 
+	/*
 	// init the states and transitions
 	mpStateMachine = new StateMachine();
 
@@ -36,6 +36,7 @@ KinematicUnit::KinematicUnit(Sprite *pSprite, const Vector2D &position, float or
 	initTransitions();
 	applyTransitionsToStates();
 	addStatesToStateMachine();
+	*/
 }
 
 KinematicUnit::~KinematicUnit()
@@ -45,10 +46,9 @@ KinematicUnit::~KinematicUnit()
 	delete mpCircleCollider;
 	mpCircleCollider = nullptr;
 
+	/*
 	delete mpStateMachine;
-
 	
-
 	for (SM_ID i = 0; i < NUM_TRANSITIONS; ++i)
 	{
 		delete mpTransitions[i];
@@ -58,6 +58,7 @@ KinematicUnit::~KinematicUnit()
 	{
 		delete mpStateList[i];
 	}
+	*/
 }
 
 void KinematicUnit::draw(GraphicsBuffer* pBuffer)
@@ -115,6 +116,7 @@ void KinematicUnit::update(float time)
 	//}
 }
 
+/*
 void KinematicUnit::initStates()
 {
 	mpStateList[0] = new PlayerMoveState(0);
@@ -137,6 +139,7 @@ void KinematicUnit::addStatesToStateMachine()
 	// set initial stuff
 	mpStateMachine->setInitialStateID(0);
 }
+*/
 
 //private - deletes old Steering before setting
 void KinematicUnit::setSteering(Steering* pSteering)
