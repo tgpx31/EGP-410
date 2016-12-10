@@ -35,6 +35,8 @@ enum SpriteType
 	ENEMY_SCARED = 2,
 	PLAYER = 3,
 	COIN = 4,
+	CANDY = 5,
+	DOOR = 6
 };
 
 class GameApp: public Game
@@ -68,4 +70,3 @@ private:
 	UnitManager* mpUnitManager;
 	KinematicUnit* mpPlayerUnit;
 };
-

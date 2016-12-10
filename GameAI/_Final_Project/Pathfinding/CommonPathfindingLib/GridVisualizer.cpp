@@ -141,6 +141,9 @@ void GridVisualizer::draw( GraphicsBuffer& dest )
 			case PLAYER_SPAWN_VALUE:
 				gpGame->getSpriteManager()->getSprite(PLAYER_SPAWN_VALUE)->draw(dest, mpGrid->getULCornerOfSquare(j).getX(), mpGrid->getULCornerOfSquare(j).getY());
 				break;
+			case COIN_VALUE:
+				gpGame->getSpriteManager()->getSprite(COIN_VALUE)->draw(dest, mpGrid->getULCornerOfSquare(j).getX(), mpGrid->getULCornerOfSquare(j).getY());
+				break;
 			case CANDY_VALUE:
 				gpGame->getSpriteManager()->getSprite(CANDY_VALUE)->draw(dest, mpGrid->getULCornerOfSquare(j).getX(), mpGrid->getULCornerOfSquare(j).getY());
 				break;

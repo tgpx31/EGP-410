@@ -64,6 +64,8 @@ bool GameApp::init()
 	mpGraphicsBufferManager->loadBuffer(ENEMY_SCARED, "../Assets/Images/scared_ghost.png");
 	mpGraphicsBufferManager->loadBuffer(PLAYER, "../Assets/Images/og_pac.png");
 	mpGraphicsBufferManager->loadBuffer(COIN, "../Assets/Images/coin.png");
+	mpGraphicsBufferManager->loadBuffer(DOOR, "../Assets/Images/door.png");
+	mpGraphicsBufferManager->loadBuffer(CANDY, "../Assets/Images/candy.png");
 
 	GraphicsBuffer* pBuffer = gpGameApp->getGraphicsBufferManager()->getBuffer(ENEMY_REG);
 	if (pBuffer != NULL)
@@ -86,6 +88,19 @@ bool GameApp::init()
 	{
 		mpSpriteManager->createAndManageSprite(COIN, pBuffer, 0, 0, pBuffer->getWidth(), pBuffer->getHeight());
 	}
+	pBuffer = gpGameApp->getGraphicsBufferManager()->getBuffer(DOOR);
+	if (pBuffer != NULL)
+	{
+		mpSpriteManager->createAndManageSprite(DOOR, pBuffer, 0, 0, pBuffer->getWidth(), pBuffer->getHeight());
+	}
+	pBuffer = gpGameApp->getGraphicsBufferManager()->getBuffer(CANDY);
+	if (pBuffer != NULL)
+	{
+		mpSpriteManager->createAndManageSprite(CANDY, pBuffer, 0, 0, pBuffer->getWidth(), pBuffer->getHeight());
+	}
+
+
+
 
 	mpUnitManager = new UnitManager();
 	mpUnitManager->addUnit(Vector2D(100, 100), mpSpriteManager->getSprite(ENEMY_REG));

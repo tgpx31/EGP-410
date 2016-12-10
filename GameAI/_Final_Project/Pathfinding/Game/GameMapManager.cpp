@@ -49,6 +49,7 @@ void GameMapManager::loadMap(IDType id, std::string filename)
 	}
 
 	GameMap* pGameMap = new GameMap(filename);
+	pGameMap->init();
 	mpMaps[id] = pGameMap;
 
 	if (mCurrentMap == mpMaps.end())
