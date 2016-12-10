@@ -8,6 +8,7 @@
 #include "GridGraph.h"
 
 #include <fstream>
+#include <ctime>
 
 GameMap::GameMap(std::string filename)
 {
@@ -18,6 +19,8 @@ GameMap::GameMap(std::string filename)
 	mpCoinManager = NULL;
 	mpDoorManager = NULL;
 	mpCandyManager = NULL;
+
+	srand(time(NULL));
 }
 
 GameMap::~GameMap()
@@ -43,6 +46,8 @@ GameMap::~GameMap()
 
 void GameMap::init()
 {
+	std::cout << "Loading map " << mFilename << std::endl;
+	
 	mpGrid = new Grid(gpGame->getGraphicsSystem()->getWidth(), gpGame->getGraphicsSystem()->getHeight(), 32);
 
 	std::ifstream fin;
@@ -65,18 +70,21 @@ void GameMap::init()
 	{
 		int value = mpGrid->getValueAtIndex(i);
 
-		if (value == COIN_VALUE)
-		{
-			//Create new coin unit at location of i
-			mpCoinManager->addUnit(mpGrid->getULCornerOfSquare(i), gpGame->getSpriteManager()->getSprite(COIN));
-		}
-		else if (value == DOOR_VALUE)
+		if (value == DOOR_VALUE)
 		{
 			mpDoorManager->addUnit(mpGrid->getULCornerOfSquare(i), gpGame->getSpriteManager()->getSprite(DOOR));
 		}
 		else if (value == CANDY_VALUE)
 		{
 			mpCandyManager->addUnit(mpGrid->getULCornerOfSquare(i), gpGame->getSpriteManager()->getSprite(CANDY));
+		}
+		else if (value != BLOCKING_VALUE)
+		{
+			int chance = rand() % 100;
+			if (chance < gpGameApp->getCoinSpawnRate())
+			{
+				mpCoinManager->addUnit(mpGrid->getULCornerOfSquare(i), gpGame->getSpriteManager()->getSprite(COIN));
+			}
 		}
 	}
 }

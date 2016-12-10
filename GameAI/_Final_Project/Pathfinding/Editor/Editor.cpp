@@ -67,7 +67,6 @@ bool Editor::init()
 	mpGraphicsBufferManager->loadBuffer(PLAYER_SPAWN_VALUE, "../Assets/Images/og_pac.png");
 	mpGraphicsBufferManager->loadBuffer(CANDY_VALUE, "../Assets/Images/candy.png");
 	mpGraphicsBufferManager->loadBuffer(DOOR_VALUE, "../Assets/Images/door.png");
-	mpGraphicsBufferManager->loadBuffer(COIN_VALUE, "../Assets/Images/coin.png");
 
 	//setup sprites
 	GraphicsBuffer* pBuffer = mpGraphicsBufferManager->getBuffer( BACKGROUND_ID );
@@ -110,12 +109,6 @@ bool Editor::init()
 	{
 		mpSpriteManager->createAndManageSprite(DOOR_VALUE, pBuffer, 0, 0, pBuffer->getWidth(), pBuffer->getHeight());
 		std::cout << "Door sprite loaded" << std::endl;
-	}
-	pBuffer = mpGraphicsBufferManager->getBuffer(COIN_VALUE);
-	if (pBuffer != NULL)
-	{
-		mpSpriteManager->createAndManageSprite(COIN_VALUE, pBuffer, 0, 0, pBuffer->getWidth(), pBuffer->getHeight());
-		std::cout << "Coin sprite loaded" << std::endl;
 	}
 
 	std::ifstream theStream(getFilename());

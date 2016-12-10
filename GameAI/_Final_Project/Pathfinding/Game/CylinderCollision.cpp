@@ -6,8 +6,8 @@ CylinderCollision::CylinderCollision(float x, float y, int radius)
 	mPosition = Vector2D(x, y);
 	mRadius = radius;
 
-	std::cout << "\nCylinderCollider (circle) ADDED @ " << mPosition.getX() << ", "
-		<< mPosition.getY() << " with RADIUS = " << mRadius << "\n";
+	/* std::cout << "\nCylinderCollider (circle) ADDED @ " << mPosition.getX() << ", "
+		<< mPosition.getY() << " with RADIUS = " << mRadius << "\n"; */
 }
 
 CylinderCollision::CylinderCollision(Vector2D position, int radius)
@@ -15,8 +15,8 @@ CylinderCollision::CylinderCollision(Vector2D position, int radius)
 	mPosition = position;
 	mRadius = radius;
 
-	std::cout << "\nCylinderCollider (circle) ADDED @ " << mPosition.getX() << ", "
-		<< mPosition.getY() << " with RADIUS = " << mRadius << "\n";
+	/* std::cout << "\nCylinderCollider (circle) ADDED @ " << mPosition.getX() << ", "
+		<< mPosition.getY() << " with RADIUS = " << mRadius << "\n"; */
 }
 
 bool CylinderCollision::isCollidingBoxes(BoxCollision * other)

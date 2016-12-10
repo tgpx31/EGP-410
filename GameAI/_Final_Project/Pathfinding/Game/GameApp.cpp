@@ -21,6 +21,7 @@ GameApp::GameApp()
 ,mpUnitManager(NULL)
 ,mpPlayerUnit(NULL)
 ,mpGameMapManager(NULL)
+,mCoinSpawnRate(25)
 {
 	mLoopTargetTime = LOOP_TARGET_TIME;
 }

@@ -58,15 +58,17 @@ public:
 	inline GameMapManager* getGameMapManager() { return mpGameMapManager; };
 	inline KinematicUnit* getPlayer() { return mpPlayerUnit; };
 
+	inline int getCoinSpawnRate() { return mCoinSpawnRate; };
+
 private:
 	GameMessageManager* mpMessageManager;
 
 	InputManager* mpInputManager;
 	GameMapManager* mpGameMapManager;
 
-	bool mIsAStar = false;
-
 	// Units
 	UnitManager* mpUnitManager;
 	KinematicUnit* mpPlayerUnit;
+
+	int mCoinSpawnRate;
 };

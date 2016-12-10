@@ -18,7 +18,7 @@ const int BLOCKING_VALUE = 1;
  */
 const int ENEMY_SPAWN_VALUE = 2;
 const int PLAYER_SPAWN_VALUE = 3;
-const int COIN_VALUE = 4;
+//const int COIN_VALUE = 4;
 const int CANDY_VALUE = 5;
 const int DOOR_VALUE = 6;
 
