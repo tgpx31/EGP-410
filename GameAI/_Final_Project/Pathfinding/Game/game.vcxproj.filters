@@ -69,6 +69,12 @@
     <Filter Include="Source Files\Characters">
       <UniqueIdentifier>{377c72b7-892d-4da2-9147-cbd324b9a294}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Sound">
+      <UniqueIdentifier>{7b90c202-750d-402a-8d46-0f9acd5b4adc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Sound">
+      <UniqueIdentifier>{f971b433-893e-4ead-a671-530ba48cbfca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Connection.h">
@@ -170,6 +176,12 @@
     <ClInclude Include="Player.h">
       <Filter>Header Files\Characters</Filter>
     </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>Header Files\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundSystem.h">
+      <Filter>Header Files\Sound</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graph.cpp">
@@ -270,6 +282,12 @@
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>Source Files\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundSystem.cpp">
+      <Filter>Source Files\Sound</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
