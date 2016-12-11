@@ -55,6 +55,7 @@ public:
 
 	inline int getRadius() { return mpCurrentSteering->getRadius(); };
 
+	inline Sprite* getSprite() { return mpSprite; };
 	inline void setSprite(Sprite* newSpr) { mpSprite = newSpr; };
 
 	virtual void setNewOrientation();//face the direction you are moving

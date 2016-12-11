@@ -70,7 +70,6 @@ private:
 	GameMapManager* mpGameMapManager;
 
 	// Units
-	
 	Player* mpPlayer;
 	Enemy* mpEnemy;
 

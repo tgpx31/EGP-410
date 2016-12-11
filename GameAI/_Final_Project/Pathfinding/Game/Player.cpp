@@ -1,9 +1,12 @@
 #include "Player.h"
 #include "KinematicUnit.h"
 #include "StateMachine.h"
-#include "Game.h"
+#include "GameApp.h"
 #include "GraphicsSystem.h"
 #include "Sprite.h"
+#include "GameMapManager.h"
+#include "GameMap.h"
+#include "Grid.h"
 
 Player::Player(Sprite* pSprite)
 {
@@ -14,7 +17,6 @@ Player::~Player()
 {
 	delete mpUnit;
 	mpUnit = NULL;
-
 }
 
 void Player::setState(PlayerMovementState state)
@@ -51,6 +53,8 @@ void Player::update(float time)
 	}
 
 	mpUnit->update(time);
+	
+	//Do collision detections with walls here
 }
 
 void Player::draw()
