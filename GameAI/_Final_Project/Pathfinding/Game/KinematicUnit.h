@@ -23,7 +23,6 @@ Champlain College
 class Sprite;
 class GraphicsBuffer;
 
-
 extern Steering gNullSteering;//global object - can point to it for a "NULL" Steering
 
 							  //minmimum forward speed a unit has to have inorder to rotate 
@@ -78,4 +77,7 @@ private:
 
 	void setSteering(Steering* pSteering);
 
+	// Check collision based on grid
+	bool checkWallCollision();
+	Vector2D mLastPos;
 };
