@@ -11,16 +11,18 @@
 #include "KinematicUnit.h"
 #include "GameMapManager.h"
 
+#include "Player.h"
+#include "Enemy.h"
+
 const IDType BACKGROUND_ID = 0;
 const int GRID_SQUARE_SIZE = 32;
-const std::string gFileName = "../Editor/pathgrid.txt";
 
 GameApp::GameApp()
 :mpMessageManager(NULL)
 ,mpInputManager(NULL)
-,mpUnitManager(NULL)
-,mpPlayerUnit(NULL)
 ,mpGameMapManager(NULL)
+,mpPlayer(NULL)
+,mpEnemy(NULL)
 ,mCoinSpawnRate(25)
 {
 	mLoopTargetTime = LOOP_TARGET_TIME;
@@ -100,23 +102,15 @@ bool GameApp::init()
 		mpSpriteManager->createAndManageSprite(CANDY, pBuffer, 0, 0, pBuffer->getWidth(), pBuffer->getHeight());
 	}
 
-
-
-
-	mpUnitManager = new UnitManager();
-	mpUnitManager->addUnit(Vector2D(100, 100), mpSpriteManager->getSprite(ENEMY_REG));
-
-	// Player Unit
-	// There should be a function for this!
-	// Initialize @ player spawn point for current level
-	mpPlayerUnit = new KinematicUnit(mpSpriteManager->getSprite(PLAYER), Vector2D(0,0), 0, Vector2D(0,0), 0, 5.0f, 1.0f);
-
 	mpGameMapManager = new GameMapManager();
 	mpGameMapManager->loadMap(0, "../Assets/Maps/map0.txt");
 	mpGameMapManager->loadMap(1, "../Assets/Maps/map1.txt");
 	mpGameMapManager->loadMap(2, "../Assets/Maps/map2.txt");
 	mpGameMapManager->loadMap(3, "../Assets/Maps/map3.txt");
 	mpGameMapManager->setCurrentMap(0);
+
+	mpEnemy = new Enemy(mpSpriteManager->getSprite(ENEMY_REG), mpSpriteManager->getSprite(ENEMY_SCARED));
+	mpPlayer = new Player(mpSpriteManager->getSprite(PLAYER));
 
 	mpMasterTimer->start();
 	return true;
@@ -130,14 +124,14 @@ void GameApp::cleanup()
 	delete mpInputManager;
 	mpInputManager = nullptr;
 
-	delete mpUnitManager;
-	mpUnitManager = nullptr;
-
-	delete mpPlayerUnit;
-	mpPlayerUnit = nullptr;
-
 	delete mpGameMapManager;
 	mpGameMapManager = NULL;
+
+	delete mpEnemy;
+	mpEnemy = NULL;
+
+	delete mpPlayer;
+	mpPlayer = NULL;
 }
 
 void GameApp::beginLoop()
@@ -153,13 +147,13 @@ void GameApp::processLoop()
 
 	//Update
 	mpMessageManager->processMessagesForThisframe();
-	mpPlayerUnit->update();
-	mpUnitManager->update();
+	mpEnemy->update(LOOP_TARGET_TIME / 1000.0F);
+	mpPlayer->update(LOOP_TARGET_TIME / 1000.0F);
 
 	//Draw
 	mpGameMapManager->drawCurrentMap();
-	mpPlayerUnit->draw(mpGraphicsSystem->getBackBuffer());
-	mpUnitManager->draw(mpGraphicsSystem);
+	mpEnemy->draw();
+	mpPlayer->draw();
 
 	//should be last thing in processLoop
 	Game::processLoop();

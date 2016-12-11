@@ -28,6 +28,9 @@ class UnitManager;
 class KinematicUnit;
 class GameMapManager;
 
+class Player;
+class Enemy;
+
 enum SpriteType
 {
 	INVALID_SRITE_TYPE = -1,
@@ -56,9 +59,9 @@ public:
 	//accessors
 	inline GameMessageManager* getMessageManager() { return mpMessageManager; };
 	inline GameMapManager* getGameMapManager() { return mpGameMapManager; };
-	inline KinematicUnit* getPlayer() { return mpPlayerUnit; };
 
 	inline int getCoinSpawnRate() { return mCoinSpawnRate; };
+	inline Player* getPlayer() { return mpPlayer; };
 
 private:
 	GameMessageManager* mpMessageManager;
@@ -67,8 +70,9 @@ private:
 	GameMapManager* mpGameMapManager;
 
 	// Units
-	UnitManager* mpUnitManager;
-	KinematicUnit* mpPlayerUnit;
+	
+	Player* mpPlayer;
+	Enemy* mpEnemy;
 
 	int mCoinSpawnRate;
 };

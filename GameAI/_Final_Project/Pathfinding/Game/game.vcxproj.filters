@@ -158,9 +158,6 @@
     <ClInclude Include="BoxCollision.h">
       <Filter>Header Files\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerMoveState.h">
-      <Filter>Header Files\states</Filter>
-    </ClInclude>
     <ClInclude Include="GameMap.h">
       <Filter>Header Files\Level</Filter>
     </ClInclude>
@@ -181,6 +178,9 @@
     </ClInclude>
     <ClInclude Include="SoundSystem.h">
       <Filter>Header Files\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="SetPlayerStateMessage.h">
+      <Filter>Header Files\Messaging</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -265,9 +265,6 @@
     <ClCompile Include="BoxCollision.cpp">
       <Filter>Source Files\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerMoveState.cpp">
-      <Filter>Source Files\states</Filter>
-    </ClCompile>
     <ClCompile Include="GameMap.cpp">
       <Filter>Source Files\Level</Filter>
     </ClCompile>
@@ -288,6 +285,9 @@
     </ClCompile>
     <ClCompile Include="SoundSystem.cpp">
       <Filter>Source Files\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="SetPlayerStateMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

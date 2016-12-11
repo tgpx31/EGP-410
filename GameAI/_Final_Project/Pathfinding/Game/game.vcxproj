@@ -106,8 +106,8 @@
     <ClInclude Include="PathfindingDebugContent.h" />
     <ClInclude Include="PathToMessage.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="PlayerMoveState.h" />
     <ClInclude Include="SetCurrentMapMessage.h" />
+    <ClInclude Include="SetPlayerStateMessage.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="SoundSystem.h" />
     <ClInclude Include="StateMachine.h" />
@@ -143,8 +143,8 @@
     <ClCompile Include="PathfindingDebugContent.cpp" />
     <ClCompile Include="PathToMessage.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PlayerMoveState.cpp" />
     <ClCompile Include="SetCurrentMapMessage.cpp" />
+    <ClCompile Include="SetPlayerStateMessage.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="SoundSystem.cpp" />
     <ClCompile Include="StateMachine.cpp" />

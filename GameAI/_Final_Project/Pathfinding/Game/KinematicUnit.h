@@ -46,7 +46,7 @@ public:
 
 	inline float getMaxVelocity() const { return mMaxVelocity; };
 	inline void changeMaxVel(float vel) { mMaxVelocity += vel; };
-	
+
 	inline float getMaxAcceleration() const { return mMaxAcceleration; };
 	inline void changeMaxAccel(float accel) { mMaxAcceleration += accel; };
 
@@ -71,9 +71,7 @@ private:
 	Steering* mpCurrentSteering;
 	Vector2D mTarget;
 	CylinderCollision* mpCircleCollider;
-
-
-
+	
 	float mMaxVelocity;
 	float mMaxAcceleration;
 

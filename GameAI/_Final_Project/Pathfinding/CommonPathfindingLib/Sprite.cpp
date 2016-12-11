@@ -18,7 +18,7 @@ Sprite::~Sprite()
 	//nothing to do right now as the bitmap is always a subBitmap
 }
 
-void Sprite::draw( GraphicsBuffer& dest, float dx, float dy, float rotationInRadians, int flags )
+void Sprite::draw( GraphicsBuffer& dest, float dx, float dy, float rotationInRadians, int flags)
 {
 	if( mpBitmap != NULL && dest.getBitmap() != NULL )
 	{
@@ -29,12 +29,13 @@ void Sprite::draw( GraphicsBuffer& dest, float dx, float dy, float rotationInRad
 		{
 			float centerX = al_get_bitmap_width(mpBitmap)/2;
 			float centerY = al_get_bitmap_height(mpBitmap)/2;
-			al_draw_rotated_bitmap( mpBitmap, centerX, centerY, dx, dy, rotationInRadians, flags );
+			al_draw_rotated_bitmap( mpBitmap, centerX, centerY, dx + centerX, dy + centerY, rotationInRadians, flags );
 		}
 		else//no need to rotate
 		{
 			al_draw_bitmap( mpBitmap, dx, dy, flags );
 		}
+
 		//restore old target
 		GraphicsSystem::switchTargetBitmap( pOldTarget );
 	}

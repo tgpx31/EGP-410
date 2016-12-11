@@ -4,8 +4,8 @@
 #include "GameMessageManager.h"
 #include "ExitGameMessage.h"
 #include "SetCurrentMapMessage.h"
-#include <allegro5/allegro_primitives.h>
-#include <allegro5/allegro_ttf.h>
+#include "SetPlayerStateMessage.h"
+#include "Player.h"
 
 /* Initialize
  * If any component fails install, return false
@@ -80,8 +80,8 @@ void InputManager::getKeyboardInput()
 		{
 		case ALLEGRO_KEY_ESCAPE:
 		{
-			GameMessage* aMessage = new ExitGameMessage();
-			gpGameApp->getMessageManager()->addMessage(aMessage, 0);
+			GameMessage* pMessage = new ExitGameMessage();
+			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
 			break;
 		}
 
@@ -90,27 +90,29 @@ void InputManager::getKeyboardInput()
 		**/
 		case ALLEGRO_KEY_W:
 		{
-			std::cout << "\nNO WASD YET W\n";
-			/*GameMessage* aMessage = new ChangeMethodMessage(false);
-			gpGameApp->getMessageManager()->addMessage(aMessage, 0);*/
+			GameMessage* pMessage = new SetPlayerStateMessage(GOING_UP);
+			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
 			break;
 		}
 
 		case ALLEGRO_KEY_A:
 		{
-			std::cout << "\nNO WASD YET A\n";
+			GameMessage* pMessage = new SetPlayerStateMessage(GOING_LEFT);
+			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
 			break;
 		}
 
 		case ALLEGRO_KEY_S:
 		{
-			std::cout << "\nNO WASD YET S\n";
+			GameMessage* pMessage = new SetPlayerStateMessage(GOING_DOWN);
+			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
 			break;
 		}
 
 		case ALLEGRO_KEY_D:
 		{
-			std::cout << "\nNO WASD YET D\n";
+			GameMessage* pMessage = new SetPlayerStateMessage(GOING_RIGHT);
+			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
 			break;
 		}
 
@@ -126,29 +128,29 @@ void InputManager::getKeyboardInput()
 		case ALLEGRO_KEY_1:
 		{
 			std::cout << "Switch to map0" << std::endl;
-			GameMessage* aMessage = new SetCurrentMapMessage(0);
-			gpGameApp->getMessageManager()->addMessage(aMessage, 0);
+			GameMessage* pMessage = new SetCurrentMapMessage(0);
+			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
 			break;
 		}
 		case ALLEGRO_KEY_2:
 		{
 			std::cout << "Switch to map1" << std::endl;
-			GameMessage* aMessage = new SetCurrentMapMessage(1);
-			gpGameApp->getMessageManager()->addMessage(aMessage, 0);
+			GameMessage* pMessage = new SetCurrentMapMessage(1);
+			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
 			break;
 		}
 		case ALLEGRO_KEY_3:
 		{
 			std::cout << "Switch to map2" << std::endl;
-			GameMessage* aMessage = new SetCurrentMapMessage(2);
-			gpGameApp->getMessageManager()->addMessage(aMessage, 0);
+			GameMessage* pMessage = new SetCurrentMapMessage(2);
+			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
 			break;
 		}
 		case ALLEGRO_KEY_4:
 		{
 			std::cout << "Switch to map3" << std::endl;
-			GameMessage* aMessage = new SetCurrentMapMessage(3);
-			gpGameApp->getMessageManager()->addMessage(aMessage, 0);
+			GameMessage* pMessage = new SetCurrentMapMessage(3);
+			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
 			break;
 		}
 
