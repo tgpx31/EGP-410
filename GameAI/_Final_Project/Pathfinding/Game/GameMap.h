@@ -15,7 +15,6 @@ private:
 	GridVisualizer* mpGridVisualizer;
 	GridGraph* mpGridGraph;
 	
-	UnitManager* mpCoinManager;
 	UnitManager* mpDoorManager;
 	UnitManager* mpCandyManager;
 

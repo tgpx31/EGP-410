@@ -124,15 +124,15 @@ void GridVisualizer::draw( GraphicsBuffer& dest )
 		}
 	}
 
-	if (mEditor)
+	int numValues = mpGrid->getNumValues();
+	int value;
+
+	for (int j = 0; j < numValues; j++)
 	{
-		int numValues = mpGrid->getNumValues();
-		int value;
+		value = mpGrid->getValueAtIndex(j);
 
-		for (int j = 0; j < numValues; j++)
+		if (mEditor)
 		{
-			value = mpGrid->getValueAtIndex(j);
-
 			switch (value)
 			{
 			case ENEMY_SPAWN_VALUE:
@@ -148,6 +148,10 @@ void GridVisualizer::draw( GraphicsBuffer& dest )
 				gpGame->getSpriteManager()->getSprite(DOOR_VALUE)->draw(dest, mpGrid->getULCornerOfSquare(j).getX(), mpGrid->getULCornerOfSquare(j).getY());
 				break;
 			}
+		}
+		else if (value == COIN_VALUE)
+		{
+			gpGame->getSpriteManager()->getSprite(COIN_VALUE)->draw(dest, mpGrid->getULCornerOfSquare(j).getX(), mpGrid->getULCornerOfSquare(j).getY());
 		}
 	}
 

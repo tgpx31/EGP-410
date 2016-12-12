@@ -81,7 +81,7 @@ void KinematicUnit::update(float time)
 	calcNewVelocities(*steering, time, mMaxVelocity, 25.0f);
 
 	//set the orientation to match the direction of travel
-	//setNewOrientation();
+	setNewOrientation();
 
 	//// Keep the Colliders with the sprite
 	mpCircleCollider->setPos(mPosition);
@@ -109,12 +109,49 @@ bool KinematicUnit::checkSpecificCollision(const int& TYPE_ID)
 {
 	// Check the corners for space that matches the ID
 	// return true or false
-	return	(
-			(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mPosition.getX() + COLLISION_PIXEL_BUFFER, mPosition.getY() + COLLISION_PIXEL_BUFFER)) == TYPE_ID) ||												// UL
-			(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mPosition.getX() + COLLISION_PIXEL_BUFFER, mPosition.getY() + mpSprite->getHeight() - COLLISION_PIXEL_BUFFER)) == TYPE_ID) ||						// BL
-			(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mPosition.getX() - COLLISION_PIXEL_BUFFER + mpSprite->getWidth(), mPosition.getY() + COLLISION_PIXEL_BUFFER)) == TYPE_ID) ||						// UR
-			(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mPosition.getX() - COLLISION_PIXEL_BUFFER + mpSprite->getWidth(), mPosition.getY() + mpSprite->getHeight() - COLLISION_PIXEL_BUFFER)) == TYPE_ID)	// BR
-			);
+	int topLeft = gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mPosition.getX() + COLLISION_PIXEL_BUFFER, mPosition.getY() + COLLISION_PIXEL_BUFFER));
+	int topRight = gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mPosition.getX() - COLLISION_PIXEL_BUFFER + mpSprite->getWidth(), mPosition.getY() + COLLISION_PIXEL_BUFFER));
+	int botLeft = gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mPosition.getX() + COLLISION_PIXEL_BUFFER, mPosition.getY() + mpSprite->getHeight() - COLLISION_PIXEL_BUFFER));
+	int botRight = gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mPosition.getX() - COLLISION_PIXEL_BUFFER + mpSprite->getWidth(), mPosition.getY() + mpSprite->getHeight() - COLLISION_PIXEL_BUFFER));
+	
+	
+	if ((topLeft == TYPE_ID) || (botLeft == TYPE_ID) || (topRight == TYPE_ID) || (botRight == TYPE_ID))
+	{
+		/* This check if the player collided with a coin 
+		 * and removes the coin if they did. This should 
+		 * probably go somewhere else but this is the 
+		 * fastest way to implement it without redundant 
+		 * coding right now
+		 */
+		if (TYPE_ID == COIN_VALUE)
+		{
+			if (topLeft == COIN_VALUE)
+			{
+				gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->setValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mPosition.getX() + COLLISION_PIXEL_BUFFER, mPosition.getY() + COLLISION_PIXEL_BUFFER), CLEAR_VALUE);
+			}
+			else if (topRight == COIN_VALUE)
+			{
+				gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->setValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mPosition.getX() - COLLISION_PIXEL_BUFFER + mpSprite->getWidth(), mPosition.getY() + COLLISION_PIXEL_BUFFER), CLEAR_VALUE);
+			}
+			else if (botLeft == COIN_VALUE)
+			{
+				gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->setValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mPosition.getX() + COLLISION_PIXEL_BUFFER, mPosition.getY() + mpSprite->getHeight() - COLLISION_PIXEL_BUFFER), CLEAR_VALUE);
+			}
+			else if (botRight == COIN_VALUE)
+			{
+				gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->setValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mPosition.getX() - COLLISION_PIXEL_BUFFER + mpSprite->getWidth(), mPosition.getY() + mpSprite->getHeight() - COLLISION_PIXEL_BUFFER), CLEAR_VALUE);
+			}
+				
+		}
+		else
+		{
+			return true;
+		}
+	}
+	else
+	{
+		return false;
+	}
 }
 
 void KinematicUnit::setNewOrientation()

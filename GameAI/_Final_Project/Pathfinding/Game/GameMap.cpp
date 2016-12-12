@@ -16,7 +16,6 @@ GameMap::GameMap(std::string filename)
 	mpGrid = NULL;
 	mpGridGraph = NULL;
 	mpGridVisualizer = NULL;
-	mpCoinManager = NULL;
 	mpDoorManager = NULL;
 	mpCandyManager = NULL;
 
@@ -33,9 +32,6 @@ GameMap::~GameMap()
 
 	delete mpGridVisualizer;
 	mpGridVisualizer = NULL;
-
-	delete mpCoinManager;
-	mpCoinManager = NULL;
 
 	delete mpDoorManager;
 	mpDoorManager = NULL;
@@ -60,7 +56,6 @@ void GameMap::init()
 
 	mpGridVisualizer = new GridVisualizer(mpGrid);
 
-	mpCoinManager = new UnitManager();
 	mpDoorManager = new UnitManager();
 	mpCandyManager = new UnitManager();
 
@@ -83,7 +78,8 @@ void GameMap::init()
 			int chance = rand() % 100;
 			if (chance < gpGameApp->getCoinSpawnRate())
 			{
-				mpCoinManager->addUnit(mpGrid->getULCornerOfSquare(i), gpGame->getSpriteManager()->getSprite(COIN));
+				//mpCoinManager->addUnit(mpGrid->getULCornerOfSquare(i), gpGame->getSpriteManager()->getSprite(COIN));
+				mpGrid->setValueAtIndex(i, COIN_VALUE);
 			}
 		}
 	}
@@ -97,7 +93,6 @@ void GameMap::update()
 void GameMap::draw()
 {
 	mpGridVisualizer->draw(*gpGame->getGraphicsSystem()->getBackBuffer());
-	mpCoinManager->draw(gpGame->getGraphicsSystem());
 	mpDoorManager->draw(gpGame->getGraphicsSystem());
 	mpCandyManager->draw(gpGame->getGraphicsSystem());
 }

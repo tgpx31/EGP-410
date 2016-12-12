@@ -25,7 +25,6 @@ class Player
 private:
 	KinematicUnit* mpUnit;
 	PlayerMovementState mCurrentState;
-	PlayerMovementState mLastState;
 	
 	/*
 	StateMachine* mpStateMachine;
