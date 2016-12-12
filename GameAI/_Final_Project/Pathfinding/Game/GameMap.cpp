@@ -1,6 +1,7 @@
 #include "GameMap.h"
 #include "Grid.h"
 #include "UnitManager.h"
+#include "DoorManager.h"
 #include "SpriteManager.h"
 #include "GameApp.h"
 #include "Game.h"
@@ -56,7 +57,7 @@ void GameMap::init()
 
 	mpGridVisualizer = new GridVisualizer(mpGrid);
 
-	mpDoorManager = new UnitManager();
+	mpDoorManager = new DoorManager();
 	mpCandyManager = new UnitManager();
 
 	int numValues = mpGrid->getNumValues();
@@ -67,7 +68,7 @@ void GameMap::init()
 
 		if (value == DOOR_VALUE)
 		{
-			mpDoorManager->addUnit(mpGrid->getULCornerOfSquare(i), gpGame->getSpriteManager()->getSprite(DOOR));
+			mpDoorManager->createDoor(mpGrid->getULCornerOfSquare(i), gpGame->getSpriteManager()->getSprite(DOOR));
 		}
 		else if (value == CANDY_VALUE)
 		{
@@ -93,6 +94,6 @@ void GameMap::update()
 void GameMap::draw()
 {
 	mpGridVisualizer->draw(*gpGame->getGraphicsSystem()->getBackBuffer());
-	mpDoorManager->draw(gpGame->getGraphicsSystem());
+	mpDoorManager->draw();
 	mpCandyManager->draw(gpGame->getGraphicsSystem());
 }

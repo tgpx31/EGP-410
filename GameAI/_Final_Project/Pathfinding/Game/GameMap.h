@@ -7,6 +7,7 @@ class Grid;
 class GridVisualizer;
 class GridGraph;
 class UnitManager;
+class DoorManager;
 
 class GameMap : public Trackable
 {
@@ -15,7 +16,7 @@ private:
 	GridVisualizer* mpGridVisualizer;
 	GridGraph* mpGridGraph;
 	
-	UnitManager* mpDoorManager;
+	DoorManager* mpDoorManager;
 	UnitManager* mpCandyManager;
 
 	std::string mFilename;

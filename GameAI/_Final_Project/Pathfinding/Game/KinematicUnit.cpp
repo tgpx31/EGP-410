@@ -142,6 +142,7 @@ bool KinematicUnit::checkSpecificCollision(const int& TYPE_ID)
 				gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->setValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mPosition.getX() - COLLISION_PIXEL_BUFFER + mpSprite->getWidth(), mPosition.getY() + mpSprite->getHeight() - COLLISION_PIXEL_BUFFER), CLEAR_VALUE);
 			}
 				
+			return true;
 		}
 		else
 		{

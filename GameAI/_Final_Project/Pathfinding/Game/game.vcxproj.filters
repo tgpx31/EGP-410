@@ -9,12 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Header Files\pathfinding">
-      <UniqueIdentifier>{370cc426-3bb2-4fa1-a418-e8a82b3c7bbb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\pathfinding">
-      <UniqueIdentifier>{474fbefa-c012-4187-954c-fdb12b4f06d7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Input">
       <UniqueIdentifier>{6eb10d72-e8e2-4c06-979f-2e3cc7955455}</UniqueIdentifier>
     </Filter>
@@ -32,12 +26,6 @@
     </Filter>
     <Filter Include="Source Files\Util">
       <UniqueIdentifier>{d435ee46-37de-4372-bc11-978cd215aa32}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\states">
-      <UniqueIdentifier>{85968e6d-c3eb-40c7-b13b-d202ff1e6190}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\states">
-      <UniqueIdentifier>{3357f245-7ba4-4b75-9f11-5a2fd408d767}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Units">
       <UniqueIdentifier>{126f7ca3-a549-451f-8f03-4edf02121c85}</UniqueIdentifier>
@@ -75,31 +63,49 @@
     <Filter Include="Source Files\Sound">
       <UniqueIdentifier>{f971b433-893e-4ead-a671-530ba48cbfca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Pathfinding">
+      <UniqueIdentifier>{370cc426-3bb2-4fa1-a418-e8a82b3c7bbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Pathfinding">
+      <UniqueIdentifier>{474fbefa-c012-4187-954c-fdb12b4f06d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\States">
+      <UniqueIdentifier>{85968e6d-c3eb-40c7-b13b-d202ff1e6190}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States">
+      <UniqueIdentifier>{3357f245-7ba4-4b75-9f11-5a2fd408d767}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\LevelUnits">
+      <UniqueIdentifier>{67172ac6-003c-4c6f-8e90-23e799d33b74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\LevelUnits">
+      <UniqueIdentifier>{94044f0e-f49a-4630-bc82-50cf04ebf6dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Connection.h">
-      <Filter>Header Files\pathfinding</Filter>
+      <Filter>Header Files\Pathfinding</Filter>
     </ClInclude>
     <ClInclude Include="Graph.h">
-      <Filter>Header Files\pathfinding</Filter>
+      <Filter>Header Files\Pathfinding</Filter>
     </ClInclude>
     <ClInclude Include="Node.h">
-      <Filter>Header Files\pathfinding</Filter>
+      <Filter>Header Files\Pathfinding</Filter>
     </ClInclude>
     <ClInclude Include="GridGraph.h">
-      <Filter>Header Files\pathfinding</Filter>
+      <Filter>Header Files\Pathfinding</Filter>
     </ClInclude>
     <ClInclude Include="Path.h">
-      <Filter>Header Files\pathfinding</Filter>
+      <Filter>Header Files\Pathfinding</Filter>
     </ClInclude>
     <ClInclude Include="Pathfinder.h">
-      <Filter>Header Files\pathfinding</Filter>
+      <Filter>Header Files\Pathfinding</Filter>
     </ClInclude>
     <ClInclude Include="DepthFirstPathfinder.h">
-      <Filter>Header Files\pathfinding</Filter>
+      <Filter>Header Files\Pathfinding</Filter>
     </ClInclude>
     <ClInclude Include="GridPathfinder.h">
-      <Filter>Header Files\pathfinding</Filter>
+      <Filter>Header Files\Pathfinding</Filter>
     </ClInclude>
     <ClInclude Include="GameMessage.h">
       <Filter>Header Files\Messaging</Filter>
@@ -129,16 +135,16 @@
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
     <ClInclude Include="DijkstraPathfinder.h">
-      <Filter>Header Files\pathfinding</Filter>
+      <Filter>Header Files\Pathfinding</Filter>
     </ClInclude>
     <ClInclude Include="ChangeMethodMessage.h">
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
     <ClInclude Include="AStarPathfinder.h">
-      <Filter>Header Files\pathfinding</Filter>
+      <Filter>Header Files\Pathfinding</Filter>
     </ClInclude>
     <ClInclude Include="StateMachine.h">
-      <Filter>Header Files\states</Filter>
+      <Filter>Header Files\States</Filter>
     </ClInclude>
     <ClInclude Include="Kinematic.h">
       <Filter>Header Files\Units</Filter>
@@ -182,31 +188,37 @@
     <ClInclude Include="SetPlayerStateMessage.h">
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
+    <ClInclude Include="Door.h">
+      <Filter>Header Files\LevelUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="DoorManager.h">
+      <Filter>Header Files\LevelUnits</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graph.cpp">
-      <Filter>Source Files\pathfinding</Filter>
+      <Filter>Source Files\Pathfinding</Filter>
     </ClCompile>
     <ClCompile Include="Connection.cpp">
-      <Filter>Source Files\pathfinding</Filter>
+      <Filter>Source Files\Pathfinding</Filter>
     </ClCompile>
     <ClCompile Include="Node.cpp">
-      <Filter>Source Files\pathfinding</Filter>
+      <Filter>Source Files\Pathfinding</Filter>
     </ClCompile>
     <ClCompile Include="GridGraph.cpp">
-      <Filter>Source Files\pathfinding</Filter>
+      <Filter>Source Files\Pathfinding</Filter>
     </ClCompile>
     <ClCompile Include="Path.cpp">
-      <Filter>Source Files\pathfinding</Filter>
+      <Filter>Source Files\Pathfinding</Filter>
     </ClCompile>
     <ClCompile Include="Pathfinder.cpp">
-      <Filter>Source Files\pathfinding</Filter>
+      <Filter>Source Files\Pathfinding</Filter>
     </ClCompile>
     <ClCompile Include="DepthFirstPathfinder.cpp">
-      <Filter>Source Files\pathfinding</Filter>
+      <Filter>Source Files\Pathfinding</Filter>
     </ClCompile>
     <ClCompile Include="GridPathfinder.cpp">
-      <Filter>Source Files\pathfinding</Filter>
+      <Filter>Source Files\Pathfinding</Filter>
     </ClCompile>
     <ClCompile Include="GameMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
@@ -236,16 +248,16 @@
       <Filter>Source Files\Messaging</Filter>
     </ClCompile>
     <ClCompile Include="DijkstraPathfinder.cpp">
-      <Filter>Source Files\pathfinding</Filter>
+      <Filter>Source Files\Pathfinding</Filter>
     </ClCompile>
     <ClCompile Include="ChangeMethodMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
     </ClCompile>
     <ClCompile Include="AStarPathfinder.cpp">
-      <Filter>Source Files\pathfinding</Filter>
+      <Filter>Source Files\Pathfinding</Filter>
     </ClCompile>
     <ClCompile Include="StateMachine.cpp">
-      <Filter>Source Files\states</Filter>
+      <Filter>Source Files\States</Filter>
     </ClCompile>
     <ClCompile Include="Kinematic.cpp">
       <Filter>Source Files\Units</Filter>
@@ -288,6 +300,12 @@
     </ClCompile>
     <ClCompile Include="SetPlayerStateMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="Door.cpp">
+      <Filter>Source Files\LevelUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="DoorManager.cpp">
+      <Filter>Source Files\LevelUnits</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
