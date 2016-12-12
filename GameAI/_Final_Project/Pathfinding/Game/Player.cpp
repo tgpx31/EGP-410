@@ -21,6 +21,9 @@ Player::~Player()
 
 bool Player::checkCoinCollision()
 {
+	// Check the position of the collider
+
+	// Old, not working method
 	return mpUnit->checkSpecificCollision(COIN_VALUE);
 }
 
