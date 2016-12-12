@@ -11,7 +11,7 @@ class GameMap;
 class GameMapManager : public Trackable
 {
 private:
-	std::map<IDType, GameMap*> mpMaps;
+	std::map<IDType, GameMap*> mMaps;
 	std::map<IDType, GameMap*>::iterator mCurrentMap;
 
 public:
@@ -25,5 +25,6 @@ public:
 	GameMap* getCurrentMap();
 	void setCurrentMap(const IDType& id);
 
+	void connectDoors();
 	void drawCurrentMap();
 };

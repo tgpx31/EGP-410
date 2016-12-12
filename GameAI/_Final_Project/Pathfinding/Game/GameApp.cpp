@@ -107,6 +107,7 @@ bool GameApp::init()
 	mpGameMapManager->loadMap(1, "../Assets/Maps/map1.txt");
 	mpGameMapManager->loadMap(2, "../Assets/Maps/map2.txt");
 	mpGameMapManager->loadMap(3, "../Assets/Maps/map3.txt");
+	mpGameMapManager->connectDoors();
 	mpGameMapManager->setCurrentMap(0);
 
 	mpEnemy = new Enemy(mpSpriteManager->getSprite(ENEMY_REG), mpSpriteManager->getSprite(ENEMY_SCARED));

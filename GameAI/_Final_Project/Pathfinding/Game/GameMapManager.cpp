@@ -3,14 +3,14 @@
 
 GameMapManager::GameMapManager()
 {
-	mCurrentMap = mpMaps.end();
+	mCurrentMap = mMaps.end();
 }
 
 GameMapManager::~GameMapManager()
 {
 	std::map<IDType, GameMap*>::iterator iter;
 
-	for (iter = mpMaps.begin(); iter != mpMaps.end(); iter++)
+	for (iter = mMaps.begin(); iter != mMaps.end(); iter++)
 	{
 		delete iter->second;
 	}
@@ -20,19 +20,19 @@ void GameMapManager::addMap(IDType id, GameMap* map)
 {
 	std::map<IDType, GameMap*>::iterator iter;
 
-	iter = mpMaps.find(id);
+	iter = mMaps.find(id);
 
-	if (iter != mpMaps.end())
+	if (iter != mMaps.end())
 	{
 		delete iter->second;
-		mpMaps.erase(id);
+		mMaps.erase(id);
 	}
 
-	mpMaps[id] = map;
+	mMaps[id] = map;
 
-	if (mCurrentMap == mpMaps.end())
+	if (mCurrentMap == mMaps.end())
 	{
-		mCurrentMap = mpMaps.find(id);
+		mCurrentMap = mMaps.find(id);
 	}
 }
 
@@ -40,21 +40,21 @@ void GameMapManager::loadMap(IDType id, std::string filename)
 {
 	std::map<IDType, GameMap*>::iterator iter;
 
-	iter = mpMaps.find(id);
+	iter = mMaps.find(id);
 
-	if (iter != mpMaps.end())
+	if (iter != mMaps.end())
 	{
 		delete iter->second;
-		mpMaps.erase(id);
+		mMaps.erase(id);
 	}
 
 	GameMap* pGameMap = new GameMap(filename);
 	pGameMap->init();
-	mpMaps[id] = pGameMap;
+	mMaps[id] = pGameMap;
 
-	if (mCurrentMap == mpMaps.end())
+	if (mCurrentMap == mMaps.end())
 	{
-		mCurrentMap = mpMaps.find(id);
+		mCurrentMap = mMaps.find(id);
 	}
 }
 
@@ -62,9 +62,9 @@ GameMap* GameMapManager::getMap(const IDType& id)
 {
 	std::map<IDType, GameMap*>::iterator iter;
 
-	iter = mpMaps.find(id);
+	iter = mMaps.find(id);
 
-	if (iter != mpMaps.end())
+	if (iter != mMaps.end())
 	{
 		return iter->second;
 	}
@@ -76,7 +76,7 @@ GameMap* GameMapManager::getMap(const IDType& id)
 
 GameMap* GameMapManager::getCurrentMap()
 {
-	if (mCurrentMap != mpMaps.end())
+	if (mCurrentMap != mMaps.end())
 	{
 		return mCurrentMap->second;
 	}
@@ -89,10 +89,15 @@ GameMap* GameMapManager::getCurrentMap()
 
 void GameMapManager::setCurrentMap(const IDType & id)
 {
-	if (mpMaps.find(id) != mpMaps.end())
+	if (mMaps.find(id) != mMaps.end())
 	{
-		mCurrentMap = mpMaps.find(id);
+		mCurrentMap = mMaps.find(id);
 	}
+}
+
+void GameMapManager::connectDoors()
+{
+	std::cout << mMaps.size() << std::endl;
 }
 
 void GameMapManager::drawCurrentMap()
