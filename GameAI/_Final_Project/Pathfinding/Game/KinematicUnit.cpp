@@ -14,6 +14,8 @@
 #include "GameMap.h"
 #include "Grid.h"
 
+#include <allegro5\allegro_primitives.h>
+
 using namespace std;
 
 Steering gNullSteering(gZeroVector2D, 0.0f);
@@ -83,8 +85,13 @@ void KinematicUnit::update(float time)
 
 	//// Keep the Colliders with the sprite
 	mpCircleCollider->setPos(mPosition);
+	/*al_draw_circle(mpCircleCollider->getPos().getX() + (mpSprite->getWidth() / 2), mpCircleCollider->getPos().getY() + (mpSprite->getHeight() / 2), 
+		mpSprite->getHeight() / 2, 
+		al_map_rgb(0, 255, 0), 
+		4);*/
 
-	if (checkWallCollision())
+	// Check for walls
+	if (checkSpecificCollision(BLOCKING_VALUE))
 	{
 		// hit a wall, go to the previous position
 		mPosition = mLastPos;
@@ -98,15 +105,15 @@ void KinematicUnit::setSteering(Steering* pSteering)
 	mpCurrentSteering = pSteering;
 }
 
-bool KinematicUnit::checkWallCollision()
+bool KinematicUnit::checkSpecificCollision(const int& TYPE_ID)
 {
-	// Check the corners for a wall
-	// return if in a wall
+	// Check the corners for space that matches the ID
+	// return true or false
 	return	(
-			(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mPosition.getX() + COLLISION_PIXEL_BUFFER, mPosition.getY() + COLLISION_PIXEL_BUFFER)) == BLOCKING_VALUE) ||												// UL
-			(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mPosition.getX() + COLLISION_PIXEL_BUFFER, mPosition.getY() + mpSprite->getHeight() - COLLISION_PIXEL_BUFFER)) == BLOCKING_VALUE) ||						// BL
-			(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mPosition.getX() - COLLISION_PIXEL_BUFFER + mpSprite->getWidth(), mPosition.getY() + COLLISION_PIXEL_BUFFER)) == BLOCKING_VALUE) ||						// UR
-			(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mPosition.getX() - COLLISION_PIXEL_BUFFER + mpSprite->getWidth(), mPosition.getY() + mpSprite->getHeight() - COLLISION_PIXEL_BUFFER)) == BLOCKING_VALUE)	// BR
+			(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mPosition.getX() + COLLISION_PIXEL_BUFFER, mPosition.getY() + COLLISION_PIXEL_BUFFER)) == TYPE_ID) ||												// UL
+			(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mPosition.getX() + COLLISION_PIXEL_BUFFER, mPosition.getY() + mpSprite->getHeight() - COLLISION_PIXEL_BUFFER)) == TYPE_ID) ||						// BL
+			(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mPosition.getX() - COLLISION_PIXEL_BUFFER + mpSprite->getWidth(), mPosition.getY() + COLLISION_PIXEL_BUFFER)) == TYPE_ID) ||						// UR
+			(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mPosition.getX() - COLLISION_PIXEL_BUFFER + mpSprite->getWidth(), mPosition.getY() + mpSprite->getHeight() - COLLISION_PIXEL_BUFFER)) == TYPE_ID)	// BR
 			);
 }
 

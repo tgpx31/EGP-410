@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Grid.h"
+
 class KinematicUnit;
 class Sprite;
 /*
@@ -40,6 +42,10 @@ private:
 public:
 	Player(Sprite* pSprite);
 	~Player();
+	
+	// Currently does not work because it is checking for grid spaces, not the coins
+	// Should check actual collision with a collider
+	bool checkCoinCollision();
 
 	void setState(PlayerMovementState state);
 	void update(float time = 0.0f);

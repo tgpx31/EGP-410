@@ -42,17 +42,13 @@ public:
 
 	inline Vector2D getVelocity() const { return mVelocity; };
 	inline void setVelocity(const Vector2D& velocity) { mVelocity = velocity; };
-
 	inline float getMaxVelocity() const { return mMaxVelocity; };
 	inline void changeMaxVel(float vel) { mMaxVelocity += vel; };
-
 	inline float getMaxAcceleration() const { return mMaxAcceleration; };
 	inline void changeMaxAccel(float accel) { mMaxAcceleration += accel; };
 
 	inline void changeRotVel(float rot) { mRotationVel += rot; };
 	inline float getRotVelocity() { return mRotationVel; };
-
-	inline int getRadius() { return mpCurrentSteering->getRadius(); };
 
 	inline Sprite* getSprite() { return mpSprite; };
 	inline void setSprite(Sprite* newSpr) { mpSprite = newSpr; };
@@ -62,9 +58,11 @@ public:
 	void draw(GraphicsBuffer* pBuffer);//draw yourself to the indicated buffer
 	void update(float time = 0.0f);//move according to the current velocities and update velocities based on current Steering
 
-
 	inline CylinderCollision* getCollider() { return mpCircleCollider; };
 	Steering* getSteering() { return mpCurrentSteering; };	
+
+	// Check collision based on grid and the type of grid space
+	bool checkSpecificCollision(const int& TYPE_ID);
 	
 private:
 	Sprite* mpSprite;
@@ -77,7 +75,5 @@ private:
 
 	void setSteering(Steering* pSteering);
 
-	// Check collision based on grid
-	bool checkWallCollision();
 	Vector2D mLastPos;
 };

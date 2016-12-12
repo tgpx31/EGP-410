@@ -19,6 +19,11 @@ Player::~Player()
 	mpUnit = NULL;
 }
 
+bool Player::checkCoinCollision()
+{
+	return mpUnit->checkSpecificCollision(COIN_VALUE);
+}
+
 void Player::setState(PlayerMovementState state)
 {
 	mLastState = mCurrentState;
@@ -54,7 +59,9 @@ void Player::update(float time)
 
 	mpUnit->update(time);
 	
-	//Do collision detections with walls here
+	// Collision stuff
+	if (checkCoinCollision())
+		std::cout << "\nYou got a coin";
 }
 
 void Player::draw()
