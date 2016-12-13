@@ -80,6 +80,8 @@
   <ItemGroup>
     <ClInclude Include="AStarPathfinder.h" />
     <ClInclude Include="BoxCollision.h" />
+    <ClInclude Include="Candy.h" />
+    <ClInclude Include="CandyManager.h" />
     <ClInclude Include="ChangeMethodMessage.h" />
     <ClInclude Include="Connection.h" />
     <ClInclude Include="CylinderCollision.h" />
@@ -120,6 +122,8 @@
   <ItemGroup>
     <ClCompile Include="AStarPathfinder.cpp" />
     <ClCompile Include="BoxCollision.cpp" />
+    <ClCompile Include="Candy.cpp" />
+    <ClCompile Include="CandyManager.cpp" />
     <ClCompile Include="ChangeMethodMessage.cpp" />
     <ClCompile Include="Connection.cpp" />
     <ClCompile Include="CylinderCollision.cpp" />

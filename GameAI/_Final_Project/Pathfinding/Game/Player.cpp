@@ -59,12 +59,7 @@ void Player::setPosition(Vector2D position)
 void Player::update(float time)
 {
 	mpUnit->update(time);
-	
-	// Collision stuff
-	if (checkCoinCollision())
-	{
-		std::cout << "\nYou got a coin";
-	}
+	checkCoinCollision();
 }
 
 void Player::draw()

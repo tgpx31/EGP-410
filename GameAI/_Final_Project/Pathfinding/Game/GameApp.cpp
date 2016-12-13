@@ -146,7 +146,7 @@ void GameApp::processLoop()
 
 	//Update
 	mpMessageManager->processMessagesForThisframe();
-	mpGameMapManager->update();
+	mpGameMapManager->update(LOOP_TARGET_TIME / 1000.0F);
 	//mpEnemy->update(LOOP_TARGET_TIME / 1000.0F);
 	mpPlayer->update(LOOP_TARGET_TIME / 1000.0F);
 

@@ -6,7 +6,7 @@
 class Grid;
 class GridVisualizer;
 class GridGraph;
-class UnitManager;
+class CandyManager;
 class DoorManager;
 
 const int GRID_SQUARE_SIZE = 32;
@@ -19,7 +19,7 @@ private:
 	GridGraph* mpGridGraph;
 	
 	DoorManager* mpDoorManager;
-	UnitManager* mpCandyManager;
+	CandyManager* mpCandyManager;
 
 	std::string mFilename;
 
@@ -31,6 +31,6 @@ public:
 	inline DoorManager* getDoorManager() { return mpDoorManager; };
 
 	void init();
-	void update();
+	void update(float time);
 	void draw();
 };

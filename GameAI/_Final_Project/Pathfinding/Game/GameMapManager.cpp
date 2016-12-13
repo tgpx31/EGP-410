@@ -106,9 +106,9 @@ void GameMapManager::setCurrentMap(const IDType & id)
 	}
 }
 
-void GameMapManager::update()
+void GameMapManager::update(float time)
 {
-	mCurrentMap->second->update();
+	mCurrentMap->second->update(time);
 }
 
 void GameMapManager::connectDoors()

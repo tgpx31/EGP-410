@@ -197,6 +197,12 @@
     <ClInclude Include="SetPlayerLocationMessage.h">
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
+    <ClInclude Include="Candy.h">
+      <Filter>Header Files\LevelUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="CandyManager.h">
+      <Filter>Header Files\LevelUnits</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graph.cpp">
@@ -312,6 +318,12 @@
     </ClCompile>
     <ClCompile Include="SetPlayerLocationMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="Candy.cpp">
+      <Filter>Source Files\LevelUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="CandyManager.cpp">
+      <Filter>Source Files\LevelUnits</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
