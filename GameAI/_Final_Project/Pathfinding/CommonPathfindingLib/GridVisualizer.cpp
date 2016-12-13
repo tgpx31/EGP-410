@@ -144,9 +144,6 @@ void GridVisualizer::draw( GraphicsBuffer& dest )
 			case CANDY_VALUE:
 				gpGame->getSpriteManager()->getSprite(CANDY_VALUE)->draw(dest, mpGrid->getULCornerOfSquare(j).getX(), mpGrid->getULCornerOfSquare(j).getY());
 				break;
-			case DOOR_VALUE:
-				gpGame->getSpriteManager()->getSprite(DOOR_VALUE)->draw(dest, mpGrid->getULCornerOfSquare(j).getX(), mpGrid->getULCornerOfSquare(j).getY());
-				break;
 			}
 		}
 		else if (value == COIN_VALUE)

@@ -115,9 +115,6 @@ void InputManager::getKeyboardInput()
 				//Set editor to place All-Mighty-Candy
 				pMessage = new ChangeModeMessage(CANDY_VALUE);
 				break;
-			case ALLEGRO_KEY_5:
-				pMessage = new ChangeModeMessage(DOOR_VALUE);
-				break;
 			case ALLEGRO_KEY_F1:
 				pMessage = new ToggleHelpMessage();
 				break;
