@@ -15,7 +15,6 @@
 #include "Enemy.h"
 
 const IDType BACKGROUND_ID = 0;
-const int GRID_SQUARE_SIZE = 32;
 
 GameApp::GameApp()
 :mpMessageManager(NULL)
@@ -108,7 +107,6 @@ bool GameApp::init()
 	mpGameMapManager->loadMap(2, "../Assets/Maps/map2.txt");
 	mpGameMapManager->loadMap(3, "../Assets/Maps/map3.txt");
 	mpGameMapManager->connectDoors();
-	mpGameMapManager->setCurrentMap(0);
 
 	mpEnemy = new Enemy(mpSpriteManager->getSprite(ENEMY_REG), mpSpriteManager->getSprite(ENEMY_SCARED));
 	mpPlayer = new Player(mpSpriteManager->getSprite(PLAYER));
@@ -148,12 +146,13 @@ void GameApp::processLoop()
 
 	//Update
 	mpMessageManager->processMessagesForThisframe();
-	mpEnemy->update(LOOP_TARGET_TIME / 1000.0F);
+	mpGameMapManager->update();
+	//mpEnemy->update(LOOP_TARGET_TIME / 1000.0F);
 	mpPlayer->update(LOOP_TARGET_TIME / 1000.0F);
 
 	//Draw
 	mpGameMapManager->drawCurrentMap();
-	mpEnemy->draw();
+	//mpEnemy->draw();
 	mpPlayer->draw();
 
 	//should be last thing in processLoop

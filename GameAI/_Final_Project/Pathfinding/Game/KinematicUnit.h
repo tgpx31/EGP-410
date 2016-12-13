@@ -39,6 +39,7 @@ public:
 	void setTarget(const Vector2D& target) { mTarget = target; };
 
 	const Vector2D& getPosition() const { return mPosition; };
+	inline void setPosition(Vector2D position) { mPosition = position; };
 
 	inline Vector2D getVelocity() const { return mVelocity; };
 	inline void setVelocity(const Vector2D& velocity) { mVelocity = velocity; };

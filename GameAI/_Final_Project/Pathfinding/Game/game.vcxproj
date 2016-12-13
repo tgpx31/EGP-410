@@ -109,6 +109,7 @@
     <ClInclude Include="PathToMessage.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SetCurrentMapMessage.h" />
+    <ClInclude Include="SetPlayerLocationMessage.h" />
     <ClInclude Include="SetPlayerStateMessage.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="SoundSystem.h" />
@@ -148,6 +149,7 @@
     <ClCompile Include="PathToMessage.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SetCurrentMapMessage.cpp" />
+    <ClCompile Include="SetPlayerLocationMessage.cpp" />
     <ClCompile Include="SetPlayerStateMessage.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="SoundSystem.cpp" />

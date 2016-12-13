@@ -1,8 +1,9 @@
 #pragma once
 
 #include "Grid.h"
+#include "KinematicUnit.h"
+#include "CylinderCollision.h"
 
-class KinematicUnit;
 class Sprite;
 /*
 class StateMachine;
@@ -46,7 +47,13 @@ public:
 	// Should check actual collision with a collider
 	bool checkCoinCollision();
 
+	inline PlayerMovementState getState() { return mCurrentState; };
+	inline Vector2D getPosition() { return mpUnit->getPosition(); };
+	inline CylinderCollision* getCollider() { return mpUnit->getCollider(); };
+
 	void setState(PlayerMovementState state);
+	void setPosition(Vector2D position);
+
 	void update(float time = 0.0f);
 	void draw();
 };

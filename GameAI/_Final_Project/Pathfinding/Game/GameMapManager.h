@@ -25,6 +25,7 @@ public:
 	GameMap* getCurrentMap();
 	void setCurrentMap(const IDType& id);
 
+	void update();
 	void connectDoors();
 	void drawCurrentMap();
 };

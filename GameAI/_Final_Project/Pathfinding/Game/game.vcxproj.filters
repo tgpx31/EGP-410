@@ -194,6 +194,9 @@
     <ClInclude Include="DoorManager.h">
       <Filter>Header Files\LevelUnits</Filter>
     </ClInclude>
+    <ClInclude Include="SetPlayerLocationMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graph.cpp">
@@ -306,6 +309,9 @@
     </ClCompile>
     <ClCompile Include="DoorManager.cpp">
       <Filter>Source Files\LevelUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="SetPlayerLocationMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

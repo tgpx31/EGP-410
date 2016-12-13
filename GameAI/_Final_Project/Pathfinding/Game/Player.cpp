@@ -10,7 +10,7 @@
 
 Player::Player(Sprite* pSprite)
 {
-	mpUnit = new KinematicUnit(pSprite, Vector2D(0, 0), 0.0f, Vector2D(0, 0), 0.0f, 100.0f);
+	mpUnit = new KinematicUnit(pSprite, Vector2D(100, 100), 0.0f, Vector2D(0, 0), 0.0f, 100.0f);
 	mCurrentState = INVALID_MOVEMENT_STATE;
 }
 
@@ -49,6 +49,11 @@ void Player::setState(PlayerMovementState state)
 	default:
 		break;
 	}
+}
+
+void Player::setPosition(Vector2D position)
+{
+	mpUnit->setPosition(position);
 }
 
 void Player::update(float time)

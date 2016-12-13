@@ -11,6 +11,8 @@
 #include <fstream>
 #include <ctime>
 
+
+
 GameMap::GameMap(std::string filename)
 {
 	mFilename = filename;
@@ -45,7 +47,7 @@ void GameMap::init()
 {
 	std::cout << "Loading map " << mFilename << std::endl;
 	
-	mpGrid = new Grid(gpGame->getGraphicsSystem()->getWidth(), gpGame->getGraphicsSystem()->getHeight(), 32);
+	mpGrid = new Grid(gpGame->getGraphicsSystem()->getWidth(), gpGame->getGraphicsSystem()->getHeight(), GRID_SQUARE_SIZE);
 
 	std::ifstream fin;
 	fin.open(mFilename);
@@ -66,11 +68,14 @@ void GameMap::init()
 	{
 		int value = mpGrid->getValueAtIndex(i);
 
+		/*
 		if (value == DOOR_VALUE)
 		{
 			mpDoorManager->createDoor(mpGrid->getULCornerOfSquare(i), gpGame->getSpriteManager()->getSprite(DOOR));
 		}
-		else if (value == CANDY_VALUE)
+		*/
+
+		if (value == CANDY_VALUE)
 		{
 			mpCandyManager->addUnit(mpGrid->getULCornerOfSquare(i), gpGame->getSpriteManager()->getSprite(CANDY));
 		}
@@ -88,7 +93,7 @@ void GameMap::init()
 
 void GameMap::update()
 {
-	/* Check coins for collisions with player, update as necessary */
+	mpDoorManager->update();
 }
 
 void GameMap::draw()

@@ -22,9 +22,9 @@ public:
 	~Door();
 
 	inline Vector2D getPosition() { return mPosition; };
-	inline CylinderCollision* getCollider() { return mpCollider; }
+	inline CylinderCollision* getCollider() { return mpCollider; };
 
-	inline IDType getMapTo() { return mMapTo; }
+	inline IDType getMapTo() { return mMapTo; };
 	inline Door* getConnectedDoor() { return mConnectedDoor; };
 
 	inline void setMapTo(IDType id) { mMapTo = id; };

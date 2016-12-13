@@ -15,7 +15,7 @@ public:
 	DoorManager();
 	~DoorManager();
 
-	void addDoor(IDType& id, Door* pDoor);
+	void addDoor(IDType id, Door* pDoor);
 	void createDoor(Vector2D position, Sprite* pSprite);
 
 	void update();

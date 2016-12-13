@@ -9,6 +9,8 @@ class GridGraph;
 class UnitManager;
 class DoorManager;
 
+const int GRID_SQUARE_SIZE = 32;
+
 class GameMap : public Trackable
 {
 private:
@@ -26,6 +28,7 @@ public:
 	~GameMap();
 
 	inline Grid* getGrid() const { return mpGrid; };
+	inline DoorManager* getDoorManager() { return mpDoorManager; };
 
 	void init();
 	void update();
