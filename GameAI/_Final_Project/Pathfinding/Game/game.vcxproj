@@ -107,6 +107,7 @@
     <ClInclude Include="IncreaseScoreMessage.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Kinematic.h" />
+    <ClInclude Include="KinematicSeekSteering.h" />
     <ClInclude Include="KinematicUnit.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Path.h" />
@@ -153,6 +154,7 @@
     <ClCompile Include="IncreaseScoreMessage.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Kinematic.cpp" />
+    <ClCompile Include="KinematicSeekSteering.cpp" />
     <ClCompile Include="KinematicUnit.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Node.cpp" />

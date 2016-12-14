@@ -3,6 +3,7 @@
 #include "KinematicUnit.h"
 #include "GraphicsSystem.h"
 #include "GameApp.h"
+#include "Player.h"
 
 EnemyManager::EnemyManager(Sprite* spr1, Sprite* spr2)
 {
@@ -20,6 +21,7 @@ void EnemyManager::addEnemy(Vector2D position)
 	Enemy* pEnemy;
 	pEnemy = new Enemy(mNormalSprite, mScaredSprite);
 	pEnemy->getUnit()->setPosition(position);
+	pEnemy->getUnit()->seek(gpGameApp->getPlayer()->getPosition());
 	// Add the new enemy to the map
 	mEnemies[mEnemies.size()] = pEnemy;
 }

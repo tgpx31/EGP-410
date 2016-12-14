@@ -218,6 +218,9 @@
     <ClInclude Include="PlayerDeathMessage.h">
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
+    <ClInclude Include="KinematicSeekSteering.h">
+      <Filter>Header Files\Steering</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graph.cpp">
@@ -354,6 +357,9 @@
     </ClCompile>
     <ClCompile Include="PlayerDeathMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="KinematicSeekSteering.cpp">
+      <Filter>Source Files\Steering</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

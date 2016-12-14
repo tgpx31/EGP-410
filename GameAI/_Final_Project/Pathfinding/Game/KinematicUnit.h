@@ -66,6 +66,9 @@ public:
 	bool checkSpecificCollision(const int& TYPE_ID);
 	
 	void drawColliders();
+
+	// Behavior
+	void seek(const Vector2D& target);
 private:
 	Sprite* mpSprite;
 	Steering* mpCurrentSteering;

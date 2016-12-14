@@ -58,13 +58,14 @@ bool GameApp::init()
 	mpGameMapManager = new GameMapManager();
 	initMaps();
 
+	mpPlayer = new Player(mpSpriteManager->getSprite(PLAYER));
 	// Spawn enemies based on the spawn points in the map
 	// TESTING ADD/DELETE
 	mpEnemyManager->addEnemy(Vector2D(200,200));
 	mpEnemyManager->addEnemy(Vector2D(300, 200));
 	mpEnemyManager->deleteEnemy();
 
-	mpPlayer = new Player(mpSpriteManager->getSprite(PLAYER));
+	
 
 	mScore = 0;
 
@@ -152,6 +153,9 @@ void GameApp::cleanup()
 
 	delete mpPlayer;
 	mpPlayer = NULL;
+
+	delete mpSpriteManager;
+	mpSpriteManager = NULL;
 }
 
 void GameApp::beginLoop()

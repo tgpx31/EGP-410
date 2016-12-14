@@ -17,6 +17,8 @@
 #include "GameMessageManager.h"
 #include "IncreaseScoreMessage.h"
 
+#include "KinematicSeekSteering.h"
+
 #include <allegro5\allegro_primitives.h>
 
 using namespace std;
@@ -40,6 +42,7 @@ KinematicUnit::KinematicUnit(Sprite *pSprite, const Vector2D &position, float or
 KinematicUnit::~KinematicUnit()
 {
 	delete mpCurrentSteering;
+	mpCurrentSteering = NULL;
 
 	delete mpCircleCollider;
 	mpCircleCollider = nullptr;
@@ -164,6 +167,12 @@ void KinematicUnit::drawColliders()
 		mpSprite->getWidth() / 2,
 		al_map_rgb(0, 255, 0),
 		4);
+}
+
+void KinematicUnit::seek(const Vector2D & target)
+{
+	KinematicSeekSteering* pSteering = new KinematicSeekSteering(this, target);
+	setSteering(pSteering);
 }
 
 void KinematicUnit::setNewOrientation()
