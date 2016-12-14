@@ -9,6 +9,9 @@
 #include "Vector2D.h"
 #include "GameApp.h"
 
+#include "GameMapManager.h"
+#include "GameMap.h"
+
 GridPathfinder::GridPathfinder( GridGraph* pGraph )
 :Pathfinder(pGraph)
 ,mTimeElapsed(0.0)
@@ -78,14 +81,14 @@ void GridPathfinder::drawVisualization( Grid* pGrid, GraphicsBuffer* pDest, bool
 void GridPathfinder::drawLineToNodes(Node * node)
 {
 	//TODO: Change functionality to work with new multipmap system
-	/*
-	al_draw_line(gpGameApp->getGrid()->getULCornerOfSquare(node->getId()).getX() + gpGameApp->getGrid()->getSquareSize() / 2,
-		gpGameApp->getGrid()->getULCornerOfSquare(node->getId()).getY() + gpGameApp->getGrid()->getSquareSize() / 2,
-		gpGameApp->getGrid()->getULCornerOfSquare(node->getPrevNode()).getX() + gpGameApp->getGrid()->getSquareSize() / 2,
-		gpGameApp->getGrid()->getULCornerOfSquare(node->getPrevNode()).getY() + gpGameApp->getGrid()->getSquareSize() / 2,
+	
+	al_draw_line(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getULCornerOfSquare(node->getId()).getX() + gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareSize() / 2,
+		gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getULCornerOfSquare(node->getId()).getY() + gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareSize() / 2,
+		gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getULCornerOfSquare(node->getPrevNode()).getX() + gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareSize() / 2,
+		gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getULCornerOfSquare(node->getPrevNode()).getY() + gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareSize() / 2,
 		al_map_rgb(255, 255, 255), 5);
-	*/
+	
 
-	std::cout << "GridPathfinder::drawLineToNodes(Node * node) is not implemented. See source for details." << std::endl;
+	//std::cout << "GridPathfinder::drawLineToNodes(Node * node) is not implemented. See source for details." << std::endl;
 }
 #endif

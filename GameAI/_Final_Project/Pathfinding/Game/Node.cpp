@@ -2,6 +2,9 @@
 #include "GameApp.h"
 #include "GridGraph.h"
 
+#include "GameMap.h"
+#include "GameMapManager.h"
+
 Node::Node()
 :mId(BAD_NODE_ID)
 {
@@ -41,7 +44,7 @@ void Node::setCostFromStart(Node* pPrevNode, float cost)
 Node * Node::becomePrev()
 {
 	//TODO: Change functionality to work with new multimap system
-	//return gpGameApp->getGridGraph()->getNode(mPrevNodeId);
+	return gpGameApp->getGameMapManager()->getCurrentMap()->getGridGraph()->getNode(mPrevNodeId);
 
 	std::cout << "Node::becomePrev() is not implemented. See see source for details." << std::endl;
 

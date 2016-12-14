@@ -11,6 +11,9 @@
 #include "Grid.h"
 #include "Vector2D.h"
 
+#include "GameMapManager.h"
+#include "GameMap.h"
+
 using namespace std;
 
 AStarPathfinder::AStarPathfinder(Graph* pGraph)
@@ -136,12 +139,12 @@ float AStarPathfinder::getHeuristic(Node * node, Node * goal)
 	// To use an inadmissable heuristic, use euclidian distance
 
 	//TODO: Change functionality to work with new multimap system
-	/*
-	float dx = abs(gpGameApp->getGrid()->getULCornerOfSquare(node->getId()).getX() - gpGameApp->getGrid()->getULCornerOfSquare(goal->getId()).getX());
-	float dy = abs(gpGameApp->getGrid()->getULCornerOfSquare(node->getId()).getY() - gpGameApp->getGrid()->getULCornerOfSquare(goal->getId()).getY());
+	
+	float dx = abs(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getULCornerOfSquare(node->getId()).getX() - gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getULCornerOfSquare(goal->getId()).getX());
+	float dy = abs(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getULCornerOfSquare(node->getId()).getY() - gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getULCornerOfSquare(goal->getId()).getY());
 	
 	return (dx + dy);
-	*/
+	
 
 	std::cout << "AStarPathfinder::getHeuristic(Node * node, Node * goal) is not implemented. See source for details." << std::endl;
 

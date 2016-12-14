@@ -5,6 +5,8 @@
 
 class StateMachine;
 class Sprite;
+class Node;
+class AStarPathfinder;
 //class SM_State;
 //class Transition;
 
@@ -32,6 +34,9 @@ private:
 
 	bool checkCollidingPlayer();
 
+	Node* start;
+	Node* goal;
+	
 public:
 	Enemy(Sprite* pNormalSprite, Sprite* pFleeSprite);
 	~Enemy();
@@ -41,4 +46,11 @@ public:
 
 	inline KinematicUnit* getUnit() { return mpUnit; };
 	inline CylinderCollision* getCollider() { return mpUnit->getCollider(); };
+	AStarPathfinder* mpAStar;
+	
+	void setStart(Vector2D position);
+	void setGoal(Vector2D position);
+
+	inline Node* getStart() { return start; };
+	inline Node* getGoal() { return goal; };
 };

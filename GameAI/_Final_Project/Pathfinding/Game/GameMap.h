@@ -3,6 +3,7 @@
 #include "Trackable.h"
 #include <string>
 
+class Graph;
 class Grid;
 class GridVisualizer;
 class GridGraph;
@@ -28,6 +29,7 @@ public:
 	~GameMap();
 
 	inline Grid* getGrid() const { return mpGrid; };
+	inline GridGraph* getGridGraph() { return mpGridGraph; };
 	inline DoorManager* getDoorManager() { return mpDoorManager; };
 
 	void init();

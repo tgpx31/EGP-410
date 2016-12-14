@@ -172,7 +172,7 @@ void GameApp::processLoop()
 	//Update
 	mpMessageManager->processMessagesForThisframe();
 	mpGameMapManager->update(LOOP_TARGET_TIME / 1000.0F);
-	//mpEnemy->update(LOOP_TARGET_TIME / 1000.0F);
+
 	if (mShouldUpdate)
 	{
 		mpPlayer->update(LOOP_TARGET_TIME / 1000.0F);
@@ -182,7 +182,6 @@ void GameApp::processLoop()
 	mpEnemyManager->draw();
 	//Draw
 	mpGameMapManager->drawCurrentMap();
-	//mpEnemy->draw();
 	mpPlayer->draw();
 
 	//should be last thing in processLoop

@@ -4,7 +4,7 @@
 #include "GraphicsSystem.h"
 #include "GameApp.h"
 #include "Player.h"
-
+#include "AStarPathfinder.h"
 EnemyManager::EnemyManager(Sprite* spr1, Sprite* spr2)
 {
 	mNormalSprite = spr1;
@@ -22,6 +22,12 @@ void EnemyManager::addEnemy(Vector2D position)
 	pEnemy = new Enemy(mNormalSprite, mScaredSprite);
 	pEnemy->getUnit()->setPosition(position);
 	pEnemy->getUnit()->seek(NULL);
+
+	pEnemy->setGoal(gpGameApp->getPlayer()->getPosition());
+	pEnemy->setStart(position);
+
+	pEnemy->mpAStar->clearPath();
+	pEnemy->mpAStar->findPath(pEnemy->getStart(), pEnemy->getGoal());
 	// Add the new enemy to the map
 	mEnemies[mEnemies.size()] = pEnemy;
 }
