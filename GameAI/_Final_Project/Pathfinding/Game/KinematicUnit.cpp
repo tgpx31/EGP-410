@@ -18,6 +18,7 @@
 #include "IncreaseScoreMessage.h"
 
 #include "KinematicSeekSteering.h"
+#include "Player.h"
 
 #include <allegro5\allegro_primitives.h>
 
@@ -171,7 +172,7 @@ void KinematicUnit::drawColliders()
 
 void KinematicUnit::seek(const Vector2D & target)
 {
-	KinematicSeekSteering* pSteering = new KinematicSeekSteering(this, target);
+	KinematicSeekSteering* pSteering = new KinematicSeekSteering(this, gpGameApp->getPlayer()->getPosition());
 	setSteering(pSteering);
 }
 

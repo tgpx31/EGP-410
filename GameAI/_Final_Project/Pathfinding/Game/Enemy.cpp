@@ -23,7 +23,7 @@ Enemy::Enemy(Sprite* pNormalSprite, Sprite* pFleeSprite)
 	mpNormalSprite = pNormalSprite;
 	mpFleeSprite = pFleeSprite;
 	
-	mpUnit = new KinematicUnit(mpNormalSprite, Vector2D(100, 100), 0.0f, Vector2D(0, 0), 0.0f);
+	mpUnit = new KinematicUnit(mpNormalSprite, Vector2D(100, 100), 0.0f, Vector2D(0, 0), 0.0f, .8f);
 
 	mpStateMachine = new StateMachine();
 }
@@ -41,6 +41,7 @@ void Enemy::update(float time)
 {
 	//mpStateMachine->update();
 	mpUnit->update(time);
+	mpUnit->seek(gpGameApp->getPlayer()->getPosition());
 	if (checkCollidingPlayer())
 	{
 		std::cout << "Hit the player" << std::endl;

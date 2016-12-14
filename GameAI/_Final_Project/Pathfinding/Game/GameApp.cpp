@@ -62,8 +62,8 @@ bool GameApp::init()
 	// Spawn enemies based on the spawn points in the map
 	// TESTING ADD/DELETE
 	mpEnemyManager->addEnemy(Vector2D(200,200));
-	mpEnemyManager->addEnemy(Vector2D(300, 200));
-	mpEnemyManager->deleteEnemy();
+	/*mpEnemyManager->addEnemy(Vector2D(300, 200));
+	mpEnemyManager->deleteEnemy();*/
 
 	
 
@@ -176,7 +176,7 @@ void GameApp::processLoop()
 	if (mShouldUpdate)
 	{
 		mpPlayer->update(LOOP_TARGET_TIME / 1000.0F);
-		mpEnemyManager->update();
+		mpEnemyManager->update(LOOP_TARGET_TIME/ 10.0f);
 	}
 	
 	mpEnemyManager->draw();

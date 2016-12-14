@@ -21,7 +21,7 @@ void EnemyManager::addEnemy(Vector2D position)
 	Enemy* pEnemy;
 	pEnemy = new Enemy(mNormalSprite, mScaredSprite);
 	pEnemy->getUnit()->setPosition(position);
-	pEnemy->getUnit()->seek(gpGameApp->getPlayer()->getPosition());
+	pEnemy->getUnit()->seek(NULL);
 	// Add the new enemy to the map
 	mEnemies[mEnemies.size()] = pEnemy;
 }

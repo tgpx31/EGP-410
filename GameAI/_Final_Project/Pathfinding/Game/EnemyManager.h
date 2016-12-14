@@ -21,7 +21,7 @@ public:
 	inline int getRandEnemy() { return rand() % mEnemies.size(); };
 
 	void draw();
-	void update(double frameTime = 0.0);
+	void update(double frameTime = 33.3f);
 private:
 	std::map<IDType, Enemy*> mEnemies;
 	void cleanUp();
