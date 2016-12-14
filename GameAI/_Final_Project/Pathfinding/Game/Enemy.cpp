@@ -4,6 +4,19 @@
 #include "Game.h"
 #include "GraphicsSystem.h"
 #include "Sprite.h"
+#include "Player.h"
+
+#include "GameApp.h"
+#include "PlayerDeathMessage.h"
+#include "GameMessageManager.h"
+
+bool Enemy::checkCollidingPlayer()
+{
+	if (getCollider()->isCollidingCylinders(gpGameApp->getPlayer()->getCollider()))
+		return true;
+
+	return false;
+}
 
 Enemy::Enemy(Sprite* pNormalSprite, Sprite* pFleeSprite)
 {
@@ -28,6 +41,13 @@ void Enemy::update(float time)
 {
 	//mpStateMachine->update();
 	mpUnit->update(time);
+	if (checkCollidingPlayer())
+	{
+		std::cout << "Hit the player" << std::endl;
+		// Player death
+		GameMessage* pMessage = new PlayerDeathMessage();
+		gpGameApp->getMessageManager()->addMessage(pMessage, 0);
+	}
 }
 
 void Enemy::draw()

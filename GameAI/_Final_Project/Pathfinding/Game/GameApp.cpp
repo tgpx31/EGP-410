@@ -69,6 +69,8 @@ bool GameApp::init()
 	mScore = 0;
 
 	mpMasterTimer->start();
+
+	mShouldUpdate = true;
 	return true;
 }
 
@@ -167,8 +169,12 @@ void GameApp::processLoop()
 	mpMessageManager->processMessagesForThisframe();
 	mpGameMapManager->update(LOOP_TARGET_TIME / 1000.0F);
 	//mpEnemy->update(LOOP_TARGET_TIME / 1000.0F);
-	mpPlayer->update(LOOP_TARGET_TIME / 1000.0F);
-	mpEnemyManager->update();
+	if (mShouldUpdate)
+	{
+		mpPlayer->update(LOOP_TARGET_TIME / 1000.0F);
+		mpEnemyManager->update();
+	}
+	
 	mpEnemyManager->draw();
 	//Draw
 	mpGameMapManager->drawCurrentMap();

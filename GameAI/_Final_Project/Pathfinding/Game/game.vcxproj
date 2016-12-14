@@ -114,6 +114,7 @@
     <ClInclude Include="PathfindingDebugContent.h" />
     <ClInclude Include="PathToMessage.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerDeathMessage.h" />
     <ClInclude Include="SetCurrentMapMessage.h" />
     <ClInclude Include="SetPlayerLocationMessage.h" />
     <ClInclude Include="SetPlayerStateMessage.h" />
@@ -160,6 +161,7 @@
     <ClCompile Include="PathfindingDebugContent.cpp" />
     <ClCompile Include="PathToMessage.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerDeathMessage.cpp" />
     <ClCompile Include="SetCurrentMapMessage.cpp" />
     <ClCompile Include="SetPlayerLocationMessage.cpp" />
     <ClCompile Include="SetPlayerStateMessage.cpp" />

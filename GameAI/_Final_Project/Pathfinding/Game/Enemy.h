@@ -1,6 +1,8 @@
 #pragma once
 
-class KinematicUnit;
+#include "CylinderCollision.h"
+#include "KinematicUnit.h"
+
 class StateMachine;
 class Sprite;
 //class SM_State;
@@ -28,6 +30,8 @@ private:
 	void addStatesToStateMachine();
 	*/
 
+	bool checkCollidingPlayer();
+
 public:
 	Enemy(Sprite* pNormalSprite, Sprite* pFleeSprite);
 	~Enemy();
@@ -36,4 +40,5 @@ public:
 	void draw();
 
 	inline KinematicUnit* getUnit() { return mpUnit; };
+	inline CylinderCollision* getCollider() { return mpUnit->getCollider(); };
 };

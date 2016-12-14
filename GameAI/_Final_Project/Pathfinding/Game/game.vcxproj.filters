@@ -215,6 +215,9 @@
     <ClInclude Include="AddEnemyMessage.h">
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerDeathMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graph.cpp">
@@ -347,6 +350,9 @@
       <Filter>Source Files\Messaging</Filter>
     </ClCompile>
     <ClCompile Include="AddEnemyMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerDeathMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
     </ClCompile>
   </ItemGroup>
