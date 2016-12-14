@@ -111,6 +111,9 @@ bool GameApp::init()
 	mpEnemy = new Enemy(mpSpriteManager->getSprite(ENEMY_REG), mpSpriteManager->getSprite(ENEMY_SCARED));
 	mpPlayer = new Player(mpSpriteManager->getSprite(PLAYER));
 
+
+	mScore = 0;
+
 	mpMasterTimer->start();
 	return true;
 }

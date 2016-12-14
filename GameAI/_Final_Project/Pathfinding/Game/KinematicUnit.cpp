@@ -14,6 +14,9 @@
 #include "GameMap.h"
 #include "Grid.h"
 
+#include "GameMessageManager.h"
+#include "IncreaseScoreMessage.h"
+
 #include <allegro5\allegro_primitives.h>
 
 using namespace std;
@@ -21,6 +24,7 @@ using namespace std;
 Steering gNullSteering(gZeroVector2D, 0.0f);
 const Vector2D CENTER_SCREEN = Vector2D(512, 384);
 const int COLLISION_PIXEL_BUFFER = 4;
+const int COIN_SCORE = 10;
 
 KinematicUnit::KinematicUnit(Sprite *pSprite, const Vector2D &position, float orientation, const Vector2D &velocity, float rotationVel, float maxVelocity, float maxAcceleration)
 	:Kinematic(position, orientation, velocity, rotationVel)
@@ -141,7 +145,8 @@ bool KinematicUnit::checkSpecificCollision(const int& TYPE_ID)
 			{
 				gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->setValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mPosition.getX() - COLLISION_PIXEL_BUFFER + mpSprite->getWidth(), mPosition.getY() + mpSprite->getHeight() - COLLISION_PIXEL_BUFFER), CLEAR_VALUE);
 			}
-				
+			GameMessage* pMessage = new IncreaseScoreMessage(COIN_SCORE);
+			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
 			return true;
 		}
 		else

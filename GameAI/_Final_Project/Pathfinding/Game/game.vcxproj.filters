@@ -203,6 +203,9 @@
     <ClInclude Include="CandyManager.h">
       <Filter>Header Files\LevelUnits</Filter>
     </ClInclude>
+    <ClInclude Include="IncreaseScoreMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graph.cpp">
@@ -324,6 +327,9 @@
     </ClCompile>
     <ClCompile Include="CandyManager.cpp">
       <Filter>Source Files\LevelUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="IncreaseScoreMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

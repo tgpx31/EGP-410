@@ -101,6 +101,7 @@
     <ClInclude Include="Graph.h" />
     <ClInclude Include="GridGraph.h" />
     <ClInclude Include="GridPathfinder.h" />
+    <ClInclude Include="IncreaseScoreMessage.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Kinematic.h" />
     <ClInclude Include="KinematicUnit.h" />
@@ -142,6 +143,7 @@
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="GridGraph.cpp" />
     <ClCompile Include="GridPathfinder.cpp" />
+    <ClCompile Include="IncreaseScoreMessage.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Kinematic.cpp" />
     <ClCompile Include="KinematicUnit.cpp" />

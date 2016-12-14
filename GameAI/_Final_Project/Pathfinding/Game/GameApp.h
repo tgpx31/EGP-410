@@ -63,6 +63,8 @@ public:
 	inline int getCoinSpawnRate() { return mCoinSpawnRate; };
 	inline Player* getPlayer() { return mpPlayer; };
 
+	inline void setScore(int incVal) { mScore += incVal; std::cout << mScore << std::endl; };
+
 private:
 	GameMessageManager* mpMessageManager;
 
@@ -74,4 +76,5 @@ private:
 	Enemy* mpEnemy;
 
 	int mCoinSpawnRate;
+	int mScore;
 };
