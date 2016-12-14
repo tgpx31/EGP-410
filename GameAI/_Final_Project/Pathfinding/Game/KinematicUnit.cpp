@@ -48,6 +48,7 @@ KinematicUnit::~KinematicUnit()
 void KinematicUnit::draw(GraphicsBuffer* pBuffer)
 {
 	mpSprite->draw(*pBuffer, mPosition.getX(), mPosition.getY(), mOrientation);
+	drawColliders();
 }
 
 void KinematicUnit::update(float time)
@@ -89,10 +90,7 @@ void KinematicUnit::update(float time)
 
 	//// Keep the Colliders with the sprite
 	mpCircleCollider->setPos(mPosition + Vector2D(mpSprite->getWidth() / 2, mpSprite->getHeight() / 2));
-	/*al_draw_circle(mpCircleCollider->getPos().getX()), mpCircleCollider->getPos().getY()), 
-		mpSprite->getWidth() / 2, 
-		al_map_rgb(0, 255, 0), 
-		4);*/
+	
 
 	// Check for walls
 	if (checkSpecificCollision(BLOCKING_VALUE))
@@ -158,6 +156,14 @@ bool KinematicUnit::checkSpecificCollision(const int& TYPE_ID)
 	{
 		return false;
 	}
+}
+
+void KinematicUnit::drawColliders()
+{
+	al_draw_circle(mpCircleCollider->getPos().getX(), mpCircleCollider->getPos().getY(),
+		mpSprite->getWidth() / 2,
+		al_map_rgb(0, 255, 0),
+		4);
 }
 
 void KinematicUnit::setNewOrientation()

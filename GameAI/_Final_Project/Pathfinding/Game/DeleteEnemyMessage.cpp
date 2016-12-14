@@ -1,7 +1,6 @@
 #include "DeleteEnemyMessage.h"
-#include "Game.h"
-#include "UnitManager.h"
-#include <string>
+#include "GameApp.h"
+#include "EnemyManager.h"
 
 DeleteEnemyMessage::DeleteEnemyMessage()
 :GameMessage(DELETE_UNIT_MESSAGE)
@@ -15,9 +14,5 @@ DeleteEnemyMessage::~DeleteEnemyMessage()
 void DeleteEnemyMessage::process()
 {
 	std::string key;
-
-	//key = "Unit " + std::to_string(gpGame->getUnitManager()->getRandUnit());
-
-
-	gpGame->getUnitManager()->deleteUnit();
+	gpGameApp->getEnemyManager()->deleteEnemy();
 }

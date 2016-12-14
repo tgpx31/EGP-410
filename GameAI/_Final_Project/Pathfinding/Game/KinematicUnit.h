@@ -65,6 +65,7 @@ public:
 	// Check collision based on grid and the type of grid space
 	bool checkSpecificCollision(const int& TYPE_ID);
 	
+	void drawColliders();
 private:
 	Sprite* mpSprite;
 	Steering* mpCurrentSteering;

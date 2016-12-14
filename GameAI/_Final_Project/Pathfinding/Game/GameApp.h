@@ -29,7 +29,7 @@ class KinematicUnit;
 class GameMapManager;
 
 class Player;
-class Enemy;
+class EnemyManager;
 
 enum SpriteType
 {
@@ -59,6 +59,7 @@ public:
 	//accessors
 	inline GameMessageManager* getMessageManager() { return mpMessageManager; };
 	inline GameMapManager* getGameMapManager() { return mpGameMapManager; };
+	inline EnemyManager* getEnemyManager() { return mpEnemyManager; };
 
 	inline int getCoinSpawnRate() { return mCoinSpawnRate; };
 	inline Player* getPlayer() { return mpPlayer; };
@@ -67,13 +68,17 @@ public:
 
 private:
 	GameMessageManager* mpMessageManager;
+	EnemyManager* mpEnemyManager;
 
 	InputManager* mpInputManager;
 	GameMapManager* mpGameMapManager;
 
+	void initMaps();
+	void initGraphicsBuffers();
+	void initSprites();
+
 	// Units
 	Player* mpPlayer;
-	Enemy* mpEnemy;
 
 	int mCoinSpawnRate;
 	int mScore;

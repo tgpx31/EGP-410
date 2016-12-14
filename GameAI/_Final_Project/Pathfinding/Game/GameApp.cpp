@@ -12,7 +12,7 @@
 #include "GameMapManager.h"
 
 #include "Player.h"
-#include "Enemy.h"
+#include "EnemyManager.h"
 
 const IDType BACKGROUND_ID = 0;
 
@@ -20,8 +20,8 @@ GameApp::GameApp()
 :mpMessageManager(NULL)
 ,mpInputManager(NULL)
 ,mpGameMapManager(NULL)
+,mpEnemyManager(NULL)
 ,mpPlayer(NULL)
-,mpEnemy(NULL)
 ,mCoinSpawnRate(25)
 {
 	mLoopTargetTime = LOOP_TARGET_TIME;
@@ -37,21 +37,13 @@ bool GameApp::init()
 	bool retVal = Game::init();
 	if( retVal == false )
 	{
-
 		return false;
 	}
 
 	mpMessageManager = new GameMessageManager();
 
-	//load buffers
-	mpGraphicsBufferManager->loadBuffer( BACKGROUND_ID, "wallpaper.bmp");
-
-	//setup sprites
-	GraphicsBuffer* pBackGroundBuffer = mpGraphicsBufferManager->getBuffer( BACKGROUND_ID );
-	if( pBackGroundBuffer != NULL )
-	{
-		mpSpriteManager->createAndManageSprite( BACKGROUND_SPRITE_ID, pBackGroundBuffer, 0, 0, pBackGroundBuffer->getWidth(), pBackGroundBuffer->getHeight() );
-	}
+	initGraphicsBuffers();
+	initSprites();	
 
 	mpInputManager = new InputManager();
 	if (!mpInputManager->init())
@@ -59,15 +51,46 @@ bool GameApp::init()
 		printf("InputManager failed to init!\n");
 		return false;
 	}
+	
+	// Init the enemymanager
+	mpEnemyManager = new EnemyManager(mpSpriteManager->getSprite(ENEMY_REG), mpSpriteManager->getSprite(ENEMY_SCARED));
 
-	// Init the unit manager
-	// Load the default sprites from buffers
+	mpGameMapManager = new GameMapManager();
+	initMaps();
+
+	// Spawn enemies based on the spawn points in the map
+	// TESTING ADD/DELETE
+	mpEnemyManager->addEnemy(Vector2D(200,200));
+	mpEnemyManager->addEnemy(Vector2D(300, 200));
+	mpEnemyManager->deleteEnemy();
+
+	mpPlayer = new Player(mpSpriteManager->getSprite(PLAYER));
+
+	mScore = 0;
+
+	mpMasterTimer->start();
+	return true;
+}
+
+void GameApp::initGraphicsBuffers()
+{
+	mpGraphicsBufferManager->loadBuffer(BACKGROUND_ID, "wallpaper.bmp");
+
 	mpGraphicsBufferManager->loadBuffer(ENEMY_REG, "../Assets/Images/og_ghost.png");
 	mpGraphicsBufferManager->loadBuffer(ENEMY_SCARED, "../Assets/Images/scared_ghost.png");
 	mpGraphicsBufferManager->loadBuffer(PLAYER, "../Assets/Images/og_pac.png");
 	mpGraphicsBufferManager->loadBuffer(COIN, "../Assets/Images/coin.png");
 	mpGraphicsBufferManager->loadBuffer(DOOR, "../Assets/Images/door.png");
 	mpGraphicsBufferManager->loadBuffer(CANDY, "../Assets/Images/candy.png");
+}
+
+void GameApp::initSprites()
+{
+	GraphicsBuffer* pBackGroundBuffer = mpGraphicsBufferManager->getBuffer(BACKGROUND_ID);
+	if (pBackGroundBuffer != NULL)
+	{
+		mpSpriteManager->createAndManageSprite(BACKGROUND_SPRITE_ID, pBackGroundBuffer, 0, 0, pBackGroundBuffer->getWidth(), pBackGroundBuffer->getHeight());
+	}
 
 	GraphicsBuffer* pBuffer = gpGameApp->getGraphicsBufferManager()->getBuffer(ENEMY_REG);
 	if (pBuffer != NULL)
@@ -100,22 +123,15 @@ bool GameApp::init()
 	{
 		mpSpriteManager->createAndManageSprite(CANDY, pBuffer, 0, 0, pBuffer->getWidth(), pBuffer->getHeight());
 	}
+}
 
-	mpGameMapManager = new GameMapManager();
+void GameApp::initMaps()
+{
 	mpGameMapManager->loadMap(0, "../Assets/Maps/map0.txt");
 	mpGameMapManager->loadMap(1, "../Assets/Maps/map1.txt");
 	mpGameMapManager->loadMap(2, "../Assets/Maps/map2.txt");
 	mpGameMapManager->loadMap(3, "../Assets/Maps/map3.txt");
 	mpGameMapManager->connectDoors();
-
-	mpEnemy = new Enemy(mpSpriteManager->getSprite(ENEMY_REG), mpSpriteManager->getSprite(ENEMY_SCARED));
-	mpPlayer = new Player(mpSpriteManager->getSprite(PLAYER));
-
-
-	mScore = 0;
-
-	mpMasterTimer->start();
-	return true;
 }
 
 void GameApp::cleanup()
@@ -129,8 +145,8 @@ void GameApp::cleanup()
 	delete mpGameMapManager;
 	mpGameMapManager = NULL;
 
-	delete mpEnemy;
-	mpEnemy = NULL;
+	delete mpEnemyManager;
+	mpEnemyManager = NULL;
 
 	delete mpPlayer;
 	mpPlayer = NULL;
@@ -152,7 +168,8 @@ void GameApp::processLoop()
 	mpGameMapManager->update(LOOP_TARGET_TIME / 1000.0F);
 	//mpEnemy->update(LOOP_TARGET_TIME / 1000.0F);
 	mpPlayer->update(LOOP_TARGET_TIME / 1000.0F);
-
+	mpEnemyManager->update();
+	mpEnemyManager->draw();
 	//Draw
 	mpGameMapManager->drawCurrentMap();
 	//mpEnemy->draw();

@@ -78,6 +78,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AddEnemyMessage.h" />
     <ClInclude Include="AStarPathfinder.h" />
     <ClInclude Include="BoxCollision.h" />
     <ClInclude Include="Candy.h" />
@@ -87,11 +88,13 @@
     <ClInclude Include="CylinderCollision.h" />
     <ClInclude Include="DebugContent.h" />
     <ClInclude Include="DebugDisplay.h" />
+    <ClInclude Include="DeleteEnemyMessage.h" />
     <ClInclude Include="DepthFirstPathfinder.h" />
     <ClInclude Include="DijkstraPathfinder.h" />
     <ClInclude Include="Door.h" />
     <ClInclude Include="DoorManager.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="ExitGameMessage.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="GameMap.h" />
@@ -121,6 +124,7 @@
     <ClInclude Include="UnitManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddEnemyMessage.cpp" />
     <ClCompile Include="AStarPathfinder.cpp" />
     <ClCompile Include="BoxCollision.cpp" />
     <ClCompile Include="Candy.cpp" />
@@ -129,11 +133,13 @@
     <ClCompile Include="Connection.cpp" />
     <ClCompile Include="CylinderCollision.cpp" />
     <ClCompile Include="DebugDisplay.cpp" />
+    <ClCompile Include="DeleteEnemyMessage.cpp" />
     <ClCompile Include="DepthFirstPathfinder.cpp" />
     <ClCompile Include="DijkstraPathfinder.cpp" />
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="DoorManager.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="ExitGameMessage.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GameMap.cpp" />

@@ -1,5 +1,4 @@
-#ifndef DELETE_UNIT_MESSAGE_H
-#define DELETE_UNIT_MESSAGE_H
+#pragma once
 
 #include "GameMessage.h"
 
@@ -13,5 +12,3 @@ public:
 
 	void process();
 };
-
-#endif

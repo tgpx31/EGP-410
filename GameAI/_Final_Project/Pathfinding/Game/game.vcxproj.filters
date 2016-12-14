@@ -206,6 +206,15 @@
     <ClInclude Include="IncreaseScoreMessage.h">
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
+    <ClInclude Include="EnemyManager.h">
+      <Filter>Header Files\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="DeleteEnemyMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="AddEnemyMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graph.cpp">
@@ -329,6 +338,15 @@
       <Filter>Source Files\LevelUnits</Filter>
     </ClCompile>
     <ClCompile Include="IncreaseScoreMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>Source Files\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="DeleteEnemyMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="AddEnemyMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
     </ClCompile>
   </ItemGroup>
