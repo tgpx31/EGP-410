@@ -9,7 +9,7 @@ Door::Door(Vector2D position, Sprite * pSprite)
 {
 	mPosition = position;
 	mpSprite = pSprite;
-	mpCollider = new CylinderCollision(mPosition, 16);
+	mpCollider = new CylinderCollision(mPosition + Vector2D(mpSprite->getWidth() / 2, mpSprite->getHeight() / 2), 12);
 
 	mMapTo = 0;
 	mConnectedDoor = NULL;

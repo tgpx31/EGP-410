@@ -33,7 +33,7 @@ KinematicUnit::KinematicUnit(Sprite *pSprite, const Vector2D &position, float or
 	, mMaxVelocity(maxVelocity)
 	, mMaxAcceleration(maxAcceleration)
 {
-	mpCircleCollider = new CylinderCollision(mPosition, mpSprite->getWidth() / 2);
+	mpCircleCollider = new CylinderCollision(mPosition + Vector2D(mpSprite->getWidth() / 2, mpSprite->getHeight() / 2), mpSprite->getWidth() / 2);
 	mLastPos = mPosition;
 }
 
@@ -88,9 +88,9 @@ void KinematicUnit::update(float time)
 	setNewOrientation();
 
 	//// Keep the Colliders with the sprite
-	mpCircleCollider->setPos(mPosition);
-	/*al_draw_circle(mpCircleCollider->getPos().getX() + (mpSprite->getWidth() / 2), mpCircleCollider->getPos().getY() + (mpSprite->getHeight() / 2), 
-		mpSprite->getHeight() / 2, 
+	mpCircleCollider->setPos(mPosition + Vector2D(mpSprite->getWidth() / 2, mpSprite->getHeight() / 2));
+	/*al_draw_circle(mpCircleCollider->getPos().getX()), mpCircleCollider->getPos().getY()), 
+		mpSprite->getWidth() / 2, 
 		al_map_rgb(0, 255, 0), 
 		4);*/
 

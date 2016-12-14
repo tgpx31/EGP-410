@@ -2,9 +2,13 @@
 #include "Sprite.h"
 #include "CylinderCollision.h"
 #include "GameApp.h"
+#include "GameMessageManager.h"
+#include "IncreaseScoreMessage.h"
 #include "GraphicsSystem.h"
 #include "GraphicsBuffer.h"
 #include "Player.h"
+
+const int CANDY_SCORE = 50;
 
 Candy::Candy(Vector2D position, Sprite * pSprite, float respawnTime)
 {
@@ -29,6 +33,12 @@ void Candy::update(float time)
 	{
 		if (mpCollider->isCollidingCylinders(gpGameApp->getPlayer()->getCollider()))
 		{
+			// Make the player invincible
+
+			// send a score message
+			GameMessage* pMessage = new IncreaseScoreMessage(CANDY_SCORE);
+			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
+
 			mIsActive = false;
 		}
 	}
