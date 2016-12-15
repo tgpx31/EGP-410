@@ -123,6 +123,8 @@
     <ClInclude Include="SoundSystem.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="Steering.h" />
+    <ClInclude Include="TogglePropertiesMessage.h" />
+    <ClInclude Include="UI.h" />
     <ClInclude Include="UnitManager.h" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +173,8 @@
     <ClCompile Include="SoundSystem.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Steering.cpp" />
+    <ClCompile Include="TogglePropertiesMessage.cpp" />
+    <ClCompile Include="UI.cpp" />
     <ClCompile Include="UnitManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

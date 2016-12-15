@@ -5,7 +5,9 @@
 #include "ExitGameMessage.h"
 #include "SetCurrentMapMessage.h"
 #include "SetPlayerStateMessage.h"
+#include "TogglePropertiesMessage.h"
 #include "Player.h"
+#include "UI.h"
 
 /* Initialize
  * If any component fails install, return false
@@ -155,10 +157,39 @@ void InputManager::getKeyboardInput()
 		}
 
 		/**
-		*	P for PROPERTIES
+		*	F1 for PROPERTIES
 		*	Up and Down arrows toggle through property list
 		*	+/- to edit values
 		**/
+		case ALLEGRO_KEY_F1:
+		{
+			GameMessage* pMessage = new TogglePropertiesMessage();
+			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
+			break;
+		}
+
+		if (gpGameApp->getUI()->isDisplaying())
+		{
+			case ALLEGRO_KEY_UP:
+			{
+				// go up in active properties
+				if (gpGameApp->getUI()->getActiveProperty() <= 0 )
+					gpGameApp->getUI()->setActiveProperty(5);
+				else
+					gpGameApp->getUI()->setActiveProperty(gpGameApp->getUI()->getActiveProperty() - 1);
+				break;
+			}
+			case ALLEGRO_KEY_DOWN:
+			{
+				// go up in active properties
+				if (gpGameApp->getUI()->getActiveProperty() >= 5)
+					gpGameApp->getUI()->setActiveProperty(0);
+				else
+					gpGameApp->getUI()->setActiveProperty(gpGameApp->getUI()->getActiveProperty() + 1);
+				break;
+			}
+		}
+
 
 		/**
 		*	X for DEBUG MODE

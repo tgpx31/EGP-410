@@ -30,6 +30,7 @@ class GameMapManager;
 
 class Player;
 class EnemyManager;
+class UserInterface;
 
 enum SpriteType
 {
@@ -68,6 +69,7 @@ public:
 	inline int getScore() { return mScore; };
 
 	inline void stopUpdating() { mShouldUpdate = false; };
+	inline UserInterface* getUI() const { return mpUI; };
 private:
 	GameMessageManager* mpMessageManager;
 	EnemyManager* mpEnemyManager;
@@ -86,4 +88,6 @@ private:
 	int mScore;
 
 	bool mShouldUpdate;
+
+	UserInterface* mpUI;
 };

@@ -14,6 +14,8 @@
 #include "Player.h"
 #include "EnemyManager.h"
 
+#include "UI.h"
+
 const IDType BACKGROUND_ID = 0;
 
 GameApp::GameApp()
@@ -22,6 +24,7 @@ GameApp::GameApp()
 ,mpGameMapManager(NULL)
 ,mpEnemyManager(NULL)
 ,mpPlayer(NULL)
+,mpUI(NULL)
 ,mCoinSpawnRate(25)
 {
 	mLoopTargetTime = LOOP_TARGET_TIME;
@@ -59,13 +62,7 @@ bool GameApp::init()
 	mpGameMapManager = new GameMapManager();
 	initMaps();
 
-	// Spawn enemies based on the spawn points in the map
-	// TESTING ADD/DELETE
-	/*mpEnemyManager->addEnemy(Vector2D(300, 200));
-	mpEnemyManager->deleteEnemy();*/
-
-	
-
+	mpUI = new UserInterface(mpFont);
 	mScore = 0;
 
 
@@ -156,6 +153,9 @@ void GameApp::cleanup()
 
 	delete mpSpriteManager;
 	mpSpriteManager = NULL;
+
+	delete mpUI;
+	mpUI = NULL;
 }
 
 void GameApp::beginLoop()
@@ -184,6 +184,9 @@ void GameApp::processLoop()
 	mpEnemyManager->draw();
 	mpPlayer->draw();
 
+	mpUI->draw();
+
+	//al_draw_text(mpFont, al_map_rgb(255, 255, 255), 0, 0, ALLEGRO_ALIGN_LEFT, "Test text");
 	//should be last thing in processLoop
 	Game::processLoop();
 }
