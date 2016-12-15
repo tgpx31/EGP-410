@@ -5,9 +5,11 @@
 class TogglePlayerIvincibilityMessage : public GameMessage
 {
 public:
-	TogglePlayerIvincibilityMessage();
+	TogglePlayerIvincibilityMessage(bool invincible);
 	~TogglePlayerIvincibilityMessage();
 
 private:
+	bool mInvincible;
+
 	void process();
 };

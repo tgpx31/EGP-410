@@ -35,10 +35,10 @@ void Candy::update(float time)
 		if (mpCollider->isCollidingCylinders(gpGameApp->getPlayer()->getCollider()))
 		{
 			// Make the player invincible
-			GameMessage* pMessage = new TogglePlayerIvincibilityMessage();
+			GameMessage* pMessage = new TogglePlayerIvincibilityMessage(true);
 			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
 
-			pMessage = new TogglePlayerIvincibilityMessage();
+			pMessage = new TogglePlayerIvincibilityMessage(false);
 			gpGameApp->getMessageManager()->addMessage(pMessage, 5000);
 
 			// send a score message

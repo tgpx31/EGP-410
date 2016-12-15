@@ -125,7 +125,11 @@ void InputManager::getKeyboardInput()
 		case ALLEGRO_KEY_I:
 		{
 			std::cout << "\nMAKE THE PLAYER INVINCIBLE\n";
-			GameMessage* pMessage = new TogglePlayerIvincibilityMessage();
+			GameMessage* pMessage;
+			if (gpGameApp->getPlayer()->getInvincible())
+				pMessage = new TogglePlayerIvincibilityMessage(false);
+			else
+				pMessage = new TogglePlayerIvincibilityMessage(true);
 			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
 			break;
 		}

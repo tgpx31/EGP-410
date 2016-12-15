@@ -2,8 +2,9 @@
 #include "Player.h"
 #include "GameApp.h"
 
-TogglePlayerIvincibilityMessage::TogglePlayerIvincibilityMessage() : GameMessage(TOGGLE_PLAYER_INVINCIBILITY_MESSAGE)
+TogglePlayerIvincibilityMessage::TogglePlayerIvincibilityMessage(bool invincible) : GameMessage(TOGGLE_PLAYER_INVINCIBILITY_MESSAGE)
 {
+	mInvincible = invincible;
 }
 
 TogglePlayerIvincibilityMessage::~TogglePlayerIvincibilityMessage()
@@ -12,7 +13,7 @@ TogglePlayerIvincibilityMessage::~TogglePlayerIvincibilityMessage()
 
 void TogglePlayerIvincibilityMessage::process()
 {
-	gpGameApp->getPlayer()->setInvincible(!gpGameApp->getPlayer()->getInvincible());
+	gpGameApp->getPlayer()->setInvincible(mInvincible);
 
 	if (gpGameApp->getPlayer()->getInvincible())
 	{
