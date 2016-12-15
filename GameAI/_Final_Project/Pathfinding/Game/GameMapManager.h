@@ -23,9 +23,11 @@ public:
 	
 	GameMap* getMap(const IDType& id);
 	GameMap* getCurrentMap();
+	IDType getCurrentMapID();
 	void setCurrentMap(const IDType& id);
 
 	void update(float time);
+	void loadMapEntities();
 	void connectDoors();
 	void drawCurrentMap();
 };

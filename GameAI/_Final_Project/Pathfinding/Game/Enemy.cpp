@@ -48,12 +48,12 @@ void Enemy::doPathfinding()
 		}
 		if (mStepIntoPathCounter >= STEP_RESET_LIMIT)
 		{
+			mStepIntoPathCounter = 1;
 			setStart(mpUnit->getPosition());
 			setGoal(gpGameApp->getPlayer()->getPosition());
-			/*mpAStar->clearPath();
-			mpAStar->clearFinalPath();*/
+			mpAStar->clearPath();
+			mpAStar->clearFinalPath();
 			mpAStar->findPath(goal, start);
-			mStepIntoPathCounter = 1;
 			mpUnit->seek(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getULCornerOfSquare(mpAStar->getFinalPath()[mStepIntoPathCounter]->getId()));
 		}
 	}
@@ -86,8 +86,10 @@ bool Enemy::shouldMove()
 			botRight != pBR));
 }
 
-Enemy::Enemy(Sprite* pNormalSprite, Sprite* pFleeSprite)
+Enemy::Enemy(IDType mapID, Sprite* pNormalSprite, Sprite* pFleeSprite)
 {
+	mMapID = mapID;
+	
 	mpNormalSprite = pNormalSprite;
 	mpFleeSprite = pFleeSprite;
 	
@@ -95,14 +97,14 @@ Enemy::Enemy(Sprite* pNormalSprite, Sprite* pFleeSprite)
 
 	mpStateMachine = new StateMachine();
 
-	mpAStar = new AStarPathfinder(gpGameApp->getGameMapManager()->getCurrentMap()->getGridGraph());
+	mpAStar = new AStarPathfinder(gpGameApp->getGameMapManager()->getMap(mMapID)->getGridGraph());
+	mStepIntoPathCounter = 1;
 	
 	setStart(mpUnit->getPosition());
 	setGoal(gpGameApp->getPlayer()->getPosition());
 	
 	mpAStar->findPath(start, goal);
 	mPath = mpAStar->getFinalPath();
-	mStepIntoPathCounter = 1;
 	// Build a path to the player, and seek each node iteratively
 }
 
@@ -120,28 +122,34 @@ Enemy::~Enemy()
 
 void Enemy::update(float time)
 {
-	//mpStateMachine->update();
-	mpUnit->update(time);
-	//mpUnit->seek(gpGameApp->getPlayer()->getPosition());
-
-	// for the path, seek the first node if new path
-	// on arrival, seek next node
-	// calculate new path on node 3
-	// start over
-	//if (!mPath.empty())
-	doPathfinding();
-
-	if (checkCollidingPlayer())
+	if (mMapID == gpGameApp->getGameMapManager()->getCurrentMapID())
 	{
-		std::cout << "Hit the player" << std::endl;
-		// Player death
-		GameMessage* pMessage = new PlayerDeathMessage();
-		gpGameApp->getMessageManager()->addMessage(pMessage, 0);
+		//mpStateMachine->update();
+		mpUnit->update(time);
+		//mpUnit->seek(gpGameApp->getPlayer()->getPosition());
+
+		// for the path, seek the first node if new path
+		// on arrival, seek next node
+		// calculate new path on node 3
+		// start over
+		//if (!mPath.empty())
+		doPathfinding();
+
+		if (checkCollidingPlayer())
+		{
+			std::cout << "Hit the player" << std::endl;
+			// Player death
+			GameMessage* pMessage = new PlayerDeathMessage();
+			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
+		}
 	}
 }
 
 void Enemy::draw()
 {
-	mpAStar->drawVisualization(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid(), gpGameApp->getGraphicsSystem()->getBackBuffer(), true);
-	mpUnit->draw(gpGame->getGraphicsSystem()->getBackBuffer());
+	if (mMapID == gpGameApp->getGameMapManager()->getCurrentMapID())
+	{
+		mpAStar->drawVisualization(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid(), gpGameApp->getGraphicsSystem()->getBackBuffer(), true);
+		mpUnit->draw(gpGame->getGraphicsSystem()->getBackBuffer());
+	}
 }

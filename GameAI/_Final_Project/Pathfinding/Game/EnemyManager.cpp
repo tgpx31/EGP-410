@@ -16,10 +16,10 @@ EnemyManager::~EnemyManager()
 	cleanUp();
 }
 
-void EnemyManager::addEnemy(Vector2D position)
+void EnemyManager::addEnemy(IDType mapID, Vector2D position)
 {
 	Enemy* pEnemy;
-	pEnemy = new Enemy(mNormalSprite, mScaredSprite);
+	pEnemy = new Enemy(mapID, mNormalSprite, mScaredSprite);
 	Vector2D gridPos = Vector2D(int(position.getX() / 32) * 32, int(position.getY() / 32) * 32);
 	pEnemy->getUnit()->setPosition(gridPos);
 	//pEnemy->getUnit()->seek(NULL);
@@ -27,8 +27,8 @@ void EnemyManager::addEnemy(Vector2D position)
 	pEnemy->setGoal(gpGameApp->getPlayer()->getPosition());
 	pEnemy->setStart(position);
 
-	pEnemy->mpAStar->clearPath();
-	pEnemy->mpAStar->findPath(pEnemy->getGoal(), pEnemy->getStart());
+	pEnemy->getAStar()->clearPath();
+	pEnemy->getAStar()->findPath(pEnemy->getGoal(), pEnemy->getStart());
 	// Add the new enemy to the map
 	mEnemies[mEnemies.size()] = pEnemy;
 }

@@ -2,6 +2,7 @@
 
 #include "CylinderCollision.h"
 #include "KinematicUnit.h"
+#include "Defines.h"
 
 class StateMachine;
 class Sprite;
@@ -26,6 +27,8 @@ private:
 	const int STEP_RESET_LIMIT = 3;
 	std::vector<Node*> mPath;
 
+	IDType mMapID; //ID of map currently on
+
 	/*
 	SM_State* mpStateList[NUM_STATES];
 	Transition* mpTransitions[NUM_TRANSITIONS];
@@ -40,9 +43,10 @@ private:
 
 	Node* start;
 	Node* goal;
+	AStarPathfinder* mpAStar;
 	
 public:
-	Enemy(Sprite* pNormalSprite, Sprite* pFleeSprite);
+	Enemy(IDType mapID, Sprite* pNormalSprite, Sprite* pFleeSprite);
 	~Enemy();
 
 	void update(float time = 0.0f);
@@ -50,8 +54,8 @@ public:
 
 	inline KinematicUnit* getUnit() { return mpUnit; };
 	inline CylinderCollision* getCollider() { return mpUnit->getCollider(); };
-	AStarPathfinder* mpAStar;
-	
+	inline AStarPathfinder* getAStar() { return mpAStar; };
+
 	void setStart(Vector2D position);
 	void setGoal(Vector2D position);
 

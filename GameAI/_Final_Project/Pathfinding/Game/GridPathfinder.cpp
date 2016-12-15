@@ -31,6 +31,7 @@ GridPathfinder::~GridPathfinder()
 #ifdef VISUALIZE_PATH
 void GridPathfinder::drawVisualization( Grid* pGrid, GraphicsBuffer* pDest, bool isAStar )
 {
+	/*
 	if (mpVisualizer == NULL)
 	{
 		mpVisualizer = new GridVisualizer(pGrid);
@@ -70,8 +71,10 @@ void GridPathfinder::drawVisualization( Grid* pGrid, GraphicsBuffer* pDest, bool
 		mpVisualizer->addColor(mPath.peekNode(0)->getId(), stopColor);
 		mpVisualizer->addColor(mPath.peekNode(numNodes - 1)->getId(), startColor);
 	}
-
 	mpVisualizer->draw(*pDest);
+	*/
+
+
 	for (int i = 0; i < mFinalPath.size(); ++i)
 	{
 		// Draw a line

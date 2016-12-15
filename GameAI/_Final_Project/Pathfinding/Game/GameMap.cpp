@@ -7,6 +7,8 @@
 #include "Game.h"
 #include "GridVisualizer.h"
 #include "GridGraph.h"
+#include "AddEnemyMessage.h"
+#include "GameMessageManager.h"
 
 #include <fstream>
 #include <ctime>
@@ -61,34 +63,6 @@ void GameMap::init()
 
 	mpDoorManager = new DoorManager();
 	mpCandyManager = new CandyManager();
-
-	int numValues = mpGrid->getNumValues();
-
-	for (int i = 0; i < numValues; i++)
-	{
-		int value = mpGrid->getValueAtIndex(i);
-
-		/*
-		if (value == DOOR_VALUE)
-		{
-			mpDoorManager->createDoor(mpGrid->getULCornerOfSquare(i), gpGame->getSpriteManager()->getSprite(DOOR));
-		}
-		*/
-
-		if (value == CANDY_VALUE)
-		{
-			mpCandyManager->createCandy(mpGrid->getULCornerOfSquare(i), gpGame->getSpriteManager()->getSprite(CANDY), 60.0f);
-		}
-		else if (value != BLOCKING_VALUE)
-		{
-			int chance = rand() % 100;
-			if (chance < gpGameApp->getCoinSpawnRate())
-			{
-				//mpCoinManager->addUnit(mpGrid->getULCornerOfSquare(i), gpGame->getSpriteManager()->getSprite(COIN));
-				mpGrid->setValueAtIndex(i, COIN_VALUE);
-			}
-		}
-	}
 }
 
 void GameMap::update(float time)

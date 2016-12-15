@@ -16,7 +16,7 @@ public:
 	~EnemyManager();
 
 	inline std::map<IDType, Enemy*> getMap() { return mEnemies; };
-	void addEnemy(Vector2D position);
+	void addEnemy(IDType mapID, Vector2D position);
 	void deleteEnemy();
 	inline int getRandEnemy() { return rand() % mEnemies.size(); };
 

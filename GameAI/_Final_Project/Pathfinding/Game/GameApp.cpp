@@ -54,14 +54,13 @@ bool GameApp::init()
 	
 	// Init the enemymanager
 	mpEnemyManager = new EnemyManager(mpSpriteManager->getSprite(ENEMY_REG), mpSpriteManager->getSprite(ENEMY_SCARED));
+	mpPlayer = new Player(mpSpriteManager->getSprite(PLAYER));
 
 	mpGameMapManager = new GameMapManager();
 	initMaps();
 
-	mpPlayer = new Player(mpSpriteManager->getSprite(PLAYER));
 	// Spawn enemies based on the spawn points in the map
 	// TESTING ADD/DELETE
-	mpEnemyManager->addEnemy(Vector2D(200,200));
 	/*mpEnemyManager->addEnemy(Vector2D(300, 200));
 	mpEnemyManager->deleteEnemy();*/
 
@@ -69,9 +68,9 @@ bool GameApp::init()
 
 	mScore = 0;
 
-	mpMasterTimer->start();
 
 	mShouldUpdate = true;
+	mpMasterTimer->start();
 	return true;
 }
 
@@ -134,6 +133,7 @@ void GameApp::initMaps()
 	mpGameMapManager->loadMap(1, "../Assets/Maps/map1.txt");
 	mpGameMapManager->loadMap(2, "../Assets/Maps/map2.txt");
 	mpGameMapManager->loadMap(3, "../Assets/Maps/map3.txt");
+	mpGameMapManager->loadMapEntities();
 	mpGameMapManager->connectDoors();
 }
 
@@ -179,9 +179,9 @@ void GameApp::processLoop()
 		mpEnemyManager->update(LOOP_TARGET_TIME/ 10.0f);
 	}
 	
-	mpEnemyManager->draw();
 	//Draw
 	mpGameMapManager->drawCurrentMap();
+	mpEnemyManager->draw();
 	mpPlayer->draw();
 
 	//should be last thing in processLoop

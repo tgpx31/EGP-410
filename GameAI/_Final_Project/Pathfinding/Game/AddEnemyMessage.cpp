@@ -14,5 +14,7 @@ AddEnemyMessage::~AddEnemyMessage()
 
 void AddEnemyMessage::process()
 {
-	gpGameApp->getEnemyManager()->addEnemy(mPos);
+	printf("Adding enemy at location (%f, %f)\n", mPos.getX(), mPos.getY());
+	
+	//gpGameApp->getEnemyManager()->addEnemy(mPos);
 }

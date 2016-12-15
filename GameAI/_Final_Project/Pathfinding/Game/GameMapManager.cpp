@@ -7,6 +7,8 @@
 #include "GraphicsSystem.h"
 #include "Door.h"
 #include "Grid.h"
+#include "CandyManager.h"
+#include "EnemyManager.h"
 
 #include <ctime>
 #include <vector>
@@ -95,7 +97,18 @@ GameMap* GameMapManager::getCurrentMap()
 	{
 		return nullptr;
 	}
-	
+}
+
+IDType GameMapManager::getCurrentMapID()
+{
+	if (mCurrentMap != mMaps.end())
+	{
+		return mCurrentMap->first;
+	}
+	else
+	{
+		return -1;
+	}
 }
 
 void GameMapManager::setCurrentMap(const IDType & id)
@@ -109,6 +122,41 @@ void GameMapManager::setCurrentMap(const IDType & id)
 void GameMapManager::update(float time)
 {
 	mCurrentMap->second->update(time);
+}
+
+void GameMapManager::loadMapEntities()
+{
+	std::map<IDType, GameMap*>::iterator iter;
+
+	for (iter = mMaps.begin(); iter != mMaps.end(); iter++)
+	{
+		Grid* pGrid = iter->second->getGrid();
+
+		int numValues = pGrid->getNumValues();
+
+		for (int i = 0; i < numValues; i++)
+		{
+			int value = pGrid->getValueAtIndex(i);
+
+			if (value == CANDY_VALUE)
+			{
+				iter->second->getCandyManager()->createCandy(pGrid->getULCornerOfSquare(i), gpGame->getSpriteManager()->getSprite(CANDY), 60.0f);
+			}
+			else if (value != BLOCKING_VALUE)
+			{
+				int chance = rand() % 100;
+				if (chance < gpGameApp->getCoinSpawnRate())
+				{
+					pGrid->setValueAtIndex(i, COIN_VALUE);
+				}
+			}
+
+			if (value == ENEMY_SPAWN_VALUE)
+			{
+				gpGameApp->getEnemyManager()->addEnemy(iter->first, pGrid->getULCornerOfSquare(i));
+			}
+		}
+	}
 }
 
 void GameMapManager::connectDoors()
