@@ -19,7 +19,7 @@ EnemyManager::~EnemyManager()
 void EnemyManager::addEnemy(IDType mapID, Vector2D position)
 {
 	Enemy* pEnemy;
-	pEnemy = new Enemy(mapID, mNormalSprite, mScaredSprite);
+	pEnemy = new Enemy(mapID, mNormalSprite, mScaredSprite, 2.0f);
 	//Vector2D gridPos = Vector2D(int(position.getX() / 32) * 32, int(position.getY() / 32) * 32);
 	pEnemy->getUnit()->setPosition(position);
 	//pEnemy->getUnit()->seek(NULL);

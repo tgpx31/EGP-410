@@ -25,6 +25,10 @@ private:
 
 	int mStepIntoPathCounter;
 	const int STEP_RESET_LIMIT = 3;
+
+	float mTimeToRecalculate;
+	float mElapsedTime;
+
 	std::vector<Node*> mPath;
 
 	IDType mMapID; //ID of map currently on
@@ -40,13 +44,14 @@ private:
 	*/
 
 	bool checkCollidingPlayer();
+	void recalculatePath();
 
 	Node* start;
 	Node* goal;
 	AStarPathfinder* mpAStar;
 	
 public:
-	Enemy(IDType mapID, Sprite* pNormalSprite, Sprite* pFleeSprite);
+	Enemy(IDType mapID, Sprite* pNormalSprite, Sprite* pFleeSprite, float timeToRecalculate);
 	~Enemy();
 
 	void update(float time = 0.0f);

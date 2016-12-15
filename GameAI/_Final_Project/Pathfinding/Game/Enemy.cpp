@@ -24,6 +24,21 @@ bool Enemy::checkCollidingPlayer()
 	return false;
 }
 
+void Enemy::recalculatePath()
+{
+	mElapsedTime = 0;
+	Vector2D startPos = mpUnit->getPosition();
+	startPos.setX(startPos.getX() + 16);
+	startPos.setY(startPos.getY() + 16);
+	setStart(startPos);
+	setGoal(gpGameApp->getPlayer()->getPosition());
+	mpAStar->clearPath();
+	mpAStar->clearFinalPath();
+	mpAStar->findPath(goal, start);
+	mStepIntoPathCounter = 1;
+	mpUnit->seek(gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getULCornerOfSquare(mpAStar->getFinalPath()[mStepIntoPathCounter]->getId()));
+}
+
 void Enemy::setStart(Vector2D position)
 {
 	int startIndex = gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getSquareIndexFromPixelXY(position.getX(), position.getY());
@@ -38,27 +53,31 @@ void Enemy::setGoal(Vector2D position)
 
 void Enemy::doPathfinding()
 {
+
 	if (!mpAStar->getFinalPath().empty())
 	{
 		mpUnit->seek(gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getULCornerOfSquare(mpAStar->getFinalPath()[mStepIntoPathCounter]->getId()));
-
+		
 		if (shouldMove())
 		{
 			++mStepIntoPathCounter;
 		}
-		if (mStepIntoPathCounter >= STEP_RESET_LIMIT)
+
+		if (mStepIntoPathCounter >= STEP_RESET_LIMIT || mElapsedTime > mTimeToRecalculate)
 		{
-			setStart(mpUnit->getPosition());
-			setGoal(gpGameApp->getPlayer()->getPosition());
-			mpAStar->clearPath();
-			mpAStar->clearFinalPath();
-			mpAStar->findPath(goal, start);
-			mStepIntoPathCounter = 1;
-			mpUnit->seek(gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getULCornerOfSquare(mpAStar->getFinalPath()[mStepIntoPathCounter]->getId()));
+			recalculatePath();
 		}
+
+		if (mStepIntoPathCounter >= mpAStar->getFinalPath().size())
+		{
+			recalculatePath();
+		}
+
 	}
 	else
+	{
 		mpUnit->seek(gpGameApp->getPlayer()->getPosition());
+	}
 }
 
 bool Enemy::shouldMove()
@@ -86,14 +105,16 @@ bool Enemy::shouldMove()
 			botRight != pBR));
 }
 
-Enemy::Enemy(IDType mapID, Sprite* pNormalSprite, Sprite* pFleeSprite)
+Enemy::Enemy(IDType mapID, Sprite* pNormalSprite, Sprite* pFleeSprite, float timeToRecalculate)
 {
 	mMapID = mapID;
+	mTimeToRecalculate = timeToRecalculate;
+	mElapsedTime = 0;
 	
 	mpNormalSprite = pNormalSprite;
 	mpFleeSprite = pFleeSprite;
 	
-	mpUnit = new KinematicUnit(mpNormalSprite, Vector2D(100, 100), 0.0f, Vector2D(0, 0), 0.0f, .8f);
+	mpUnit = new KinematicUnit(mpNormalSprite, Vector2D(100, 100), 0.0f, Vector2D(0, 0), 0.0f, 80.0f);
 
 	mpStateMachine = new StateMachine();
 
@@ -133,6 +154,7 @@ void Enemy::update(float time)
 		// calculate new path on node 3
 		// start over
 		//if (!mPath.empty())
+		mElapsedTime += time;
 		doPathfinding();
 
 		if (checkCollidingPlayer())
