@@ -27,6 +27,8 @@ private:
 	KinematicUnit* mpUnit;
 	PlayerMovementState mCurrentState;
 	
+	Vector2D mPreviousPosition;
+
 	/*
 	StateMachine* mpStateMachine;
 	
@@ -38,6 +40,7 @@ private:
 	void applyTransitionsToStates();
 	void addStatesToStateMachine();
 	*/
+	void checkCollision();
 
 public:
 	Player(Sprite* pSprite);
@@ -45,7 +48,6 @@ public:
 	
 	// Currently does not work because it is checking for grid spaces, not the coins
 	// Should check actual collision with a collider
-	bool checkCoinCollision();
 
 	inline PlayerMovementState getState() { return mCurrentState; };
 	inline Vector2D getPosition() { return mpUnit->getPosition(); };

@@ -61,9 +61,6 @@ public:
 
 	inline CylinderCollision* getCollider() { return mpCircleCollider; };
 	Steering* getSteering() { return mpCurrentSteering; };	
-
-	// Check collision based on grid and the type of grid space
-	bool checkSpecificCollision(const int& TYPE_ID);
 	
 	void drawColliders();
 
