@@ -172,7 +172,7 @@ void KinematicUnit::drawColliders()
 
 void KinematicUnit::seek(const Vector2D & target)
 {
-	KinematicSeekSteering* pSteering = new KinematicSeekSteering(this, gpGameApp->getPlayer()->getPosition());
+	KinematicSeekSteering* pSteering = new KinematicSeekSteering(this, target);
 	setSteering(pSteering);
 }
 

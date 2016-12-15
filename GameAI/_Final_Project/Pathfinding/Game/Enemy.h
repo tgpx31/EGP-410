@@ -23,7 +23,7 @@ private:
 	Sprite* mpFleeSprite;
 
 	int mStepIntoPathCounter;
-	const int STEP_RESET_LIMIT = 5;
+	const int STEP_RESET_LIMIT = 3;
 	std::vector<Node*> mPath;
 
 	/*
@@ -57,4 +57,7 @@ public:
 
 	inline Node* getStart() { return start; };
 	inline Node* getGoal() { return goal; };
+
+	void doPathfinding();
+	bool shouldMove();
 };
