@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Trackable.h"
+#include "Defines.h"
 #include <string>
 
 class Graph;
@@ -16,8 +17,8 @@ class GameMap : public Trackable
 {
 private:
 	Grid* mpGrid;
-	GridVisualizer* mpGridVisualizer;
 	GridGraph* mpGridGraph;
+	GridVisualizer* mpGridVisualizer;
 	
 	DoorManager* mpDoorManager;
 	CandyManager* mpCandyManager;
@@ -33,7 +34,7 @@ public:
 	inline DoorManager* getDoorManager() { return mpDoorManager; };
 	inline CandyManager* getCandyManager() { return mpCandyManager; };
 
-	void init();
+	void init(IDType mapID);
 	void update(float time);
 	void draw();
 };

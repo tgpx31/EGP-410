@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Trackable.h>
+#include "Defines.h"
 
 const int BAD_NODE_ID = -1;
 #define NODE_ID int
@@ -8,7 +9,7 @@ const int BAD_NODE_ID = -1;
 class Node:public Trackable
 {
 public:
-	Node( const NODE_ID& id );
+	Node( const NODE_ID& id , IDType mapID );
 	Node();
 	~Node();
 
@@ -25,4 +26,5 @@ private:
 	const NODE_ID mId;
 	NODE_ID mPrevNodeId;
 	float mCostFromStart;
+	IDType mMapID;
 };

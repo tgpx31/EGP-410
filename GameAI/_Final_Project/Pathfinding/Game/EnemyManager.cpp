@@ -20,8 +20,8 @@ void EnemyManager::addEnemy(IDType mapID, Vector2D position)
 {
 	Enemy* pEnemy;
 	pEnemy = new Enemy(mapID, mNormalSprite, mScaredSprite);
-	Vector2D gridPos = Vector2D(int(position.getX() / 32) * 32, int(position.getY() / 32) * 32);
-	pEnemy->getUnit()->setPosition(gridPos);
+	//Vector2D gridPos = Vector2D(int(position.getX() / 32) * 32, int(position.getY() / 32) * 32);
+	pEnemy->getUnit()->setPosition(position);
 	//pEnemy->getUnit()->seek(NULL);
 
 	pEnemy->setGoal(gpGameApp->getPlayer()->getPosition());

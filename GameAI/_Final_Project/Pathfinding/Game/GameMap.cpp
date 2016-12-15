@@ -45,7 +45,7 @@ GameMap::~GameMap()
 	mpCandyManager = NULL;
 }
 
-void GameMap::init()
+void GameMap::init(IDType mapID)
 {
 	std::cout << "Loading map " << mFilename << std::endl;
 	
@@ -57,7 +57,7 @@ void GameMap::init()
 	fin.close();
 
 	mpGridGraph = new GridGraph(mpGrid);
-	mpGridGraph->init();
+	mpGridGraph->init(mapID);
 
 	mpGridVisualizer = new GridVisualizer(mpGrid);
 

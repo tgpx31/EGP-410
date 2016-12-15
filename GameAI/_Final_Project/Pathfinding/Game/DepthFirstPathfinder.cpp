@@ -11,7 +11,7 @@
 using namespace std;
 
 DepthFirstPathfinder::DepthFirstPathfinder( Graph* pGraph )
-:GridPathfinder(dynamic_cast<GridGraph*>(pGraph) )
+:GridPathfinder(dynamic_cast<GridGraph*>(pGraph) , 0)
 {
 }
 

@@ -15,7 +15,7 @@ GridGraph::~GridGraph()
 {
 }
 
-void GridGraph::init()
+void GridGraph::init(IDType mapID)
 {
 	if( mpGrid != NULL )
 	{
@@ -28,7 +28,7 @@ void GridGraph::init()
 		for( int i=0; i<numGridIndices; i++ )
 		{
 			//create a Node for this location
-			Node* pNode = new Node( i );
+			Node* pNode = new Node( i , mapID);
 			//add to NodeVector
 			mNodes[i] = pNode;
 		}

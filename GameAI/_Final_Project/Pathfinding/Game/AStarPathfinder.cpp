@@ -16,9 +16,10 @@
 
 using namespace std;
 
-AStarPathfinder::AStarPathfinder(Graph* pGraph)
-	:GridPathfinder(dynamic_cast<GridGraph*>(pGraph))
+AStarPathfinder::AStarPathfinder(Graph* pGraph, IDType mapID)
+	:GridPathfinder(dynamic_cast<GridGraph*>(pGraph), mapID)
 {
+
 }
 
 AStarPathfinder::~AStarPathfinder()
@@ -140,8 +141,8 @@ float AStarPathfinder::getHeuristic(Node * node, Node * goal)
 
 	//TODO: Change functionality to work with new multimap system
 	
-	float dx = abs(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getULCornerOfSquare(node->getId()).getX() - gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getULCornerOfSquare(goal->getId()).getX());
-	float dy = abs(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getULCornerOfSquare(node->getId()).getY() - gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getULCornerOfSquare(goal->getId()).getY());
+	float dx = abs(gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getULCornerOfSquare(node->getId()).getX() - gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getULCornerOfSquare(goal->getId()).getX());
+	float dy = abs(gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getULCornerOfSquare(node->getId()).getY() - gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getULCornerOfSquare(goal->getId()).getY());
 	
 	return (dx + dy);
 	

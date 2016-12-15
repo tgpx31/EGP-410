@@ -62,7 +62,7 @@ void GameMapManager::loadMap(IDType id, std::string filename)
 	}
 
 	GameMap* pGameMap = new GameMap(filename);
-	pGameMap->init();
+	pGameMap->init(id);
 	mMaps[id] = pGameMap;
 
 	if (mCurrentMap == mMaps.end())

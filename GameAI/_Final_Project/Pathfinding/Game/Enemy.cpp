@@ -26,21 +26,21 @@ bool Enemy::checkCollidingPlayer()
 
 void Enemy::setStart(Vector2D position)
 {
-	int startIndex = gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(position.getX(), position.getY());
-	start = gpGameApp->getGameMapManager()->getCurrentMap()->getGridGraph()->getNode(startIndex);
+	int startIndex = gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getSquareIndexFromPixelXY(position.getX(), position.getY());
+	start = gpGameApp->getGameMapManager()->getMap(mMapID)->getGridGraph()->getNode(startIndex);
 }
 
 void Enemy::setGoal(Vector2D position)
 {
-	int goalIndex = gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(position.getX(), position.getY());
-	goal = gpGameApp->getGameMapManager()->getCurrentMap()->getGridGraph()->getNode(goalIndex);
+	int goalIndex = gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getSquareIndexFromPixelXY(position.getX(), position.getY());
+	goal = gpGameApp->getGameMapManager()->getMap(mMapID)->getGridGraph()->getNode(goalIndex);
 }
 
 void Enemy::doPathfinding()
 {
 	if (!mpAStar->getFinalPath().empty())
 	{
-		mpUnit->seek(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getULCornerOfSquare(mpAStar->getFinalPath()[mStepIntoPathCounter]->getId()));
+		mpUnit->seek(gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getULCornerOfSquare(mpAStar->getFinalPath()[mStepIntoPathCounter]->getId()));
 
 		if (shouldMove())
 		{
@@ -48,13 +48,13 @@ void Enemy::doPathfinding()
 		}
 		if (mStepIntoPathCounter >= STEP_RESET_LIMIT)
 		{
-			mStepIntoPathCounter = 1;
 			setStart(mpUnit->getPosition());
 			setGoal(gpGameApp->getPlayer()->getPosition());
 			mpAStar->clearPath();
 			mpAStar->clearFinalPath();
 			mpAStar->findPath(goal, start);
-			mpUnit->seek(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getULCornerOfSquare(mpAStar->getFinalPath()[mStepIntoPathCounter]->getId()));
+			mStepIntoPathCounter = 1;
+			mpUnit->seek(gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getULCornerOfSquare(mpAStar->getFinalPath()[mStepIntoPathCounter]->getId()));
 		}
 	}
 	else
@@ -63,17 +63,17 @@ void Enemy::doPathfinding()
 
 bool Enemy::shouldMove()
 {
-	int topLeft = gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mpUnit->getPosition().getX(), mpUnit->getPosition().getY());
-	int topRight = gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mpUnit->getPosition().getX() + mpUnit->getSprite()->getWidth(), mpUnit->getPosition().getY());
-	int botLeft = gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mpUnit->getPosition().getX(), mpUnit->getPosition().getY() + mpUnit->getSprite()->getHeight());
-	int botRight = gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mpUnit->getPosition().getX() + mpUnit->getSprite()->getWidth(), mpUnit->getPosition().getY() + mpUnit->getSprite()->getHeight());
+	int topLeft = gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getSquareIndexFromPixelXY(mpUnit->getPosition().getX(), mpUnit->getPosition().getY());
+	int topRight = gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getSquareIndexFromPixelXY(mpUnit->getPosition().getX() + mpUnit->getSprite()->getWidth(), mpUnit->getPosition().getY());
+	int botLeft = gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getSquareIndexFromPixelXY(mpUnit->getPosition().getX(), mpUnit->getPosition().getY() + mpUnit->getSprite()->getHeight());
+	int botRight = gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getSquareIndexFromPixelXY(mpUnit->getPosition().getX() + mpUnit->getSprite()->getWidth(), mpUnit->getPosition().getY() + mpUnit->getSprite()->getHeight());
 
 	int gID = mpAStar->getFinalPath()[mStepIntoPathCounter]->getId();
 
-	int pUL = gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(gpGameApp->getPlayer()->getPosition().getX(), gpGameApp->getPlayer()->getPosition().getY());
-	int pUR = gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(gpGameApp->getPlayer()->getPosition().getX() + gpGameApp->getPlayer()->getUnit()->getSprite()->getWidth(), gpGameApp->getPlayer()->getPosition().getY());
-	int pBL = gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(gpGameApp->getPlayer()->getPosition().getX(), gpGameApp->getPlayer()->getPosition().getY() + gpGameApp->getPlayer()->getUnit()->getSprite()->getHeight());
-	int pBR = gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(gpGameApp->getPlayer()->getPosition().getX() + gpGameApp->getPlayer()->getUnit()->getSprite()->getWidth(), gpGameApp->getPlayer()->getPosition().getY() + gpGameApp->getPlayer()->getUnit()->getSprite()->getHeight());
+	int pUL = gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getSquareIndexFromPixelXY(gpGameApp->getPlayer()->getPosition().getX(), gpGameApp->getPlayer()->getPosition().getY());
+	int pUR = gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getSquareIndexFromPixelXY(gpGameApp->getPlayer()->getPosition().getX() + gpGameApp->getPlayer()->getUnit()->getSprite()->getWidth(), gpGameApp->getPlayer()->getPosition().getY());
+	int pBL = gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getSquareIndexFromPixelXY(gpGameApp->getPlayer()->getPosition().getX(), gpGameApp->getPlayer()->getPosition().getY() + gpGameApp->getPlayer()->getUnit()->getSprite()->getHeight());
+	int pBR = gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getSquareIndexFromPixelXY(gpGameApp->getPlayer()->getPosition().getX() + gpGameApp->getPlayer()->getUnit()->getSprite()->getWidth(), gpGameApp->getPlayer()->getPosition().getY() + gpGameApp->getPlayer()->getUnit()->getSprite()->getHeight());
 
 	return (((topLeft == gID ||
 		topRight == gID ||
@@ -97,7 +97,7 @@ Enemy::Enemy(IDType mapID, Sprite* pNormalSprite, Sprite* pFleeSprite)
 
 	mpStateMachine = new StateMachine();
 
-	mpAStar = new AStarPathfinder(gpGameApp->getGameMapManager()->getMap(mMapID)->getGridGraph());
+	mpAStar = new AStarPathfinder(gpGameApp->getGameMapManager()->getMap(mMapID)->getGridGraph(), mapID);
 	mStepIntoPathCounter = 1;
 	
 	setStart(mpUnit->getPosition());
@@ -149,7 +149,7 @@ void Enemy::draw()
 {
 	if (mMapID == gpGameApp->getGameMapManager()->getCurrentMapID())
 	{
-		mpAStar->drawVisualization(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid(), gpGameApp->getGraphicsSystem()->getBackBuffer(), true);
+		mpAStar->drawVisualization(gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid(), gpGameApp->getGraphicsSystem()->getBackBuffer(), true);
 		mpUnit->draw(gpGame->getGraphicsSystem()->getBackBuffer());
 	}
 }
