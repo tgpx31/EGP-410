@@ -227,6 +227,9 @@
     <ClInclude Include="TogglePropertiesMessage.h">
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
+    <ClInclude Include="TogglePlayerInvincibilityMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graph.cpp">
@@ -371,6 +374,9 @@
       <Filter>Source Files\Util</Filter>
     </ClCompile>
     <ClCompile Include="TogglePropertiesMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="TogglePlayerInvincibilityMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
     </ClCompile>
   </ItemGroup>

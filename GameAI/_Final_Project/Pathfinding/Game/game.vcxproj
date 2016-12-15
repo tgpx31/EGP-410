@@ -123,6 +123,7 @@
     <ClInclude Include="SoundSystem.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="Steering.h" />
+    <ClInclude Include="TogglePlayerInvincibilityMessage.h" />
     <ClInclude Include="TogglePropertiesMessage.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="UnitManager.h" />
@@ -173,6 +174,7 @@
     <ClCompile Include="SoundSystem.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Steering.cpp" />
+    <ClCompile Include="TogglePlayerInvincibilityMessage.cpp" />
     <ClCompile Include="TogglePropertiesMessage.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="UnitManager.cpp" />

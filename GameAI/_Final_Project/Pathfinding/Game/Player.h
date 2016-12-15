@@ -29,6 +29,8 @@ private:
 	
 	Vector2D mPreviousPosition;
 
+	bool mInvincible;
+
 	/*
 	StateMachine* mpStateMachine;
 	
@@ -52,9 +54,13 @@ public:
 	inline PlayerMovementState getState() { return mCurrentState; };
 	inline Vector2D getPosition() { return mpUnit->getPosition(); };
 	inline CylinderCollision* getCollider() { return mpUnit->getCollider(); };
+	inline bool getInvincible() { return mInvincible; };
+
+	inline void setInvincible(bool invincible) { mInvincible = invincible; };
 
 	void setState(PlayerMovementState state);
 	void setPosition(Vector2D position);
+
 
 	void update(float time = 0.0f);
 	void draw();

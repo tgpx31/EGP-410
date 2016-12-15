@@ -18,7 +18,7 @@
 
 bool Enemy::checkCollidingPlayer()
 {
-	if (getCollider()->isCollidingCylinders(gpGameApp->getPlayer()->getCollider()))
+	if (getCollider()->isCollidingCylinders(gpGameApp->getPlayer()->getCollider()) && !gpGameApp->getPlayer()->getInvincible())
 		return true;
 
 	return false;
@@ -36,7 +36,6 @@ void Enemy::recalculatePath()
 	mpAStar->clearFinalPath();
 	mpAStar->findPath(goal, start);
 	mStepIntoPathCounter = 1;
-	mpUnit->seek(gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getULCornerOfSquare(mpAStar->getFinalPath()[mStepIntoPathCounter]->getId()));
 }
 
 void Enemy::setStart(Vector2D position)
@@ -53,31 +52,44 @@ void Enemy::setGoal(Vector2D position)
 
 void Enemy::doPathfinding()
 {
-
-	if (!mpAStar->getFinalPath().empty())
+	if (mStepIntoPathCounter >= STEP_RESET_LIMIT || mElapsedTime > mTimeToRecalculate)
 	{
-		mpUnit->seek(gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getULCornerOfSquare(mpAStar->getFinalPath()[mStepIntoPathCounter]->getId()));
-		
+		recalculatePath();
+	}
+
+	if (mpAStar->getFinalPath().size() <= 0 || mStepIntoPathCounter >= mpAStar->getFinalPath().size() - 1)
+	{
+		mpUnit->seek(gpGameApp->getPlayer()->getPosition());
+	}
+	else
+	{
 		if (shouldMove())
 		{
 			++mStepIntoPathCounter;
 		}
+		mpUnit->seek(gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getULCornerOfSquare(mpAStar->getFinalPath()[mStepIntoPathCounter]->getId()));
+	}
 
-		if (mStepIntoPathCounter >= STEP_RESET_LIMIT || mElapsedTime > mTimeToRecalculate)
-		{
-			recalculatePath();
-		}
 
+	/*
+	if (!(mpAStar->getFinalPath().size() <= 0))
+	{
 		if (mStepIntoPathCounter >= mpAStar->getFinalPath().size())
 		{
 			recalculatePath();
 		}
 
+		std::printf("finalPath.size(): %d, mStepIntoPathCounter: %d\n", mpAStar->getFinalPath().size(), mStepIntoPathCounter);
+	
+		mpUnit->seek(gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getULCornerOfSquare(mpAStar->getFinalPath()[mStepIntoPathCounter]->getId()));
+		
+		
 	}
 	else
 	{
 		mpUnit->seek(gpGameApp->getPlayer()->getPosition());
 	}
+	*/
 }
 
 bool Enemy::shouldMove()
