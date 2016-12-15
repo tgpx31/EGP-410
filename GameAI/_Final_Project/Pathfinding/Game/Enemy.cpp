@@ -49,9 +49,10 @@ Enemy::Enemy(Sprite* pNormalSprite, Sprite* pFleeSprite)
 	
 	setStart(mpUnit->getPosition());
 	setGoal(gpGameApp->getPlayer()->getPosition());
-	//start = new Node(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mpUnit->getPosition().getX(), mpUnit->getPosition().getY()));
-	//goal = new Node(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(gpGameApp->getPlayer()->getPosition().getX(), gpGameApp->getPlayer()->getPosition().getY()));
+	
 	mpAStar->findPath(start, goal);
+	mPath = mpAStar->getFinalPath();
+	mStepIntoPathCounter = 0;
 	// Build a path to the player, and seek each node iteratively
 }
 
@@ -71,7 +72,30 @@ void Enemy::update(float time)
 {
 	//mpStateMachine->update();
 	mpUnit->update(time);
-	mpUnit->seek(gpGameApp->getPlayer()->getPosition());
+	//mpUnit->seek(gpGameApp->getPlayer()->getPosition());
+
+	// for the path, seek the first node if new path
+	// on arrival, seek next node
+	// calculate new path on node 5
+	// start over
+	if (!mPath.empty())
+	{
+		mpUnit->seek(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getULCornerOfSquare(mPath[mStepIntoPathCounter]->getId()) + Vector2D(16, 16));
+		if (mpUnit->getPosition().getX() == gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getULCornerOfSquare(mPath[mStepIntoPathCounter]->getId()).getX()
+			&&
+			mpUnit->getPosition().getY() == gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getULCornerOfSquare(mPath[mStepIntoPathCounter]->getId()).getY())
+		{
+			++mStepIntoPathCounter;
+		}
+		if (mStepIntoPathCounter >= STEP_RESET_LIMIT)
+		{
+			setStart(mpUnit->getPosition());
+			setGoal(gpGameApp->getPlayer()->getPosition());
+			mpAStar->findPath(start, goal);
+		}
+	}
+
+
 	if (checkCollidingPlayer())
 	{
 		std::cout << "Hit the player" << std::endl;

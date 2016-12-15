@@ -23,6 +23,7 @@ public:
 	void drawLineToNodes(Node* node);
 	
 	inline void clearFinalPath() { mFinalPath.clear(); };
+	inline std::vector<Node*> getFinalPath() { return mFinalPath; };
 protected:
 	std::vector<Node*> mVisitedNodes;
 	GridVisualizer* mpVisualizer;

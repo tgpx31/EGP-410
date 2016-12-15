@@ -22,6 +22,10 @@ private:
 	Sprite* mpNormalSprite;
 	Sprite* mpFleeSprite;
 
+	int mStepIntoPathCounter;
+	const int STEP_RESET_LIMIT = 5;
+	std::vector<Node*> mPath;
+
 	/*
 	SM_State* mpStateList[NUM_STATES];
 	Transition* mpTransitions[NUM_TRANSITIONS];
