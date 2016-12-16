@@ -91,8 +91,15 @@ void InputManager::getKeyboardInput()
 		switch (mEvent.keyboard.keycode)
 		{
 			case ALLEGRO_KEY_ESCAPE:
+			{
+				Editor* pEditor = dynamic_cast<Editor*>(gpGame);
+				
+				pMessage = new SaveMessage();
+				pEditor->getMessageManager()->addMessage(pMessage, 0);
+
 				pMessage = new ExitGameMessage();
 				break;
+			}
 			case ALLEGRO_KEY_S:
 				pMessage = new SaveMessage();
 				break;
