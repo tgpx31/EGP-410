@@ -17,6 +17,7 @@ EnemyWanderState::~EnemyWanderState()
 
 void EnemyWanderState::onEntrance()
 {
+	mpEnemy->forceWander();
 }
 
 void EnemyWanderState::onExit()

@@ -17,6 +17,7 @@ EnemyFleeState::~EnemyFleeState()
 
 void EnemyFleeState::onEntrance()
 {
+	mpEnemy->forceRecalculatePath();
 	mpEnemy->setSprite(true);
 }
 

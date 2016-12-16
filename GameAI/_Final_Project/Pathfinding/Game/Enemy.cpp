@@ -22,9 +22,29 @@
 #include "Grid.h"
 #include "GridGraph.h"
 
+const int COLLISION_PIXEL_BUFFER = 4;
+
 bool Enemy::checkCollidingPlayer()
 {
 	return (getCollider()->isCollidingCylinders(gpGameApp->getPlayer()->getCollider()));
+}
+
+bool Enemy::checkCollidingWalls()
+{
+	int topLeft = gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mpUnit->getPosition().getX() + COLLISION_PIXEL_BUFFER, mpUnit->getPosition().getY() + COLLISION_PIXEL_BUFFER));
+	int topRight = gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mpUnit->getPosition().getX() - COLLISION_PIXEL_BUFFER + mpUnit->getSprite()->getWidth(), mpUnit->getPosition().getY() + COLLISION_PIXEL_BUFFER));
+	int botLeft = gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mpUnit->getPosition().getX() + COLLISION_PIXEL_BUFFER, mpUnit->getPosition().getY() + mpUnit->getSprite()->getHeight() - COLLISION_PIXEL_BUFFER));
+	int botRight = gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getValueAtIndex(gpGameApp->getGameMapManager()->getCurrentMap()->getGrid()->getSquareIndexFromPixelXY(mpUnit->getPosition().getX() - COLLISION_PIXEL_BUFFER + mpUnit->getSprite()->getWidth(), mpUnit->getPosition().getY() + mpUnit->getSprite()->getHeight() - COLLISION_PIXEL_BUFFER));
+
+	if ((topLeft == BLOCKING_VALUE) || (botLeft == BLOCKING_VALUE) || (topRight == BLOCKING_VALUE) || (botRight == BLOCKING_VALUE))
+	{
+		mpUnit->setPosition(mPreviousPosition);
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 void Enemy::recalculatePath()
@@ -62,11 +82,29 @@ Vector2D Enemy::determineTarget()
 	
 	if (mpStateMachine->getCurrentState() == 0)	// Wander
 	{
-		target = mpUnit->getPosition() - Vector2D(16, 16);
+		int rnd = std::rand() % 4;
+
+		target = mpUnit->getPosition();
+
+		switch (rnd)
+		{
+			case 0: // go up
+				target += Vector2D(0, -256);
+				break;
+			case 1: // go down
+				target += Vector2D(0, 256);
+				break;
+			case 2: // go left
+				target += Vector2D(-256, 0);
+				break;
+			case 3: // go right
+				target += Vector2D(256, 0);
+				break;
+		}
 	}
 	else if (mpStateMachine->getCurrentState() == 1) // Chase
 	{
-		target = gpGameApp->getPlayer()->getPosition();
+		target = gpGameApp->getPlayer()->getPosition() + Vector2D(16, 16);
 	}
 	else if (mpStateMachine->getCurrentState() == 2) // Flee
 	{
@@ -87,9 +125,26 @@ Vector2D Enemy::determineTarget()
 		{
 			target.setY(gpGameApp->getGraphicsSystem()->getHeight() - 64);
 		}
+
+		target += Vector2D(16, 16);
 	}
 
-	return target + Vector2D(16, 16);
+	return target;
+}
+
+void Enemy::doWander()
+{
+	mpAStar->clearPath();
+	mpAStar->clearFinalPath();
+	if (mElapsedTime >= mTimeToRecalculate)
+	{
+		mElapsedTime = 0;
+		mpUnit->seek(determineTarget());
+	}
+	else if (checkCollidingWalls())
+	{
+		mpUnit->seek(determineTarget());
+	}
 }
 
 void Enemy::setStart(Vector2D position)
@@ -113,6 +168,8 @@ void Enemy::doPathfinding()
 
 	if (mpAStar->getFinalPath().size() <= 0 || mStepIntoPathCounter >= mpAStar->getFinalPath().size() - 1)
 	{
+		mpAStar->clearPath();
+		mpAStar->clearFinalPath();
 		mpUnit->seek(determineTarget());
 	}
 	else
@@ -148,6 +205,23 @@ bool Enemy::shouldMove()
 			topRight != pUR ||
 			botLeft != pBL ||
 			botRight != pBR));
+}
+
+void Enemy::updateMovement(float time)
+{
+	mpUnit->update(time);
+	mpStateMachine->update();
+
+	if (mpStateMachine->getCurrentState() == 0)
+	{
+		doWander();
+	}
+	else
+	{
+		doPathfinding();
+	}
+
+	mPreviousPosition = mpUnit->getPosition();
 }
 
 void Enemy::setSprite(bool isFlee)
@@ -186,7 +260,7 @@ Enemy::Enemy(IDType mapID, Vector2D position, Sprite* pNormalSprite, Sprite* pFl
 	mpStateMachine->setInitialStateID(0);
 	mpStateMachine->start();
 
-	recalculatePath();
+	updateMovement(0);
 	// Build a path to the player, and seek each node iteratively
 }
 
@@ -215,9 +289,7 @@ void Enemy::update(float time)
 	}
 	else if (mMapID == gpGameApp->getGameMapManager()->getCurrentMapID())
 	{
-		mpUnit->update(time);
-		mpStateMachine->update();
-		doPathfinding();
+		updateMovement(time);
 
 		if (checkCollidingPlayer())
 		{

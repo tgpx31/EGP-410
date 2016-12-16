@@ -32,6 +32,7 @@ private:
 
 	bool mIsDead;
 	Vector2D mOriginalPosition;
+	Vector2D mPreviousPosition;
 	IDType mOriginalMapID;
 
 	std::vector<Node*> mPath;
@@ -49,10 +50,16 @@ private:
 	*/
 
 	bool checkCollidingPlayer();
+	bool checkCollidingWalls();
 	void recalculatePath();
 	void kill();
 	void respawn();
+	
 	Vector2D determineTarget();
+	void doWander();
+	void doPathfinding();
+	bool shouldMove();
+	void updateMovement(float time);
 
 	Node* start;
 	Node* goal;
@@ -75,11 +82,16 @@ public:
 	inline Node* getStart() { return start; };
 	inline Node* getGoal() { return goal; };
 
-	void doPathfinding();
-	bool shouldMove();
-void setSprite(bool isFlee);
+	void setSprite(bool isFlee);
+
+
 	inline float getSpawnTime() const { return mRespawnTime; };
 	inline void setSpawnTime(const float& timer) { mRespawnTime = timer; };
 
 	inline int getStepReset() { return STEP_RESET_LIMIT; };
-	inline void setStepReset(const int& val) { STEP_RESET_LIMIT = val; };};
+	inline void setStepReset(const int& val) { STEP_RESET_LIMIT = val; };
+
+	inline void resetTime() { mElapsedTime = 0; };
+	inline void forceWander() { mpUnit->seek(determineTarget()); };
+	inline void forceRecalculatePath() { recalculatePath(); };
+};
