@@ -78,7 +78,7 @@ bool GameApp::init()
 
 void GameApp::initGraphicsBuffers()
 {
-	mpGraphicsBufferManager->loadBuffer(BACKGROUND_ID, "wallpaper.bmp");
+	mpGraphicsBufferManager->loadBuffer(BACKGROUND_ID, "../Assets/Images/wallpaper.png");
 
 	mpGraphicsBufferManager->loadBuffer(ENEMY_REG, "../Assets/Images/og_ghost.png");
 	mpGraphicsBufferManager->loadBuffer(ENEMY_SCARED, "../Assets/Images/scared_ghost.png");

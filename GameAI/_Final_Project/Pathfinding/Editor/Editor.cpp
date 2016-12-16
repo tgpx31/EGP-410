@@ -61,7 +61,7 @@ bool Editor::init()
 	mpHelpMenu = new HelpMenu();
 
 	//load buffers
-	mpGraphicsBufferManager->loadBuffer( BACKGROUND_ID, "wallpaper.bmp");
+	mpGraphicsBufferManager->loadBuffer( BACKGROUND_ID, "../Assets/Images/wallpaper.png");
 	mpGraphicsBufferManager->loadBuffer(BLOCKING_VALUE, "../Assets/Images/blocking.png");
 	mpGraphicsBufferManager->loadBuffer(ENEMY_SPAWN_VALUE, "../Assets/Images/og_ghost.png");
 	mpGraphicsBufferManager->loadBuffer(PLAYER_SPAWN_VALUE, "../Assets/Images/og_pac.png");
