@@ -81,7 +81,7 @@ void UnitManager::draw(GraphicsSystem* gSystem)
 
 	for (iter = mUnits.begin(); iter != mUnits.end(); ++iter)
 	{
-		iter->second->draw(gSystem->getBackBuffer());
+		iter->second->draw(gSystem->getBackBuffer(), false);
 	}
 }
 

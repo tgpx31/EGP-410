@@ -62,7 +62,7 @@ public:
 
 
 	void update(float time = 0.0f);
-	void draw();
+	void draw(bool isDebug);
 
 	inline KinematicUnit* getUnit() { return mpUnit; };
 };

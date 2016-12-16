@@ -191,7 +191,7 @@ void GameApp::processLoop()
 	//Draw
 	mpGameMapManager->drawCurrentMap();
 	mpEnemyManager->draw(mpUI->isDisplaying());
-	mpPlayer->draw();
+	mpPlayer->draw(mpUI->isDisplaying());
 
 	mpUI->draw();
 

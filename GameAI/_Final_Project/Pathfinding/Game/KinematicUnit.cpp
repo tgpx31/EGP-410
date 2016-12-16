@@ -49,10 +49,13 @@ KinematicUnit::~KinematicUnit()
 	mpCircleCollider = nullptr;
 }
 
-void KinematicUnit::draw(GraphicsBuffer* pBuffer)
+void KinematicUnit::draw(GraphicsBuffer* pBuffer, bool isDebug)
 {
 	mpSprite->draw(*pBuffer, mPosition.getX(), mPosition.getY(), mOrientation);
-	drawColliders();
+	if (isDebug)
+	{
+		drawColliders();
+	}
 }
 
 void KinematicUnit::update(float time)

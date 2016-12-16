@@ -104,7 +104,7 @@ void Player::update(float time)
 	mPreviousPosition = mpUnit->getPosition();
 }
 
-void Player::draw()
+void Player::draw(bool isDebug)
 {
-	mpUnit->draw(gpGame->getGraphicsSystem()->getBackBuffer());
+	mpUnit->draw(gpGame->getGraphicsSystem()->getBackBuffer(), isDebug);
 }

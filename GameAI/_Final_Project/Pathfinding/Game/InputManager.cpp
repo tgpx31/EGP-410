@@ -134,7 +134,7 @@ void InputManager::getKeyboardInput()
 			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
 			break;
 		}
-
+		/*
 		case ALLEGRO_KEY_1:
 		{
 			std::cout << "Switch to map0" << std::endl;
@@ -163,7 +163,7 @@ void InputManager::getKeyboardInput()
 			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
 			break;
 		}
-
+		*/
 		/**
 		*	F1 for PROPERTIES
 		*	Up and Down arrows toggle through property list

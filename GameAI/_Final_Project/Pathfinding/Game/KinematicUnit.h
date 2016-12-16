@@ -57,7 +57,7 @@ public:
 
 	virtual void setNewOrientation();//face the direction you are moving
 									 
-	void draw(GraphicsBuffer* pBuffer);//draw yourself to the indicated buffer
+	void draw(GraphicsBuffer* pBuffer, bool isDebug);//draw yourself to the indicated buffer
 	void update(float time = 0.0f);//move according to the current velocities and update velocities based on current Steering
 
 	inline CylinderCollision* getCollider() { return mpCircleCollider; };

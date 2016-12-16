@@ -316,8 +316,6 @@ void Enemy::update(float time)
 	}
 	else if (mpStateMachine->getCurrentState() == 1 && playerMap != mMapID) // Chase state
 	{
-		std::printf("Enemy in map%d pathfinding from separate room\n", mMapID);
-
 		//Determine door to path to
 		IDType playerMap = gpGameApp->getGameMapManager()->getCurrentMapID();
 		Door* doorTo = gpGameApp->getGameMapManager()->getMap(mMapID)->getDoorManager()->getDoorTo(playerMap);
@@ -343,7 +341,6 @@ void Enemy::update(float time)
 		}
 		if (mStepIntoPathCounter >= mpAStar->getFinalPath().size())
 		{
-			std::cout << "Hit door in other room" << std::endl;
 			changeMap(doorTo->getMapTo());
 			mpUnit->setPosition(doorTo->getConnectedDoor()->getPosition());
 			mGetPathToDoor = true;
@@ -358,14 +355,14 @@ void Enemy::update(float time)
 	}
 }
 
-void Enemy::draw(bool drawLine)
+void Enemy::draw(bool isDebug)
 {
 	if (mMapID == gpGameApp->getGameMapManager()->getCurrentMapID() && !mIsDead)
 	{
-		if (drawLine)
+		if (isDebug)
 		{
 			mpAStar->drawVisualization(gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid(), gpGameApp->getGraphicsSystem()->getBackBuffer(), true);
 		}
-		mpUnit->draw(gpGame->getGraphicsSystem()->getBackBuffer());
+		mpUnit->draw(gpGame->getGraphicsSystem()->getBackBuffer(), isDebug);
 	}
 }
