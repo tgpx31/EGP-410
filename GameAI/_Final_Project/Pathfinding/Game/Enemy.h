@@ -64,6 +64,8 @@ private:
 	Node* start;
 	Node* goal;
 	AStarPathfinder* mpAStar;
+
+	bool mGetPathToDoor;
 	
 public:
 	Enemy(IDType mapID, Vector2D position, Sprite* pNormalSprite, Sprite* pFleeSprite, float timeToRecalculate);
@@ -83,7 +85,7 @@ public:
 	inline Node* getGoal() { return goal; };
 
 	void setSprite(bool isFlee);
-
+	void changeMap(IDType mapID);
 
 	inline float getSpawnTime() const { return mRespawnTime; };
 	inline void setSpawnTime(const float& timer) { mRespawnTime = timer; };

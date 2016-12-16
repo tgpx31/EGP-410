@@ -59,8 +59,8 @@ bool GameApp::init()
 	}
 	
 	// Init the enemymanager
-	mpEnemyManager = new EnemyManager(mpSpriteManager->getSprite(ENEMY_REG), mpSpriteManager->getSprite(ENEMY_SCARED));
 	mpPlayer = new Player(mpSpriteManager->getSprite(PLAYER));
+	mpEnemyManager = new EnemyManager(mpSpriteManager->getSprite(ENEMY_REG), mpSpriteManager->getSprite(ENEMY_SCARED));
 
 	mpGameMapManager = new GameMapManager();
 	initMaps();

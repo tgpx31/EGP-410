@@ -48,4 +48,8 @@ void GridPathfinder::drawLineToNodes(Node * node)
 		al_map_rgb(255, 255, 255), 
 		5);
 }
+void GridPathfinder::setGraph(GridGraph* pGraph)
+{
+	mpGraph = pGraph;
+}
 #endif

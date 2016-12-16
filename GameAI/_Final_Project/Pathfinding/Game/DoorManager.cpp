@@ -46,6 +46,21 @@ void DoorManager::createDoor(Vector2D position, Sprite * pSprite)
 	addDoor(id, newDoor);
 }
 
+Door * DoorManager::getDoorTo(IDType mapTo)
+{
+	std::map<IDType, Door*>::iterator iter;
+
+	for (iter = mDoors.begin(); iter != mDoors.end(); iter++)
+	{
+		if (iter->second->getMapTo() == mapTo)
+		{
+			return iter->second;
+		}
+	}
+
+	return NULL;
+}
+
 void DoorManager::update()
 {
 	//Check for collision

@@ -17,6 +17,7 @@ EnemyChaseState::~EnemyChaseState()
 
 void EnemyChaseState::onEntrance()
 {
+	std::cout << "Entering chase state" << std::endl;
 	mpEnemy->forceRecalculatePath();
 }
 

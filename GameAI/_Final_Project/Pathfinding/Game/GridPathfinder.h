@@ -23,6 +23,7 @@ public:
 public:
 	void drawVisualization( Grid* pGrid, GraphicsBuffer* pDest, bool isAStar);
 	void drawLineToNodes(Node* node);
+	void setGraph(GridGraph* pGraph);
 	
 	inline void clearFinalPath() { mFinalPath.clear(); };
 	inline std::vector<Node*> getFinalPath() { return mFinalPath; };

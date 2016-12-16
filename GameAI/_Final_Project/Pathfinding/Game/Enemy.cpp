@@ -18,6 +18,8 @@
 
 #include "AStarPathfinder.h"
 #include "GameMapManager.h"
+#include "DoorManager.h"
+#include "Door.h"
 #include "GameMap.h"
 #include "Grid.h"
 #include "GridGraph.h"
@@ -232,6 +234,12 @@ void Enemy::setSprite(bool isFlee)
 		mpUnit->setSprite(mpNormalSprite);
 }
 
+void Enemy::changeMap(IDType mapID)
+{
+	mMapID = mapID;
+	mpAStar->setGraph(gpGameApp->getGameMapManager()->getMap(mapID)->getGridGraph());
+}
+
 Enemy::Enemy(IDType mapID, Vector2D position, Sprite* pNormalSprite, Sprite* pFleeSprite, float timeToRecalculate)
 {
 	mMapID = mapID;
@@ -244,6 +252,7 @@ Enemy::Enemy(IDType mapID, Vector2D position, Sprite* pNormalSprite, Sprite* pFl
 	mElapsedTime = 0;
 	
 	mIsDead = false;
+	mGetPathToDoor = true;
 
 	mpNormalSprite = pNormalSprite;
 	mpFleeSprite = pFleeSprite;
@@ -279,6 +288,7 @@ Enemy::~Enemy()
 void Enemy::update(float time)
 {
 	mElapsedTime += time;
+	IDType playerMap = gpGameApp->getGameMapManager()->getCurrentMapID();
 
 	if (mIsDead)
 	{
@@ -303,6 +313,48 @@ void Enemy::update(float time)
 				gpGameApp->getMessageManager()->addMessage(pMessage, 0);
 			}
 		}
+	}
+	else if (mpStateMachine->getCurrentState() == 1 && playerMap != mMapID) // Chase state
+	{
+		std::printf("Enemy in map%d pathfinding from separate room\n", mMapID);
+
+		//Determine door to path to
+		IDType playerMap = gpGameApp->getGameMapManager()->getCurrentMapID();
+		Door* doorTo = gpGameApp->getGameMapManager()->getMap(mMapID)->getDoorManager()->getDoorTo(playerMap);
+
+		//Set the goal
+		////do aster
+		//mElapsedTime = 0;
+		if (mGetPathToDoor)
+		{
+			Vector2D startPos = mpUnit->getPosition() + Vector2D(16, 16);
+			setStart(startPos);
+			setGoal(doorTo->getPosition());
+			mpAStar->clearPath();
+			mpAStar->clearFinalPath();
+			mpAStar->findPath(goal, start);
+			mStepIntoPathCounter = 1;
+			mGetPathToDoor = false;
+		}
+		
+		if (shouldMove())
+		{
+			++mStepIntoPathCounter;
+		}
+		if (mStepIntoPathCounter >= mpAStar->getFinalPath().size())
+		{
+			std::cout << "Hit door in other room" << std::endl;
+			changeMap(doorTo->getMapTo());
+			mpUnit->setPosition(doorTo->getConnectedDoor()->getPosition());
+			mGetPathToDoor = true;
+			return;
+		}
+
+		mpUnit->seek(gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getULCornerOfSquare(mpAStar->getFinalPath()[mStepIntoPathCounter]->getId()));
+		mpUnit->update(time);
+		//go along path
+
+		//if hit door teleport
 	}
 }
 

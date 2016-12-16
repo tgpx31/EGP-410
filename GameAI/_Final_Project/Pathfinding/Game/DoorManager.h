@@ -17,6 +17,7 @@ public:
 
 	void addDoor(IDType id, Door* pDoor);
 	void createDoor(Vector2D position, Sprite* pSprite);
+	Door* getDoorTo(IDType mapTo);
 
 	void update();
 	void draw();
