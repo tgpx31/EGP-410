@@ -143,7 +143,7 @@ float AStarPathfinder::getHeuristic(Node * node, Node * goal)
 	float dy = abs(gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getULCornerOfSquare(node->getId()).getY() - gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getULCornerOfSquare(goal->getId()).getY());
 	
 	float heuristic = dx + dy;
-	heuristic *= 1.1;
+	heuristic *= 1.1f;
 
 	return heuristic;
 	

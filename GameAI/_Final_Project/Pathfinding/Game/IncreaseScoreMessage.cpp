@@ -11,8 +11,10 @@ void IncreaseScoreMessage::process()
 	// Increase the score, stored in GameApp
 	if (mValue <= 10)
 		gpGameApp->getSS()->playSound(1);
-	if (mValue >= 50)
+	else if (mValue <= 50)
 		gpGameApp->getSS()->playSound(2);
+	else if (mValue <= 100)
+		gpGameApp->getSS()->playSound(3);
 
 	gpGameApp->setScore(mValue);
 }

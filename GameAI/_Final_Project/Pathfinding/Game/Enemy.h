@@ -27,7 +27,12 @@ private:
 	const int STEP_RESET_LIMIT = 5;
 
 	float mTimeToRecalculate;
+	float mRespawnTime;
 	float mElapsedTime;
+
+	bool mIsDead;
+	Vector2D mOriginalPosition;
+	IDType mOriginalMapID;
 
 	std::vector<Node*> mPath;
 
@@ -45,13 +50,15 @@ private:
 
 	bool checkCollidingPlayer();
 	void recalculatePath();
+	void kill();
+	void respawn();
 
 	Node* start;
 	Node* goal;
 	AStarPathfinder* mpAStar;
 	
 public:
-	Enemy(IDType mapID, Sprite* pNormalSprite, Sprite* pFleeSprite, float timeToRecalculate);
+	Enemy(IDType mapID, Vector2D position, Sprite* pNormalSprite, Sprite* pFleeSprite, float timeToRecalculate);
 	~Enemy();
 
 	void update(float time = 0.0f);

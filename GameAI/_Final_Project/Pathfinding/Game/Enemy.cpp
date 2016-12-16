@@ -9,6 +9,8 @@
 #include "GameApp.h"
 #include "PlayerDeathMessage.h"
 #include "GameMessageManager.h"
+#include "IncreaseScoreMessage.h"
+#include "SoundSystem.h"
 
 #include "AStarPathfinder.h"
 #include "GameMapManager.h"
@@ -18,10 +20,7 @@
 
 bool Enemy::checkCollidingPlayer()
 {
-	if (getCollider()->isCollidingCylinders(gpGameApp->getPlayer()->getCollider()) && !gpGameApp->getPlayer()->getInvincible())
-		return true;
-
-	return false;
+	return (getCollider()->isCollidingCylinders(gpGameApp->getPlayer()->getCollider()));
 }
 
 void Enemy::recalculatePath()
@@ -34,6 +33,23 @@ void Enemy::recalculatePath()
 	mpAStar->clearFinalPath();
 	mpAStar->findPath(goal, start);
 	mStepIntoPathCounter = 1;
+}
+
+void Enemy::kill()
+{
+	GameMessage* pMessage = new IncreaseScoreMessage(100);
+	gpGameApp->getMessageManager()->addMessage(pMessage, 0);
+	mIsDead = true;
+	mElapsedTime = 0;
+}
+
+void Enemy::respawn()
+{
+	mMapID = mOriginalMapID;
+	mpUnit->setPosition(mOriginalPosition);
+	mIsDead = false;
+	mElapsedTime = 0;
+	recalculatePath();
 }
 
 void Enemy::setStart(Vector2D position)
@@ -94,16 +110,23 @@ bool Enemy::shouldMove()
 			botRight != pBR));
 }
 
-Enemy::Enemy(IDType mapID, Sprite* pNormalSprite, Sprite* pFleeSprite, float timeToRecalculate)
+Enemy::Enemy(IDType mapID, Vector2D position, Sprite* pNormalSprite, Sprite* pFleeSprite, float timeToRecalculate)
 {
 	mMapID = mapID;
+	mOriginalMapID = mapID;
+
+	mOriginalPosition = position;
+
 	mTimeToRecalculate = timeToRecalculate;
+	mRespawnTime = 10.0f;
 	mElapsedTime = 0;
 	
+	mIsDead = false;
+
 	mpNormalSprite = pNormalSprite;
 	mpFleeSprite = pFleeSprite;
 	
-	mpUnit = new KinematicUnit(mpNormalSprite, Vector2D(100, 100), 0.0f, Vector2D(0, 0), 0.0f, 80.0f);
+	mpUnit = new KinematicUnit(mpNormalSprite, position, 0.0f, Vector2D(0, 0), 0.0f, 80.0f);
 
 	mpStateMachine = new StateMachine();
 
@@ -132,33 +155,39 @@ Enemy::~Enemy()
 
 void Enemy::update(float time)
 {
-	if (mMapID == gpGameApp->getGameMapManager()->getCurrentMapID())
-	{
-		//mpStateMachine->update();
-		mpUnit->update(time);
-		//mpUnit->seek(gpGameApp->getPlayer()->getPosition());
+	mElapsedTime += time;
 
-		// for the path, seek the first node if new path
-		// on arrival, seek next node
-		// calculate new path on node 3
-		// start over
-		//if (!mPath.empty())
-		mElapsedTime += time;
+	if (mIsDead)
+	{
+		if (mElapsedTime >= mRespawnTime)
+		{
+			respawn();
+		}
+	}
+	else if (mMapID == gpGameApp->getGameMapManager()->getCurrentMapID())
+	{
+		mpUnit->update(time);
+
 		doPathfinding();
 
 		if (checkCollidingPlayer())
 		{
-			std::cout << "Hit the player" << std::endl;
-			// Player death
-			GameMessage* pMessage = new PlayerDeathMessage();
-			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
+			if (gpGameApp->getPlayer()->getInvincible())
+			{
+				kill();
+			}
+			else
+			{
+				GameMessage* pMessage = new PlayerDeathMessage();
+				gpGameApp->getMessageManager()->addMessage(pMessage, 0);
+			}
 		}
 	}
 }
 
 void Enemy::draw()
 {
-	if (mMapID == gpGameApp->getGameMapManager()->getCurrentMapID())
+	if (mMapID == gpGameApp->getGameMapManager()->getCurrentMapID() && !mIsDead)
 	{
 		mpAStar->drawVisualization(gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid(), gpGameApp->getGraphicsSystem()->getBackBuffer(), true);
 		mpUnit->draw(gpGame->getGraphicsSystem()->getBackBuffer());
