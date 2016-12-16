@@ -4,6 +4,7 @@
 #include "GameApp.h"
 #include "GameMessageManager.h"
 #include "IncreaseScoreMessage.h"
+#include "TogglePlayerInvincibilityMessage.h"
 #include "GraphicsSystem.h"
 #include "GraphicsBuffer.h"
 #include "Player.h"
@@ -34,9 +35,14 @@ void Candy::update(float time)
 		if (mpCollider->isCollidingCylinders(gpGameApp->getPlayer()->getCollider()))
 		{
 			// Make the player invincible
+			GameMessage* pMessage = new TogglePlayerIvincibilityMessage(true);
+			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
+
+			pMessage = new TogglePlayerIvincibilityMessage(false);
+			gpGameApp->getMessageManager()->addMessage(pMessage, 5000);
 
 			// send a score message
-			GameMessage* pMessage = new IncreaseScoreMessage(CANDY_SCORE);
+			pMessage = new IncreaseScoreMessage(CANDY_SCORE);
 			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
 
 			mIsActive = false;

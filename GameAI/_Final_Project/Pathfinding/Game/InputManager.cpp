@@ -6,6 +6,7 @@
 #include "SetCurrentMapMessage.h"
 #include "SetPlayerStateMessage.h"
 #include "TogglePropertiesMessage.h"
+#include "TogglePlayerInvincibilityMessage.h"
 #include "Player.h"
 #include "UI.h"
 
@@ -124,6 +125,12 @@ void InputManager::getKeyboardInput()
 		case ALLEGRO_KEY_I:
 		{
 			std::cout << "\nMAKE THE PLAYER INVINCIBLE\n";
+			GameMessage* pMessage;
+			if (gpGameApp->getPlayer()->getInvincible())
+				pMessage = new TogglePlayerIvincibilityMessage(false);
+			else
+				pMessage = new TogglePlayerIvincibilityMessage(true);
+			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
 			break;
 		}
 

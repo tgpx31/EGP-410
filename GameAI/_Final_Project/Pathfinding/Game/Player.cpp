@@ -18,6 +18,7 @@ Player::Player(Sprite* pSprite)
 	mpUnit = new KinematicUnit(pSprite, Vector2D(100, 100), 0.0f, Vector2D(0, 0), 0.0f, 100.0f);
 	mCurrentState = INVALID_MOVEMENT_STATE;
 	mPreviousPosition = mpUnit->getPosition();
+	mInvincible = false;
 }
 
 Player::~Player()
