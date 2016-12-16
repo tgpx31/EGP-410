@@ -5,7 +5,15 @@
 /**
 *	STATE FUNCTIONS
 **/
-SM_State::~SM_State() {}
+SM_State::~SM_State() 
+{
+	std::map<TransitionType, Transition*>::iterator iter;
+
+	for (iter = mTransitions.begin(); iter != mTransitions.end(); iter++)
+	{
+		delete iter->second;
+	}
+}
 
 // Add transition
 void SM_State::addTransition(Transition * pTransition)
@@ -13,6 +21,16 @@ void SM_State::addTransition(Transition * pTransition)
 	mTransitions[pTransition->getTransitionType()] = pTransition;
 }
 
+
+StateMachine::~StateMachine()
+{
+	std::map<SM_ID, SM_State*>::iterator iter;
+
+	for (iter = mStates.begin(); iter != mStates.end(); iter++)
+	{
+		delete iter->second;
+	}
+}
 
 /**
 *	STATE MACHINE FUNCTIONS

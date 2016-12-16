@@ -30,11 +30,9 @@ enum TransitionType
 	GAME_OVER_TRANSITION = 3,
 
 	// NPC Transitions
-	TO_CHASE_TRANSITION = 4,
-	TO_FLEE_TRANSITION = 5,
-	RETURN_TO_PREVIOUS_TRANSITION = 6,
-	WANDER_TO_PATROL_TRANSITION = 7,
-	PATROL_TO_WANDER_TRANSITION = 8,
+	TO_WANDER_TRANSITION = 4,
+	TO_CHASE_TRANSITION = 5,
+	TO_FLEE_TRANSITION = 6,
 
 	// Game state Transitions
 	END_GAME_TRANSITION = 9
@@ -86,10 +84,12 @@ class StateMachine : public Trackable
 {
 public:
 	StateMachine() :mpCurrentState(NULL), mInitialStateID(-1) {};
-	~StateMachine() {};
+	~StateMachine();
 
 	void addState(SM_State* pState);
 	inline void setInitialStateID(const SM_ID& id) { mInitialStateID = id; };
+	
+	inline SM_ID getCurrentState() { return mpCurrentState->getID(); };
 
 	void update();							// Give the current state a chance to run
 	void start();							// Go to the initial state

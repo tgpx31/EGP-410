@@ -94,7 +94,10 @@
     <ClInclude Include="Door.h" />
     <ClInclude Include="DoorManager.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyChaseState.h" />
+    <ClInclude Include="EnemyFleeState.h" />
     <ClInclude Include="EnemyManager.h" />
+    <ClInclude Include="EnemyWanderState.h" />
     <ClInclude Include="ExitGameMessage.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="GameMap.h" />
@@ -144,7 +147,10 @@
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="DoorManager.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyChaseState.cpp" />
+    <ClCompile Include="EnemyFleeState.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
+    <ClCompile Include="EnemyWanderState.cpp" />
     <ClCompile Include="ExitGameMessage.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GameMap.cpp" />

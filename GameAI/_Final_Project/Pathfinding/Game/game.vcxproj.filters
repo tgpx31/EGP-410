@@ -81,6 +81,12 @@
     <Filter Include="Source Files\LevelUnits">
       <UniqueIdentifier>{94044f0e-f49a-4630-bc82-50cf04ebf6dd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\States\States">
+      <UniqueIdentifier>{7aa8f3b0-ebec-46aa-b838-b66b7de5c84a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States\States">
+      <UniqueIdentifier>{0460ac95-0eb4-4589-8bc0-a72cbc13371d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Connection.h">
@@ -230,6 +236,15 @@
     <ClInclude Include="TogglePlayerInvincibilityMessage.h">
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
+    <ClInclude Include="EnemyChaseState.h">
+      <Filter>Header Files\States\States</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyFleeState.h">
+      <Filter>Header Files\States\States</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyWanderState.h">
+      <Filter>Header Files\States\States</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graph.cpp">
@@ -378,6 +393,15 @@
     </ClCompile>
     <ClCompile Include="TogglePlayerInvincibilityMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyChaseState.cpp">
+      <Filter>Source Files\States\States</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyFleeState.cpp">
+      <Filter>Source Files\States\States</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyWanderState.cpp">
+      <Filter>Source Files\States\States</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

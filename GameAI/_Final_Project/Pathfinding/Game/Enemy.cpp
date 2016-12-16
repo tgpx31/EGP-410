@@ -1,10 +1,14 @@
 #include "Enemy.h"
 #include "KinematicUnit.h"
-#include "StateMachine.h"
 #include "Game.h"
 #include "GraphicsSystem.h"
 #include "Sprite.h"
 #include "Player.h"
+
+#include "StateMachine.h"
+#include "EnemyChaseState.h"
+#include "EnemyFleeState.h"
+#include "EnemyWanderState.h"
 
 #include "GameApp.h"
 #include "PlayerDeathMessage.h"
@@ -28,7 +32,7 @@ void Enemy::recalculatePath()
 	mElapsedTime = 0;
 	Vector2D startPos = mpUnit->getPosition() + Vector2D(16, 16);
 	setStart(startPos);
-	setGoal(gpGameApp->getPlayer()->getPosition() + Vector2D(16, 16));
+	setGoal(determineTarget());
 	mpAStar->clearPath();
 	mpAStar->clearFinalPath();
 	mpAStar->findPath(goal, start);
@@ -52,6 +56,42 @@ void Enemy::respawn()
 	recalculatePath();
 }
 
+Vector2D Enemy::determineTarget()
+{
+	Vector2D target(32, 32);
+	
+	if (mpStateMachine->getCurrentState() == 0)	// Wander
+	{
+		target = mpUnit->getPosition() - Vector2D(16, 16);
+	}
+	else if (mpStateMachine->getCurrentState() == 1) // Chase
+	{
+		target = gpGameApp->getPlayer()->getPosition();
+	}
+	else if (mpStateMachine->getCurrentState() == 2) // Flee
+	{
+		if (gpGameApp->getPlayer()->getPosition().getX() >= mpUnit->getPosition().getX())
+		{
+			target.setX(32); 
+		}
+		else
+		{
+			target.setX(gpGameApp->getGraphicsSystem()->getWidth() - 64);
+		}
+
+		if (gpGameApp->getPlayer()->getPosition().getY() >= mpUnit->getPosition().getY())
+		{
+			target.setY(32);
+		}
+		else
+		{
+			target.setY(gpGameApp->getGraphicsSystem()->getHeight() - 64);
+		}
+	}
+
+	return target + Vector2D(16, 16);
+}
+
 void Enemy::setStart(Vector2D position)
 {
 	int startIndex = gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getSquareIndexFromPixelXY(position.getX(), position.getY());
@@ -73,7 +113,7 @@ void Enemy::doPathfinding()
 
 	if (mpAStar->getFinalPath().size() <= 0 || mStepIntoPathCounter >= mpAStar->getFinalPath().size() - 1)
 	{
-		mpUnit->seek(gpGameApp->getPlayer()->getPosition());
+		mpUnit->seek(determineTarget());
 	}
 	else
 	{
@@ -110,6 +150,14 @@ bool Enemy::shouldMove()
 			botRight != pBR));
 }
 
+void Enemy::setSprite(bool isFlee)
+{
+	if (isFlee)
+		mpUnit->setSprite(mpFleeSprite);
+	else
+		mpUnit->setSprite(mpNormalSprite);
+}
+
 Enemy::Enemy(IDType mapID, Vector2D position, Sprite* pNormalSprite, Sprite* pFleeSprite, float timeToRecalculate)
 {
 	mMapID = mapID;
@@ -128,16 +176,17 @@ Enemy::Enemy(IDType mapID, Vector2D position, Sprite* pNormalSprite, Sprite* pFl
 	
 	mpUnit = new KinematicUnit(mpNormalSprite, position, 0.0f, Vector2D(0, 0), 0.0f, 80.0f);
 
-	mpStateMachine = new StateMachine();
-
 	mpAStar = new AStarPathfinder(gpGameApp->getGameMapManager()->getMap(mMapID)->getGridGraph(), mapID);
-	mStepIntoPathCounter = 1;
-	
-	setStart(mpUnit->getPosition());
-	setGoal(gpGameApp->getPlayer()->getPosition());
-	
-	mpAStar->findPath(start, goal);
-	mPath = mpAStar->getFinalPath();
+
+	mpStateMachine = new StateMachine();
+	mpStateMachine->addState(new EnemyWanderState(this));
+	mpStateMachine->addState(new EnemyFleeState(this));
+	mpStateMachine->addState(new EnemyChaseState(this));
+
+	mpStateMachine->setInitialStateID(0);
+	mpStateMachine->start();
+
+	recalculatePath();
 	// Build a path to the player, and seek each node iteratively
 }
 
@@ -167,7 +216,7 @@ void Enemy::update(float time)
 	else if (mMapID == gpGameApp->getGameMapManager()->getCurrentMapID())
 	{
 		mpUnit->update(time);
-
+		mpStateMachine->update();
 		doPathfinding();
 
 		if (checkCollidingPlayer())

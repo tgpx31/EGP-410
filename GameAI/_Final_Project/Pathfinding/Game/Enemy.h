@@ -52,6 +52,7 @@ private:
 	void recalculatePath();
 	void kill();
 	void respawn();
+	Vector2D determineTarget();
 
 	Node* start;
 	Node* goal;
@@ -76,4 +77,6 @@ public:
 
 	void doPathfinding();
 	bool shouldMove();
+
+	void setSprite(bool isFlee);
 };
