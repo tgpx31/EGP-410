@@ -135,8 +135,9 @@ void GameApp::initMaps()
 	mpGameMapManager->loadMap(1, "../Assets/Maps/map1.txt");
 	mpGameMapManager->loadMap(2, "../Assets/Maps/map2.txt");
 	mpGameMapManager->loadMap(3, "../Assets/Maps/map3.txt");
-	mpGameMapManager->loadMapEntities();
 	mpGameMapManager->connectDoors();
+	mpGameMapManager->placePlayer();
+	mpGameMapManager->loadMapEntities();
 }
 
 void GameApp::cleanup()
@@ -189,7 +190,7 @@ void GameApp::processLoop()
 	
 	//Draw
 	mpGameMapManager->drawCurrentMap();
-	mpEnemyManager->draw();
+	mpEnemyManager->draw(mpUI->isDisplaying());
 	mpPlayer->draw();
 
 	mpUI->draw();

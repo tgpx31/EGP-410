@@ -73,15 +73,19 @@ void Player::setState(PlayerMovementState state)
 	{
 	case GOING_UP:
 		mpUnit->setVelocity(Vector2D(0, -100));
+		mpUnit->setOrientation(1.5f * PI);
 		break;
 	case GOING_DOWN:
 		mpUnit->setVelocity(Vector2D(0, 100));
+		mpUnit->setOrientation(0.5f * PI);
 		break;
 	case GOING_LEFT:
 		mpUnit->setVelocity(Vector2D(-100, 0));
+		mpUnit->setOrientation(PI);
 		break;
 	case GOING_RIGHT:
 		mpUnit->setVelocity(Vector2D(100, 0));
+		mpUnit->setOrientation(0);
 		break;
 	default:
 		break;

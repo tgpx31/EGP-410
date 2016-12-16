@@ -306,11 +306,14 @@ void Enemy::update(float time)
 	}
 }
 
-void Enemy::draw()
+void Enemy::draw(bool drawLine)
 {
 	if (mMapID == gpGameApp->getGameMapManager()->getCurrentMapID() && !mIsDead)
 	{
-		mpAStar->drawVisualization(gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid(), gpGameApp->getGraphicsSystem()->getBackBuffer(), true);
+		if (drawLine)
+		{
+			mpAStar->drawVisualization(gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid(), gpGameApp->getGraphicsSystem()->getBackBuffer(), true);
+		}
 		mpUnit->draw(gpGame->getGraphicsSystem()->getBackBuffer());
 	}
 }

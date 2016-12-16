@@ -5,6 +5,7 @@
 
 #include <map>
 #include <string>
+#include <vector>
 
 class GameMap;
 
@@ -13,6 +14,7 @@ class GameMapManager : public Trackable
 private:
 	std::map<IDType, GameMap*> mMaps;
 	std::map<IDType, GameMap*>::iterator mCurrentMap;
+	std::vector<IDType> mMapLayout;
 
 public:
 	GameMapManager();
@@ -28,6 +30,7 @@ public:
 
 	void update(float time);
 	void loadMapEntities();
+	void placePlayer();
 	void connectDoors();
 	void drawCurrentMap();
 };

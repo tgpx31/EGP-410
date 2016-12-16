@@ -66,14 +66,14 @@ void EnemyManager::cleanUp()
 	mEnemies.clear();
 }
 
-void EnemyManager::draw()
+void EnemyManager::draw(bool drawLine)
 {
 	// Traverse map w/ iterator
 	std::map<IDType, Enemy*>::iterator iter;
 
 	for (iter = mEnemies.begin(); iter != mEnemies.end(); ++iter)
 	{
-		iter->second->draw();
+		iter->second->draw(drawLine);
 	}
 }
 

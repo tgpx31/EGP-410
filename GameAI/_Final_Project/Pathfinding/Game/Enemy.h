@@ -70,7 +70,7 @@ public:
 	~Enemy();
 
 	void update(float time = 0.0f);
-	void draw();
+	void draw(bool drawLine);
 
 	inline KinematicUnit* getUnit() { return mpUnit; };
 	inline CylinderCollision* getCollider() { return mpUnit->getCollider(); };

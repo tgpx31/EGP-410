@@ -20,7 +20,7 @@ public:
 	void deleteEnemy();
 	inline int getRandEnemy() { return rand() % mEnemies.size(); };
 
-	void draw();
+	void draw(bool drawLine);
 	void update(double frameTime = 33.3f);
 
 	inline float getVel() const { return mEnemyVel; };

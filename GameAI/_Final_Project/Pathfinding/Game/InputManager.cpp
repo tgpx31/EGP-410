@@ -171,7 +171,7 @@ void InputManager::getKeyboardInput()
 		**/
 		case ALLEGRO_KEY_F1:
 		{
-			gpGameApp->toggleUpdating();
+			//gpGameApp->toggleUpdating();
 			GameMessage* pMessage = new TogglePropertiesMessage();
 			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
 			break;

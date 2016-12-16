@@ -90,7 +90,7 @@ void KinematicUnit::update(float time)
 	calcNewVelocities(*steering, time, mMaxVelocity, 25.0f);
 
 	//set the orientation to match the direction of travel
-	setNewOrientation();
+	//setNewOrientation();
 
 	//// Keep the Colliders with the sprite
 	mpCircleCollider->setPos(mPosition + Vector2D(mpSprite->getWidth() / 2, mpSprite->getHeight() / 2));

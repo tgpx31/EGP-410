@@ -9,6 +9,7 @@
 #include "Grid.h"
 #include "CandyManager.h"
 #include "EnemyManager.h"
+#include "Player.h"
 
 #include <ctime>
 #include <vector>
@@ -142,7 +143,11 @@ void GameMapManager::loadMapEntities()
 			{
 				iter->second->getCandyManager()->createCandy(pGrid->getULCornerOfSquare(i), gpGame->getSpriteManager()->getSprite(CANDY), 60.0f);
 			}
-			else if (value != BLOCKING_VALUE)
+			else if (value == ENEMY_SPAWN_VALUE)
+			{
+				gpGameApp->getEnemyManager()->addEnemy(iter->first, pGrid->getULCornerOfSquare(i));
+			}
+			else if (value == CLEAR_VALUE)
 			{
 				int chance = rand() % 100;
 				if (chance < gpGameApp->getCoinSpawnRate())
@@ -151,10 +156,21 @@ void GameMapManager::loadMapEntities()
 				}
 			}
 
-			if (value == ENEMY_SPAWN_VALUE)
-			{
-				gpGameApp->getEnemyManager()->addEnemy(iter->first, pGrid->getULCornerOfSquare(i));
-			}
+		}
+	}
+}
+
+void GameMapManager::placePlayer()
+{
+	Grid* gridToScan = mMaps[mMapLayout[0]]->getGrid();
+	
+	for (int i = 0; i < gridToScan->getNumValues(); i++)
+	{
+		if (gridToScan->getValueAtIndex(i) == PLAYER_SPAWN_VALUE)
+		{
+			std::printf("Found player spawn at (%f, %f) in map%d\n", gridToScan->getULCornerOfSquare(i).getX(), gridToScan->getULCornerOfSquare(i).getY(), mMapLayout[0]);
+			gpGameApp->getPlayer()->setPosition(gridToScan->getULCornerOfSquare(i));
+			return;
 		}
 	}
 }
@@ -171,7 +187,7 @@ void GameMapManager::connectDoors()
 	srand(time(NULL));
 
 	/*
-		Map layout, using indicies of maps vector	
+		Map layout, using indicies of mMapLayout vector	
 		[ 
 		0, 1
 		2, 3 
@@ -183,12 +199,12 @@ void GameMapManager::connectDoors()
 		index 3 == bottom right room
 	*/
 
-	std::vector<int> maps = { 0, 1, 2, 3 };	//Vector of map ids
-	std::random_shuffle(maps.begin(), maps.end());
+	mMapLayout = { 0, 1, 2, 3 };	//Vector of map ids
+	std::random_shuffle(mMapLayout.begin(), mMapLayout.end());
 	
 	for (int i = 0; i < 4; i++)
 	{
-		std::cout << maps[i] << ", ";
+		std::cout << mMapLayout[i] << ", ";
 	}
 	std::cout << std::endl;
 	Sprite* pSprite = gpGame->getSpriteManager()->getSprite(DOOR);
@@ -197,67 +213,67 @@ void GameMapManager::connectDoors()
 	Door* pDoorOne = new Door(right, pSprite); //top left room door
 	Door* pDoorTwo = new Door(left, pSprite); //top right room door
 
-	pDoorOne->setMapTo(maps[1]);
-	pDoorTwo->setMapTo(maps[0]);
+	pDoorOne->setMapTo(mMapLayout[1]);
+	pDoorTwo->setMapTo(mMapLayout[0]);
 
 	pDoorOne->setConnectedDoor(pDoorTwo);
 	pDoorTwo->setConnectedDoor(pDoorOne);
 
-	mMaps[maps[0]]->getDoorManager()->addDoor(0, pDoorOne);
-	mMaps[maps[1]]->getDoorManager()->addDoor(0, pDoorTwo);
+	mMaps[mMapLayout[0]]->getDoorManager()->addDoor(0, pDoorOne);
+	mMaps[mMapLayout[1]]->getDoorManager()->addDoor(0, pDoorTwo);
 
-	mMaps[maps[0]]->getGrid()->setValueAtPixelXY(right.getX(), right.getY(), CLEAR_VALUE);
-	mMaps[maps[1]]->getGrid()->setValueAtPixelXY(left.getX(), left.getY(), CLEAR_VALUE);
+	mMaps[mMapLayout[0]]->getGrid()->setValueAtPixelXY(right.getX(), right.getY(), CLEAR_VALUE);
+	mMaps[mMapLayout[1]]->getGrid()->setValueAtPixelXY(left.getX(), left.getY(), CLEAR_VALUE);
 
 	//Link top right room and bottom right room
 	pDoorOne = new Door(bot, pSprite); //top right room door
 	pDoorTwo = new Door(top, pSprite); //bottom right room door
 
-	pDoorOne->setMapTo(maps[3]);
-	pDoorTwo->setMapTo(maps[1]);
+	pDoorOne->setMapTo(mMapLayout[3]);
+	pDoorTwo->setMapTo(mMapLayout[1]);
 
 	pDoorOne->setConnectedDoor(pDoorTwo);
 	pDoorTwo->setConnectedDoor(pDoorOne);
 
-	mMaps[maps[1]]->getDoorManager()->addDoor(1, pDoorOne);
-	mMaps[maps[3]]->getDoorManager()->addDoor(0, pDoorTwo);
+	mMaps[mMapLayout[1]]->getDoorManager()->addDoor(1, pDoorOne);
+	mMaps[mMapLayout[3]]->getDoorManager()->addDoor(0, pDoorTwo);
 
-	mMaps[maps[1]]->getGrid()->setValueAtPixelXY(bot.getX(), bot.getY(), CLEAR_VALUE);
-	mMaps[maps[3]]->getGrid()->setValueAtPixelXY(top.getX(), top.getY(), CLEAR_VALUE);
+	mMaps[mMapLayout[1]]->getGrid()->setValueAtPixelXY(bot.getX(), bot.getY(), CLEAR_VALUE);
+	mMaps[mMapLayout[3]]->getGrid()->setValueAtPixelXY(top.getX(), top.getY(), CLEAR_VALUE);
 
 	//Link bottom right room and bottom left room
 	pDoorOne = new Door(left, pSprite); //bottom right room door
 	pDoorTwo = new Door(right, pSprite); //bottom left room door
 
-	pDoorOne->setMapTo(maps[2]);
-	pDoorTwo->setMapTo(maps[3]);
+	pDoorOne->setMapTo(mMapLayout[2]);
+	pDoorTwo->setMapTo(mMapLayout[3]);
 
 	pDoorOne->setConnectedDoor(pDoorTwo);
 	pDoorTwo->setConnectedDoor(pDoorOne);
 
-	mMaps[maps[3]]->getDoorManager()->addDoor(1, pDoorOne);
-	mMaps[maps[2]]->getDoorManager()->addDoor(0, pDoorTwo);
+	mMaps[mMapLayout[3]]->getDoorManager()->addDoor(1, pDoorOne);
+	mMaps[mMapLayout[2]]->getDoorManager()->addDoor(0, pDoorTwo);
 
-	mMaps[maps[3]]->getGrid()->setValueAtPixelXY(left.getX(), left.getY(), CLEAR_VALUE);
-	mMaps[maps[2]]->getGrid()->setValueAtPixelXY(right.getX(), right.getY(), CLEAR_VALUE);
+	mMaps[mMapLayout[3]]->getGrid()->setValueAtPixelXY(left.getX(), left.getY(), CLEAR_VALUE);
+	mMaps[mMapLayout[2]]->getGrid()->setValueAtPixelXY(right.getX(), right.getY(), CLEAR_VALUE);
 
 	//Link bottom left room and top left room
 	pDoorOne = new Door(top, pSprite); //bottom left room door
 	pDoorTwo = new Door(bot, pSprite); //top left room door
 
-	pDoorOne->setMapTo(maps[0]);
-	pDoorTwo->setMapTo(maps[2]);
+	pDoorOne->setMapTo(mMapLayout[0]);
+	pDoorTwo->setMapTo(mMapLayout[2]);
 
 	pDoorOne->setConnectedDoor(pDoorTwo);
 	pDoorTwo->setConnectedDoor(pDoorOne);
 
-	mMaps[maps[2]]->getDoorManager()->addDoor(1, pDoorOne);
-	mMaps[maps[0]]->getDoorManager()->addDoor(1, pDoorTwo);
+	mMaps[mMapLayout[2]]->getDoorManager()->addDoor(1, pDoorOne);
+	mMaps[mMapLayout[0]]->getDoorManager()->addDoor(1, pDoorTwo);
 
-	mMaps[maps[2]]->getGrid()->setValueAtPixelXY(top.getX(), top.getY(), CLEAR_VALUE);
-	mMaps[maps[0]]->getGrid()->setValueAtPixelXY(bot.getX(), bot.getY(), CLEAR_VALUE);
+	mMaps[mMapLayout[2]]->getGrid()->setValueAtPixelXY(top.getX(), top.getY(), CLEAR_VALUE);
+	mMaps[mMapLayout[0]]->getGrid()->setValueAtPixelXY(bot.getX(), bot.getY(), CLEAR_VALUE);
 
-	setCurrentMap(maps[0]); //set current map to be top left corner
+	setCurrentMap(mMapLayout[0]); //set current map to be top left corner
 }
 
 void GameMapManager::drawCurrentMap()
