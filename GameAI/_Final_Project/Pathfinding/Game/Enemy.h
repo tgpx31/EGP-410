@@ -24,7 +24,7 @@ private:
 	Sprite* mpFleeSprite;
 
 	int mStepIntoPathCounter;
-	const int STEP_RESET_LIMIT = 3;
+	const int STEP_RESET_LIMIT = 5;
 
 	float mTimeToRecalculate;
 	float mElapsedTime;

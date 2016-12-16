@@ -27,11 +27,9 @@ bool Enemy::checkCollidingPlayer()
 void Enemy::recalculatePath()
 {
 	mElapsedTime = 0;
-	Vector2D startPos = mpUnit->getPosition();
-	startPos.setX(startPos.getX() + 16);
-	startPos.setY(startPos.getY() + 16);
+	Vector2D startPos = mpUnit->getPosition() + Vector2D(16, 16);
 	setStart(startPos);
-	setGoal(gpGameApp->getPlayer()->getPosition());
+	setGoal(gpGameApp->getPlayer()->getPosition() + Vector2D(16, 16));
 	mpAStar->clearPath();
 	mpAStar->clearFinalPath();
 	mpAStar->findPath(goal, start);
@@ -69,27 +67,6 @@ void Enemy::doPathfinding()
 		}
 		mpUnit->seek(gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getULCornerOfSquare(mpAStar->getFinalPath()[mStepIntoPathCounter]->getId()));
 	}
-
-
-	/*
-	if (!(mpAStar->getFinalPath().size() <= 0))
-	{
-		if (mStepIntoPathCounter >= mpAStar->getFinalPath().size())
-		{
-			recalculatePath();
-		}
-
-		std::printf("finalPath.size(): %d, mStepIntoPathCounter: %d\n", mpAStar->getFinalPath().size(), mStepIntoPathCounter);
-	
-		mpUnit->seek(gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getULCornerOfSquare(mpAStar->getFinalPath()[mStepIntoPathCounter]->getId()));
-		
-		
-	}
-	else
-	{
-		mpUnit->seek(gpGameApp->getPlayer()->getPosition());
-	}
-	*/
 }
 
 bool Enemy::shouldMove()

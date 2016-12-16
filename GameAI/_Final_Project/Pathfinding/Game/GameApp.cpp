@@ -176,7 +176,7 @@ void GameApp::processLoop()
 	if (mShouldUpdate)
 	{
 		mpPlayer->update(LOOP_TARGET_TIME / 1000.0F);
-		//mpEnemyManager->update(LOOP_TARGET_TIME/ 1000.0f);
+		mpEnemyManager->update(LOOP_TARGET_TIME/ 1000.0f);
 	}
 	
 	//Draw

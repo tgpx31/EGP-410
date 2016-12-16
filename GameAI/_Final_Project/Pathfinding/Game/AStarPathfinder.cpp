@@ -138,13 +138,14 @@ float AStarPathfinder::getHeuristic(Node * node, Node * goal)
 	// Heuristic used is based off of the Manhattan Distance, referenced @ http://theory.stanford.edu/~amitp/GameProgramming/Heuristics.html
 	// Manhattan distance heuristic is admissable
 	// To use an inadmissable heuristic, use euclidian distance
-
-	//TODO: Change functionality to work with new multimap system
 	
 	float dx = abs(gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getULCornerOfSquare(node->getId()).getX() - gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getULCornerOfSquare(goal->getId()).getX());
 	float dy = abs(gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getULCornerOfSquare(node->getId()).getY() - gpGameApp->getGameMapManager()->getMap(mMapID)->getGrid()->getULCornerOfSquare(goal->getId()).getY());
 	
-	return (dx + dy);
+	float heuristic = dx + dy;
+	heuristic *= 1.1;
+
+	return heuristic;
 	
 
 	std::cout << "AStarPathfinder::getHeuristic(Node * node, Node * goal) is not implemented. See source for details." << std::endl;
