@@ -3,28 +3,30 @@
 
 SoundSystem::SoundSystem()
 {
-	for (Sound* i : mChannels)
-		i = new Sound();
+	mSources[0] = al_load_sample("../Assets/Sound/BGM.ogg");
+	mSources[1] = al_load_sample("../Assets/Sound/coinNoise.ogg");
+	mSources[2] = al_load_sample("../Assets/Sound/getCandy.ogg");
+	mSources[3] = al_load_sample("../Assets/Sound/killEnemy.ogg");
+	mSources[4] = al_load_sample("../Assets/Sound/playerDeath.ogg");
 
-	for (std::string i : mSources)
-		i = "";
+	for (int i = 0; i < SOUND_CHANNELS; ++i)
+	{
+		mChannels[i] = new Sound();
+		mChannels[i]->setSource(mSources[i]);
+	}
 }
 
 SoundSystem::~SoundSystem()
 {
+	for (ALLEGRO_SAMPLE* sam : mSources)
+	{
+		al_destroy_sample(sam);
+		sam = NULL;
+	}
 	for (Sound* i : mChannels)
 	{
-		i->stopSound();
 		delete i;
 		i = NULL;
-	}
-}
-
-void SoundSystem::loadSources(const std::string sources[])
-{
-	for (int i = 0; i < SOURCE_COUNT; ++i)
-	{
-		mSources[i] = sources[i];
 	}
 }
 
@@ -36,9 +38,4 @@ void SoundSystem::playSound(const int & channel)
 void SoundSystem::loopSound(const int & channel)
 {
 	mChannels[channel]->loopSound();
-}
-
-void SoundSystem::stopSound(const int & channel)
-{
-	mChannels[channel]->stopSound();
 }

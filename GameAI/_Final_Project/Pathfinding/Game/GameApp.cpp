@@ -14,6 +14,8 @@
 #include "Player.h"
 #include "EnemyManager.h"
 
+#include "SoundSystem.h"
+
 #include "UI.h"
 
 const IDType BACKGROUND_ID = 0;
@@ -26,6 +28,7 @@ GameApp::GameApp()
 ,mpPlayer(NULL)
 ,mpUI(NULL)
 ,mCoinSpawnRate(25)
+,mpSS(NULL)
 {
 	mLoopTargetTime = LOOP_TARGET_TIME;
 }
@@ -65,6 +68,8 @@ bool GameApp::init()
 	mpUI = new UserInterface(mpFont);
 	mScore = 0;
 
+	mpSS = new SoundSystem();
+	//mpSS->loopSound(0);
 
 	mShouldUpdate = true;
 	mpMasterTimer->start();
@@ -156,6 +161,9 @@ void GameApp::cleanup()
 
 	delete mpUI;
 	mpUI = NULL;
+
+	delete mpSS;
+	mpSS = NULL;
 }
 
 void GameApp::beginLoop()
