@@ -2,6 +2,10 @@
 #include "allegro5\allegro_ttf.h"
 #include "allegro5\allegro_primitives.h"
 #include "Game.h"
+#include "GameApp.h"
+#include "Player.h"
+#include "KinematicUnit.h"
+#include "EnemyManager.h"
 
 const int SCORE_Y = 744;
 
@@ -13,7 +17,6 @@ UserInterface::UserInterface(ALLEGRO_FONT* font)
 	mActiveProperty = 0;
 	mpFont = font;
 
-	mProperties.push_back("");
 	mProperties.push_back("");
 	mProperties.push_back("");
 	mProperties.push_back("");
@@ -59,12 +62,11 @@ void UserInterface::drawProperties()
 
 void UserInterface::setStrings()
 {
-	mProperties[0] = "Player Speed: "				/*display the current max player speed here*/;
-	mProperties[1] = "Enemy Speed: "				/*display enemy max velocity*/;
-	mProperties[2] = "Enemy Respawn Timer: "		/*display total time needed to respawn dead enemy*/;
-	mProperties[3] = "Enemy A* Calculation Delay: "	/*Tiles until recalc*/;
-	mProperties[4] = "Candy Respawn Timer: "		/*Time for candy to respawn*/;
-	mProperties[5] = "Player Invincible: "			/*True or false*/;
+	mProperties[0] = "Player Speed: " + std::to_string(gpGameApp->getPlayer()->getUnit()->getMaxVelocity());		
+	mProperties[1] = "Enemy Speed: " + std::to_string(gpGameApp->getEnemyManager()->getVel());					
+	mProperties[2] = "Enemy Respawn Timer: " + std::to_string(gpGameApp->getEnemyManager()->getSpawnTime());	
+	mProperties[3] = "Enemy A* Calculation Delay: "	+ std::to_string(gpGameApp->getEnemyManager()->getStepReset());
+	mProperties[4] = "Player Invincible: " + std::to_string(gpGameApp->getPlayer()->getInvincible());
 
-	mScoreDisplay = "SCORE: " /*add the score here*/;
+	mScoreDisplay = "SCORE: " + std::to_string(gpGameApp->getScore());
 }

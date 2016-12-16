@@ -6,6 +6,16 @@
 
 #include <allegro5\allegro_font.h>
 
+//enum PropertyID
+//{
+//	PLAYER_SPEED,
+//	ENEMY_SPEED,
+//	ENEMY_RESPAWN,
+//	ENEMY_TILE_DELAY,
+//	CANDY_RESPAWN,
+//	PLAYER_INVINCIBLE
+//};
+
 class UserInterface : public Trackable
 {
 private:

@@ -236,17 +236,21 @@
     <ClInclude Include="TogglePlayerInvincibilityMessage.h">
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
-    <ClInclude Include="EditPropertyMessage.h">
-      <Filter>Header Files\Messaging</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyChaseState.h">      <Filter>Header Files\States\States</Filter>
+<<<<<<< HEAD
+    <ClInclude Include="EnemyChaseState.h">
+      <Filter>Header Files\States\States</Filter>
     </ClInclude>
     <ClInclude Include="EnemyFleeState.h">
       <Filter>Header Files\States\States</Filter>
     </ClInclude>
     <ClInclude Include="EnemyWanderState.h">
       <Filter>Header Files\States\States</Filter>
-    </ClInclude>  </ItemGroup>
+=======
+    <ClInclude Include="EditPropertyMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+>>>>>>> 6f1110a52a31593e0458ffa0c77b0e26b5ee6ae7
+    </ClInclude>
+  </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graph.cpp">
       <Filter>Source Files\Pathfinding</Filter>
@@ -395,9 +399,8 @@
     <ClCompile Include="TogglePlayerInvincibilityMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
     </ClCompile>
-    <ClCompile Include="EditPropertyMessage.cpp">
-      <Filter>Source Files\Messaging</Filter>
-    </ClCompile>    <ClCompile Include="EnemyChaseState.cpp">
+<<<<<<< HEAD
+    <ClCompile Include="EnemyChaseState.cpp">
       <Filter>Source Files\States\States</Filter>
     </ClCompile>
     <ClCompile Include="EnemyFleeState.cpp">
@@ -405,5 +408,10 @@
     </ClCompile>
     <ClCompile Include="EnemyWanderState.cpp">
       <Filter>Source Files\States\States</Filter>
-    </ClCompile>  </ItemGroup>
+=======
+    <ClCompile Include="EditPropertyMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+>>>>>>> 6f1110a52a31593e0458ffa0c77b0e26b5ee6ae7
+    </ClCompile>
+  </ItemGroup>
 </Project>

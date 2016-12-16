@@ -5,10 +5,16 @@
 #include "GameApp.h"
 #include "Player.h"
 #include "AStarPathfinder.h"
+#include "KinematicUnit.h"
+
 EnemyManager::EnemyManager(Sprite* spr1, Sprite* spr2)
 {
 	mNormalSprite = spr1;
 	mScaredSprite = spr2;
+
+	mRespawnTime = 10.0f;
+	mEnemyVel = 80.0f;
+	STEP_RESET_LIMIT = 5;
 }
 
 EnemyManager::~EnemyManager()
@@ -20,6 +26,8 @@ void EnemyManager::addEnemy(IDType mapID, Vector2D position)
 {
 	Enemy* pEnemy;
 	pEnemy = new Enemy(mapID, position, mNormalSprite, mScaredSprite, 2.0f);
+	
+	//pEnemy->getUnit()-
 
 	pEnemy->setGoal(gpGameApp->getPlayer()->getPosition());
 	pEnemy->setStart(position);
@@ -77,5 +85,11 @@ void EnemyManager::update(double frameTime)
 	for (iter = mEnemies.begin(); iter != mEnemies.end(); ++iter)
 	{
 		iter->second->update(frameTime);
+		// respawn time
+		iter->second->setSpawnTime(mRespawnTime);
+		// velocity
+		iter->second->getUnit()->setMaxVelocity(mEnemyVel);
+		// AStar
+		iter->second->setStepReset(STEP_RESET_LIMIT);
 	}
 }

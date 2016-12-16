@@ -44,6 +44,7 @@ public:
 	inline Vector2D getVelocity() const { return mVelocity; };
 	inline void setVelocity(const Vector2D& velocity) { mVelocity = velocity; };
 	inline float getMaxVelocity() const { return mMaxVelocity; };
+	inline void setMaxVelocity(const float& max) { mMaxVelocity = max; };
 	inline void changeMaxVel(float vel) { mMaxVelocity += vel; };
 	inline float getMaxAcceleration() const { return mMaxAcceleration; };
 	inline void changeMaxAccel(float accel) { mMaxAcceleration += accel; };

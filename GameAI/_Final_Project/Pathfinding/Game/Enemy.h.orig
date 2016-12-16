@@ -77,9 +77,14 @@ public:
 
 	void doPathfinding();
 	bool shouldMove();
-void setSprite(bool isFlee);
+
+<<<<<<< HEAD
+	void setSprite(bool isFlee);
+=======
 	inline float getSpawnTime() const { return mRespawnTime; };
 	inline void setSpawnTime(const float& timer) { mRespawnTime = timer; };
 
 	inline int getStepReset() { return STEP_RESET_LIMIT; };
-	inline void setStepReset(const int& val) { STEP_RESET_LIMIT = val; };};
+	inline void setStepReset(const int& val) { STEP_RESET_LIMIT = val; };
+>>>>>>> 6f1110a52a31593e0458ffa0c77b0e26b5ee6ae7
+};

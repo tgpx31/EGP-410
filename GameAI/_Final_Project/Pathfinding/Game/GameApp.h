@@ -70,6 +70,7 @@ public:
 	inline int getScore() { return mScore; };
 
 	inline void stopUpdating() { mShouldUpdate = false; };
+	inline void toggleUpdating() { mShouldUpdate = !mShouldUpdate; };
 	inline UserInterface* getUI() const { return mpUI; };
 	inline SoundSystem* getSS() const { return mpSS; };
 private:
