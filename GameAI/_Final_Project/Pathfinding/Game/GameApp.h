@@ -31,6 +31,7 @@ class GameMapManager;
 class Player;
 class EnemyManager;
 class UserInterface;
+class SoundSystem;
 
 enum SpriteType
 {
@@ -70,6 +71,7 @@ public:
 
 	inline void stopUpdating() { mShouldUpdate = false; };
 	inline UserInterface* getUI() const { return mpUI; };
+	inline SoundSystem* getSS() const { return mpSS; };
 private:
 	GameMessageManager* mpMessageManager;
 	EnemyManager* mpEnemyManager;
@@ -90,4 +92,5 @@ private:
 	bool mShouldUpdate;
 
 	UserInterface* mpUI;
+	SoundSystem* mpSS;
 };
