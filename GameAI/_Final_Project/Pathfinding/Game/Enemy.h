@@ -24,7 +24,7 @@ private:
 	Sprite* mpFleeSprite;
 
 	int mStepIntoPathCounter;
-	const int STEP_RESET_LIMIT = 5;
+	int STEP_RESET_LIMIT = 5;
 
 	float mTimeToRecalculate;
 	float mRespawnTime;
@@ -76,4 +76,10 @@ public:
 
 	void doPathfinding();
 	bool shouldMove();
+
+	inline float getSpawnTime() const { return mRespawnTime; };
+	inline void setSpawnTime(const float& timer) { mRespawnTime = timer; };
+
+	inline int getStepReset() { return STEP_RESET_LIMIT; };
+	inline void setStepReset(const int& val) { STEP_RESET_LIMIT = val; };
 };

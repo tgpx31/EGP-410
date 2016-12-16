@@ -22,10 +22,25 @@ public:
 
 	void draw();
 	void update(double frameTime = 33.3f);
+
+	inline float getVel() const { return mEnemyVel; };
+	inline void setVel(const float& vel) { mEnemyVel = vel; };
+
+	inline float getSpawnTime() const { return mRespawnTime; };
+	inline void setSpawnTime(const float& timer) { mRespawnTime = timer; };
+
+	inline int getStepReset() { return STEP_RESET_LIMIT; };
+	inline void setStepReset(const int& val) { STEP_RESET_LIMIT = val; };
+
 private:
 	std::map<IDType, Enemy*> mEnemies;
 	void cleanUp();
 
+	float mEnemyVel;
+	float mRespawnTime;
+
 	Sprite* mNormalSprite;
 	Sprite* mScaredSprite;
+
+	int STEP_RESET_LIMIT = 5;
 };

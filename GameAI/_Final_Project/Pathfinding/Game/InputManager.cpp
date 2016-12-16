@@ -7,6 +7,7 @@
 #include "SetPlayerStateMessage.h"
 #include "TogglePropertiesMessage.h"
 #include "TogglePlayerInvincibilityMessage.h"
+#include "EditPropertyMessage.h"
 #include "Player.h"
 #include "UI.h"
 
@@ -170,6 +171,7 @@ void InputManager::getKeyboardInput()
 		**/
 		case ALLEGRO_KEY_F1:
 		{
+			gpGameApp->toggleUpdating();
 			GameMessage* pMessage = new TogglePropertiesMessage();
 			gpGameApp->getMessageManager()->addMessage(pMessage, 0);
 			break;
@@ -195,6 +197,19 @@ void InputManager::getKeyboardInput()
 					gpGameApp->getUI()->setActiveProperty(gpGameApp->getUI()->getActiveProperty() + 1);
 				break;
 			}
+			case ALLEGRO_KEY_PAD_PLUS:
+			{
+				GameMessage* pMessage = new EditPropertyMessage(gpGameApp->getUI()->getActiveProperty(), true);
+				gpGameApp->getMessageManager()->addMessage(pMessage, 0);
+				break;
+			}
+			case ALLEGRO_KEY_PAD_MINUS:
+			{
+				GameMessage* pMessage = new EditPropertyMessage(gpGameApp->getUI()->getActiveProperty(), false);
+				gpGameApp->getMessageManager()->addMessage(pMessage, 0);
+				break;
+			}
+
 		}
 
 

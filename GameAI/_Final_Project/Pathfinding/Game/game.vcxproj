@@ -93,6 +93,7 @@
     <ClInclude Include="DijkstraPathfinder.h" />
     <ClInclude Include="Door.h" />
     <ClInclude Include="DoorManager.h" />
+    <ClInclude Include="EditPropertyMessage.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="ExitGameMessage.h" />
@@ -143,6 +144,7 @@
     <ClCompile Include="DijkstraPathfinder.cpp" />
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="DoorManager.cpp" />
+    <ClCompile Include="EditPropertyMessage.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="ExitGameMessage.cpp" />

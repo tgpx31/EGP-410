@@ -55,7 +55,6 @@ public:
 	inline Vector2D getPosition() { return mpUnit->getPosition(); };
 	inline CylinderCollision* getCollider() { return mpUnit->getCollider(); };
 	inline bool getInvincible() { return mInvincible; };
-
 	inline void setInvincible(bool invincible) { mInvincible = invincible; };
 
 	void setState(PlayerMovementState state);
